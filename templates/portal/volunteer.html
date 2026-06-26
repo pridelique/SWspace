@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}จิตอาสา | โรงเรียนสตรีวิทยา{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div class="container">
+    <a href="{% url 'portal:dashboard' %}" class="text-white-50 small text-decoration-none">&#8592; หน้าหลัก</a>
+    <h3 class="fw-bold mb-0 mt-2">&#129309; จิตอาสา</h3>
+    <p class="mb-0 opacity-75">กิจกรรมจิตอาสาและบำเพ็ญประโยชน์</p>
+  </div>
+</div>
+
+<div class="container pb-5">
+  {% if items %}
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      {% for item in items %}
+        <div class="col">
+          <div class="card feature-card p-4 h-100 d-flex flex-column">
+            <h6 class="fw-bold">{{ item.title }}</h6>
+            {% if item.organizer %}
+              <p class="text-muted small mb-1">&#127970; {{ item.organizer }}</p>
+            {% endif %}
+            {% if item.deadline %}
+              <p class="small mb-2">
+                <span class="badge bg-warning text-dark">ปิดรับ {{ item.deadline|date:"d M Y" }}</span>
+              </p>
+            {% endif %}
+            <p class="text-muted small flex-grow-1">{{ item.description }}</p>
+            <a href="{{ item.external_url }}" target="_blank" rel="noopener noreferrer"
+               class="btn btn-sw-primary btn-sm mt-auto">เปิดลิงก์จิตอาสา &#8599;</a>
+            <p class="text-muted small mt-2 mb-0">{{ item.created_at|date:"d M Y" }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <div class="empty-icon">&#129309;</div>
+      <h5 class="text-muted">ยังไม่มีกิจกรรมจิตอาสาในขณะนี้</h5>
+      <p class="text-muted small">กิจกรรมจิตอาสาใหม่จะแสดงที่นี่เมื่อมีการเพิ่มข้อมูล</p>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

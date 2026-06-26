@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block title %}หน้าหลัก | โรงเรียนสตรีวิทยา{% endblock %}
+
+{% block content %}
+<div class="page-header" style="padding: 2.75rem 0 2.25rem">
+  <div class="container text-center">
+    <div class="mb-3">
+      <img src="https://satriwit.ac.th/dev/wp-content/uploads/2024/08/Satriwittaya_School_logo_name.png"
+           alt="โรงเรียนสตรีวิทยา"
+           style="max-height:60px; width:auto; filter:brightness(0) invert(1); opacity:0.9">
+    </div>
+    <h2 class="fw-bold mb-2">ยินดีต้อนรับ, {{ user.full_name }}{% if not user.is_committee and user.grade_level %} ({{ user.grade_level }}){% endif %}</h2>
+    <p class="mb-1 opacity-75">
+      {% if user.is_committee %}
+        <span class="badge bg-warning text-dark me-1">คณะกรรมการ</span>
+      {% else %}
+        <span class="badge bg-light text-dark me-1">นักเรียน</span>
+      {% endif %}
+      โรงเรียนสตรีวิทยา
+    </p>
+    <p class="mb-0 small opacity-75">ศูนย์รวมข่าวสาร กิจกรรม สรุปการเรียน และการแจ้งปัญหา</p>
+  </div>
+</div>
+
+<div class="container pb-5">
+
+  {% if user.is_committee %}
+  <div class="alert alert-warning border-0 rounded-3 mb-4 d-flex align-items-center" role="alert">
+    <span class="me-2" style="font-size:1.3rem">&#9733;</span>
+    <div>
+      คุณมีสิทธิ์เป็น <strong>คณะกรรมการนักเรียน</strong>
+      <a href="{% url 'portal:committee' %}" class="btn btn-sm btn-sw-primary ms-2">เข้า Committee Dashboard</a>
+    </div>
+  </div>
+  {% endif %}
+
+  <h5 class="fw-bold mb-4 text-muted">เมนูหลัก</h5>
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+
+    <!-- ข่าวสาร -->
+    <div class="col">
+      <div class="card feature-card p-4 text-center">
+        <div class="card-icon">&#128240;</div>
+        <h5 class="card-title">แจ้งข่าวสาร</h5>
+        <p class="text-muted small">ประกาศและข่าวสารจากโรงเรียน</p>
+        <a href="{% url 'portal:news' %}" class="btn btn-sw-primary mt-auto">เข้าดู</a>
+      </div>
+    </div>
+
+    <!-- จิตอาสา -->
+    <div class="col">
+      <div class="card feature-card p-4 text-center">
+        <div class="card-icon">&#129309;</div>
+        <h5 class="card-title">จิตอาสา</h5>
+        <p class="text-muted small">กิจกรรมจิตอาสาและบำเพ็ญประโยชน์</p>
+        <a href="{% url 'portal:volunteer' %}" class="btn btn-sw-primary mt-auto">เข้าดู</a>
+      </div>
+    </div>
+
+    <!-- การแข่งขัน -->
+    <div class="col">
+      <div class="card feature-card p-4 text-center">
+        <div class="card-icon">&#127942;</div>
+        <h5 class="card-title">การแข่งขัน</h5>
+        <p class="text-muted small">การแข่งขันวิชาการและกิจกรรมพิเศษ</p>
+        <a href="{% url 'portal:competitions' %}" class="btn btn-sw-primary mt-auto">เข้าดู</a>
+      </div>
+    </div>
+
+    <!-- แชร์สรุป -->
+    <div class="col">
+      <div class="card feature-card p-4 text-center">
+        <div class="card-icon">&#128218;</div>
+        <h5 class="card-title">แชร์สรุป</h5>
+        <p class="text-muted small">แชร์และดาวน์โหลดสรุปการเรียน</p>
+        <a href="{% url 'portal:study_notes' %}" class="btn btn-sw-primary mt-auto">เข้าดู</a>
+      </div>
+    </div>
+
+    <!-- แจ้งปัญหา -->
+    <div class="col">
+      <div class="card feature-card p-4 text-center">
+        <div class="card-icon">&#128226;</div>
+        <h5 class="card-title">แจ้งปัญหา</h5>
+        <p class="text-muted small">แจ้งปัญหาและข้อเสนอแนะภายในโรงเรียน</p>
+        <a href="{% url 'portal:problem_reports' %}" class="btn btn-sw-primary mt-auto">เข้าดู</a>
+      </div>
+    </div>
+
+    <!-- สะสมแต้ม -->
+    <div class="col">
+      <div class="card feature-card p-4 text-center">
+        <div class="card-icon">&#11088;</div>
+        <h5 class="card-title">สะสมแต้ม</h5>
+        <p class="text-muted small">ส่งหลักฐานกิจกรรมและติดตามคะแนนสะสม</p>
+        <a href="{% url 'portal:points' %}" class="btn btn-sw-primary mt-auto">เข้า</a>
+      </div>
+    </div>
+
+    <!-- ห้องเช่าดูกันยัง (external link) -->
+    <div class="col">
+      <div class="card feature-card p-4 text-center">
+        <div class="card-icon">&#127916;</div>
+        <h5 class="card-title">ห้องเช่าดูกันยัง</h5>
+        <p class="text-muted small">คลังสื่อและเนื้อหาน่าสนใจ</p>
+        <a href="https://roomsible.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary mt-auto">
+          เข้า &#8599;
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Logout section -->
+  <div class="text-center mt-5 pt-3 border-top">
+    <form method="post" action="{% url 'accounts:logout' %}" class="d-inline">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-sm btn-outline-secondary px-4">ออกจากระบบ</button>
+    </form>
+  </div>
+
+</div>
+{% endblock %}

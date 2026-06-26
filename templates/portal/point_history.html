@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}ประวัติสะสมแต้ม | โรงเรียนสตรีวิทยา{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div class="container">
+    <a href="{% url 'portal:points' %}" class="text-white-50 small text-decoration-none">&#8592; สะสมแต้ม</a>
+    <h3 class="fw-bold mb-0 mt-2">&#11088; ประวัติการส่งหลักฐาน</h3>
+  </div>
+</div>
+
+<div class="container pb-5">
+  {% if submissions %}
+    <div class="card border-0 shadow-sm rounded-3">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>กิจกรรม</th>
+              <th>แต้ม</th>
+              <th>หลักฐาน</th>
+              <th>สถานะ</th>
+              <th>หมายเหตุ</th>
+              <th>วันที่ส่ง</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for sub in submissions %}
+              <tr>
+                <td class="fw-semibold">{{ sub.activity.title }}</td>
+                <td>{{ sub.activity.points }}</td>
+                <td>
+                  <a href="{{ sub.proof_image.url }}" target="_blank" rel="noopener noreferrer">
+                    <img src="{{ sub.proof_image.url }}" alt="หลักฐาน"
+                         style="max-height:48px; max-width:64px; object-fit:cover; border-radius:4px">
+                  </a>
+                </td>
+                <td>
+                  {% if sub.status == 'approved' %}
+                    <span class="badge bg-success">{{ sub.get_status_display }}</span>
+                  {% elif sub.status == 'rejected' %}
+                    <span class="badge bg-danger">{{ sub.get_status_display }}</span>
+                  {% else %}
+                    <span class="badge bg-warning text-dark">{{ sub.get_status_display }}</span>
+                  {% endif %}
+                </td>
+                <td class="text-muted small">{{ sub.admin_note|default:"-" }}</td>
+                <td class="text-muted small">{{ sub.created_at|date:"d/m/Y H:i" }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  {% else %}
+    <div class="alert alert-info rounded-3">ยังไม่มีประวัติการส่งหลักฐาน</div>
+    <a href="{% url 'portal:point_submit' %}" class="btn btn-sw-primary">+ ส่งหลักฐานแรก</a>
+  {% endif %}
+</div>
+{% endblock %}

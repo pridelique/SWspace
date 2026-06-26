@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}ข่าวสาร | โรงเรียนสตรีวิทยา{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div class="container">
+    <a href="{% url 'portal:dashboard' %}" class="text-white-50 small text-decoration-none">&#8592; หน้าหลัก</a>
+    <h3 class="fw-bold mb-0 mt-2">&#128240; แจ้งข่าวสาร</h3>
+    <p class="mb-0 opacity-75">ประกาศและข่าวสารจากโรงเรียนสตรีวิทยา</p>
+  </div>
+</div>
+
+<div class="container pb-5">
+  {% if items %}
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      {% for item in items %}
+        <div class="col">
+          <div class="card feature-card h-100">
+            {% if item.image %}
+              <img src="{{ item.image.url }}" class="card-img-top rounded-top-4"
+                   alt="{{ item.title }}" style="height:180px; object-fit:cover" />
+            {% else %}
+              <div class="rounded-top-4 d-flex align-items-center justify-content-center"
+                   style="height:100px; background: var(--sw-red-light);">
+                <span style="font-size:2.5rem">&#128240;</span>
+              </div>
+            {% endif %}
+            <div class="p-3 d-flex flex-column h-100">
+              <div class="mb-2">
+                <span class="badge
+                  {% if item.category == 'internal' %}bg-primary
+                  {% elif item.category == 'external' %}bg-success
+                  {% else %}bg-danger{% endif %}">
+                  {{ item.get_category_display }}
+                </span>
+              </div>
+              <h6 class="fw-bold">{{ item.title }}</h6>
+              <p class="text-muted small flex-grow-1">{{ item.description|truncatechars:120 }}</p>
+              <p class="text-muted small mb-0 mt-auto">{{ item.created_at|date:"d M Y" }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <div class="empty-icon">&#128240;</div>
+      <h5 class="text-muted">ยังไม่มีข่าวสารในขณะนี้</h5>
+      <p class="text-muted small">คณะกรรมการนักเรียนจะประกาศข่าวสารที่นี่</p>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}สะสมแต้ม | โรงเรียนสตรีวิทยา{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div class="container">
+    <a href="{% url 'portal:dashboard' %}" class="text-white-50 small text-decoration-none">&#8592; หน้าหลัก</a>
+    <h3 class="fw-bold mb-0 mt-2">&#11088; สะสมแต้ม</h3>
+    <p class="mb-0 opacity-75">ส่งหลักฐานกิจกรรมและติดตามคะแนนสะสม</p>
+  </div>
+</div>
+
+<div class="container pb-5">
+
+  <!-- Score Card -->
+  <div class="row justify-content-center mb-5">
+    <div class="col-md-5">
+      <div class="card border-0 shadow-sm rounded-4 p-4 text-center">
+        <div style="font-size:3rem">&#11088;</div>
+        <div class="fw-bold mt-2" style="font-size:3rem; color: var(--sw-red)">{{ profile.total_points }}</div>
+        <div class="text-muted">แต้มสะสมของคุณ</div>
+        <div class="mt-3">
+          <a href="{% url 'portal:point_history' %}" class="btn btn-outline-secondary">ดูประวัติทั้งหมด</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Per-Activity Cards -->
+  {% if activity_items %}
+    <h5 class="fw-bold mb-3">กิจกรรมที่เปิดรับหลักฐาน</h5>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 mb-5">
+      {% for item in activity_items %}
+        {% with activity=item.activity latest=item.latest %}
+        <div class="col">
+          <div class="card border-0 shadow-sm rounded-3 p-3 h-100 d-flex flex-column">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <h6 class="fw-bold mb-0">{{ activity.title }}</h6>
+              <span class="badge bg-warning text-dark ms-2 flex-shrink-0">{{ activity.points }} แต้ม</span>
+            </div>
+            {% if activity.description %}
+              <p class="text-muted small mb-2">{{ activity.description }}</p>
+            {% endif %}
+
+            <div class="mt-auto pt-2">
+              {% if latest %}
+                {% if latest.status == 'approved' %}
+                  <span class="badge bg-success me-1">ได้รับแล้ว {{ activity.points }} แต้ม</span>
+
+                {% elif latest.status == 'pending' %}
+                  <span class="badge bg-warning text-dark">รอตรวจสอบ</span>
+
+                {% elif latest.status == 'rejected' %}
+                  <span class="badge bg-danger me-2">ถูกปฏิเสธ</span>
+                  {% if latest.admin_note %}
+                    <div class="text-muted small mt-1">หมายเหตุ: {{ latest.admin_note }}</div>
+                  {% endif %}
+                  <a href="{% url 'portal:point_submit' %}?activity={{ activity.pk }}"
+                     class="btn btn-sm btn-outline-danger mt-2">ส่งหลักฐานใหม่</a>
+                {% endif %}
+              {% else %}
+                <a href="{% url 'portal:point_submit' %}?activity={{ activity.pk }}"
+                   class="btn btn-sm btn-sw-primary">ส่งหลักฐาน</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endwith %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="alert alert-info rounded-3">ยังไม่มีกิจกรรมที่เปิดรับหลักฐานในขณะนี้</div>
+  {% endif %}
+
+</div>
+{% endblock %}

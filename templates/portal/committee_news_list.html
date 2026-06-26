@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}จัดการข่าวสาร | Committee{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div class="container">
+    <a href="{% url 'portal:committee' %}" class="text-white-50 small text-decoration-none">&#8592; Committee Dashboard</a>
+    <h3 class="fw-bold mb-0 mt-2">&#128240; จัดการข่าวสาร</h3>
+    <p class="mb-0 opacity-75">รายการข่าวสารทั้งหมด (ทั้ง published และ draft)</p>
+  </div>
+</div>
+
+<div class="container pb-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <span class="text-muted">ทั้งหมด {{ items|length }} รายการ</span>
+    <a href="{% url 'portal:committee_news_create' %}" class="btn btn-sw-primary">
+      + เพิ่มข่าวสาร
+    </a>
+  </div>
+
+  {% if items %}
+    <div class="card border-0 shadow-sm rounded-3 overflow-hidden">
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead style="background: var(--sw-red); color: white;">
+            <tr>
+              <th class="py-3 ps-4">หัวข้อข่าว</th>
+              <th class="py-3">หมวดหมู่</th>
+              <th class="py-3">สถานะ</th>
+              <th class="py-3">วันที่สร้าง</th>
+              <th class="py-3 text-end pe-4">จัดการ</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in items %}
+              <tr>
+                <td class="py-3 ps-4 fw-semibold">{{ item.title }}</td>
+                <td class="py-3">
+                  <span class="badge
+                    {% if item.category == 'internal' %}bg-primary
+                    {% elif item.category == 'external' %}bg-success
+                    {% else %}bg-secondary{% endif %}">
+                    {{ item.get_category_display }}
+                  </span>
+                </td>
+                <td class="py-3">
+                  {% if item.is_published %}
+                    <span class="badge bg-success">เผยแพร่แล้ว</span>
+                  {% else %}
+                    <span class="badge bg-warning text-dark">Draft</span>
+                  {% endif %}
+                </td>
+                <td class="py-3 text-muted small">{{ item.created_at|date:"d M Y" }}</td>
+                <td class="py-3 text-end pe-4">
+                  <a href="{% url 'portal:committee_news_edit' item.pk %}"
+                     class="btn btn-outline-warning btn-sm me-1">แก้ไข</a>
+                  <a href="{% url 'portal:committee_news_delete' item.pk %}"
+                     class="btn btn-outline-danger btn-sm">ลบ</a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <div class="empty-icon">&#128240;</div>
+      <h5 class="text-muted">ยังไม่มีข่าวสาร</h5>
+      <p class="text-muted small mb-3">เริ่มเพิ่มข่าวสารแรกได้เลย</p>
+      <a href="{% url 'portal:committee_news_create' %}" class="btn btn-sw-primary">+ เพิ่มข่าวสาร</a>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

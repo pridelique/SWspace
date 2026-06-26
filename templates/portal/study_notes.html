@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}แชร์สรุป | โรงเรียนสตรีวิทยา{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div class="container">
+    <a href="{% url 'portal:dashboard' %}" class="text-white-50 small text-decoration-none">&#8592; หน้าหลัก</a>
+    <h3 class="fw-bold mb-0 mt-2">&#128218; แชร์สรุป</h3>
+    <p class="mb-0 opacity-75">สรุปการเรียนจากเพื่อนๆ แยกตามชั้นและวิชา</p>
+  </div>
+</div>
+
+<div class="container pb-5">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <p class="text-muted mb-0">แสดงเฉพาะสรุปที่ผ่านการอนุมัติแล้ว</p>
+    <a href="{% url 'portal:study_note_submit' %}" class="btn btn-sw-primary">+ ส่งสรุปการเรียน</a>
+  </div>
+
+  {% if items %}
+    {% regroup items by grade_level as grade_groups %}
+    {% for grade in grade_groups %}
+      <h5 class="fw-bold mt-4 mb-3" style="color: var(--sw-red)">
+        &#128218; {{ grade.grouper }}
+      </h5>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 mb-2">
+        {% for item in grade.list %}
+          <div class="col">
+            <div class="card feature-card p-3 h-100 d-flex flex-column">
+              <div class="d-flex gap-2 mb-2 flex-wrap">
+                <span class="badge bg-danger">{{ item.grade_level }}</span>
+                <span class="badge bg-secondary">{{ item.subject }}</span>
+              </div>
+              <h6 class="fw-bold">{{ item.title }}</h6>
+              <p class="text-muted small mb-2">
+                &#128100; {{ item.display_credit }}
+              </p>
+              <a href="{{ item.drive_url }}" target="_blank" rel="noopener noreferrer"
+                 class="btn btn-sw-primary btn-sm mt-auto">ดูสรุป &#8599;</a>
+              <p class="text-muted small mt-2 mb-0">{{ item.created_at|date:"d M Y" }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="empty-state">
+      <div class="empty-icon">&#128218;</div>
+      <h5 class="text-muted">ยังไม่มีสรุปการเรียนในขณะนี้</h5>
+      <p class="text-muted small">สรุปการเรียนจากเพื่อนๆ จะแสดงที่นี่เมื่อมีการเพิ่มข้อมูล</p>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

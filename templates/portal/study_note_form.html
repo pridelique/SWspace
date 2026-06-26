@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}ส่งสรุปการเรียน | โรงเรียนสตรีวิทยา{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div class="container">
+    <a href="{% url 'portal:study_notes' %}" class="text-white-50 small text-decoration-none">&#8592; สรุปการเรียน</a>
+    <h3 class="fw-bold mb-0 mt-2">&#128218; ส่งสรุปการเรียน</h3>
+    <p class="mb-0 opacity-75">แบ่งปันสรุปให้กับเพื่อนๆ ผ่าน Google Drive</p>
+  </div>
+</div>
+
+<div class="container pb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-7">
+      <div class="card border-0 shadow-sm rounded-3 p-4">
+        <form method="post" novalidate>
+          {% csrf_token %}
+
+          <div class="mb-3">
+            <label for="{{ form.title.id_for_label }}" class="form-label fw-semibold">
+              {{ form.title.label }} <span class="text-danger">*</span>
+            </label>
+            {{ form.title }}
+            {% if form.title.errors %}
+              <div class="text-danger small mt-1">{{ form.title.errors.0 }}</div>
+            {% endif %}
+          </div>
+
+          <div class="row g-3 mb-3">
+            <div class="col-sm-6">
+              <label for="{{ form.grade_level.id_for_label }}" class="form-label fw-semibold">
+                {{ form.grade_level.label }} <span class="text-danger">*</span>
+              </label>
+              {{ form.grade_level }}
+              {% if form.grade_level.errors %}
+                <div class="text-danger small mt-1">{{ form.grade_level.errors.0 }}</div>
+              {% endif %}
+            </div>
+            <div class="col-sm-6">
+              <label for="{{ form.subject.id_for_label }}" class="form-label fw-semibold">
+                {{ form.subject.label }} <span class="text-danger">*</span>
+              </label>
+              {{ form.subject }}
+              {% if form.subject.errors %}
+                <div class="text-danger small mt-1">{{ form.subject.errors.0 }}</div>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ form.drive_url.id_for_label }}" class="form-label fw-semibold">
+              {{ form.drive_url.label }} <span class="text-danger">*</span>
+            </label>
+            {{ form.drive_url }}
+            {% if form.drive_url.errors %}
+              <div class="text-danger small mt-1">{{ form.drive_url.errors.0 }}</div>
+            {% endif %}
+            <div class="form-text">แชร์ไฟล์ใน Google Drive ให้ "ทุกคนที่มีลิงก์" ดูได้ก่อน แล้วนำลิงก์มาวาง</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ form.credit_name.id_for_label }}" class="form-label fw-semibold">
+              {{ form.credit_name.label }}
+            </label>
+            {{ form.credit_name }}
+            {% if form.credit_name.errors %}
+              <div class="text-danger small mt-1">{{ form.credit_name.errors.0 }}</div>
+            {% endif %}
+          </div>
+
+          <div class="mb-4">
+            <div class="form-check">
+              {{ form.is_anonymous }}
+              <label class="form-check-label fw-semibold" for="{{ form.is_anonymous.id_for_label }}">
+                {{ form.is_anonymous.label }}
+              </label>
+            </div>
+            <div class="form-text">ถ้าเลือก ชื่อผู้ส่งจะแสดงเป็น "ไม่ระบุตัวตน"</div>
+          </div>
+
+          <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-sw-primary px-4">ส่งสรุป</button>
+            <a href="{% url 'portal:study_notes' %}" class="btn btn-outline-secondary px-4">ยกเลิก</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

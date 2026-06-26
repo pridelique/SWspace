@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}เข้าสู่ระบบ | โรงเรียนสตรีวิทยา{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-10 col-md-7 col-lg-5">
+
+      <div class="text-center mb-4">
+        <img src="https://satriwit.ac.th/dev/wp-content/uploads/2024/08/Satriwittaya_School_logo_name.png"
+             alt="โรงเรียนสตรีวิทยา" style="max-height:80px; width:auto;" class="mb-3">
+        <p class="text-muted mb-0">เข้าสู่ระบบ &mdash; ใช้อีเมล @satriwit.ac.th</p>
+      </div>
+
+      <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-body p-4">
+          <form method="post" novalidate>
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+              <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+            {% endif %}
+
+            <div class="mb-3">
+              <label class="form-label fw-medium">อีเมล</label>
+              <input type="email" name="username" class="form-control {% if form.errors %}is-invalid{% endif %}"
+                     placeholder="email@satriwit.ac.th" value="{{ form.data.username|default:'' }}" required />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-medium">รหัสผ่าน</label>
+              <input type="password" name="password" class="form-control {% if form.errors %}is-invalid{% endif %}"
+                     placeholder="รหัสผ่าน" required />
+              {% if form.errors %}
+                <div class="invalid-feedback d-block">อีเมลหรือรหัสผ่านไม่ถูกต้อง</div>
+              {% endif %}
+            </div>
+
+            <div class="d-grid mt-4">
+              <button type="submit" class="btn btn-sw-primary btn-lg">เข้าสู่ระบบ</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <p class="text-center mt-3 text-muted">
+        ยังไม่มีบัญชี?
+        <a href="{% url 'accounts:register' %}" style="color: var(--sw-red)">สมัครสมาชิก</a>
+      </p>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

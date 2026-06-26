@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}การแข่งขัน | โรงเรียนสตรีวิทยา{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div class="container">
+    <a href="{% url 'portal:dashboard' %}" class="text-white-50 small text-decoration-none">&#8592; หน้าหลัก</a>
+    <h3 class="fw-bold mb-0 mt-2">&#127942; การแข่งขัน</h3>
+    <p class="mb-0 opacity-75">การแข่งขันวิชาการและกิจกรรมพิเศษ</p>
+  </div>
+</div>
+
+<div class="container pb-5">
+  {% if items %}
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      {% for item in items %}
+        <div class="col">
+          <div class="card feature-card h-100">
+            {% if item.image %}
+              <img src="{{ item.image.url }}" class="card-img-top rounded-top-4"
+                   alt="{{ item.title }}" style="height:160px; object-fit:cover" />
+            {% else %}
+              <div class="rounded-top-4 d-flex align-items-center justify-content-center"
+                   style="height:90px; background: var(--sw-red-light);">
+                <span style="font-size:2.2rem">&#127942;</span>
+              </div>
+            {% endif %}
+            <div class="p-3 d-flex flex-column h-100">
+              <h6 class="fw-bold">{{ item.title }}</h6>
+              {% if item.organizer %}
+                <p class="text-muted small mb-1">&#127970; {{ item.organizer }}</p>
+              {% endif %}
+              {% if item.deadline %}
+                <p class="small mb-2">
+                  <span class="badge bg-warning text-dark">ปิดรับ {{ item.deadline|date:"d M Y" }}</span>
+                </p>
+              {% endif %}
+              <p class="text-muted small flex-grow-1">{{ item.description|truncatechars:120 }}</p>
+              {% if item.application_url %}
+                <a href="{{ item.application_url }}" target="_blank" rel="noopener noreferrer"
+                   class="btn btn-sw-primary btn-sm mt-auto">สมัคร / ดูรายละเอียด &#8599;</a>
+              {% else %}
+                <button class="btn btn-outline-secondary btn-sm mt-auto" disabled>ยังไม่มีลิงก์สมัคร</button>
+              {% endif %}
+              <p class="text-muted small mt-2 mb-0">{{ item.created_at|date:"d M Y" }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <div class="empty-icon">&#127942;</div>
+      <h5 class="text-muted">ยังไม่มีการแข่งขันในขณะนี้</h5>
+      <p class="text-muted small">การแข่งขันใหม่จะแสดงที่นี่เมื่อมีการเพิ่มข้อมูล</p>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

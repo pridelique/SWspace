@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}แจ้งปัญหา | โรงเรียนสตรีวิทยา{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div class="container">
+    <a href="{% url 'portal:problem_reports' %}" class="text-white-50 small text-decoration-none">&#8592; แจ้งปัญหา</a>
+    <h3 class="fw-bold mb-0 mt-2">&#128226; แจ้งปัญหาภายในโรงเรียน</h3>
+    <p class="mb-0 opacity-75">แจ้งปัญหาให้คณะกรรมการนักเรียนรับทราบ</p>
+  </div>
+</div>
+
+<div class="container pb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-7">
+      <div class="alert alert-info border-0 rounded-3 mb-4">
+        การแจ้งปัญหาจะต้องผ่านการอนุมัติจากคณะกรรมการนักเรียนก่อนจึงจะแสดงบนหน้าเว็บ
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-3 p-4">
+        <form method="post" novalidate>
+          {% csrf_token %}
+
+          <div class="mb-3">
+            <label for="{{ form.title.id_for_label }}" class="form-label fw-semibold">
+              {{ form.title.label }} <span class="text-danger">*</span>
+            </label>
+            {{ form.title }}
+            {% if form.title.errors %}
+              <div class="text-danger small mt-1">{{ form.title.errors.0 }}</div>
+            {% endif %}
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ form.description.id_for_label }}" class="form-label fw-semibold">
+              {{ form.description.label }} <span class="text-danger">*</span>
+            </label>
+            {{ form.description }}
+            {% if form.description.errors %}
+              <div class="text-danger small mt-1">{{ form.description.errors.0 }}</div>
+            {% endif %}
+          </div>
+
+          <div class="mb-4">
+            <label for="{{ form.location.id_for_label }}" class="form-label fw-semibold">
+              {{ form.location.label }}
+            </label>
+            {{ form.location }}
+            {% if form.location.errors %}
+              <div class="text-danger small mt-1">{{ form.location.errors.0 }}</div>
+            {% endif %}
+          </div>
+
+          <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-sw-primary px-4">ส่งแจ้งปัญหา</button>
+            <a href="{% url 'portal:problem_reports' %}" class="btn btn-outline-secondary px-4">ยกเลิก</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

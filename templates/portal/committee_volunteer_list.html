@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}จัดการจิตอาสา | Committee{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div class="container">
+    <a href="{% url 'portal:committee' %}" class="text-white-50 small text-decoration-none">&#8592; Committee Dashboard</a>
+    <h3 class="fw-bold mb-0 mt-2">&#129309; จัดการจิตอาสา</h3>
+    <p class="mb-0 opacity-75">รายการกิจกรรมจิตอาสาทั้งหมด</p>
+  </div>
+</div>
+
+<div class="container pb-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <span class="text-muted">ทั้งหมด {{ items|length }} รายการ</span>
+    <a href="{% url 'portal:committee_volunteer_create' %}" class="btn btn-sw-primary">
+      + เพิ่มกิจกรรมจิตอาสา
+    </a>
+  </div>
+
+  {% if items %}
+    <div class="card border-0 shadow-sm rounded-3 overflow-hidden">
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead style="background: var(--sw-red); color: white;">
+            <tr>
+              <th class="py-3 ps-4">ชื่อกิจกรรม</th>
+              <th class="py-3">ผู้จัด</th>
+              <th class="py-3">วันปิดรับ</th>
+              <th class="py-3">สถานะ</th>
+              <th class="py-3 text-end pe-4">จัดการ</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in items %}
+              <tr>
+                <td class="py-3 ps-4 fw-semibold">{{ item.title }}</td>
+                <td class="py-3 text-muted small">{{ item.organizer|default:"-" }}</td>
+                <td class="py-3 text-muted small">
+                  {% if item.deadline %}{{ item.deadline|date:"d M Y" }}{% else %}-{% endif %}
+                </td>
+                <td class="py-3">
+                  {% if item.is_published %}
+                    <span class="badge bg-success">เผยแพร่แล้ว</span>
+                  {% else %}
+                    <span class="badge bg-warning text-dark">Draft</span>
+                  {% endif %}
+                </td>
+                <td class="py-3 text-end pe-4">
+                  <a href="{% url 'portal:committee_volunteer_edit' item.pk %}"
+                     class="btn btn-outline-warning btn-sm me-1">แก้ไข</a>
+                  <a href="{% url 'portal:committee_volunteer_delete' item.pk %}"
+                     class="btn btn-outline-danger btn-sm">ลบ</a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <div class="empty-icon">&#129309;</div>
+      <h5 class="text-muted">ยังไม่มีกิจกรรมจิตอาสา</h5>
+      <p class="text-muted small mb-3">เริ่มเพิ่มกิจกรรมแรกได้เลย</p>
+      <a href="{% url 'portal:committee_volunteer_create' %}" class="btn btn-sw-primary">+ เพิ่มกิจกรรมจิตอาสา</a>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}ส่งหลักฐานสะสมแต้ม | โรงเรียนสตรีวิทยา{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div class="container">
+    <a href="{% url 'portal:points' %}" class="text-white-50 small text-decoration-none">&#8592; สะสมแต้ม</a>
+    <h3 class="fw-bold mb-0 mt-2">&#11088; ส่งหลักฐานกิจกรรม</h3>
+  </div>
+</div>
+
+<div class="container pb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card border-0 shadow-sm rounded-3 p-4">
+        {% if form.non_field_errors %}
+          <div class="alert alert-danger rounded-3 mb-3">{{ form.non_field_errors.0 }}</div>
+        {% endif %}
+
+        <form method="post" enctype="multipart/form-data" novalidate>
+          {% csrf_token %}
+
+          <div class="mb-3">
+            <label for="{{ form.activity.id_for_label }}" class="form-label fw-semibold">
+              {{ form.activity.label }} <span class="text-danger">*</span>
+            </label>
+            {{ form.activity }}
+            {% if form.activity.errors %}
+              <div class="text-danger small mt-1">{{ form.activity.errors.0 }}</div>
+            {% endif %}
+          </div>
+
+          <div class="mb-4">
+            <label for="{{ form.proof_image.id_for_label }}" class="form-label fw-semibold">
+              {{ form.proof_image.label }} <span class="text-danger">*</span>
+            </label>
+            {{ form.proof_image }}
+            {% if form.proof_image.errors %}
+              <div class="text-danger small mt-1">{{ form.proof_image.errors.0 }}</div>
+            {% endif %}
+            <div class="form-text">รองรับ JPG, PNG, WEBP ขนาดไม่เกิน 5 MB</div>
+          </div>
+
+          <div class="alert alert-info small rounded-3 mb-4">
+            หลักฐานจะถูกตรวจสอบโดยคณะกรรมการนักเรียน คะแนนจะถูกเพิ่มเมื่ออนุมัติแล้วเท่านั้น
+          </div>
+
+          <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-sw-primary px-4">ส่งหลักฐาน</button>
+            <a href="{% url 'portal:points' %}" class="btn btn-outline-secondary px-4">ยกเลิก</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

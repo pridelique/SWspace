@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}จัดการแจ้งปัญหา | Committee{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div class="container">
+    <a href="{% url 'portal:committee' %}" class="text-white-50 small text-decoration-none">&#8592; Committee Dashboard</a>
+    <h3 class="fw-bold mb-0 mt-2">&#128226; จัดการแจ้งปัญหา</h3>
+    <p class="mb-0 opacity-75">ปัญหาทั้งหมดที่นักเรียนแจ้งมา</p>
+  </div>
+</div>
+
+<div class="container pb-5">
+
+  <!-- Status Filter Tabs -->
+  <div class="mb-4">
+    <div class="btn-group" role="group">
+      <a href="{% url 'portal:committee_problem_reports' %}"
+         class="btn btn-sm {% if not status_filter %}btn-sw-primary{% else %}btn-outline-secondary{% endif %}">
+        ทั้งหมด
+      </a>
+      <a href="{% url 'portal:committee_problem_reports' %}?status=pending"
+         class="btn btn-sm {% if status_filter == STATUS_PENDING %}btn-warning{% else %}btn-outline-secondary{% endif %}">
+        รออนุมัติ
+      </a>
+      <a href="{% url 'portal:committee_problem_reports' %}?status=approved"
+         class="btn btn-sm {% if status_filter == STATUS_APPROVED %}btn-success{% else %}btn-outline-secondary{% endif %}">
+        อนุมัติแล้ว
+      </a>
+      <a href="{% url 'portal:committee_problem_reports' %}?status=rejected"
+         class="btn btn-sm {% if status_filter == STATUS_REJECTED %}btn-danger{% else %}btn-outline-secondary{% endif %}">
+        ปฏิเสธแล้ว
+      </a>
+    </div>
+  </div>
+
+  {% if items %}
+    <div class="card border-0 shadow-sm rounded-3 overflow-hidden">
+      <div class="table-responsive">
+      <table class="table table-hover mb-0">
+        <thead style="background: var(--sw-red); color: white;">
+          <tr>
+            <th class="py-3 ps-4">หัวข้อ</th>
+            <th class="py-3">สถานที่</th>
+            <th class="py-3">ผู้แจ้ง</th>
+            <th class="py-3">สถานะ</th>
+            <th class="py-3">วันที่</th>
+            <th class="py-3 pe-4 text-end">จัดการ</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in items %}
+            <tr>
+              <td class="ps-4 py-3">
+                <div class="fw-semibold">{{ item.title }}</div>
+                <div class="text-muted small">{{ item.description|truncatechars:60 }}</div>
+                {% if item.admin_note %}
+                  <div class="text-muted small fst-italic">หมายเหตุ: {{ item.admin_note|truncatechars:40 }}</div>
+                {% endif %}
+              </td>
+              <td class="py-3 text-muted small">{{ item.location|default:"-" }}</td>
+              <td class="py-3 text-muted small">
+                {% if item.submitted_by %}{{ item.submitted_by.full_name }}{% else %}-{% endif %}
+              </td>
+              <td class="py-3">
+                {% if item.status == STATUS_PENDING %}
+                  <span class="badge bg-warning text-dark">รออนุมัติ</span>
+                {% elif item.status == STATUS_APPROVED %}
+                  <span class="badge bg-success">อนุมัติแล้ว</span>
+                {% else %}
+                  <span class="badge bg-danger">ปฏิเสธแล้ว</span>
+                {% endif %}
+              </td>
+              <td class="py-3 text-muted small">{{ item.created_at|date:"d M Y" }}</td>
+              <td class="pe-4 py-3 text-end text-nowrap">
+                {% if item.status != STATUS_APPROVED %}
+                  <form method="post" action="{% url 'portal:committee_problem_report_approve' item.pk %}" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-success btn-sm">อนุมัติ</button>
+                  </form>
+                {% endif %}
+                {% if item.status != STATUS_REJECTED %}
+                  <a href="{% url 'portal:committee_problem_report_reject' item.pk %}"
+                     class="btn btn-outline-warning btn-sm ms-1">ปฏิเสธ</a>
+                {% endif %}
+                <a href="{% url 'portal:committee_problem_report_delete' item.pk %}"
+                   class="btn btn-outline-danger btn-sm ms-1">ลบ</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </div>
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <div class="empty-icon">&#128226;</div>
+      <h5 class="text-muted">ไม่มีการแจ้งปัญหา{% if status_filter %}ในหมวดนี้{% endif %}</h5>
+      <p class="text-muted small">ปัญหาที่นักเรียนแจ้งจะปรากฏที่นี่</p>
+    </div>
+  {% endif %}
+
+</div>
+{% endblock %}

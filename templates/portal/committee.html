@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+
+{% block title %}Committee Dashboard | โรงเรียนสตรีวิทยา{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div class="container">
+    <a href="{% url 'portal:dashboard' %}" class="text-white-50 small text-decoration-none">&#8592; หน้าหลัก</a>
+    <h3 class="fw-bold mb-0 mt-2">&#9733; Committee Dashboard</h3>
+    <p class="mb-0 opacity-75">สวัสดี {{ user.full_name }} &mdash; ภาพรวมและจัดการข้อมูลสำหรับคณะกรรมการนักเรียน</p>
+  </div>
+</div>
+
+<div class="container pb-5">
+
+  <!-- Summary Cards -->
+  <h5 class="fw-bold mb-3">ภาพรวมข้อมูล</h5>
+  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-3 mb-5">
+
+    <div class="col">
+      <div class="card border-0 shadow-sm rounded-3 p-3 text-center h-100">
+        <div style="font-size:1.8rem">&#128240;</div>
+        <div class="fw-bold fs-4 mt-1" style="color: var(--sw-red)">{{ stats.news_count }}</div>
+        <div class="text-muted small">ข่าวสาร</div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card border-0 shadow-sm rounded-3 p-3 text-center h-100">
+        <div style="font-size:1.8rem">&#129309;</div>
+        <div class="fw-bold fs-4 mt-1" style="color: var(--sw-red)">{{ stats.volunteer_count }}</div>
+        <div class="text-muted small">จิตอาสา</div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card border-0 shadow-sm rounded-3 p-3 text-center h-100">
+        <div style="font-size:1.8rem">&#127942;</div>
+        <div class="fw-bold fs-4 mt-1" style="color: var(--sw-red)">{{ stats.competition_count }}</div>
+        <div class="text-muted small">การแข่งขัน</div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card border-0 shadow-sm rounded-3 p-3 text-center h-100">
+        <div style="font-size:1.8rem">&#128218;</div>
+        <div class="fw-bold fs-4 mt-1" style="color: var(--sw-red)">{{ stats.study_note_count }}</div>
+        <div class="text-muted small">สรุปการเรียน</div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card border-0 shadow-sm rounded-3 p-3 text-center h-100">
+        <div style="font-size:1.8rem">&#9203;</div>
+        <div class="fw-bold fs-4 mt-1 text-warning">{{ stats.problem_pending_count }}</div>
+        <div class="text-muted small">ปัญหารออนุมัติ</div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card border-0 shadow-sm rounded-3 p-3 text-center h-100">
+        <div style="font-size:1.8rem">&#9989;</div>
+        <div class="fw-bold fs-4 mt-1 text-success">{{ stats.problem_approved_count }}</div>
+        <div class="text-muted small">ปัญหาอนุมัติแล้ว</div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card border-0 shadow-sm rounded-3 p-3 text-center h-100">
+        <div style="font-size:1.8rem">&#10060;</div>
+        <div class="fw-bold fs-4 mt-1 text-danger">{{ stats.problem_rejected_count }}</div>
+        <div class="text-muted small">ปัญหาปฏิเสธแล้ว</div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card border-0 shadow-sm rounded-3 p-3 text-center h-100">
+        <div style="font-size:1.8rem">&#9203;</div>
+        <div class="fw-bold fs-4 mt-1 text-warning">{{ stats.point_pending_count }}</div>
+        <div class="text-muted small">แต้มรอตรวจสอบ</div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card border-0 shadow-sm rounded-3 p-3 text-center h-100">
+        <div style="font-size:1.8rem">&#11088;</div>
+        <div class="fw-bold fs-4 mt-1" style="color: var(--sw-red)">{{ stats.point_activity_count }}</div>
+        <div class="text-muted small">กิจกรรมสะสมแต้ม</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Management Shortcuts -->
+  <h5 class="fw-bold mb-3">จัดการข้อมูล</h5>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+
+    <div class="col">
+      <div class="card feature-card p-4 text-center h-100">
+        <div class="card-icon">&#128240;</div>
+        <h6 class="fw-bold">จัดการข่าวสาร</h6>
+        <p class="text-muted small">เพิ่ม แก้ไข และลบข่าวสาร / ตั้งค่าหมวดหมู่และสถานะเผยแพร่</p>
+        <a href="{% url 'portal:committee_news_list' %}" class="btn btn-sw-primary btn-sm mt-auto">
+          เข้าจัดการ &#8599;
+        </a>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card feature-card p-4 text-center h-100">
+        <div class="card-icon">&#129309;</div>
+        <h6 class="fw-bold">จัดการจิตอาสา</h6>
+        <p class="text-muted small">เพิ่ม แก้ไข และลบกิจกรรมจิตอาสา / ตั้งวันปิดรับ</p>
+        <a href="{% url 'portal:committee_volunteer_list' %}" class="btn btn-sw-primary btn-sm mt-auto">
+          เข้าจัดการ &#8599;
+        </a>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card feature-card p-4 text-center h-100">
+        <div class="card-icon">&#127942;</div>
+        <h6 class="fw-bold">จัดการแข่งขัน</h6>
+        <p class="text-muted small">เพิ่ม แก้ไข และลบการแข่งขัน / ตั้งลิงก์สมัครและวันปิดรับ</p>
+        <a href="{% url 'portal:committee_competition_list' %}" class="btn btn-sw-primary btn-sm mt-auto">
+          เข้าจัดการ &#8599;
+        </a>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card feature-card p-4 text-center h-100">
+        <div class="card-icon">&#128218;</div>
+        <h6 class="fw-bold">ตรวจสอบสรุปการเรียน</h6>
+        <p class="text-muted small">อนุมัติ ซ่อน และลบสรุปที่นักเรียนส่งมา</p>
+        <a href="{% url 'portal:committee_study_notes' %}" class="btn btn-sw-primary btn-sm mt-auto">
+          เข้าจัดการ &#8599;
+        </a>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card feature-card p-4 text-center h-100">
+        <div class="card-icon">&#128226;</div>
+        <h6 class="fw-bold">อนุมัติแจ้งปัญหา</h6>
+        <p class="text-muted small">
+          ตรวจสอบและอนุมัติ/ปฏิเสธปัญหาที่แจ้งมา
+          {% if stats.problem_pending_count %}
+            <br><span class="badge bg-warning text-dark">{{ stats.problem_pending_count }} รอดำเนินการ</span>
+          {% endif %}
+        </p>
+        <a href="{% url 'portal:committee_problem_reports' %}" class="btn btn-sw-primary btn-sm mt-auto">
+          เข้าจัดการ &#8599;
+        </a>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card feature-card p-4 text-center h-100">
+        <div class="card-icon">&#11088;</div>
+        <h6 class="fw-bold">สะสมแต้ม</h6>
+        <p class="text-muted small">
+          จัดการกิจกรรมและตรวจสอบหลักฐานสะสมแต้ม
+          {% if stats.point_pending_count %}
+            <br><span class="badge bg-warning text-dark">{{ stats.point_pending_count }} รอตรวจสอบ</span>
+          {% endif %}
+        </p>
+        <a href="{% url 'portal:committee_points' %}" class="btn btn-sw-primary btn-sm mt-auto">
+          เข้าจัดการ &#8599;
+        </a>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card feature-card p-4 text-center h-100" style="background: var(--sw-red-light)">
+        <div class="card-icon">&#9881;</div>
+        <h6 class="fw-bold">Django Admin หลัก</h6>
+        <p class="text-muted small">จัดการข้อมูลผู้ใช้และข้อมูลทั้งหมดผ่าน Admin</p>
+        <a href="{% url 'admin:index' %}" class="btn btn-sw-primary btn-sm mt-auto">เข้า Admin &#8599;</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
