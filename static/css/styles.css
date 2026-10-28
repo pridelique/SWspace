@@ -2,33 +2,65 @@
 
 /* ---- CSS Variables ---- */
 :root {
-  --sw-red:        #c7352c;
-  --sw-red-dark:   #9f241d;
-  --sw-red-light:  #fff1ef;
-  --sw-gold:       #d7a84f;
-  --sw-bg:         #f5f5f5;
-  --sw-text:       #1f2937;
-  --sw-muted:      #6b7280;
-  --sw-border:     #e5e7eb;
-  --sw-shadow:     0 2px 12px rgba(0, 0, 0, 0.07);
-  --sw-shadow-lg:  0 8px 24px rgba(0, 0, 0, 0.13);
-  --sw-radius:     12px;
-  --sw-radius-sm:  8px;
+  --primary:       #AF291E;
+  --primary-dark:  #8E2018;
+  --pink:          #FFE4E1;
+  --pink-soft:     #FFF5F3;
+  --cream:         #FFF9F4;
+  --gold:          #E8B655;
+  --gold-light:    #F4CB74;
+  --text:          #702019;
+
+  --sw-red:        #AF291E;
+  --sw-red-dark:   #8E2018;
+  --sw-red-light:  #FFF5F3;
+  --sw-gold:       #E8B655;
+  --sw-bg:         #FFFFFF;
+  --sw-text:       #4a2420;
+  --sw-muted:      #8a5a55;
+  --sw-border:     rgba(175, 41, 30, 0.15);
+  --sw-shadow:     0 2px 10px rgba(175, 41, 30, 0.07);
+  --sw-shadow-lg:  0 8px 22px rgba(175, 41, 30, 0.14);
+  --sw-radius:     14px;
+  --sw-radius-sm:  6px;
+
+  --font-display:  'Chonburi', 'Noto Sans Thai', serif;
+  --font-body:     'Noto Sans Thai', system-ui, -apple-system, sans-serif;
 }
 
 /* ---- Base ---- */
 body {
-  font-family: 'Noto Sans Thai', system-ui, -apple-system, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: var(--font-body);
   background-color: var(--sw-bg);
   color: var(--sw-text);
   font-size: 0.9375rem;
   line-height: 1.65;
 }
 
+h1, h2, h3, h4, h5, h6,
+.card-title,
+.navbar-brand {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
 /* ---- Navbar ---- */
 .sw-navbar {
-  background-color: var(--sw-red);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  background: linear-gradient(180deg, #B72C21 0%, #9E1811 100%);
+  box-shadow: 0 2px 10px rgba(120, 20, 15, 0.28);
+  min-height: 68px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.sw-navbar > .container {
+  max-width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .sw-navbar .navbar-brand {
@@ -41,26 +73,56 @@ body {
 }
 
 .sw-logo-wrap {
-  background: rgba(255, 255, 255, 0.92);
-  border-radius: 6px;
-  padding: 2px 7px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 5px 10px;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   line-height: 1;
+  width: 150px;
+  height: 50px;
+  box-shadow: 0 1px 4px rgba(90, 12, 8, 0.25);
 }
 
 .sw-logo {
-  height: 34px;
+  height: 36px;
   width: auto;
   display: block;
 }
 
+.sw-navbar-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: #fff;
+  margin-left: 0.35rem;
+}
+
 .sw-navbar .nav-link {
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.92);
   font-size: 0.875rem;
-  padding: 0.4rem 0.65rem;
+  padding: 0.4rem 0.6rem;
   border-radius: 5px;
   transition: background 0.15s ease, color 0.15s ease;
+}
+
+.sw-navbar .sw-nav-user {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.8125rem;
+}
+
+.sw-navbar .sw-logout-btn {
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  color: #fff;
+  background: transparent;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  padding: 0.35rem 0.9rem;
+  transition: background 0.15s ease;
+}
+
+.sw-navbar .sw-logout-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
 }
 
 .sw-navbar .nav-link:hover {
@@ -180,17 +242,51 @@ body {
   letter-spacing: 0.02em;
 }
 
-/* ---- Footer ---- */
-.sw-footer {
-  background-color: #2c2c2c;
-  color: #bbb;
-  font-size: 0.875rem;
-  border-top: 3px solid var(--sw-red);
+main {
+  flex: 1 0 auto;
 }
 
+/* ---- Footer ---- */
+.sw-footer {
+  background-color: #211F23;
+  color: #cfc9c9;
+  font-size: 0.875rem;
+  border-top: 3px solid var(--primary);
+  padding: 11px 0 !important;
+  margin-top: auto !important;
+  flex-shrink: 0;
+  line-height: 1.55;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gold sparkles in the two bottom corners */
+.sw-footer::before,
+.sw-footer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 190px;
+  height: 100%;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-image:
+    radial-gradient(circle, var(--gold-light) 0 1.1px, transparent 1.6px),
+    radial-gradient(circle, var(--gold) 0 1.6px, transparent 2.2px),
+    radial-gradient(circle, var(--gold-light) 0 1px, transparent 1.5px),
+    radial-gradient(circle, var(--gold) 0 1.3px, transparent 1.9px);
+  background-position: 26px 22px, 62px 58px, 104px 30px, 140px 70px;
+  opacity: 0.85;
+}
+
+.sw-footer::before { left: 0; }
+.sw-footer::after  { right: 0; transform: scaleX(-1); }
+
 .sw-footer .sw-footer-title {
+  font-family: var(--font-display);
   color: #fff;
-  font-weight: 600;
+  font-weight: 400;
+  font-size: 0.9375rem;
 }
 
 .sw-footer a {
@@ -218,6 +314,323 @@ body {
   }
 }
 
+/* ==========================================================================
+   Home page — watercolour layout matching ref/หน้าหลัก.png
+   ========================================================================== */
+
+.sw-container {
+  width: min(1064px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* ---- Page canvas: pink watercolour blooms around the content ---- */
+.sw-home {
+  position: relative;
+  background-color: #FFFFFF;
+  overflow: hidden;
+}
+
+.sw-home > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Hero ---- */
+.sw-hero {
+  padding: 0 16px 36px;
+  text-align: center;
+  position: relative;
+}
+
+.sw-hero-title,
+.sw-hero-meta,
+.sw-hero-sub {
+  overflow-wrap: break-word;
+}
+
+.sw-hero-logo {
+  height: 52px;
+  width: auto;
+  margin-top: 50px;
+}
+
+.sw-hero-title {
+  font-family: var(--font-display);
+  font-size: 36px;
+  line-height: 1.25;
+  color: #B02A1F;
+  margin: 12px 0 0;
+  text-shadow: 0 1px 10px rgba(255, 246, 236, 0.9);
+}
+
+.sw-hero-meta {
+  margin: 12px 0 0;
+  font-size: 17px;
+  color: #8E2018;
+}
+
+.sw-hero-badge {
+  display: inline-block;
+  background: var(--primary);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 13px;
+  line-height: 1;
+  padding: 7px 13px 8px;
+  border-radius: 999px;
+  vertical-align: middle;
+  margin-right: 8px;
+  box-shadow: 0 1px 5px rgba(143, 32, 24, 0.3);
+}
+
+.sw-hero-sub {
+  margin: 9px 0 0;
+  font-size: 15px;
+  color: #8a3b31;
+}
+
+/* ---- Committee access bar ---- */
+.sw-committee-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 62px;
+  margin-top: 2px;
+  padding: 10px 22px;
+  background: linear-gradient(100deg, #FFF8EE 0%, #FEF3EA 55%, #FDEDE6 100%);
+  border: 1px solid rgba(224, 160, 152, 0.45);
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(175, 41, 30, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.sw-committee-bar .sw-star {
+  font-size: 19px;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.sw-committee-bar .sw-bar-text {
+  font-size: 15px;
+  color: #7a3c33;
+}
+
+.sw-committee-bar .sw-bar-text strong {
+  font-weight: 600;
+  color: #6d241d;
+}
+
+/* decorative sparkles on the right edge of the bar */
+.sw-committee-bar::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 170px;
+  height: 100%;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-image:
+    radial-gradient(circle, var(--gold) 0 1.5px, transparent 2.1px),
+    radial-gradient(circle, var(--gold-light) 0 1.1px, transparent 1.6px),
+    radial-gradient(circle, var(--gold) 0 1.2px, transparent 1.8px);
+  background-position: 46px 18px, 74px 40px, 120px 24px;
+  opacity: 0.9;
+}
+
+/* ---- Section title ---- */
+.sw-section-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: #A8241C;
+  margin: 22px 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sw-section-title .sw-sparkle {
+  color: var(--gold);
+  font-size: 17px;
+  line-height: 1;
+}
+
+/* ---- Menu grid ---- */
+.sw-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 19px;
+}
+
+.sw-menu-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 167px;
+  padding: 21px;
+  /* matches the card background the icon tiles were cropped from, so the
+     opaque tiles sit on the card seamlessly */
+  background: #FEF8F3;
+  border: 1px solid rgba(175, 41, 30, 0.15);
+  border-radius: 14px;
+  box-shadow: 0 2px 9px rgba(175, 41, 30, 0.055);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.sw-menu-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(175, 41, 30, 0.13);
+}
+
+.sw-menu-card__body {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+/* The tile is taller than the row it sits in; negative margins let it keep its
+   painted size without stretching the card (its background matches the card). */
+.sw-menu-card__icon {
+  flex: 0 0 auto;
+  width: 132px;
+  height: auto;
+  margin: -6px 0 -6px -14px;
+}
+
+.sw-menu-card__text {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.sw-menu-card__title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  line-height: 1.3;
+  color: #A8241C;
+  margin: 0 0 3px;
+}
+
+.sw-menu-card__desc {
+  font-size: 10px;
+  line-height: 1.45;
+  color: #8a5a55;
+  margin: 0;
+}
+
+/* ---- Card buttons ---- */
+.sw-btn-card {
+  display: block;
+  width: 100%;
+  height: 37px;
+  line-height: 35px;
+  text-align: center;
+  border-radius: 6px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  background: linear-gradient(180deg, #C3231F 0%, #A81714 100%);
+  color: #fff;
+  transition: filter 0.15s ease;
+}
+
+.sw-btn-card:hover {
+  filter: brightness(0.92);
+  color: #fff;
+}
+
+.sw-btn-card--inline {
+  width: auto;
+  height: 33px;
+  line-height: 31px;
+  padding: 0 15px;
+  font-size: 13px;
+}
+
+.sw-btn-card--outline {
+  background: #FFFDFB;
+  border-color: #e6cbc6;
+  color: #8a2b22;
+}
+
+.sw-btn-card--outline:hover {
+  background: #FFF5F2;
+  color: #8a2b22;
+  filter: none;
+}
+
+/* ---- Logout strip above the footer ---- */
+.sw-logout-area {
+  margin-top: 8px;
+  padding-top: 8px;
+  padding-bottom: 10px;
+  border-top: 1px solid rgba(196, 96, 86, 0.28);
+  text-align: center;
+}
+
+.sw-logout-area .sw-logout-out {
+  background: #FFFDFC;
+  border: 1px solid #e2b6b0;
+  color: #A8241C;
+  border-radius: 6px;
+  font-size: 14px;
+  padding: 6px 22px;
+  transition: background 0.15s ease;
+}
+
+.sw-logout-area .sw-logout-out:hover {
+  background: #FFF1EE;
+}
+
+/* ---- Home responsive ---- */
+@media (max-width: 999.98px) {
+  .sw-menu-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+@media (max-width: 767.98px) {
+  .sw-menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .sw-hero-logo {
+    height: 42px;
+    margin-top: 26px;
+  }
+
+  .sw-hero-title {
+    font-size: 27px;
+  }
+
+  .sw-hero-meta {
+    font-size: 15px;
+  }
+
+  .sw-hero-sub {
+    font-size: 13.5px;
+  }
+
+  .sw-committee-bar {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .sw-hero {
+    height: 360px;
+  }
+
+  .sw-menu-card__icon {
+    width: 118px;
+  }
+}
+
 @media (max-width: 575.98px) {
   .page-header {
     padding: 1.35rem 0;
@@ -234,4 +647,40 @@ body {
   .feature-card .card-icon {
     font-size: 2rem;
   }
+}
+
+/* ---- Show/hide password toggle ---- */
+.sw-pw-wrap {
+  position: relative;
+}
+
+.sw-pw-wrap .form-control {
+  padding-right: 2.75rem;
+}
+
+.sw-pw-toggle {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #8a8587;
+  cursor: pointer;
+}
+
+.sw-pw-toggle:hover,
+.sw-pw-toggle:focus-visible {
+  color: var(--sw-red);
+}
+
+.sw-pw-toggle svg {
+  width: 20px;
+  height: 20px;
 }

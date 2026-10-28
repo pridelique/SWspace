@@ -7,8 +7,10 @@
   <title>{% block title %}โรงเรียนสตรีวิทยา{% endblock %}</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chonburi&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}?v=3">
 
   {% block extra_css %}{% endblock %}
 </head>
@@ -20,12 +22,9 @@
 
       <a class="navbar-brand d-flex align-items-center gap-2" href="{% url 'portal:dashboard' %}">
         <span class="sw-logo-wrap">
-          <img src="https://satriwit.ac.th/dev/wp-content/uploads/2024/08/Satriwittaya_School_logo_name.png"
-               alt="โรงเรียนสตรีวิทยา" class="sw-logo">
+          <img src="{% static 'img/school-logo.png' %}" alt="โรงเรียนสตรีวิทยา" class="sw-logo">
         </span>
-        <span class="d-none d-lg-inline text-white fw-semibold" style="font-size:0.85rem; letter-spacing:0.01em">
-          Student Portal
-        </span>
+        <span class="d-none d-lg-inline sw-navbar-title">Student Portal</span>
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
@@ -57,18 +56,18 @@
             {% if user.is_committee %}
               <li class="nav-item">
                 <a class="nav-link fw-semibold" href="{% url 'portal:committee' %}"
-                   style="color: #ffd966;">&#9733; คณะกรรมการ</a>
+                   style="color: #F4CB74;">&#9733; คณะกรรมการ</a>
               </li>
             {% endif %}
           </ul>
           <ul class="navbar-nav align-items-lg-center gap-1 mt-2 mt-lg-0">
             <li class="nav-item">
-              <span class="nav-link text-white-50 small py-0">{{ user.full_name }}</span>
+              <span class="nav-link sw-nav-user py-0">{{ user.full_name }}</span>
             </li>
             <li class="nav-item">
               <form method="post" action="{% url 'accounts:logout' %}" class="d-inline">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-sm btn-outline-light px-3" style="opacity:0.75">
+                <button type="submit" class="btn btn-sm sw-logout-btn">
                   ออกจากระบบ
                 </button>
               </form>
@@ -104,7 +103,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="sw-footer py-4 mt-5">
+  <footer class="sw-footer">
     <div class="container text-center">
       <p class="sw-footer-title mb-1">ช่องทางการติดต่อคณะกรรมการนักเรียน</p>
       <p class="mb-2">
@@ -117,6 +116,29 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Add an eye button to every password field so users can check what they typed.
+    document.querySelectorAll('input[type="password"]').forEach(function (input) {
+      var eye = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
+      var eyeOff = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.94 10.94 0 0 1 12 20C5 20 1 12 1 12a18.5 18.5 0 0 1 5.06-5.94M9.9 4.24A9.1 9.1 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19M14.12 14.12a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>';
+      var wrap = document.createElement('div');
+      wrap.className = 'sw-pw-wrap';
+      input.parentNode.insertBefore(wrap, input);
+      wrap.appendChild(input);
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'sw-pw-toggle';
+      btn.setAttribute('aria-label', 'แสดงรหัสผ่าน');
+      btn.innerHTML = eye;
+      btn.addEventListener('click', function () {
+        var show = input.type === 'password';
+        input.type = show ? 'text' : 'password';
+        btn.innerHTML = show ? eyeOff : eye;
+        btn.setAttribute('aria-label', show ? 'ซ่อนรหัสผ่าน' : 'แสดงรหัสผ่าน');
+      });
+      wrap.appendChild(btn);
+    });
+  </script>
   {% block extra_js %}{% endblock %}
 </body>
 </html>

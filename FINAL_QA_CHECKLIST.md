@@ -17,12 +17,6 @@
 
 ## 2. Registration
 
-- [ ] สมัครด้วยรหัส SW127 → role=student, grade_level=ม.1
-- [ ] สมัครด้วยรหัส SW126 → grade_level=ม.2
-- [ ] สมัครด้วยรหัส SW125 → grade_level=ม.3
-- [ ] สมัครด้วยรหัส SW124 → grade_level=ม.4
-- [ ] สมัครด้วยรหัส SW123 → grade_level=ม.5
-- [ ] สมัครด้วยรหัส SW122 → grade_level=ม.6
 - [ ] สมัครด้วยรหัส committee (ผู้ดูแลแจ้ง) → role=committee
 - [ ] สมัครด้วยรหัสผิด → แสดง error ไม่สร้างบัญชี
 - [ ] สมัครด้วย email ที่ไม่ใช่ @satriwit.ac.th → แสดง error

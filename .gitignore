@@ -5,6 +5,7 @@ service-account.json
 
 # Python
 venv/
+.venv/
 __pycache__/
 *.py[cod]
 *.pyo
@@ -28,3 +29,7 @@ Thumbs.db
 # Tool caches / local config
 graphify-out/
 config.txt
+
+# Student roster (personal data)
+*.xlsx
+~$*

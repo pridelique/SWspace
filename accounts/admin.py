@@ -9,11 +9,11 @@ class UserAdmin(BaseUserAdmin):
     ordering = ['email']
     list_display = ['email', 'full_name', 'role', 'is_staff', 'created_at']
     list_filter = ['role', 'is_staff', 'is_active']
-    search_fields = ['email', 'full_name']
+    search_fields = ['email', 'full_name', 'student_id']
 
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('ข้อมูลส่วนตัว', {'fields': ('full_name', 'role', 'verification_code')}),
+        ('ข้อมูลส่วนตัว', {'fields': ('full_name', 'role', 'verification_code', 'student_id', 'grade_level', 'classroom')}),
         ('สิทธิ์', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
     )
     add_fieldsets = (

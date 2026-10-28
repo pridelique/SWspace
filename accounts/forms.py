@@ -1,81 +1,70 @@
+import re
+
 from django import forms
 from django.conf import settings
+from django.contrib.auth import authenticate
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import get_user_model
-from django.contrib.auth.password_validation import validate_password
 
 User = get_user_model()
 
-STUDENT_CODE_GRADE_MAP = {
-    'SW127': 'ม.1',
-    'SW126': 'ม.2',
-    'SW125': 'ม.3',
-    'SW124': 'ม.4',
-    'SW123': 'ม.5',
-    'SW122': 'ม.6',
-}
+class LoginForm(AuthenticationForm):
+    """Accepts the full school email or just the 5-digit student ID."""
+
+    def clean_username(self):
+        username = self.cleaned_data['username'].strip().lower()
+        if re.fullmatch(r'\d{5}', username):
+            username += settings.STUDENT_EMAIL_DOMAIN
+        return username
+
+
+def _normalize_school_email(value):
+    value = value.strip().lower()
+    if re.fullmatch(r'\d{5}', value):
+        value += settings.STUDENT_EMAIL_DOMAIN
+    return value
 
 
 class RegisterForm(forms.Form):
-    full_name = forms.CharField(
-        max_length=150,
-        label='ชื่อ-นามสกุล',
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'ชื่อ-นามสกุล'}),
-    )
-    email = forms.EmailField(
-        label='อีเมล',
-        widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'email@satriwit.ac.th'}),
+    """Committee sign-up: a student proves who they are with their roster
+    credentials, and the committee code promotes that account."""
+
+    email = forms.CharField(
+        label='อีเมลโรงเรียน',
+        widget=forms.TextInput(attrs={
+            'class': 'form-control', 'placeholder': 'xxxxx@satriwit.ac.th',
+            'inputmode': 'email', 'autocomplete': 'username', 'autocapitalize': 'none',
+        }),
     )
     password = forms.CharField(
         label='รหัสผ่าน',
-        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'รหัสผ่าน'}),
-    )
-    confirm_password = forms.CharField(
-        label='ยืนยันรหัสผ่าน',
-        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'ยืนยันรหัสผ่าน'}),
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control', 'placeholder': 'xxxxx_x.x', 'autocomplete': 'current-password',
+        }),
     )
     verification_code = forms.CharField(
         max_length=50,
-        label='รหัสยืนยัน',
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'รหัสยืนยันตัวตน'}),
+        label='รหัสคณะกรรมการนักเรียน',
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'รหัสคณะกรรมการนักเรียน'}),
     )
 
     def clean_email(self):
-        email = self.cleaned_data['email'].lower().strip()
-        domain = settings.STUDENT_EMAIL_DOMAIN
-        if not email.endswith(domain):
-            raise forms.ValidationError(f'อีเมลต้องลงท้ายด้วย {domain} เท่านั้น')
-        if User.objects.filter(email=email).exists():
-            raise forms.ValidationError('อีเมลนี้ถูกใช้งานแล้ว')
+        email = _normalize_school_email(self.cleaned_data['email'])
+        if not email.endswith(settings.STUDENT_EMAIL_DOMAIN):
+            raise forms.ValidationError(f'อีเมลต้องลงท้ายด้วย {settings.STUDENT_EMAIL_DOMAIN} เท่านั้น')
         return email
 
     def clean_verification_code(self):
         code = self.cleaned_data.get('verification_code', '').strip().upper()
-        if code == settings.COMMITTEE_VERIFICATION_CODE:
-            return code
-        if code in STUDENT_CODE_GRADE_MAP:
-            return code
-        raise forms.ValidationError('รหัสยืนยันตัวตนไม่ถูกต้อง')
-
-    def clean_password(self):
-        password = self.cleaned_data.get('password')
-        if password:
-            validate_password(password)
-        return password
+        if code != settings.COMMITTEE_VERIFICATION_CODE.upper():
+            raise forms.ValidationError('รหัสคณะกรรมการนักเรียนไม่ถูกต้อง')
+        return code
 
     def clean(self):
-        cleaned_data = super().clean()
-        password = cleaned_data.get('password')
-        confirm_password = cleaned_data.get('confirm_password')
-        if password and confirm_password and password != confirm_password:
-            self.add_error('confirm_password', 'รหัสผ่านไม่ตรงกัน')
-        return cleaned_data
-
-    def determine_role(self):
-        code = self.cleaned_data.get('verification_code', '')
-        if code == settings.COMMITTEE_VERIFICATION_CODE:
-            return 'committee'
-        return 'student'
-
-    def determine_grade_level(self):
-        code = self.cleaned_data.get('verification_code', '')
-        return STUDENT_CODE_GRADE_MAP.get(code, '')
+        cleaned = super().clean()
+        email, password = cleaned.get('email'), cleaned.get('password')
+        if email and password and 'verification_code' in cleaned:
+            self.user = authenticate(email=email, password=password)
+            if self.user is None:
+                raise forms.ValidationError('อีเมลหรือรหัสผ่านไม่ถูกต้อง')
+        return cleaned
