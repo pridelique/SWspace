@@ -9,7 +9,7 @@
   <!-- Hero -->
   <div class="sw-hero">
     <img src="{% static 'img/school-logo.png' %}" alt="โรงเรียนสตรีวิทยา" class="sw-hero-logo">
-    <h1 class="sw-hero-title">ยินดีต้อนรับ, {{ user.full_name }}{% if not user.is_committee and user.grade_level %} ({{ user.grade_level }}){% endif %}</h1>
+    <h1 class="sw-hero-title">ยินดีต้อนรับ, {{ user.full_name }}</h1>
     <p class="sw-hero-meta">
       {% if user.is_committee %}
         <span class="sw-hero-badge">คณะกรรมการ</span>

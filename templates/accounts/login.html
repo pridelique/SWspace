@@ -10,7 +10,7 @@
       <div class="text-center mb-4">
         <img src="https://satriwit.ac.th/dev/wp-content/uploads/2024/08/Satriwittaya_School_logo_name.png"
              alt="โรงเรียนสตรีวิทยา" style="max-height:80px; width:auto;" class="mb-3">
-        <p class="text-muted mb-0">เข้าสู่ระบบ &mdash; ใช้อีเมล @satriwit.ac.th</p>
+        <p class="text-muted mb-0">เข้าสู่ระบบด้วยอีเมลโรงเรียน (เลขประจำตัว 5 หลัก@satriwit.ac.th)</p>
       </div>
 
       <div class="card shadow-sm border-0 rounded-4">
@@ -23,15 +23,15 @@
             {% endif %}
 
             <div class="mb-3">
-              <label class="form-label fw-medium">อีเมล</label>
-              <input type="email" name="username" class="form-control {% if form.errors %}is-invalid{% endif %}"
-                     placeholder="email@satriwit.ac.th" value="{{ form.data.username|default:'' }}" required />
+              <label class="form-label fw-medium">อีเมลโรงเรียน</label>
+              <input type="text" inputmode="email" autocomplete="username" autocapitalize="none" name="username" class="form-control {% if form.errors %}is-invalid{% endif %}"
+                     placeholder="xxxxx@satriwit.ac.th" value="{{ form.data.username|default:'' }}" required />
             </div>
 
             <div class="mb-3">
               <label class="form-label fw-medium">รหัสผ่าน</label>
               <input type="password" name="password" class="form-control {% if form.errors %}is-invalid{% endif %}"
-                     placeholder="รหัสผ่าน" required />
+                     placeholder="xxxxx_x.x" autocomplete="current-password" required />
               {% if form.errors %}
                 <div class="invalid-feedback d-block">อีเมลหรือรหัสผ่านไม่ถูกต้อง</div>
               {% endif %}
@@ -45,8 +45,8 @@
       </div>
 
       <p class="text-center mt-3 text-muted">
-        ยังไม่มีบัญชี?
-        <a href="{% url 'accounts:register' %}" style="color: var(--sw-red)">สมัครสมาชิก</a>
+        คณะกรรมการนักเรียน?
+        <a href="{% url 'accounts:register' %}" style="color: var(--sw-red)">ลงทะเบียนด้วยรหัสกรรมการ</a>
       </p>
 
     </div>

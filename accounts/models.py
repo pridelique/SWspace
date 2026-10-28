@@ -34,6 +34,8 @@ class User(AbstractUser):
     role = models.CharField(max_length=20, choices=ROLE_CHOICES, default=ROLE_STUDENT)
     verification_code = models.CharField(max_length=50, blank=True)
     grade_level = models.CharField(max_length=10, blank=True, default='')
+    student_id = models.CharField(max_length=5, unique=True, null=True, blank=True)
+    classroom = models.CharField(max_length=10, blank=True, default='')
     created_at = models.DateTimeField(auto_now_add=True)
 
     USERNAME_FIELD = 'email'

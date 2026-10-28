@@ -15,7 +15,7 @@
   --sw-red-dark:   #8E2018;
   --sw-red-light:  #FFF5F3;
   --sw-gold:       #E8B655;
-  --sw-bg:         #FFF7F5;
+  --sw-bg:         #FFFFFF;
   --sw-text:       #4a2420;
   --sw-muted:      #8a5a55;
   --sw-border:     rgba(175, 41, 30, 0.15);
@@ -30,6 +30,9 @@
 
 /* ---- Base ---- */
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   font-family: var(--font-body);
   background-color: var(--sw-bg);
   color: var(--sw-text);
@@ -239,6 +242,10 @@ h1, h2, h3, h4, h5, h6,
   letter-spacing: 0.02em;
 }
 
+main {
+  flex: 1 0 auto;
+}
+
 /* ---- Footer ---- */
 .sw-footer {
   background-color: #211F23;
@@ -246,7 +253,8 @@ h1, h2, h3, h4, h5, h6,
   font-size: 0.875rem;
   border-top: 3px solid var(--primary);
   padding: 11px 0 !important;
-  margin-top: 0 !important;
+  margin-top: auto !important;
+  flex-shrink: 0;
   line-height: 1.55;
   position: relative;
   overflow: hidden;
@@ -318,23 +326,8 @@ h1, h2, h3, h4, h5, h6,
 /* ---- Page canvas: pink watercolour blooms around the content ---- */
 .sw-home {
   position: relative;
-  background-color: #FFF7F5;
+  background-color: #FFFFFF;
   overflow: hidden;
-}
-
-.sw-home::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-repeat: no-repeat;
-  background-image:
-    radial-gradient(58% 26% at -6% 16%, rgba(249, 196, 190, 0.55) 0%, rgba(255, 247, 245, 0) 70%),
-    radial-gradient(52% 24% at 106% 30%, rgba(250, 199, 196, 0.5) 0%, rgba(255, 247, 245, 0) 70%),
-    radial-gradient(46% 20% at -4% 62%, rgba(248, 205, 203, 0.45) 0%, rgba(255, 247, 245, 0) 72%),
-    radial-gradient(60% 28% at 104% 88%, rgba(247, 190, 186, 0.6) 0%, rgba(255, 247, 245, 0) 72%),
-    radial-gradient(70% 22% at 50% 104%, rgba(249, 201, 197, 0.5) 0%, rgba(255, 247, 245, 0) 74%);
 }
 
 .sw-home > * {
@@ -344,33 +337,15 @@ h1, h2, h3, h4, h5, h6,
 
 /* ---- Hero ---- */
 .sw-hero {
-  height: 513px;
-  background-image: url('../img/hero-street.jpg');
-  background-size: cover;
-  /* The artwork is taller than the hero box; anchoring the top keeps the sky
-     clear for the heading instead of pushing the rooftop sign up into it. */
-  background-position: center top;
-  background-repeat: no-repeat;
+  padding: 0 16px 36px;
   text-align: center;
   position: relative;
-  padding: 0 16px;
 }
 
 .sw-hero-title,
 .sw-hero-meta,
 .sw-hero-sub {
   overflow-wrap: break-word;
-}
-
-.sw-hero::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 66px;
-  background: linear-gradient(180deg, rgba(255, 247, 245, 0) 0%, rgba(255, 247, 245, 0.7) 72%, #FFF7F5 100%);
-  pointer-events: none;
 }
 
 .sw-hero-logo {
@@ -615,26 +590,6 @@ h1, h2, h3, h4, h5, h6,
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  /* Below ~1060px the painting stops being cropped at the bottom and the
-     rooftop sign rides up into the subtitle — scrim it back. */
-  .sw-hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 62%;
-    background: linear-gradient(180deg,
-      rgba(255, 246, 240, 0.6) 0%,
-      rgba(255, 246, 240, 0.42) 55%,
-      rgba(255, 246, 240, 0) 100%);
-    pointer-events: none;
-  }
-
-  .sw-hero > * {
-    position: relative;
-    z-index: 1;
-  }
 }
 
 @media (max-width: 767.98px) {
@@ -642,30 +597,6 @@ h1, h2, h3, h4, h5, h6,
     grid-template-columns: 1fr;
   }
 
-  .sw-hero {
-    height: 420px;
-  }
-
-  /* Narrow viewports fit the whole painting vertically, so the building rises
-     into the text. A soft cream scrim keeps the heading readable over it. */
-  .sw-hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 68%;
-    background: linear-gradient(180deg,
-      rgba(255, 246, 240, 0.85) 0%,
-      rgba(255, 246, 240, 0.62) 55%,
-      rgba(255, 246, 240, 0) 100%);
-    pointer-events: none;
-  }
-
-  .sw-hero > * {
-    position: relative;
-    z-index: 1;
-  }
 
   .sw-hero-logo {
     height: 42px;
@@ -716,4 +647,40 @@ h1, h2, h3, h4, h5, h6,
   .feature-card .card-icon {
     font-size: 2rem;
   }
+}
+
+/* ---- Show/hide password toggle ---- */
+.sw-pw-wrap {
+  position: relative;
+}
+
+.sw-pw-wrap .form-control {
+  padding-right: 2.75rem;
+}
+
+.sw-pw-toggle {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #8a8587;
+  cursor: pointer;
+}
+
+.sw-pw-toggle:hover,
+.sw-pw-toggle:focus-visible {
+  color: var(--sw-red);
+}
+
+.sw-pw-toggle svg {
+  width: 20px;
+  height: 20px;
 }

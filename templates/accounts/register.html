@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}สมัครสมาชิก | โรงเรียนสตรีวิทยา{% endblock %}
+{% block title %}ลงทะเบียนคณะกรรมการ | โรงเรียนสตรีวิทยา{% endblock %}
 
 {% block content %}
 <div class="container py-5">
@@ -10,8 +10,8 @@
       <div class="text-center mb-4">
         <img src="https://satriwit.ac.th/dev/wp-content/uploads/2024/08/Satriwittaya_School_logo_name.png"
              alt="โรงเรียนสตรีวิทยา" style="max-height:80px; width:auto;" class="mb-3">
-        <h5 class="fw-bold mt-1" style="color: var(--sw-red)">สมัครสมาชิก</h5>
-        <p class="text-muted small mb-0">ใช้อีเมล @satriwit.ac.th เท่านั้น</p>
+        <h5 class="fw-bold mt-1" style="color: var(--sw-red)">ลงทะเบียนคณะกรรมการนักเรียน</h5>
+        <p class="text-muted small mb-0">ใช้อีเมลและรหัสผ่านเดียวกับที่ใช้เข้าสู่ระบบ</p>
       </div>
 
       <div class="card shadow-sm border-0 rounded-4">
@@ -19,13 +19,9 @@
           <form method="post" novalidate>
             {% csrf_token %}
 
-            <div class="mb-3">
-              <label class="form-label fw-medium">{{ form.full_name.label }}</label>
-              {{ form.full_name }}
-              {% if form.full_name.errors %}
-                <div class="text-danger small mt-1">{{ form.full_name.errors.0 }}</div>
-              {% endif %}
-            </div>
+            {% if form.non_field_errors %}
+              <div class="alert alert-danger">{{ form.non_field_errors.0 }}</div>
+            {% endif %}
 
             <div class="mb-3">
               <label class="form-label fw-medium">{{ form.email.label }}</label>
@@ -44,25 +40,16 @@
             </div>
 
             <div class="mb-3">
-              <label class="form-label fw-medium">{{ form.confirm_password.label }}</label>
-              {{ form.confirm_password }}
-              {% if form.confirm_password.errors %}
-                <div class="text-danger small mt-1">{{ form.confirm_password.errors.0 }}</div>
-              {% endif %}
-            </div>
-
-            <div class="mb-3">
               <label class="form-label fw-medium">{{ form.verification_code.label }}</label>
               {{ form.verification_code }}
-              <div class="form-text">รหัสนักเรียนใช้ SW122-SW127 ตามเลขรุ่นของตนเอง ส่วนคณะกรรมการใช้รหัสที่ได้รับจากผู้ดูแลระบบ</div>
-              <div class="form-text text-muted">ตัวอย่าง: SW127 สำหรับ ม.1, SW123 สำหรับ ม.5</div>
+              <div class="form-text">สำหรับคณะกรรมการนักเรียนเท่านั้น ใช้รหัสที่ได้รับจากผู้ดูแลระบบ (นักเรียนทั่วไปเข้าสู่ระบบด้วยเลขประจำตัวได้เลย ไม่ต้องลงทะเบียน)</div>
               {% if form.verification_code.errors %}
                 <div class="text-danger small mt-1">{{ form.verification_code.errors.0 }}</div>
               {% endif %}
             </div>
 
             <div class="d-grid mt-4">
-              <button type="submit" class="btn btn-sw-primary btn-lg">สมัครสมาชิก</button>
+              <button type="submit" class="btn btn-sw-primary btn-lg">ลงทะเบียนคณะกรรมการ</button>
             </div>
           </form>
         </div>

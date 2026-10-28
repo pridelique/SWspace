@@ -1,10 +1,9 @@
 from django.contrib import auth, messages
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import redirect, render
 from django.utils.http import url_has_allowed_host_and_scheme
 
-from .forms import RegisterForm
+from .forms import LoginForm, RegisterForm
 
 User = get_user_model()
 
@@ -15,18 +14,12 @@ def register_view(request):
 
     form = RegisterForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
-        role = form.determine_role()
-        grade_level = form.determine_grade_level()
-        user = User.objects.create_user(
-            email=form.cleaned_data['email'],
-            password=form.cleaned_data['password'],
-            full_name=form.cleaned_data['full_name'],
-            role=role,
-            verification_code=form.cleaned_data['verification_code'],
-            grade_level=grade_level,
-        )
+        user = form.user
+        user.role = User.ROLE_COMMITTEE
+        user.verification_code = form.cleaned_data['verification_code']
+        user.save(update_fields=['role', 'verification_code'])
         auth.login(request, user)
-        messages.success(request, f'สมัครสมาชิกสำเร็จ ยินดีต้อนรับ {user.full_name}')
+        messages.success(request, f'ลงทะเบียนคณะกรรมการสำเร็จ ยินดีต้อนรับ {user.full_name}')
         return redirect('portal:dashboard')
 
     return render(request, 'accounts/register.html', {'form': form})
@@ -36,7 +29,7 @@ def login_view(request):
     if request.user.is_authenticated:
         return redirect('portal:dashboard')
 
-    form = AuthenticationForm(request, data=request.POST or None)
+    form = LoginForm(request, data=request.POST or None)
     if request.method == 'POST' and form.is_valid():
         user = form.get_user()
         auth.login(request, user)

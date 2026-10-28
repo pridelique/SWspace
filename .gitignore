@@ -29,3 +29,7 @@ Thumbs.db
 # Tool caches / local config
 graphify-out/
 config.txt
+
+# Student roster (personal data)
+*.xlsx
+~$*
