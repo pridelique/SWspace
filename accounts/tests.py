@@ -213,3 +213,22 @@ class ImportStudentsAndLoginTest(TestCase):
     def test_dry_run_writes_nothing(self):
         self._import([[1, 77777, 'นาย', 'ก', 'ข']], '--dry-run')
         self.assertFalse(User.objects.filter(student_id='77777').exists())
+
+
+class ExportLoadStudentsTest(TestCase):
+    def test_round_trip_keeps_hash_and_login_works(self):
+        import io
+        import tempfile
+        from pathlib import Path
+
+        from django.core.management import call_command
+
+        User.objects.create_user(email='13579@satriwit.ac.th', password='13579_5.7', full_name='ก ข',
+                                 role='student', student_id='13579', classroom='5.7', grade_level='ม.5')
+        path = str(Path(tempfile.mkdtemp()) / 'out.json')
+        call_command('export_students', path, stdout=io.StringIO())
+        User.objects.all().delete()
+        call_command('load_student_hashes', path, stdout=io.StringIO())
+        user = User.objects.get(student_id='13579')
+        self.assertTrue(user.check_password('13579_5.7'))
+        self.assertEqual((user.classroom, user.role), ('5.7', 'student'))
