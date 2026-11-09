@@ -1,12 +1,13 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}ยืนยันการลบการแจ้งปัญหา | Committee{% endblock %}
 
 {% block content %}
-<div class="page-header">
+<div class="page-header page-header--lilac">
   <div class="container">
-    <a href="{% url 'portal:committee_problem_reports' %}" class="text-white-50 small text-decoration-none">&#8592; รายการแจ้งปัญหา</a>
-    <h3 class="fw-bold mb-0 mt-2">&#128226; ยืนยันการลบการแจ้งปัญหา</h3>
+    <a href="{% url 'portal:committee_problem_reports' %}" class="sw-back"><svg class="sw-ico" aria-hidden="true"><use href="#i-arrow-left"></use></svg>รายการแจ้งปัญหา</a>
+    <h3 class="sw-page-title"><span class="sw-page-title__icon"><img src="{% static 'img/art-report.svg' %}" alt="" class="sw-art"></span>ยืนยันการลบการแจ้งปัญหา</h3>
   </div>
 </div>
 
@@ -15,7 +16,7 @@
     <div class="col-lg-6">
       <div class="card border-0 shadow-sm rounded-3 p-4">
         <div class="text-center mb-4">
-          <div style="font-size:3rem">&#9888;</div>
+          <div style="font-size:3rem"><svg class="sw-ico sw-ico--inline" aria-hidden="true"><use href="#i-alert"></use></svg></div>
           <h5 class="fw-bold mt-2 text-danger">คุณต้องการลบการแจ้งปัญหานี้หรือไม่?</h5>
           <p class="text-muted">การลบไม่สามารถย้อนกลับได้</p>
         </div>
@@ -23,7 +24,7 @@
         <div class="p-3 rounded-3 mb-4" style="background: var(--sw-red-light)">
           <div class="fw-semibold">{{ item.title }}</div>
           {% if item.location %}
-            <div class="text-muted small mt-1">&#128205; {{ item.location }}</div>
+            <div class="text-muted small mt-1"><svg class="sw-ico sw-ico--inline" aria-hidden="true"><use href="#i-pin"></use></svg>{{ item.location }}</div>
           {% endif %}
           <div class="text-muted small mt-1">{{ item.description|truncatechars:100 }}</div>
           <div class="mt-2">

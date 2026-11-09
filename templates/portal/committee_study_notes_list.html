@@ -1,12 +1,13 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}จัดการสรุปการเรียน | Committee{% endblock %}
 
 {% block content %}
-<div class="page-header">
+<div class="page-header page-header--blush">
   <div class="container">
-    <a href="{% url 'portal:committee' %}" class="text-white-50 small text-decoration-none">&#8592; Committee Dashboard</a>
-    <h3 class="fw-bold mb-0 mt-2">&#128218; จัดการสรุปการเรียน</h3>
+    <a href="{% url 'portal:committee' %}" class="sw-back"><svg class="sw-ico" aria-hidden="true"><use href="#i-arrow-left"></use></svg>Committee Dashboard</a>
+    <h3 class="sw-page-title"><span class="sw-page-title__icon"><img src="{% static 'img/art-notes.svg' %}" alt="" class="sw-art"></span>จัดการสรุปการเรียน</h3>
     <p class="mb-0 opacity-75">สรุปทั้งหมดที่นักเรียนส่งมา ({{ items|length }} รายการ)</p>
   </div>
 </div>
@@ -17,7 +18,7 @@
     <div class="card border-0 shadow-sm rounded-3 overflow-hidden">
       <div class="table-responsive">
       <table class="table table-hover mb-0">
-        <thead style="background: var(--sw-red); color: white;">
+        <thead class="sw-thead">
           <tr>
             <th class="py-3 ps-4">ชื่อสรุป</th>
             <th class="py-3">ชั้น / วิชา</th>
@@ -33,7 +34,7 @@
               <td class="ps-4 py-3">
                 <a href="{{ item.drive_url }}" target="_blank" rel="noopener noreferrer"
                    class="fw-semibold text-decoration-none" style="color: var(--sw-red)">
-                  {{ item.title }} &#8599;
+                  {{ item.title }} <svg class="sw-ico sw-ico--sm" aria-hidden="true"><use href="#i-external"></use></svg>
                 </a>
               </td>
               <td class="py-3">
@@ -69,7 +70,7 @@
     </div>
   {% else %}
     <div class="empty-state">
-      <div class="empty-icon">&#128218;</div>
+      <div class="empty-icon"><img src="{% static 'img/art-notes.svg' %}" alt="" class="sw-art"></div>
       <h5 class="text-muted">ยังไม่มีสรุปการเรียน</h5>
       <p class="text-muted small">สรุปที่นักเรียนส่งจะปรากฏที่นี่</p>
     </div>

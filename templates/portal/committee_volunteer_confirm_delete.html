@@ -1,12 +1,13 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}ยืนยันการลบกิจกรรมจิตอาสา | Committee{% endblock %}
 
 {% block content %}
-<div class="page-header">
+<div class="page-header page-header--sage">
   <div class="container">
-    <a href="{% url 'portal:committee_volunteer_list' %}" class="text-white-50 small text-decoration-none">&#8592; รายการจิตอาสา</a>
-    <h3 class="fw-bold mb-0 mt-2">&#129309; ยืนยันการลบกิจกรรมจิตอาสา</h3>
+    <a href="{% url 'portal:committee_volunteer_list' %}" class="sw-back"><svg class="sw-ico" aria-hidden="true"><use href="#i-arrow-left"></use></svg>รายการจิตอาสา</a>
+    <h3 class="sw-page-title"><span class="sw-page-title__icon"><img src="{% static 'img/art-volunteer.svg' %}" alt="" class="sw-art"></span>ยืนยันการลบกิจกรรมจิตอาสา</h3>
   </div>
 </div>
 
@@ -15,7 +16,7 @@
     <div class="col-lg-6">
       <div class="card border-0 shadow-sm rounded-3 p-4">
         <div class="text-center mb-4">
-          <div style="font-size:3rem">&#9888;</div>
+          <div style="font-size:3rem"><svg class="sw-ico sw-ico--inline" aria-hidden="true"><use href="#i-alert"></use></svg></div>
           <h5 class="fw-bold mt-2 text-danger">คุณต้องการลบกิจกรรมนี้หรือไม่?</h5>
           <p class="text-muted">การลบไม่สามารถย้อนกลับได้</p>
         </div>

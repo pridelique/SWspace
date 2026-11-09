@@ -1,21 +1,21 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}ลงทะเบียนคณะกรรมการ | โรงเรียนสตรีวิทยา{% endblock %}
 
 {% block content %}
+<div class="sw-auth">
 <div class="container py-5">
   <div class="row justify-content-center">
     <div class="col-12 col-sm-10 col-md-8 col-lg-6">
 
-      <div class="text-center mb-4">
-        <img src="https://satriwit.ac.th/dev/wp-content/uploads/2024/08/Satriwittaya_School_logo_name.png"
-             alt="โรงเรียนสตรีวิทยา" style="max-height:80px; width:auto;" class="mb-3">
-        <h5 class="fw-bold mt-1" style="color: var(--sw-red)">ลงทะเบียนคณะกรรมการนักเรียน</h5>
-        <p class="text-muted small mb-0">ใช้อีเมลและรหัสผ่านเดียวกับที่ใช้เข้าสู่ระบบ</p>
-      </div>
-
       <div class="card shadow-sm border-0 rounded-4">
-        <div class="card-body p-4">
+        <div class="card-body p-4 p-md-5">
+          <div class="sw-auth-head">
+            <img src="{% static 'img/school-logo.png' %}" alt="โรงเรียนสตรีวิทยา" class="sw-auth-logo">
+            <h1 class="sw-auth-title">ลงทะเบียนคณะกรรมการนักเรียน</h1>
+            <p class="text-muted small mb-0">ใช้อีเมลและรหัสผ่านเดียวกับที่ใช้เข้าสู่ระบบ</p>
+          </div>
           <form method="post" novalidate>
             {% csrf_token %}
 
@@ -55,12 +55,13 @@
         </div>
       </div>
 
-      <p class="text-center mt-3 text-muted">
+      <p class="sw-auth-foot">
         มีบัญชีอยู่แล้ว?
-        <a href="{% url 'accounts:login' %}" style="color: var(--sw-red)">เข้าสู่ระบบ</a>
+        <a href="{% url 'accounts:login' %}">เข้าสู่ระบบ</a>
       </p>
 
     </div>
   </div>
+</div>
 </div>
 {% endblock %}

@@ -1,12 +1,13 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}จัดการสะสมแต้ม | Committee{% endblock %}
 
 {% block content %}
-<div class="page-header">
+<div class="page-header page-header--butter">
   <div class="container">
-    <a href="{% url 'portal:committee' %}" class="text-white-50 small text-decoration-none">&#8592; Committee Dashboard</a>
-    <h3 class="fw-bold mb-0 mt-2">&#11088; จัดการสะสมแต้ม</h3>
+    <a href="{% url 'portal:committee' %}" class="sw-back"><svg class="sw-ico" aria-hidden="true"><use href="#i-arrow-left"></use></svg>Committee Dashboard</a>
+    <h3 class="sw-page-title"><span class="sw-page-title__icon"><img src="{% static 'img/art-points.svg' %}" alt="" class="sw-art"></span>จัดการสะสมแต้ม</h3>
   </div>
 </div>
 
@@ -15,7 +16,7 @@
   <!-- ส่วนที่ 1: กิจกรรม -->
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h5 class="fw-bold mb-0">กิจกรรมสะสมแต้ม</h5>
-    <a href="{% url 'portal:committee_point_activity_create' %}" class="btn btn-sw-primary btn-sm">+ เพิ่มกิจกรรม</a>
+    <a href="{% url 'portal:committee_point_activity_create' %}" class="btn btn-sw-primary btn-sm"><svg class="sw-ico sw-ico--sm" aria-hidden="true"><use href="#i-plus"></use></svg>เพิ่มกิจกรรม</a>
   </div>
 
   {% if activities %}

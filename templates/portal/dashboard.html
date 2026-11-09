@@ -5,129 +5,88 @@
 
 {% block content %}
 <div class="sw-home">
-
-  <!-- Hero -->
-  <div class="sw-hero">
-    <img src="{% static 'img/school-logo.png' %}" alt="โรงเรียนสตรีวิทยา" class="sw-hero-logo">
-    <h1 class="sw-hero-title">ยินดีต้อนรับ, {{ user.full_name }}</h1>
-    <p class="sw-hero-meta">
-      {% if user.is_committee %}
-        <span class="sw-hero-badge">คณะกรรมการ</span>
-      {% else %}
-        <span class="sw-hero-badge">นักเรียน</span>
-      {% endif %}
-      โรงเรียนสตรีวิทยา
-    </p>
-    <p class="sw-hero-sub">ศูนย์รวมข่าวสาร กิจกรรม สรุปการเรียน และการแจ้งปัญหา</p>
-  </div>
+  <section class="sw-hero">
+    <div class="sw-container sw-hero__inner">
+      <img src="{% static 'img/school-logo.png' %}" alt="โรงเรียนสตรีวิทยา" class="sw-hero-logo">
+      <p class="sw-hero-eyebrow">
+        {% if user.is_committee %}Student Committee{% else %}Student{% endif %}
+        <span class="sw-hero-eyebrow__school"><span aria-hidden="true">&middot;</span> Satriwithaya School</span>
+      </p>
+      <h1 class="sw-hero-title">ยินดีต้อนรับ, {{ user.full_name }}</h1>
+      <p class="sw-hero-sub">ศูนย์รวมข่าวสาร กิจกรรม สรุปการเรียน และการแจ้งปัญหา</p>
+    </div>
+  </section>
+  <div class="sw-dots" aria-hidden="true"></div>
 
   <div class="sw-container">
 
     {% if user.is_committee %}
     <div class="sw-committee-bar">
-      <span class="sw-star">&#9733;</span>
+      <span class="sw-committee-bar__icon"><svg class="sw-ico" aria-hidden="true"><use href="#i-shield"></use></svg></span>
       <span class="sw-bar-text">คุณมีสิทธิ์เป็น <strong>คณะกรรมการนักเรียน</strong></span>
-      <a href="{% url 'portal:committee' %}" class="sw-btn-card sw-btn-card--inline">เข้า Committee Dashboard</a>
+      <a href="{% url 'portal:committee' %}" class="btn btn-sw-light btn-sm">Committee Dashboard<svg class="sw-ico sw-ico--sm" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
     </div>
     {% endif %}
 
-    <h2 class="sw-section-title">เมนูหลัก <span class="sw-sparkle">&#10022;</span></h2>
+    <h2 class="sw-block-title">Main Menu</h2>
 
     <div class="sw-menu-grid">
-
-      <!-- ข่าวสาร -->
-      <div class="sw-menu-card">
-        <div class="sw-menu-card__body">
-          <img src="{% static 'img/icon-news.png' %}" alt="" class="sw-menu-card__icon">
-          <div class="sw-menu-card__text">
-            <h3 class="sw-menu-card__title">แจ้งข่าวสาร</h3>
-            <p class="sw-menu-card__desc">ประกาศและข่าวสารจากโรงเรียน</p>
-          </div>
-        </div>
-        <a href="{% url 'portal:news' %}" class="sw-btn-card">เข้าดู</a>
-      </div>
-
-      <!-- จิตอาสา -->
-      <div class="sw-menu-card">
-        <div class="sw-menu-card__body">
-          <img src="{% static 'img/icon-volunteer.png' %}" alt="" class="sw-menu-card__icon">
-          <div class="sw-menu-card__text">
-            <h3 class="sw-menu-card__title">จิตอาสา</h3>
-            <p class="sw-menu-card__desc">กิจกรรมจิตอาสาและบำเพ็ญประโยชน์</p>
-          </div>
-        </div>
-        <a href="{% url 'portal:volunteer' %}" class="sw-btn-card">เข้าดู</a>
-      </div>
-
-      <!-- การแข่งขัน -->
-      <div class="sw-menu-card">
-        <div class="sw-menu-card__body">
-          <img src="{% static 'img/icon-competition.png' %}" alt="" class="sw-menu-card__icon">
-          <div class="sw-menu-card__text">
-            <h3 class="sw-menu-card__title">การแข่งขัน</h3>
-            <p class="sw-menu-card__desc">การแข่งขันวิชาการและกิจกรรมพิเศษ</p>
-          </div>
-        </div>
-        <a href="{% url 'portal:competitions' %}" class="sw-btn-card">เข้าดู</a>
-      </div>
-
-      <!-- แชร์สรุป -->
-      <div class="sw-menu-card">
-        <div class="sw-menu-card__body">
-          <img src="{% static 'img/icon-notes.png' %}" alt="" class="sw-menu-card__icon">
-          <div class="sw-menu-card__text">
-            <h3 class="sw-menu-card__title">แชร์สรุป</h3>
-            <p class="sw-menu-card__desc">แชร์และดาวน์โหลดสรุปการเรียน</p>
-          </div>
-        </div>
-        <a href="{% url 'portal:study_notes' %}" class="sw-btn-card">เข้าดู</a>
-      </div>
-
-      <!-- แจ้งปัญหา -->
-      <div class="sw-menu-card">
-        <div class="sw-menu-card__body">
-          <img src="{% static 'img/icon-report.png' %}" alt="" class="sw-menu-card__icon">
-          <div class="sw-menu-card__text">
-            <h3 class="sw-menu-card__title">แจ้งปัญหา</h3>
-            <p class="sw-menu-card__desc">แจ้งปัญหาและข้อเสนอแนะภายในโรงเรียน</p>
-          </div>
-        </div>
-        <a href="{% url 'portal:problem_reports' %}" class="sw-btn-card">เข้าดู</a>
-      </div>
-
-      <!-- สะสมแต้ม -->
-      <div class="sw-menu-card">
-        <div class="sw-menu-card__body">
-          <img src="{% static 'img/icon-points.png' %}" alt="" class="sw-menu-card__icon">
-          <div class="sw-menu-card__text">
-            <h3 class="sw-menu-card__title">สะสมแต้ม</h3>
-            <p class="sw-menu-card__desc">ส่งหลักฐานกิจกรรมและติดตามคะแนนสะสม</p>
-          </div>
-        </div>
-        <a href="{% url 'portal:points' %}" class="sw-btn-card">เข้า</a>
-      </div>
-
-      <!-- ห้องเช่าดูกันยัง (external link) -->
-      <div class="sw-menu-card">
-        <div class="sw-menu-card__body">
-          <img src="{% static 'img/icon-room.png' %}" alt="" class="sw-menu-card__icon">
-          <div class="sw-menu-card__text">
-            <h3 class="sw-menu-card__title">ห้องเช่าดูกันยัง</h3>
-            <p class="sw-menu-card__desc">คลังสื่อและเนื้อหาน่าสนใจ</p>
-          </div>
-        </div>
-        <a href="https://roomsible.vercel.app/" target="_blank" rel="noopener noreferrer"
-           class="sw-btn-card sw-btn-card--outline">เข้า &#8599;</a>
-      </div>
-
-    </div>
-
-    <!-- Logout section -->
-    <div class="sw-logout-area">
-      <form method="post" action="{% url 'accounts:logout' %}" class="d-inline">
-        {% csrf_token %}
-        <button type="submit" class="btn sw-logout-out">ออกจากระบบ</button>
-      </form>
+      <a href="{% url 'portal:news' %}" class="sw-menu-card sw-tone--sky">
+        <span class="sw-menu-card__art"><img src="{% static 'img/art-news.svg' %}" alt=""></span>
+        <span class="sw-menu-card__text">
+          <span class="sw-menu-card__title">แจ้งข่าวสาร</span>
+          <span class="sw-menu-card__desc">ประกาศและข่าวสารจากโรงเรียน</span>
+        </span>
+        <span class="sw-menu-card__go">Open<svg class="sw-ico sw-ico--sm" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
+      </a>
+      <a href="{% url 'portal:volunteer' %}" class="sw-menu-card sw-tone--sage">
+        <span class="sw-menu-card__art"><img src="{% static 'img/art-volunteer.svg' %}" alt=""></span>
+        <span class="sw-menu-card__text">
+          <span class="sw-menu-card__title">จิตอาสา</span>
+          <span class="sw-menu-card__desc">กิจกรรมจิตอาสาและบำเพ็ญประโยชน์</span>
+        </span>
+        <span class="sw-menu-card__go">Open<svg class="sw-ico sw-ico--sm" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
+      </a>
+      <a href="{% url 'portal:competitions' %}" class="sw-menu-card sw-tone--peach">
+        <span class="sw-menu-card__art"><img src="{% static 'img/art-competition.svg' %}" alt=""></span>
+        <span class="sw-menu-card__text">
+          <span class="sw-menu-card__title">การแข่งขัน</span>
+          <span class="sw-menu-card__desc">การแข่งขันวิชาการและกิจกรรมพิเศษ</span>
+        </span>
+        <span class="sw-menu-card__go">Open<svg class="sw-ico sw-ico--sm" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
+      </a>
+      <a href="{% url 'portal:study_notes' %}" class="sw-menu-card sw-tone--blush">
+        <span class="sw-menu-card__art"><img src="{% static 'img/art-notes.svg' %}" alt=""></span>
+        <span class="sw-menu-card__text">
+          <span class="sw-menu-card__title">แชร์สรุป</span>
+          <span class="sw-menu-card__desc">แชร์และดาวน์โหลดสรุปการเรียน</span>
+        </span>
+        <span class="sw-menu-card__go">Open<svg class="sw-ico sw-ico--sm" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
+      </a>
+      <a href="{% url 'portal:problem_reports' %}" class="sw-menu-card sw-tone--lilac">
+        <span class="sw-menu-card__art"><img src="{% static 'img/art-report.svg' %}" alt=""></span>
+        <span class="sw-menu-card__text">
+          <span class="sw-menu-card__title">แจ้งปัญหา</span>
+          <span class="sw-menu-card__desc">แจ้งปัญหาและข้อเสนอแนะภายในโรงเรียน</span>
+        </span>
+        <span class="sw-menu-card__go">Open<svg class="sw-ico sw-ico--sm" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
+      </a>
+      <a href="{% url 'portal:points' %}" class="sw-menu-card sw-tone--butter">
+        <span class="sw-menu-card__art"><img src="{% static 'img/art-points.svg' %}" alt=""></span>
+        <span class="sw-menu-card__text">
+          <span class="sw-menu-card__title">สะสมแต้ม</span>
+          <span class="sw-menu-card__desc">ส่งหลักฐานกิจกรรมและติดตามคะแนนสะสม</span>
+        </span>
+        <span class="sw-menu-card__go">Open<svg class="sw-ico sw-ico--sm" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
+      </a>
+      <a href="https://roomsible.vercel.app/" target="_blank" rel="noopener noreferrer" class="sw-menu-card sw-menu-card--wide sw-tone--paper">
+        <span class="sw-menu-card__art"><img src="{% static 'img/art-room.svg' %}" alt=""></span>
+        <span class="sw-menu-card__text">
+          <span class="sw-menu-card__title">ห้องเช่าดูกันยัง</span>
+          <span class="sw-menu-card__desc">คลังสื่อและเนื้อหาน่าสนใจ</span>
+        </span>
+        <span class="sw-menu-card__go">Visit<svg class="sw-ico sw-ico--sm" aria-hidden="true"><use href="#i-external"></use></svg></span>
+      </a>
     </div>
 
   </div>

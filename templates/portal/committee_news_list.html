@@ -1,12 +1,13 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}จัดการข่าวสาร | Committee{% endblock %}
 
 {% block content %}
-<div class="page-header">
+<div class="page-header page-header--sky">
   <div class="container">
-    <a href="{% url 'portal:committee' %}" class="text-white-50 small text-decoration-none">&#8592; Committee Dashboard</a>
-    <h3 class="fw-bold mb-0 mt-2">&#128240; จัดการข่าวสาร</h3>
+    <a href="{% url 'portal:committee' %}" class="sw-back"><svg class="sw-ico" aria-hidden="true"><use href="#i-arrow-left"></use></svg>Committee Dashboard</a>
+    <h3 class="sw-page-title"><span class="sw-page-title__icon"><img src="{% static 'img/art-news.svg' %}" alt="" class="sw-art"></span>จัดการข่าวสาร</h3>
     <p class="mb-0 opacity-75">รายการข่าวสารทั้งหมด (ทั้ง published และ draft)</p>
   </div>
 </div>
@@ -14,8 +15,7 @@
 <div class="container pb-5">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <span class="text-muted">ทั้งหมด {{ items|length }} รายการ</span>
-    <a href="{% url 'portal:committee_news_create' %}" class="btn btn-sw-primary">
-      + เพิ่มข่าวสาร
+    <a href="{% url 'portal:committee_news_create' %}" class="btn btn-sw-primary"><svg class="sw-ico sw-ico--sm" aria-hidden="true"><use href="#i-plus"></use></svg>เพิ่มข่าวสาร
     </a>
   </div>
 
@@ -23,7 +23,7 @@
     <div class="card border-0 shadow-sm rounded-3 overflow-hidden">
       <div class="table-responsive">
         <table class="table table-hover mb-0">
-          <thead style="background: var(--sw-red); color: white;">
+          <thead class="sw-thead">
             <tr>
               <th class="py-3 ps-4">หัวข้อข่าว</th>
               <th class="py-3">หมวดหมู่</th>
@@ -66,10 +66,10 @@
     </div>
   {% else %}
     <div class="empty-state">
-      <div class="empty-icon">&#128240;</div>
+      <div class="empty-icon"><img src="{% static 'img/art-news.svg' %}" alt="" class="sw-art"></div>
       <h5 class="text-muted">ยังไม่มีข่าวสาร</h5>
       <p class="text-muted small mb-3">เริ่มเพิ่มข่าวสารแรกได้เลย</p>
-      <a href="{% url 'portal:committee_news_create' %}" class="btn btn-sw-primary">+ เพิ่มข่าวสาร</a>
+      <a href="{% url 'portal:committee_news_create' %}" class="btn btn-sw-primary"><svg class="sw-ico sw-ico--sm" aria-hidden="true"><use href="#i-plus"></use></svg>เพิ่มข่าวสาร</a>
     </div>
   {% endif %}
 </div>

@@ -1,12 +1,13 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}จัดการแจ้งปัญหา | Committee{% endblock %}
 
 {% block content %}
-<div class="page-header">
+<div class="page-header page-header--lilac">
   <div class="container">
-    <a href="{% url 'portal:committee' %}" class="text-white-50 small text-decoration-none">&#8592; Committee Dashboard</a>
-    <h3 class="fw-bold mb-0 mt-2">&#128226; จัดการแจ้งปัญหา</h3>
+    <a href="{% url 'portal:committee' %}" class="sw-back"><svg class="sw-ico" aria-hidden="true"><use href="#i-arrow-left"></use></svg>Committee Dashboard</a>
+    <h3 class="sw-page-title"><span class="sw-page-title__icon"><img src="{% static 'img/art-report.svg' %}" alt="" class="sw-art"></span>จัดการแจ้งปัญหา</h3>
     <p class="mb-0 opacity-75">ปัญหาทั้งหมดที่นักเรียนแจ้งมา</p>
   </div>
 </div>
@@ -39,7 +40,7 @@
     <div class="card border-0 shadow-sm rounded-3 overflow-hidden">
       <div class="table-responsive">
       <table class="table table-hover mb-0">
-        <thead style="background: var(--sw-red); color: white;">
+        <thead class="sw-thead">
           <tr>
             <th class="py-3 ps-4">หัวข้อ</th>
             <th class="py-3">สถานที่</th>
@@ -95,7 +96,7 @@
     </div>
   {% else %}
     <div class="empty-state">
-      <div class="empty-icon">&#128226;</div>
+      <div class="empty-icon"><img src="{% static 'img/art-report.svg' %}" alt="" class="sw-art"></div>
       <h5 class="text-muted">ไม่มีการแจ้งปัญหา{% if status_filter %}ในหมวดนี้{% endif %}</h5>
       <p class="text-muted small">ปัญหาที่นักเรียนแจ้งจะปรากฏที่นี่</p>
     </div>

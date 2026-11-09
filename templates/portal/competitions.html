@@ -1,12 +1,13 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}การแข่งขัน | โรงเรียนสตรีวิทยา{% endblock %}
 
 {% block content %}
-<div class="page-header">
+<div class="page-header page-header--peach">
   <div class="container">
-    <a href="{% url 'portal:dashboard' %}" class="text-white-50 small text-decoration-none">&#8592; หน้าหลัก</a>
-    <h3 class="fw-bold mb-0 mt-2">&#127942; การแข่งขัน</h3>
+    <a href="{% url 'portal:dashboard' %}" class="sw-back"><svg class="sw-ico" aria-hidden="true"><use href="#i-arrow-left"></use></svg>Home</a>
+    <h3 class="sw-page-title"><span class="sw-page-title__icon"><img src="{% static 'img/art-competition.svg' %}" alt="" class="sw-art"></span>การแข่งขัน</h3>
     <p class="mb-0 opacity-75">การแข่งขันวิชาการและกิจกรรมพิเศษ</p>
   </div>
 </div>
@@ -23,13 +24,13 @@
             {% else %}
               <div class="rounded-top-4 d-flex align-items-center justify-content-center"
                    style="height:90px; background: var(--sw-red-light);">
-                <span style="font-size:2.2rem">&#127942;</span>
+                <img src="{% static 'img/art-competition.svg' %}" alt="" class="sw-art sw-art--xl">
               </div>
             {% endif %}
-            <div class="p-3 d-flex flex-column h-100">
+            <div class="p-4 d-flex flex-column flex-grow-1">
               <h6 class="fw-bold">{{ item.title }}</h6>
               {% if item.organizer %}
-                <p class="text-muted small mb-1">&#127970; {{ item.organizer }}</p>
+                <p class="sw-meta mb-1"><svg class="sw-ico sw-ico--inline" aria-hidden="true"><use href="#i-building"></use></svg>{{ item.organizer }}</p>
               {% endif %}
               {% if item.deadline %}
                 <p class="small mb-2">
@@ -37,13 +38,15 @@
                 </p>
               {% endif %}
               <p class="text-muted small flex-grow-1">{{ item.description|truncatechars:120 }}</p>
-              {% if item.application_url %}
-                <a href="{{ item.application_url }}" target="_blank" rel="noopener noreferrer"
-                   class="btn btn-sw-primary btn-sm mt-auto">สมัคร / ดูรายละเอียด &#8599;</a>
-              {% else %}
-                <button class="btn btn-outline-secondary btn-sm mt-auto" disabled>ยังไม่มีลิงก์สมัคร</button>
-              {% endif %}
-              <p class="text-muted small mt-2 mb-0">{{ item.created_at|date:"d M Y" }}</p>
+              <div class="sw-card-foot">
+                <span class="sw-meta"><svg class="sw-ico sw-ico--inline" aria-hidden="true"><use href="#i-calendar"></use></svg>{{ item.created_at|date:"d M Y" }}</span>
+                {% if item.application_url %}
+                  <a href="{{ item.application_url }}" target="_blank" rel="noopener noreferrer"
+                     class="btn btn-sw-primary btn-sm">สมัคร / ดูรายละเอียด <svg class="sw-ico sw-ico--sm" aria-hidden="true"><use href="#i-external"></use></svg></a>
+                {% else %}
+                  <button class="btn btn-outline-secondary btn-sm" disabled>ยังไม่มีลิงก์สมัคร</button>
+                {% endif %}
+              </div>
             </div>
           </div>
         </div>
@@ -51,7 +54,7 @@
     </div>
   {% else %}
     <div class="empty-state">
-      <div class="empty-icon">&#127942;</div>
+      <div class="empty-icon"><img src="{% static 'img/art-competition.svg' %}" alt="" class="sw-art"></div>
       <h5 class="text-muted">ยังไม่มีการแข่งขันในขณะนี้</h5>
       <p class="text-muted small">การแข่งขันใหม่จะแสดงที่นี่เมื่อมีการเพิ่มข้อมูล</p>
     </div>

@@ -1,12 +1,13 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}{{ action }} | Committee{% endblock %}
 
 {% block content %}
-<div class="page-header">
+<div class="page-header page-header--peach">
   <div class="container">
-    <a href="{% url 'portal:committee_competition_list' %}" class="text-white-50 small text-decoration-none">&#8592; รายการการแข่งขัน</a>
-    <h3 class="fw-bold mb-0 mt-2">&#127942; {{ action }}</h3>
+    <a href="{% url 'portal:committee_competition_list' %}" class="sw-back"><svg class="sw-ico" aria-hidden="true"><use href="#i-arrow-left"></use></svg>รายการการแข่งขัน</a>
+    <h3 class="sw-page-title"><span class="sw-page-title__icon"><img src="{% static 'img/art-competition.svg' %}" alt="" class="sw-art"></span>{{ action }}</h3>
   </div>
 </div>
 

@@ -1,12 +1,13 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}ส่งสรุปการเรียน | โรงเรียนสตรีวิทยา{% endblock %}
 
 {% block content %}
-<div class="page-header">
+<div class="page-header page-header--blush">
   <div class="container">
-    <a href="{% url 'portal:study_notes' %}" class="text-white-50 small text-decoration-none">&#8592; สรุปการเรียน</a>
-    <h3 class="fw-bold mb-0 mt-2">&#128218; ส่งสรุปการเรียน</h3>
+    <a href="{% url 'portal:study_notes' %}" class="sw-back"><svg class="sw-ico" aria-hidden="true"><use href="#i-arrow-left"></use></svg>สรุปการเรียน</a>
+    <h3 class="sw-page-title"><span class="sw-page-title__icon"><img src="{% static 'img/art-notes.svg' %}" alt="" class="sw-art"></span>ส่งสรุปการเรียน</h3>
     <p class="mb-0 opacity-75">แบ่งปันสรุปให้กับเพื่อนๆ ผ่าน Google Drive</p>
   </div>
 </div>

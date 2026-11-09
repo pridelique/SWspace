@@ -1,12 +1,13 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}{{ action }} | Committee{% endblock %}
 
 {% block content %}
-<div class="page-header">
+<div class="page-header page-header--sage">
   <div class="container">
-    <a href="{% url 'portal:committee_volunteer_list' %}" class="text-white-50 small text-decoration-none">&#8592; รายการจิตอาสา</a>
-    <h3 class="fw-bold mb-0 mt-2">&#129309; {{ action }}</h3>
+    <a href="{% url 'portal:committee_volunteer_list' %}" class="sw-back"><svg class="sw-ico" aria-hidden="true"><use href="#i-arrow-left"></use></svg>รายการจิตอาสา</a>
+    <h3 class="sw-page-title"><span class="sw-page-title__icon"><img src="{% static 'img/art-volunteer.svg' %}" alt="" class="sw-art"></span>{{ action }}</h3>
   </div>
 </div>
 

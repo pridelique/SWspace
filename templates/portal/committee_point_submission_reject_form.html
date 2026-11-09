@@ -1,12 +1,13 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}ปฏิเสธคำขอ | Committee{% endblock %}
 
 {% block content %}
-<div class="page-header">
+<div class="page-header page-header--butter">
   <div class="container">
-    <a href="{% url 'portal:committee_points' %}" class="text-white-50 small text-decoration-none">&#8592; จัดการสะสมแต้ม</a>
-    <h3 class="fw-bold mb-0 mt-2">&#11088; ปฏิเสธคำขอสะสมแต้ม</h3>
+    <a href="{% url 'portal:committee_points' %}" class="sw-back"><svg class="sw-ico" aria-hidden="true"><use href="#i-arrow-left"></use></svg>จัดการสะสมแต้ม</a>
+    <h3 class="sw-page-title"><span class="sw-page-title__icon"><img src="{% static 'img/art-points.svg' %}" alt="" class="sw-art"></span>ปฏิเสธคำขอสะสมแต้ม</h3>
   </div>
 </div>
 

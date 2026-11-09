@@ -1,51 +1,50 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}แจ้งปัญหา | โรงเรียนสตรีวิทยา{% endblock %}
 
 {% block content %}
-<div class="page-header">
+<div class="page-header page-header--lilac">
   <div class="container">
-    <a href="{% url 'portal:dashboard' %}" class="text-white-50 small text-decoration-none">&#8592; หน้าหลัก</a>
-    <h3 class="fw-bold mb-0 mt-2">&#128226; แจ้งปัญหา</h3>
+    <a href="{% url 'portal:dashboard' %}" class="sw-back"><svg class="sw-ico" aria-hidden="true"><use href="#i-arrow-left"></use></svg>Home</a>
+    <h3 class="sw-page-title"><span class="sw-page-title__icon"><img src="{% static 'img/art-report.svg' %}" alt="" class="sw-art"></span>แจ้งปัญหา</h3>
     <p class="mb-0 opacity-75">ปัญหาภายในโรงเรียนที่ผ่านการอนุมัติแล้ว</p>
   </div>
 </div>
 
 <div class="container pb-5">
 
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <div class="alert alert-info border-0 rounded-3 mb-0 flex-grow-1 me-3">
-      หน้านี้แสดงเฉพาะปัญหาที่คณะกรรมการนักเรียน <strong>อนุมัติแล้ว</strong>
-    </div>
-    <a href="{% url 'portal:problem_report_submit' %}" class="btn btn-sw-primary flex-shrink-0">+ แจ้งปัญหา</a>
+  <div class="sw-toolbar">
+    <p class="text-muted mb-0">หน้านี้แสดงเฉพาะปัญหาที่คณะกรรมการนักเรียน <strong>อนุมัติแล้ว</strong></p>
+    <a href="{% url 'portal:problem_report_submit' %}" class="btn btn-sw-primary flex-shrink-0"><svg class="sw-ico sw-ico--sm" aria-hidden="true"><use href="#i-plus"></use></svg>แจ้งปัญหา</a>
   </div>
 
   {% if approved %}
     <div class="row row-cols-1 row-cols-md-2 g-3">
       {% for item in approved %}
         <div class="col">
-          <div class="card feature-card p-3 h-100">
+          <div class="card feature-card p-4 h-100 d-flex flex-column">
             <div class="d-flex justify-content-between align-items-start mb-2">
               <h6 class="fw-bold mb-0">{{ item.title }}</h6>
               <span class="badge bg-success ms-2 flex-shrink-0">อนุมัติแล้ว</span>
             </div>
             {% if item.location %}
-              <p class="text-muted small mb-1">&#128205; {{ item.location }}</p>
+              <p class="sw-meta mb-2"><svg class="sw-ico sw-ico--inline" aria-hidden="true"><use href="#i-pin"></use></svg>{{ item.location }}</p>
             {% endif %}
             <p class="text-muted small mb-2">{{ item.description }}</p>
             {% if item.admin_note %}
-              <div class="p-2 rounded-2 small" style="background: var(--sw-red-light)">
+              <div class="sw-note">
                 <strong>หมายเหตุ:</strong> {{ item.admin_note }}
               </div>
             {% endif %}
-            <p class="text-muted small mt-2 mb-0">{{ item.created_at|date:"d M Y" }}</p>
+            <p class="sw-meta mt-auto pt-3 mb-0"><svg class="sw-ico sw-ico--inline" aria-hidden="true"><use href="#i-calendar"></use></svg>{{ item.created_at|date:"d M Y" }}</p>
           </div>
         </div>
       {% endfor %}
     </div>
   {% else %}
     <div class="empty-state">
-      <div class="empty-icon">&#128226;</div>
+      <div class="empty-icon"><img src="{% static 'img/art-report.svg' %}" alt="" class="sw-art"></div>
       <h5 class="text-muted">ยังไม่มีปัญหาที่ผ่านการอนุมัติ</h5>
       <p class="text-muted small">ปัญหาที่คณะกรรมการอนุมัติแล้วจะแสดงที่นี่</p>
     </div>
