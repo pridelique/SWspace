@@ -1,0 +1,116 @@
+[
+  {
+    "order": 1,
+    "title": "Project Overview",
+    "description": "The README establishes the project's identity: SWspace is a central school portal for Satriwit School students, providing news, volunteer links, competitions, study notes, problem reports, and a points accumulation system. It documents the tech stack (Django 4.2, Bootstrap 5, SQLite), the two-role permission model (student vs. committee), and the project layout so you know what to expect before reading a single line of code.",
+    "nodeIds": ["document:README.md"]
+  },
+  {
+    "order": 2,
+    "title": "CLI Entry Point & Settings",
+    "description": "manage.py is the Django CLI gate — every developer command (migrations, test runs, the dev server) flows through it. It delegates immediately to config/settings.py, which is the project's single most-depended-upon file (fan-in 6): it declares installed apps, the custom auth model, database engine, media paths, and the COMMITTEE_VERIFICATION_CODE and STUDENT_EMAIL_DOMAIN constants that drive the role system.",
+    "nodeIds": ["file:manage.py", "file:config/settings.py"],
+    "languageLesson": "Django's settings module is referenced by name via the DJANGO_SETTINGS_MODULE environment variable, not by a direct import. manage.py sets this variable automatically, which is why it must be run from the project root."
+  },
+  {
+    "order": 3,
+    "title": "Environment & Dependencies",
+    "description": "Before running the project you need two bootstrapping files. requirements.txt pins the Python dependencies — Django, Pillow for image handling, python-dotenv, psycopg2 for PostgreSQL, and cloudinary. The .env.example template documents every environment variable the settings module reads, including SECRET_KEY, database URL, and the committee verification code, acting as the handshake between developer setup and the settings layer from Step 2.",
+    "nodeIds": ["document:requirements.txt", "config:.env.example"]
+  },
+  {
+    "order": 4,
+    "title": "URL Routing Architecture",
+    "description": "Django routes HTTP requests through a hierarchy of URL files. config/urls.py is the root dispatcher: it redirects the bare root path to /dashboard/ and delegates /accounts/ to the accounts app and everything else to the portal app. accounts/urls.py maps the three auth endpoints (register, login, logout), while portal/urls.py carries all student and committee routes, giving you a complete map of every page in the application.",
+    "nodeIds": ["file:config/urls.py", "file:accounts/urls.py", "file:portal/urls.py"],
+    "languageLesson": "Django's include() function lets each app own its URL namespace. The app_name = 'portal' declaration in portal/urls.py enables template reverse lookups like {% url 'portal:dashboard' %}, decoupling templates from hard-coded paths."
+  },
+  {
+    "order": 5,
+    "title": "Custom User Model",
+    "description": "accounts/models.py defines the project's User entity by subclassing AbstractUser and replacing the default username field with email as the login identifier. The model adds a role field with exactly two choices — student (default) and committee — plus a grade_level field. The is_committee() convenience method is used throughout the portal's access control layer and forms the single source of truth for permission checks.",
+    "nodeIds": ["file:accounts/models.py"],
+    "languageLesson": "Django requires you to set AUTH_USER_MODEL before the first migration if you plan to subclass AbstractUser. Changing the auth model after migrations have run is extremely difficult, making this early design decision load-bearing for the entire project."
+  },
+  {
+    "order": 6,
+    "title": "Authentication Flow",
+    "description": "accounts/views.py implements three view functions — registration, login, and logout. The registration view processes accounts/forms.py's RegisterForm, which enforces two business rules at the form level: the submitted email must end with @satriwit.ac.th (the school domain), and if the user provides the correct verification code they are automatically assigned the committee role. These two form-level rules are the gatekeepers for every subsequent permission check in the portal.",
+    "nodeIds": ["file:accounts/views.py", "file:accounts/forms.py"],
+    "languageLesson": "Django's ModelForm.clean() method is the canonical place for cross-field validation. By checking both the email domain and the verification code inside clean(), the form keeps business rules out of the view function and makes them unit-testable in isolation."
+  },
+  {
+    "order": 7,
+    "title": "Portal Data Models",
+    "description": "portal/models.py is the most-imported file in the entire codebase (fan-in 7): it defines all eight core domain models. Five are content models — News, VolunteerLink, Competition, StudyNote, and ProblemReport — each with is_published or is_approved flags and a foreign key to the user who created or submitted it. The remaining three support the points system: PointActivity (a scoreable task), PointSubmission (a student's proof of completion), and UserPointProfile (the student's running score).",
+    "nodeIds": ["file:portal/models.py"],
+    "languageLesson": "Django ORM models with is_published boolean flags follow a common pattern: committee users flip the flag to True to make content visible, and student-facing views filter with .filter(is_published=True). This single-flag approval workflow avoids a separate moderation queue table."
+  },
+  {
+    "order": 8,
+    "title": "Database Schema Evolution",
+    "description": "The portal's migration history tells the story of how the schema evolved. 0001_initial.py creates the original five content tables. Each subsequent migration adds a targeted change: deadline and is_published fields, then Google Drive references, then a pivot to local ImageFields as storage changed, then the three point models in 0005_add_point_models.py, and finally is_archived flags. Reading the chain gives you a compressed project history without touching git log.",
+    "nodeIds": [
+      "file:portal/migrations/0001_initial.py",
+      "file:portal/migrations/0005_add_point_models.py"
+    ],
+    "languageLesson": "Django migration files are Python scripts that Django applies sequentially. Each file declares a dependencies list pointing to the previous migration, forming a directed acyclic graph. Running python manage.py migrate replays the entire chain in order to bring any fresh database to the current schema."
+  },
+  {
+    "order": 9,
+    "title": "Portal Views & Access Control",
+    "description": "portal/views.py houses all 39 view functions for the portal app. It defines two decorators: the standard @login_required guard and a custom @committee_required decorator that first checks login, then calls user.is_committee() before allowing access. portal/forms.py provides ModelForm subclasses for every model from Step 7, adding file-size validation and field customization. Together, these two files implement the complete request-response cycle for every portal feature.",
+    "nodeIds": ["file:portal/views.py", "file:portal/forms.py"],
+    "languageLesson": "Django's decorator pattern for view guards chains cleanly: @committee_required wraps @login_required, so an unauthenticated user hits the login redirect first, and an authenticated student gets a 403. This ordering prevents leaking the existence of committee-only pages to logged-out users."
+  },
+  {
+    "order": 10,
+    "title": "Template System",
+    "description": "templates/base.html is the layout ancestor for every page in the project (fan-in 3): it loads Bootstrap 5 from CDN, links the project stylesheet, renders the navigation bar, and defines the content block that child templates override. templates/portal/dashboard.html is the first page a student sees after login — it extends base.html and surfaces links to all portal features, making it the clearest illustration of how Django's template inheritance model works in this project.",
+    "nodeIds": ["file:templates/base.html", "file:templates/portal/dashboard.html"],
+    "languageLesson": "Django template inheritance uses {% extends 'base.html' %} at the top of a child template and {% block content %}...{% endblock %} to inject page-specific content. The parent defines the skeleton; children fill the gaps. No JavaScript bundler is required — Bootstrap is loaded via a single CDN <link> tag."
+  },
+  {
+    "order": 11,
+    "title": "Student-Facing Feature Pages",
+    "description": "The student experience is delivered through a set of feature templates, each extending base.html. templates/portal/points.html shows the student's total score and lists available PointActivity items. templates/portal/study_notes.html renders peer-shared notes filtered to is_approved=True. templates/portal/problem_reports.html shows the approved subset of school problem reports. Each page is the read-only student view of a content model from Step 7, with separate form templates handling the submission side.",
+    "nodeIds": [
+      "file:templates/portal/points.html",
+      "file:templates/portal/study_notes.html",
+      "file:templates/portal/problem_reports.html"
+    ]
+  },
+  {
+    "order": 12,
+    "title": "Committee Management Interface",
+    "description": "Committee members see a different side of the portal. templates/portal/committee.html is the committee dashboard landing page, linking to per-model management sections. templates/portal/committee_points.html is the points management dashboard where committee members can create PointActivity items and review PointSubmission approvals. Each feature area follows the same list/form/confirm-delete template triad pattern, keeping the committee CRUD interface consistent and predictable.",
+    "nodeIds": [
+      "file:templates/portal/committee.html",
+      "file:templates/portal/committee_points.html"
+    ]
+  },
+  {
+    "order": 13,
+    "title": "Management Commands",
+    "description": "The portal/management/commands/ directory holds three operational utilities invoked via manage.py. seed_mock_data.py populates all eight portal models with realistic sample records for development and QA purposes. clear_mock_data.py is its counterpart, deleting those records cleanly. archive_old_media.py compresses old portal images to reclaim disk space. Each command imports portal/models.py directly, making them simple procedural scripts that bypass the HTTP layer entirely.",
+    "nodeIds": [
+      "file:portal/management/commands/seed_mock_data.py",
+      "file:portal/management/commands/clear_mock_data.py",
+      "file:portal/management/commands/archive_old_media.py"
+    ],
+    "languageLesson": "Django management commands extend BaseCommand and implement a handle() method. They are discovered automatically from any app's management/commands/ directory, making python manage.py <command_name> available without any registration step beyond creating the file."
+  },
+  {
+    "order": 14,
+    "title": "Test Suites",
+    "description": "accounts/tests.py covers the auth flows — registration with valid and invalid email domains, verification-code-based role assignment, login, and logout. portal/tests.py covers the portal-specific behaviors: image upload validation, the full points workflow (activity creation, student submission, committee approval and rejection). Reading the test cases alongside the views and models from Steps 6 and 9 shows exactly which business rules the project has explicitly committed to preserving.",
+    "nodeIds": ["file:accounts/tests.py", "file:portal/tests.py"],
+    "languageLesson": "Django's TestCase class wraps each test in a database transaction that is rolled back after the test, so tests are isolated without manual teardown. Client().post() simulates form submissions and Client().get() simulates page views, letting you test the full view-form-model stack without a running server."
+  },
+  {
+    "order": 15,
+    "title": "Deployment",
+    "description": "DEPLOY.md documents the production deployment procedure for PythonAnywhere hosting, covering WSGI configuration, static file collection, and database migration steps. It references config/.env.example from Step 3, specifying which environment variables must be set in the production environment before the app can start. This document closes the tour by connecting everything learned — settings, models, views, and templates — to how the application runs in production.",
+    "nodeIds": ["document:DEPLOY.md", "config:.env.example"]
+  }
+]

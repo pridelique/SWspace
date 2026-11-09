@@ -1,0 +1,826 @@
+{
+  "scriptCompleted": true,
+  "entryPointCandidates": [
+    {
+      "id": "file:config/asgi.py",
+      "score": 6,
+      "name": "asgi.py",
+      "type": "file",
+      "summary": "ASGI entrypoint for Django."
+    },
+    {
+      "id": "file:config/wsgi.py",
+      "score": 6,
+      "name": "wsgi.py",
+      "type": "file",
+      "summary": "WSGI entrypoint for Django."
+    },
+    {
+      "id": "file:manage.py",
+      "score": 6,
+      "name": "manage.py",
+      "type": "file",
+      "summary": "Django management script CLI entry point."
+    },
+    {
+      "id": "document:README.md",
+      "score": 5,
+      "name": "README.md",
+      "type": "document",
+      "summary": "Comprehensive project overview covering setup, features, URL routes, and architecture."
+    },
+    {
+      "id": "file:portal/admin.py",
+      "score": 3,
+      "name": "admin.py",
+      "type": "file",
+      "summary": "Registers all eight portal models with Django admin."
+    }
+  ],
+  "fanInRanking": [
+    {
+      "id": "file:portal/models.py",
+      "fanIn": 7,
+      "name": "models.py"
+    },
+    {
+      "id": "file:config/settings.py",
+      "fanIn": 6,
+      "name": "settings.py"
+    },
+    {
+      "id": "file:templates/base.html",
+      "fanIn": 3,
+      "name": "base.html"
+    },
+    {
+      "id": "file:portal/views.py",
+      "fanIn": 2,
+      "name": "views.py"
+    },
+    {
+      "id": "file:accounts/models.py",
+      "fanIn": 2,
+      "name": "models.py"
+    },
+    {
+      "id": "file:accounts/forms.py",
+      "fanIn": 1,
+      "name": "forms.py"
+    },
+    {
+      "id": "file:accounts/views.py",
+      "fanIn": 1,
+      "name": "views.py"
+    },
+    {
+      "id": "file:portal/forms.py",
+      "fanIn": 1,
+      "name": "forms.py"
+    },
+    {
+      "id": "config:.env.example",
+      "fanIn": 1,
+      "name": ".env.example"
+    },
+    {
+      "id": "file:app/globals.css",
+      "fanIn": 1,
+      "name": "globals.css"
+    },
+    {
+      "id": "file:components/navbar.tsx",
+      "fanIn": 1,
+      "name": "navbar.tsx"
+    },
+    {
+      "id": "file:portal/migrations/0001_initial.py",
+      "fanIn": 1,
+      "name": "0001_initial.py"
+    },
+    {
+      "id": "file:portal/migrations/0002_competition_deadline_competition_is_published_and_more.py",
+      "fanIn": 1,
+      "name": "0002_..."
+    },
+    {
+      "id": "file:portal/migrations/0003_competition_drive_file_id_news_drive_file_id.py",
+      "fanIn": 1,
+      "name": "0003_..."
+    },
+    {
+      "id": "file:portal/migrations/0004_replace_drive_with_local_imagefield.py",
+      "fanIn": 1,
+      "name": "0004_..."
+    },
+    {
+      "id": "file:portal/migrations/0005_add_point_models.py",
+      "fanIn": 1,
+      "name": "0005_..."
+    },
+    {
+      "id": "file:portal/admin.py",
+      "fanIn": 0,
+      "name": "admin.py"
+    },
+    {
+      "id": "file:portal/management/commands/archive_old_media.py",
+      "fanIn": 0,
+      "name": "archive_old_media.py"
+    },
+    {
+      "id": "file:portal/management/commands/clear_mock_data.py",
+      "fanIn": 0,
+      "name": "clear_mock_data.py"
+    },
+    {
+      "id": "file:portal/management/commands/seed_mock_data.py",
+      "fanIn": 0,
+      "name": "seed_mock_data.py"
+    }
+  ],
+  "fanOutRanking": [
+    {
+      "id": "document:CLAUDE.md",
+      "fanOut": 3,
+      "name": "CLAUDE.md"
+    },
+    {
+      "id": "file:portal/views.py",
+      "fanOut": 2,
+      "name": "views.py"
+    },
+    {
+      "id": "file:app/layout.tsx",
+      "fanOut": 2,
+      "name": "layout.tsx"
+    },
+    {
+      "id": "file:portal/admin.py",
+      "fanOut": 1,
+      "name": "admin.py"
+    },
+    {
+      "id": "file:portal/management/commands/archive_old_media.py",
+      "fanOut": 1,
+      "name": "archive_old_media.py"
+    },
+    {
+      "id": "file:portal/management/commands/clear_mock_data.py",
+      "fanOut": 1,
+      "name": "clear_mock_data.py"
+    },
+    {
+      "id": "file:portal/management/commands/seed_mock_data.py",
+      "fanOut": 1,
+      "name": "seed_mock_data.py"
+    },
+    {
+      "id": "file:accounts/urls.py",
+      "fanOut": 1,
+      "name": "urls.py"
+    },
+    {
+      "id": "file:accounts/views.py",
+      "fanOut": 1,
+      "name": "views.py"
+    },
+    {
+      "id": "file:portal/forms.py",
+      "fanOut": 1,
+      "name": "forms.py"
+    },
+    {
+      "id": "file:portal/urls.py",
+      "fanOut": 1,
+      "name": "urls.py"
+    },
+    {
+      "id": "config:.env.example",
+      "fanOut": 1,
+      "name": ".env.example"
+    },
+    {
+      "id": "document:DEPLOY.md",
+      "fanOut": 1,
+      "name": "DEPLOY.md"
+    },
+    {
+      "id": "document:README.md",
+      "fanOut": 1,
+      "name": "README.md"
+    },
+    {
+      "id": "document:requirements.txt",
+      "fanOut": 1,
+      "name": "requirements.txt"
+    },
+    {
+      "id": "file:templates/portal/dashboard.html",
+      "fanOut": 1,
+      "name": "dashboard.html"
+    },
+    {
+      "id": "file:accounts/admin.py",
+      "fanOut": 1,
+      "name": "admin.py"
+    },
+    {
+      "id": "file:config/asgi.py",
+      "fanOut": 1,
+      "name": "asgi.py"
+    },
+    {
+      "id": "file:config/wsgi.py",
+      "fanOut": 1,
+      "name": "wsgi.py"
+    },
+    {
+      "id": "file:manage.py",
+      "fanOut": 1,
+      "name": "manage.py"
+    }
+  ],
+  "bfsTraversal": {
+    "startNode": "file:config/asgi.py",
+    "order": [
+      "file:config/asgi.py"
+    ],
+    "depthMap": {
+      "file:config/asgi.py": 0
+    },
+    "byDepth": {
+      "0": [
+        "file:config/asgi.py"
+      ]
+    }
+  },
+  "nonCodeFiles": {
+    "documentation": [
+      {
+        "id": "document:AGENTS.md",
+        "name": "AGENTS.md",
+        "type": "document",
+        "summary": "Warning for AI agents about Next.js breaking changes."
+      },
+      {
+        "id": "document:CLAUDE.md",
+        "name": "CLAUDE.md",
+        "type": "document",
+        "summary": "Developer reference for Claude AI detailing architecture and commands."
+      },
+      {
+        "id": "document:DEPLOY.md",
+        "name": "DEPLOY.md",
+        "type": "document",
+        "summary": "Deployment guide for PythonAnywhere hosting."
+      },
+      {
+        "id": "document:FINAL_QA_CHECKLIST.md",
+        "name": "FINAL_QA_CHECKLIST.md",
+        "type": "document",
+        "summary": "Pre-release QA checklist covering all portal features."
+      },
+      {
+        "id": "document:README.md",
+        "name": "README.md",
+        "type": "document",
+        "summary": "Comprehensive project overview covering setup, features, URL routes, and architecture."
+      },
+      {
+        "id": "document:requirements.txt",
+        "name": "requirements.txt",
+        "type": "document",
+        "summary": "Python dependencies: Django, Pillow, dotenv, psycopg2, cloudinary."
+      }
+    ],
+    "infrastructure": [],
+    "data": [],
+    "config": [
+      {
+        "id": "config:.env.example",
+        "name": ".env.example",
+        "type": "config",
+        "summary": "Template for local development environment variables."
+      },
+      {
+        "id": "config:package.json",
+        "name": "package.json",
+        "type": "config",
+        "summary": "Node.js package manifest for the Next.js frontend layer."
+      },
+      {
+        "id": "config:tsconfig.json",
+        "name": "tsconfig.json",
+        "type": "config",
+        "summary": "TypeScript compiler configuration for Next.js frontend."
+      },
+      {
+        "id": "config:.claude/settings.json",
+        "name": "settings.json",
+        "type": "config",
+        "summary": "Claude Code project settings."
+      }
+    ]
+  },
+  "clusters": [],
+  "layers": {
+    "count": 7,
+    "list": [
+      {
+        "id": "layer:api",
+        "name": "API Layer",
+        "description": "Django view functions and URL routing for both the accounts (auth) and portal (student/committee) apps, including the root URL dispatcher."
+      },
+      {
+        "id": "layer:data",
+        "name": "Data Layer",
+        "description": "Django ORM model definitions for the custom User and eight portal models, admin registrations, and full database migration history."
+      },
+      {
+        "id": "layer:ui",
+        "name": "UI Layer",
+        "description": "All user-facing presentation assets: Django HTML templates, ModelForms, the Next.js frontend, and stylesheets."
+      },
+      {
+        "id": "layer:service",
+        "name": "Service Layer",
+        "description": "Django management commands for archiving media, seeding/clearing mock data, and creating test accounts."
+      },
+      {
+        "id": "layer:config",
+        "name": "Configuration Layer",
+        "description": "Django settings, WSGI/ASGI entry points, app registrations, CLI entry point, and all Next.js/Node.js build configuration files."
+      },
+      {
+        "id": "layer:test",
+        "name": "Test Layer",
+        "description": "Automated test suites for accounts and portal apps."
+      },
+      {
+        "id": "layer:documentation",
+        "name": "Documentation",
+        "description": "Project documentation covering setup, deployment, architecture reference, QA checklist, and Python dependencies."
+      }
+    ]
+  },
+  "nodeSummaryIndex": {
+    "file:portal/admin.py": {
+      "name": "admin.py",
+      "type": "file",
+      "summary": "Registers all eight portal models with Django admin."
+    },
+    "file:portal/management/commands/archive_old_media.py": {
+      "name": "archive_old_media.py",
+      "type": "file",
+      "summary": "Management command that compresses old portal images."
+    },
+    "file:portal/management/commands/clear_mock_data.py": {
+      "name": "clear_mock_data.py",
+      "type": "file",
+      "summary": "Management command that deletes all mock data records."
+    },
+    "file:portal/management/commands/seed_mock_data.py": {
+      "name": "seed_mock_data.py",
+      "type": "file",
+      "summary": "Management command that seeds sample data for all portal models."
+    },
+    "file:portal/models.py": {
+      "name": "models.py",
+      "type": "file",
+      "summary": "Defines the eight core Django ORM models for the portal app."
+    },
+    "file:accounts/forms.py": {
+      "name": "forms.py",
+      "type": "file",
+      "summary": "RegisterForm with email-domain validation and verification-code-based role assignment."
+    },
+    "file:accounts/urls.py": {
+      "name": "urls.py",
+      "type": "file",
+      "summary": "URL routing for accounts app: register, login, logout."
+    },
+    "file:accounts/views.py": {
+      "name": "views.py",
+      "type": "file",
+      "summary": "View functions for registration, login, and logout."
+    },
+    "file:portal/forms.py": {
+      "name": "forms.py",
+      "type": "file",
+      "summary": "All Django ModelForm classes for the portal app with custom validation."
+    },
+    "file:portal/urls.py": {
+      "name": "urls.py",
+      "type": "file",
+      "summary": "URL patterns for the portal app, student and committee routes."
+    },
+    "file:portal/views.py": {
+      "name": "views.py",
+      "type": "file",
+      "summary": "All 39 view functions for the portal app with access control decorators."
+    },
+    "config:.env.example": {
+      "name": ".env.example",
+      "type": "config",
+      "summary": "Template for local development environment variables."
+    },
+    "document:AGENTS.md": {
+      "name": "AGENTS.md",
+      "type": "document",
+      "summary": "Warning for AI agents about Next.js breaking changes."
+    },
+    "document:CLAUDE.md": {
+      "name": "CLAUDE.md",
+      "type": "document",
+      "summary": "Developer reference for Claude AI detailing architecture and commands."
+    },
+    "document:DEPLOY.md": {
+      "name": "DEPLOY.md",
+      "type": "document",
+      "summary": "Deployment guide for PythonAnywhere hosting."
+    },
+    "document:FINAL_QA_CHECKLIST.md": {
+      "name": "FINAL_QA_CHECKLIST.md",
+      "type": "document",
+      "summary": "Pre-release QA checklist covering all portal features."
+    },
+    "document:README.md": {
+      "name": "README.md",
+      "type": "document",
+      "summary": "Comprehensive project overview covering setup, features, URL routes, and architecture."
+    },
+    "config:package.json": {
+      "name": "package.json",
+      "type": "config",
+      "summary": "Node.js package manifest for the Next.js frontend layer."
+    },
+    "document:requirements.txt": {
+      "name": "requirements.txt",
+      "type": "document",
+      "summary": "Python dependencies: Django, Pillow, dotenv, psycopg2, cloudinary."
+    },
+    "config:tsconfig.json": {
+      "name": "tsconfig.json",
+      "type": "config",
+      "summary": "TypeScript compiler configuration for Next.js frontend."
+    },
+    "file:templates/portal/committee.html": {
+      "name": "committee.html",
+      "type": "file",
+      "summary": "Main committee management dashboard template."
+    },
+    "file:templates/portal/committee_competition_confirm_delete.html": {
+      "name": "committee_competition_confirm_delete.html",
+      "type": "file",
+      "summary": "Confirmation dialog for deleting a competition."
+    },
+    "file:templates/portal/committee_competition_form.html": {
+      "name": "committee_competition_form.html",
+      "type": "file",
+      "summary": "Form for creating or editing a competition."
+    },
+    "file:templates/portal/committee_competition_list.html": {
+      "name": "committee_competition_list.html",
+      "type": "file",
+      "summary": "List view of competitions for committee management."
+    },
+    "file:templates/portal/committee_news_confirm_delete.html": {
+      "name": "committee_news_confirm_delete.html",
+      "type": "file",
+      "summary": "Confirmation dialog for deleting a news item."
+    },
+    "file:templates/portal/committee_news_form.html": {
+      "name": "committee_news_form.html",
+      "type": "file",
+      "summary": "Form for creating or editing a news item."
+    },
+    "file:templates/portal/committee_news_list.html": {
+      "name": "committee_news_list.html",
+      "type": "file",
+      "summary": "List view of news items for committee management."
+    },
+    "file:templates/portal/committee_point_activity_confirm_delete.html": {
+      "name": "committee_point_activity_confirm_delete.html",
+      "type": "file",
+      "summary": "Confirmation for deleting a point activity."
+    },
+    "file:templates/portal/committee_point_activity_form.html": {
+      "name": "committee_point_activity_form.html",
+      "type": "file",
+      "summary": "Form for creating or editing a point activity."
+    },
+    "file:templates/portal/committee_point_submission_confirm_delete.html": {
+      "name": "committee_point_submission_confirm_delete.html",
+      "type": "file",
+      "summary": "Confirmation for deleting a point submission."
+    },
+    "file:templates/portal/committee_point_submission_reject_form.html": {
+      "name": "committee_point_submission_reject_form.html",
+      "type": "file",
+      "summary": "Form for rejecting a point submission."
+    },
+    "file:templates/portal/committee_points.html": {
+      "name": "committee_points.html",
+      "type": "file",
+      "summary": "Points management dashboard for committee."
+    },
+    "file:templates/portal/committee_problem_report_confirm_delete.html": {
+      "name": "committee_problem_report_confirm_delete.html",
+      "type": "file",
+      "summary": "Confirmation for deleting a problem report."
+    },
+    "file:templates/portal/committee_problem_report_reject_form.html": {
+      "name": "committee_problem_report_reject_form.html",
+      "type": "file",
+      "summary": "Form for rejecting a problem report."
+    },
+    "file:templates/portal/committee_problem_reports_list.html": {
+      "name": "committee_problem_reports_list.html",
+      "type": "file",
+      "summary": "List view of problem reports for committee."
+    },
+    "file:templates/portal/committee_study_note_confirm_delete.html": {
+      "name": "committee_study_note_confirm_delete.html",
+      "type": "file",
+      "summary": "Confirmation for deleting a study note."
+    },
+    "file:templates/portal/committee_study_notes_list.html": {
+      "name": "committee_study_notes_list.html",
+      "type": "file",
+      "summary": "List view of study notes for committee."
+    },
+    "file:templates/portal/committee_volunteer_confirm_delete.html": {
+      "name": "committee_volunteer_confirm_delete.html",
+      "type": "file",
+      "summary": "Confirmation for deleting a volunteer link."
+    },
+    "file:templates/portal/committee_volunteer_form.html": {
+      "name": "committee_volunteer_form.html",
+      "type": "file",
+      "summary": "Form for creating or editing a volunteer link."
+    },
+    "file:templates/portal/committee_volunteer_list.html": {
+      "name": "committee_volunteer_list.html",
+      "type": "file",
+      "summary": "List view of volunteer links for committee."
+    },
+    "file:templates/portal/competitions.html": {
+      "name": "competitions.html",
+      "type": "file",
+      "summary": "Student-facing competitions list template."
+    },
+    "file:templates/portal/dashboard.html": {
+      "name": "dashboard.html",
+      "type": "file",
+      "summary": "Main portal landing page for students."
+    },
+    "file:templates/portal/news.html": {
+      "name": "news.html",
+      "type": "file",
+      "summary": "Student-facing news listing template."
+    },
+    "file:templates/portal/point_history.html": {
+      "name": "point_history.html",
+      "type": "file",
+      "summary": "Student's point submission history table."
+    },
+    "file:templates/portal/point_submit.html": {
+      "name": "point_submit.html",
+      "type": "file",
+      "summary": "Form for students to submit point activity proof."
+    },
+    "file:templates/portal/points.html": {
+      "name": "points.html",
+      "type": "file",
+      "summary": "Points hub showing student's total score and activities."
+    },
+    "file:templates/portal/problem_report_form.html": {
+      "name": "problem_report_form.html",
+      "type": "file",
+      "summary": "Form for students to submit a problem report."
+    },
+    "file:templates/portal/problem_reports.html": {
+      "name": "problem_reports.html",
+      "type": "file",
+      "summary": "Student-facing approved problem reports list."
+    },
+    "file:templates/portal/study_note_form.html": {
+      "name": "study_note_form.html",
+      "type": "file",
+      "summary": "Form for students to share a study note."
+    },
+    "file:templates/portal/study_notes.html": {
+      "name": "study_notes.html",
+      "type": "file",
+      "summary": "Student-facing approved study notes list."
+    },
+    "file:templates/portal/volunteer.html": {
+      "name": "volunteer.html",
+      "type": "file",
+      "summary": "Student-facing volunteer activities list."
+    },
+    "config:.claude/settings.json": {
+      "name": "settings.json",
+      "type": "config",
+      "summary": "Claude Code project settings."
+    },
+    "file:.understand-anything/.understandignore": {
+      "name": ".understandignore",
+      "type": "file",
+      "summary": "Ignore patterns for the scanner."
+    },
+    "file:accounts/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "Empty package init for accounts app."
+    },
+    "file:accounts/admin.py": {
+      "name": "admin.py",
+      "type": "file",
+      "summary": "Django admin for the custom User model."
+    },
+    "file:accounts/apps.py": {
+      "name": "apps.py",
+      "type": "file",
+      "summary": "Django AppConfig for the accounts app."
+    },
+    "file:accounts/migrations/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "Empty package init for accounts migrations."
+    },
+    "file:accounts/migrations/0001_initial.py": {
+      "name": "0001_initial.py",
+      "type": "file",
+      "summary": "Initial migration creating the User table."
+    },
+    "file:accounts/migrations/0002_add_grade_level.py": {
+      "name": "0002_add_grade_level.py",
+      "type": "file",
+      "summary": "Migration adding grade_level to User table."
+    },
+    "file:accounts/models.py": {
+      "name": "models.py",
+      "type": "file",
+      "summary": "Custom User model with email login, student/committee roles, grade level."
+    },
+    "file:accounts/tests.py": {
+      "name": "tests.py",
+      "type": "file",
+      "summary": "Test suite for accounts: registration, login, logout."
+    },
+    "file:app/globals.css": {
+      "name": "globals.css",
+      "type": "file",
+      "summary": "Global CSS for Next.js frontend with Tailwind imports."
+    },
+    "file:app/layout.tsx": {
+      "name": "layout.tsx",
+      "type": "file",
+      "summary": "Root Next.js layout with Navbar and global font."
+    },
+    "file:app/page.tsx": {
+      "name": "page.tsx",
+      "type": "file",
+      "summary": "Homepage component for the Next.js frontend."
+    },
+    "file:components/navbar.tsx": {
+      "name": "navbar.tsx",
+      "type": "file",
+      "summary": "Responsive navigation bar for the Next.js frontend."
+    },
+    "file:config/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "Empty package init for Django config."
+    },
+    "file:config/asgi.py": {
+      "name": "asgi.py",
+      "type": "file",
+      "summary": "ASGI entrypoint for Django."
+    },
+    "file:config/settings.py": {
+      "name": "settings.py",
+      "type": "file",
+      "summary": "Django project settings with installed apps, middleware, database, auth."
+    },
+    "file:config/urls.py": {
+      "name": "urls.py",
+      "type": "file",
+      "summary": "Root URL configuration routing dashboard, accounts, and portal."
+    },
+    "file:config/wsgi.py": {
+      "name": "wsgi.py",
+      "type": "file",
+      "summary": "WSGI entrypoint for Django."
+    },
+    "file:eslint.config.mjs": {
+      "name": "eslint.config.mjs",
+      "type": "file",
+      "summary": "ESLint configuration for Next.js TypeScript."
+    },
+    "file:manage.py": {
+      "name": "manage.py",
+      "type": "file",
+      "summary": "Django management script CLI entry point."
+    },
+    "file:next.config.ts": {
+      "name": "next.config.ts",
+      "type": "file",
+      "summary": "Next.js project configuration."
+    },
+    "file:portal/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "Empty package init for portal app."
+    },
+    "file:portal/apps.py": {
+      "name": "apps.py",
+      "type": "file",
+      "summary": "Django AppConfig for the portal app."
+    },
+    "file:portal/management/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "Empty package init for portal management."
+    },
+    "file:portal/management/commands/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "Empty package init for management commands."
+    },
+    "file:portal/management/commands/create_test_accounts.py": {
+      "name": "create_test_accounts.py",
+      "type": "file",
+      "summary": "Management command seeding test accounts."
+    },
+    "file:portal/migrations/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "Empty package init for portal migrations."
+    },
+    "file:portal/migrations/0001_initial.py": {
+      "name": "0001_initial.py",
+      "type": "file",
+      "summary": "Initial migration creating core portal models."
+    },
+    "file:portal/migrations/0002_competition_deadline_competition_is_published_and_more.py": {
+      "name": "0002_...",
+      "type": "file",
+      "summary": "Adds deadline and is_published fields."
+    },
+    "file:portal/migrations/0003_competition_drive_file_id_news_drive_file_id.py": {
+      "name": "0003_...",
+      "type": "file",
+      "summary": "Adds drive_file_id fields."
+    },
+    "file:portal/migrations/0004_replace_drive_with_local_imagefield.py": {
+      "name": "0004_...",
+      "type": "file",
+      "summary": "Replaces Drive fields with local ImageFields."
+    },
+    "file:portal/migrations/0005_add_point_models.py": {
+      "name": "0005_...",
+      "type": "file",
+      "summary": "Adds PointActivity, PointSubmission, UserPointProfile models."
+    },
+    "file:portal/migrations/0006_competition_is_archived_news_is_archived_and_more.py": {
+      "name": "0006_...",
+      "type": "file",
+      "summary": "Adds is_archived fields."
+    },
+    "file:portal/tests.py": {
+      "name": "tests.py",
+      "type": "file",
+      "summary": "Test suite for portal: image uploads, points workflow."
+    },
+    "file:postcss.config.mjs": {
+      "name": "postcss.config.mjs",
+      "type": "file",
+      "summary": "PostCSS configuration for the frontend build."
+    },
+    "file:static/css/styles.css": {
+      "name": "styles.css",
+      "type": "file",
+      "summary": "Project-wide stylesheet for all portal pages."
+    },
+    "file:templates/accounts/login.html": {
+      "name": "login.html",
+      "type": "file",
+      "summary": "Login page template extending base.html."
+    },
+    "file:templates/accounts/register.html": {
+      "name": "register.html",
+      "type": "file",
+      "summary": "Registration page template extending base.html."
+    },
+    "file:templates/base.html": {
+      "name": "base.html",
+      "type": "file",
+      "summary": "Shared base layout template that all portal pages extend."
+    }
+  },
+  "totalNodes": 91,
+  "totalEdges": 31
+}

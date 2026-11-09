@@ -1,0 +1,562 @@
+{
+  "nodes": [
+    {
+      "id": "file:portal/admin.py",
+      "type": "file",
+      "name": "admin.py",
+      "filePath": "portal/admin.py",
+      "summary": "Registers all eight portal models with Django's admin interface, configuring list display, search fields, and filters for News, VolunteerLink, Competition, StudyNote, ProblemReport, PointActivity, PointSubmission, and UserPointProfile.",
+      "tags": ["configuration", "admin", "service", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:portal/management/commands/archive_old_media.py",
+      "type": "file",
+      "name": "archive_old_media.py",
+      "filePath": "portal/management/commands/archive_old_media.py",
+      "summary": "Django management command that locates portal model records older than a configurable number of months, compresses their images using Pillow, and re-saves them to either local storage or Cloudinary to reduce storage footprint.",
+      "tags": ["utility", "script", "data-pipeline", "maintenance"],
+      "complexity": "moderate",
+      "languageNotes": "Uses a dual-backend save strategy: detects CLOUDINARY_STORAGE settings at runtime and routes to either _save_cloudinary or _save_local accordingly."
+    },
+    {
+      "id": "file:portal/management/commands/clear_mock_data.py",
+      "type": "file",
+      "name": "clear_mock_data.py",
+      "filePath": "portal/management/commands/clear_mock_data.py",
+      "summary": "Django management command that deletes all mock data records from every portal model, cleans up associated media files, and prompts for user confirmation before proceeding.",
+      "tags": ["utility", "script", "test", "maintenance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:portal/management/commands/seed_mock_data.py",
+      "type": "file",
+      "name": "seed_mock_data.py",
+      "filePath": "portal/management/commands/seed_mock_data.py",
+      "summary": "Django management command that seeds the database with representative sample records for all portal models including news, volunteer links, competitions, study notes, problem reports, and point activities, supporting development and QA workflows.",
+      "tags": ["utility", "script", "test", "data-pipeline"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:portal/models.py",
+      "type": "file",
+      "name": "models.py",
+      "filePath": "portal/models.py",
+      "summary": "Defines the eight core Django ORM models for the portal app — News, VolunteerLink, Competition, StudyNote, ProblemReport, PointActivity, PointSubmission, and UserPointProfile — with is_published/is_approved flags, foreign keys to the custom user model, and optional media fields.",
+      "tags": ["data-model", "service", "schema-definition"],
+      "complexity": "complex",
+      "languageNotes": "Follows a consistent Django model pattern: each committee-managed model uses is_published and a created_by FK, while student-submitted models use is_approved or a status choice field with a submitted_by FK."
+    },
+    {
+      "id": "class:portal/admin.py:NewsAdmin",
+      "type": "class",
+      "name": "NewsAdmin",
+      "filePath": "portal/admin.py",
+      "lineRange": [10, 21],
+      "summary": "Django ModelAdmin for the News model, configuring list display with title, author, published status, and creation date.",
+      "tags": ["admin", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/admin.py:VolunteerLinkAdmin",
+      "type": "class",
+      "name": "VolunteerLinkAdmin",
+      "filePath": "portal/admin.py",
+      "lineRange": [25, 36],
+      "summary": "Django ModelAdmin for the VolunteerLink model, configuring admin list display and search for volunteer opportunity entries.",
+      "tags": ["admin", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/admin.py:CompetitionAdmin",
+      "type": "class",
+      "name": "CompetitionAdmin",
+      "filePath": "portal/admin.py",
+      "lineRange": [40, 51],
+      "summary": "Django ModelAdmin for the Competition model, configuring admin list display and search for academic competition entries.",
+      "tags": ["admin", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/admin.py:StudyNoteAdmin",
+      "type": "class",
+      "name": "StudyNoteAdmin",
+      "filePath": "portal/admin.py",
+      "lineRange": [55, 67],
+      "summary": "Django ModelAdmin for the StudyNote model, configuring list display with approval status and file attachment visibility.",
+      "tags": ["admin", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/admin.py:ProblemReportAdmin",
+      "type": "class",
+      "name": "ProblemReportAdmin",
+      "filePath": "portal/admin.py",
+      "lineRange": [71, 82],
+      "summary": "Django ModelAdmin for the ProblemReport model, exposing status (pending/approved/rejected) and submitter information in the admin list view.",
+      "tags": ["admin", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/admin.py:PointActivityAdmin",
+      "type": "class",
+      "name": "PointActivityAdmin",
+      "filePath": "portal/admin.py",
+      "lineRange": [86, 96],
+      "summary": "Django ModelAdmin for the PointActivity model, configuring display of activity name and point value in the admin interface.",
+      "tags": ["admin", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/admin.py:PointSubmissionAdmin",
+      "type": "class",
+      "name": "PointSubmissionAdmin",
+      "filePath": "portal/admin.py",
+      "lineRange": [100, 110],
+      "summary": "Django ModelAdmin for the PointSubmission model, showing student, activity, status, and proof image in the admin list view.",
+      "tags": ["admin", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/admin.py:UserPointProfileAdmin",
+      "type": "class",
+      "name": "UserPointProfileAdmin",
+      "filePath": "portal/admin.py",
+      "lineRange": [114, 117],
+      "summary": "Django ModelAdmin for the UserPointProfile model, exposing the user and cumulative approved points total.",
+      "tags": ["admin", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/management/commands/archive_old_media.py:_subtract_months",
+      "type": "function",
+      "name": "_subtract_months",
+      "filePath": "portal/management/commands/archive_old_media.py",
+      "lineRange": [15, 20],
+      "summary": "Helper that subtracts a given number of months from a datetime, clamping to the last day of the target month using calendar.monthrange.",
+      "tags": ["utility", "date"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/management/commands/archive_old_media.py:_compress",
+      "type": "function",
+      "name": "_compress",
+      "filePath": "portal/management/commands/archive_old_media.py",
+      "lineRange": [23, 37],
+      "summary": "Opens an image field, converts it to RGB, resizes to a maximum dimension of 800px using Pillow, and returns JPEG-compressed bytes.",
+      "tags": ["utility", "image-processing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/management/commands/archive_old_media.py:_save_local",
+      "type": "function",
+      "name": "_save_local",
+      "filePath": "portal/management/commands/archive_old_media.py",
+      "lineRange": [40, 43],
+      "summary": "Writes compressed image bytes back to the file system at the image field's existing path.",
+      "tags": ["utility", "storage"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/management/commands/archive_old_media.py:_save_cloudinary",
+      "type": "function",
+      "name": "_save_cloudinary",
+      "filePath": "portal/management/commands/archive_old_media.py",
+      "lineRange": [46, 55],
+      "summary": "Uploads compressed image bytes to Cloudinary using the existing public ID and overwrites the stored URL on the image field.",
+      "tags": ["utility", "storage", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/management/commands/archive_old_media.py:Command",
+      "type": "class",
+      "name": "Command",
+      "filePath": "portal/management/commands/archive_old_media.py",
+      "lineRange": [58, 112],
+      "summary": "Django management command class implementing the archive_old_media command; accepts a --months argument, determines storage backend, iterates all portal models with image fields, and compresses qualifying old records.",
+      "tags": ["script", "service", "maintenance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:portal/management/commands/clear_mock_data.py:_delete_file",
+      "type": "function",
+      "name": "_delete_file",
+      "filePath": "portal/management/commands/clear_mock_data.py",
+      "lineRange": [9, 14],
+      "summary": "Deletes the physical file associated with a Django ImageField or FileField, including the storage backend record.",
+      "tags": ["utility", "storage"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/management/commands/clear_mock_data.py:Command",
+      "type": "class",
+      "name": "Command",
+      "filePath": "portal/management/commands/clear_mock_data.py",
+      "lineRange": [17, 67],
+      "summary": "Django management command class implementing clear_mock_data; counts existing records across all portal models, prompts for confirmation, deletes media files, and bulk-deletes all records in dependency order.",
+      "tags": ["script", "test", "maintenance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:portal/management/commands/seed_mock_data.py:_image_file",
+      "type": "function",
+      "name": "_image_file",
+      "filePath": "portal/management/commands/seed_mock_data.py",
+      "lineRange": [19, 24],
+      "summary": "Generates an in-memory PIL image of a specified color and returns it as a Django ContentFile suitable for assigning to an ImageField.",
+      "tags": ["utility", "test", "image-processing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/management/commands/seed_mock_data.py:Command",
+      "type": "class",
+      "name": "Command",
+      "filePath": "portal/management/commands/seed_mock_data.py",
+      "lineRange": [27, 200],
+      "summary": "Django management command class implementing seed_mock_data; uses get_or_create to idempotently insert sample records for all eight portal models, including generated placeholder images for media fields.",
+      "tags": ["script", "test", "data-pipeline"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:portal/models.py:News",
+      "type": "class",
+      "name": "News",
+      "filePath": "portal/models.py",
+      "lineRange": [6, 39],
+      "summary": "Django model for committee-published news articles with title, body, optional cover image, published flag, archive status, and a FK to the creating committee member.",
+      "tags": ["data-model", "content"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/models.py:VolunteerLink",
+      "type": "class",
+      "name": "VolunteerLink",
+      "filePath": "portal/models.py",
+      "lineRange": [42, 64],
+      "summary": "Django model for committee-published volunteer opportunity entries with title, external URL, description, open/close dates, and a published flag.",
+      "tags": ["data-model", "content"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/models.py:Competition",
+      "type": "class",
+      "name": "Competition",
+      "filePath": "portal/models.py",
+      "lineRange": [67, 91],
+      "summary": "Django model for academic competition listings with title, description, registration/deadline dates, target audience, optional image, and a published flag.",
+      "tags": ["data-model", "content"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/models.py:StudyNote",
+      "type": "class",
+      "name": "StudyNote",
+      "filePath": "portal/models.py",
+      "lineRange": [94, 131],
+      "summary": "Django model for student-uploaded study materials with file attachment, subject, grade level, optional credit attribution, and committee approval flag; provides a display_credit helper method.",
+      "tags": ["data-model", "content"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:portal/models.py:ProblemReport",
+      "type": "class",
+      "name": "ProblemReport",
+      "filePath": "portal/models.py",
+      "lineRange": [134, 166],
+      "summary": "Django model for student-submitted problem reports with description, category, a three-state status field (pending/approved/rejected), rejection reason, and committee reviewer tracking.",
+      "tags": ["data-model", "content"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:portal/models.py:PointActivity",
+      "type": "class",
+      "name": "PointActivity",
+      "filePath": "portal/models.py",
+      "lineRange": [169, 189],
+      "summary": "Django model defining a point-earning activity category with name, description, and an integer point value; created by committee members.",
+      "tags": ["data-model", "content"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/models.py:PointSubmission",
+      "type": "class",
+      "name": "PointSubmission",
+      "filePath": "portal/models.py",
+      "lineRange": [192, 236],
+      "summary": "Django model for student proof-of-participation submissions for a PointActivity, tracking proof image, three-state status, rejection reason, reviewer, and timestamps.",
+      "tags": ["data-model", "content"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:portal/models.py:UserPointProfile",
+      "type": "class",
+      "name": "UserPointProfile",
+      "filePath": "portal/models.py",
+      "lineRange": [239, 253],
+      "summary": "Django model storing each user's cumulative total of approved points, maintained as a denormalized counter updated when submissions are approved or rejected.",
+      "tags": ["data-model", "content"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:portal/admin.py",
+      "target": "file:portal/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:portal/management/commands/archive_old_media.py",
+      "target": "file:portal/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:portal/management/commands/clear_mock_data.py",
+      "target": "file:portal/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:portal/management/commands/seed_mock_data.py",
+      "target": "file:portal/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:portal/admin.py",
+      "target": "class:portal/admin.py:NewsAdmin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/admin.py",
+      "target": "class:portal/admin.py:VolunteerLinkAdmin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/admin.py",
+      "target": "class:portal/admin.py:CompetitionAdmin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/admin.py",
+      "target": "class:portal/admin.py:StudyNoteAdmin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/admin.py",
+      "target": "class:portal/admin.py:ProblemReportAdmin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/admin.py",
+      "target": "class:portal/admin.py:PointActivityAdmin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/admin.py",
+      "target": "class:portal/admin.py:PointSubmissionAdmin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/admin.py",
+      "target": "class:portal/admin.py:UserPointProfileAdmin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/management/commands/archive_old_media.py",
+      "target": "function:portal/management/commands/archive_old_media.py:_subtract_months",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/management/commands/archive_old_media.py",
+      "target": "function:portal/management/commands/archive_old_media.py:_compress",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/management/commands/archive_old_media.py",
+      "target": "function:portal/management/commands/archive_old_media.py:_save_local",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/management/commands/archive_old_media.py",
+      "target": "function:portal/management/commands/archive_old_media.py:_save_cloudinary",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/management/commands/archive_old_media.py",
+      "target": "class:portal/management/commands/archive_old_media.py:Command",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/management/commands/clear_mock_data.py",
+      "target": "function:portal/management/commands/clear_mock_data.py:_delete_file",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/management/commands/clear_mock_data.py",
+      "target": "class:portal/management/commands/clear_mock_data.py:Command",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/management/commands/seed_mock_data.py",
+      "target": "function:portal/management/commands/seed_mock_data.py:_image_file",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/management/commands/seed_mock_data.py",
+      "target": "class:portal/management/commands/seed_mock_data.py:Command",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:News",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:VolunteerLink",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:Competition",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:StudyNote",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:ProblemReport",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:PointActivity",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:PointSubmission",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:UserPointProfile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:News",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:VolunteerLink",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:Competition",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:StudyNote",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:ProblemReport",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:PointActivity",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:PointSubmission",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:UserPointProfile",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

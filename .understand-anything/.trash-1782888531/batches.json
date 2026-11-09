@@ -1,0 +1,1009 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "louvain",
+  "totalFiles": 91,
+  "totalBatches": 8,
+  "exportsByPath": {
+    ".understand-anything/.understandignore": [],
+    "accounts/__init__.py": [],
+    "accounts/admin.py": [
+      "UserAdmin"
+    ],
+    "accounts/apps.py": [
+      "AccountsConfig"
+    ],
+    "accounts/forms.py": [
+      "RegisterForm"
+    ],
+    "accounts/migrations/__init__.py": [],
+    "accounts/migrations/0001_initial.py": [
+      "Migration"
+    ],
+    "accounts/migrations/0002_add_grade_level.py": [
+      "Migration"
+    ],
+    "accounts/models.py": [
+      "UserManager",
+      "User"
+    ],
+    "accounts/tests.py": [
+      "_post_register",
+      "RegisterTest",
+      "LoginTest",
+      "LogoutTest"
+    ],
+    "accounts/urls.py": [],
+    "accounts/views.py": [
+      "register_view",
+      "login_view",
+      "logout_view"
+    ],
+    "app/layout.tsx": [
+      "RootLayout"
+    ],
+    "app/page.tsx": [
+      "Home"
+    ],
+    "components/navbar.tsx": [
+      "Navbar"
+    ],
+    "config/__init__.py": [],
+    "config/asgi.py": [],
+    "config/settings.py": [],
+    "config/urls.py": [
+      "root_redirect"
+    ],
+    "config/wsgi.py": [],
+    "eslint.config.mjs": [],
+    "manage.py": [
+      "main"
+    ],
+    "next.config.ts": [],
+    "portal/__init__.py": [],
+    "portal/admin.py": [
+      "NewsAdmin",
+      "VolunteerLinkAdmin",
+      "CompetitionAdmin",
+      "StudyNoteAdmin",
+      "ProblemReportAdmin",
+      "PointActivityAdmin",
+      "PointSubmissionAdmin",
+      "UserPointProfileAdmin"
+    ],
+    "portal/apps.py": [
+      "PortalConfig"
+    ],
+    "portal/forms.py": [
+      "validate_image_file",
+      "NewsForm",
+      "VolunteerLinkForm",
+      "CompetitionForm",
+      "StudyNoteForm",
+      "ProblemReportForm",
+      "PointActivityForm",
+      "PointSubmissionForm",
+      "PointRejectForm"
+    ],
+    "portal/management/__init__.py": [],
+    "portal/management/commands/__init__.py": [],
+    "portal/management/commands/archive_old_media.py": [
+      "_subtract_months",
+      "_compress",
+      "_save_local",
+      "_save_cloudinary",
+      "Command"
+    ],
+    "portal/management/commands/clear_mock_data.py": [
+      "_delete_file",
+      "Command"
+    ],
+    "portal/management/commands/create_test_accounts.py": [
+      "Command"
+    ],
+    "portal/management/commands/seed_mock_data.py": [
+      "_image_file",
+      "Command"
+    ],
+    "portal/migrations/__init__.py": [],
+    "portal/migrations/0001_initial.py": [
+      "Migration"
+    ],
+    "portal/migrations/0002_competition_deadline_competition_is_published_and_more.py": [
+      "Migration"
+    ],
+    "portal/migrations/0003_competition_drive_file_id_news_drive_file_id.py": [
+      "Migration"
+    ],
+    "portal/migrations/0004_replace_drive_with_local_imagefield.py": [
+      "Migration"
+    ],
+    "portal/migrations/0005_add_point_models.py": [
+      "Migration"
+    ],
+    "portal/migrations/0006_competition_is_archived_news_is_archived_and_more.py": [
+      "Migration"
+    ],
+    "portal/models.py": [
+      "News",
+      "VolunteerLink",
+      "Competition",
+      "StudyNote",
+      "ProblemReport",
+      "PointActivity",
+      "PointSubmission",
+      "UserPointProfile"
+    ],
+    "portal/tests.py": [
+      "_make_uploaded_file",
+      "ImageUploadTest",
+      "PointsTest",
+      "ImageValidationTest"
+    ],
+    "portal/urls.py": [],
+    "portal/views.py": [
+      "committee_required",
+      "dashboard",
+      "news",
+      "volunteer",
+      "competitions",
+      "study_notes",
+      "problem_reports",
+      "committee_dashboard",
+      "committee_news_list",
+      "committee_news_create",
+      "committee_news_edit",
+      "committee_news_delete",
+      "committee_volunteer_list",
+      "committee_volunteer_create",
+      "committee_volunteer_edit",
+      "committee_volunteer_delete",
+      "committee_competition_list",
+      "committee_competition_create",
+      "committee_competition_edit",
+      "committee_competition_delete",
+      "study_note_submit",
+      "committee_study_notes_list",
+      "committee_study_note_toggle_approval",
+      "committee_study_note_delete",
+      "problem_report_submit",
+      "committee_problem_reports_list",
+      "committee_problem_report_approve",
+      "committee_problem_report_reject",
+      "committee_problem_report_delete",
+      "points",
+      "point_submit",
+      "point_history",
+      "committee_points",
+      "committee_point_activity_create",
+      "committee_point_activity_edit",
+      "committee_point_activity_delete",
+      "committee_point_submission_approve",
+      "committee_point_submission_reject",
+      "committee_point_submission_delete"
+    ],
+    "postcss.config.mjs": []
+  },
+  "batches": [
+    {
+      "batchIndex": 1,
+      "files": [
+        {
+          "path": "portal/admin.py",
+          "language": "python",
+          "sizeLines": 117,
+          "fileCategory": "code"
+        },
+        {
+          "path": "portal/management/commands/archive_old_media.py",
+          "language": "python",
+          "sizeLines": 112,
+          "fileCategory": "code"
+        },
+        {
+          "path": "portal/management/commands/clear_mock_data.py",
+          "language": "python",
+          "sizeLines": 67,
+          "fileCategory": "code"
+        },
+        {
+          "path": "portal/management/commands/seed_mock_data.py",
+          "language": "python",
+          "sizeLines": 200,
+          "fileCategory": "code"
+        },
+        {
+          "path": "portal/models.py",
+          "language": "python",
+          "sizeLines": 253,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "portal/admin.py": [
+          "portal/models.py"
+        ],
+        "portal/management/commands/archive_old_media.py": [
+          "portal/models.py"
+        ],
+        "portal/management/commands/clear_mock_data.py": [
+          "portal/models.py"
+        ],
+        "portal/management/commands/seed_mock_data.py": [
+          "portal/models.py"
+        ],
+        "portal/models.py": []
+      },
+      "neighborMap": {
+        "portal/models.py": [
+          {
+            "path": "portal/forms.py",
+            "batchIndex": 3,
+            "symbols": [
+              "validate_image_file",
+              "NewsForm",
+              "VolunteerLinkForm",
+              "CompetitionForm",
+              "StudyNoteForm",
+              "ProblemReportForm",
+              "PointActivityForm",
+              "PointSubmissionForm",
+              "PointRejectForm"
+            ]
+          },
+          {
+            "path": "portal/views.py",
+            "batchIndex": 3,
+            "symbols": [
+              "committee_required",
+              "dashboard",
+              "news",
+              "volunteer",
+              "competitions",
+              "study_notes",
+              "problem_reports",
+              "committee_dashboard",
+              "committee_news_list",
+              "committee_news_create",
+              "committee_news_edit",
+              "committee_news_delete",
+              "committee_volunteer_list",
+              "committee_volunteer_create",
+              "committee_volunteer_edit",
+              "committee_volunteer_delete",
+              "committee_competition_list",
+              "committee_competition_create",
+              "committee_competition_edit",
+              "committee_competition_delete",
+              "study_note_submit",
+              "committee_study_notes_list",
+              "committee_study_note_toggle_approval",
+              "committee_study_note_delete",
+              "problem_report_submit",
+              "committee_problem_reports_list",
+              "committee_problem_report_approve",
+              "committee_problem_report_reject",
+              "committee_problem_report_delete",
+              "points",
+              "point_submit",
+              "point_history",
+              "committee_points",
+              "committee_point_activity_create",
+              "committee_point_activity_edit",
+              "committee_point_activity_delete",
+              "committee_point_submission_approve",
+              "committee_point_submission_reject",
+              "committee_point_submission_delete"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 2,
+      "files": [
+        {
+          "path": "accounts/forms.py",
+          "language": "python",
+          "sizeLines": 81,
+          "fileCategory": "code"
+        },
+        {
+          "path": "accounts/urls.py",
+          "language": "python",
+          "sizeLines": 11,
+          "fileCategory": "code"
+        },
+        {
+          "path": "accounts/views.py",
+          "language": "python",
+          "sizeLines": 63,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "accounts/forms.py": [],
+        "accounts/urls.py": [
+          "accounts/views.py"
+        ],
+        "accounts/views.py": [
+          "accounts/forms.py"
+        ]
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 3,
+      "files": [
+        {
+          "path": "portal/forms.py",
+          "language": "python",
+          "sizeLines": 224,
+          "fileCategory": "code"
+        },
+        {
+          "path": "portal/urls.py",
+          "language": "python",
+          "sizeLines": 63,
+          "fileCategory": "code"
+        },
+        {
+          "path": "portal/views.py",
+          "language": "python",
+          "sizeLines": 522,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "portal/forms.py": [
+          "portal/models.py"
+        ],
+        "portal/urls.py": [
+          "portal/views.py"
+        ],
+        "portal/views.py": [
+          "portal/forms.py",
+          "portal/models.py"
+        ]
+      },
+      "neighborMap": {
+        "portal/forms.py": [
+          {
+            "path": "portal/models.py",
+            "batchIndex": 1,
+            "symbols": [
+              "News",
+              "VolunteerLink",
+              "Competition",
+              "StudyNote",
+              "ProblemReport",
+              "PointActivity",
+              "PointSubmission",
+              "UserPointProfile"
+            ]
+          }
+        ],
+        "portal/views.py": [
+          {
+            "path": "portal/models.py",
+            "batchIndex": 1,
+            "symbols": [
+              "News",
+              "VolunteerLink",
+              "Competition",
+              "StudyNote",
+              "ProblemReport",
+              "PointActivity",
+              "PointSubmission",
+              "UserPointProfile"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 4,
+      "files": [
+        {
+          "path": ".env.example",
+          "language": "config",
+          "sizeLines": 22,
+          "fileCategory": "config"
+        },
+        {
+          "path": "AGENTS.md",
+          "language": "markdown",
+          "sizeLines": 5,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "CLAUDE.md",
+          "language": "markdown",
+          "sizeLines": 84,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "DEPLOY.md",
+          "language": "markdown",
+          "sizeLines": 188,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "FINAL_QA_CHECKLIST.md",
+          "language": "markdown",
+          "sizeLines": 158,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "README.md",
+          "language": "markdown",
+          "sizeLines": 329,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "package.json",
+          "language": "json",
+          "sizeLines": 26,
+          "fileCategory": "config"
+        },
+        {
+          "path": "requirements.txt",
+          "language": "txt",
+          "sizeLines": 7,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "tsconfig.json",
+          "language": "json",
+          "sizeLines": 34,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        ".env.example": [],
+        "AGENTS.md": [],
+        "CLAUDE.md": [],
+        "DEPLOY.md": [],
+        "FINAL_QA_CHECKLIST.md": [],
+        "README.md": [],
+        "package.json": [],
+        "requirements.txt": [],
+        "tsconfig.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 5,
+      "files": [
+        {
+          "path": "templates/portal/committee.html",
+          "language": "html",
+          "sizeLines": 185,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/committee_competition_confirm_delete.html",
+          "language": "html",
+          "sizeLines": 51,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/committee_competition_form.html",
+          "language": "html",
+          "sizeLines": 107,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/committee_competition_list.html",
+          "language": "html",
+          "sizeLines": 71,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/committee_news_confirm_delete.html",
+          "language": "html",
+          "sizeLines": 52,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/committee_news_form.html",
+          "language": "html",
+          "sizeLines": 86,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/committee_news_list.html",
+          "language": "html",
+          "sizeLines": 76,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/committee_point_activity_confirm_delete.html",
+          "language": "html",
+          "sizeLines": 30,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/committee_point_activity_form.html",
+          "language": "html",
+          "sizeLines": 69,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/committee_point_submission_confirm_delete.html",
+          "language": "html",
+          "sizeLines": 37,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/committee_point_submission_reject_form.html",
+          "language": "html",
+          "sizeLines": 50,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/committee_points.html",
+          "language": "html",
+          "sizeLines": 150,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/committee_problem_report_confirm_delete.html",
+          "language": "html",
+          "sizeLines": 51,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/committee_problem_report_reject_form.html",
+          "language": "html",
+          "sizeLines": 49,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/committee_problem_reports_list.html",
+          "language": "html",
+          "sizeLines": 105,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/committee_study_note_confirm_delete.html",
+          "language": "html",
+          "sizeLines": 44,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/committee_study_notes_list.html",
+          "language": "html",
+          "sizeLines": 79,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/committee_volunteer_confirm_delete.html",
+          "language": "html",
+          "sizeLines": 51,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/committee_volunteer_form.html",
+          "language": "html",
+          "sizeLines": 90,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/committee_volunteer_list.html",
+          "language": "html",
+          "sizeLines": 71,
+          "fileCategory": "markup"
+        }
+      ],
+      "batchImportData": {
+        "templates/portal/committee.html": [],
+        "templates/portal/committee_competition_confirm_delete.html": [],
+        "templates/portal/committee_competition_form.html": [],
+        "templates/portal/committee_competition_list.html": [],
+        "templates/portal/committee_news_confirm_delete.html": [],
+        "templates/portal/committee_news_form.html": [],
+        "templates/portal/committee_news_list.html": [],
+        "templates/portal/committee_point_activity_confirm_delete.html": [],
+        "templates/portal/committee_point_activity_form.html": [],
+        "templates/portal/committee_point_submission_confirm_delete.html": [],
+        "templates/portal/committee_point_submission_reject_form.html": [],
+        "templates/portal/committee_points.html": [],
+        "templates/portal/committee_problem_report_confirm_delete.html": [],
+        "templates/portal/committee_problem_report_reject_form.html": [],
+        "templates/portal/committee_problem_reports_list.html": [],
+        "templates/portal/committee_study_note_confirm_delete.html": [],
+        "templates/portal/committee_study_notes_list.html": [],
+        "templates/portal/committee_volunteer_confirm_delete.html": [],
+        "templates/portal/committee_volunteer_form.html": [],
+        "templates/portal/committee_volunteer_list.html": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 6,
+      "files": [
+        {
+          "path": "templates/portal/competitions.html",
+          "language": "html",
+          "sizeLines": 60,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/dashboard.html",
+          "language": "html",
+          "sizeLines": 125,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/news.html",
+          "language": "html",
+          "sizeLines": 54,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/point_history.html",
+          "language": "html",
+          "sizeLines": 61,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/point_submit.html",
+          "language": "html",
+          "sizeLines": 58,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/points.html",
+          "language": "html",
+          "sizeLines": 77,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/problem_report_form.html",
+          "language": "html",
+          "sizeLines": 64,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/problem_reports.html",
+          "language": "html",
+          "sizeLines": 55,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/study_note_form.html",
+          "language": "html",
+          "sizeLines": 92,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/study_notes.html",
+          "language": "html",
+          "sizeLines": 55,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/portal/volunteer.html",
+          "language": "html",
+          "sizeLines": 45,
+          "fileCategory": "markup"
+        }
+      ],
+      "batchImportData": {
+        "templates/portal/competitions.html": [],
+        "templates/portal/dashboard.html": [],
+        "templates/portal/news.html": [],
+        "templates/portal/point_history.html": [],
+        "templates/portal/point_submit.html": [],
+        "templates/portal/points.html": [],
+        "templates/portal/problem_report_form.html": [],
+        "templates/portal/problem_reports.html": [],
+        "templates/portal/study_note_form.html": [],
+        "templates/portal/study_notes.html": [],
+        "templates/portal/volunteer.html": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 7,
+      "files": [
+        {
+          "path": ".claude/settings.json",
+          "language": "json",
+          "sizeLines": 5,
+          "fileCategory": "config"
+        },
+        {
+          "path": ".understand-anything/.understandignore",
+          "language": "unknown",
+          "sizeLines": 47,
+          "fileCategory": "code"
+        },
+        {
+          "path": "accounts/__init__.py",
+          "language": "python",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "accounts/admin.py",
+          "language": "python",
+          "sizeLines": 24,
+          "fileCategory": "code"
+        },
+        {
+          "path": "accounts/apps.py",
+          "language": "python",
+          "sizeLines": 6,
+          "fileCategory": "code"
+        },
+        {
+          "path": "accounts/migrations/__init__.py",
+          "language": "python",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "accounts/migrations/0001_initial.py",
+          "language": "python",
+          "sizeLines": 42,
+          "fileCategory": "code"
+        },
+        {
+          "path": "accounts/migrations/0002_add_grade_level.py",
+          "language": "python",
+          "sizeLines": 18,
+          "fileCategory": "code"
+        },
+        {
+          "path": "accounts/models.py",
+          "language": "python",
+          "sizeLines": 48,
+          "fileCategory": "code"
+        },
+        {
+          "path": "accounts/tests.py",
+          "language": "python",
+          "sizeLines": 155,
+          "fileCategory": "code"
+        },
+        {
+          "path": "app/globals.css",
+          "language": "css",
+          "sizeLines": 26,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "app/layout.tsx",
+          "language": "typescript",
+          "sizeLines": 33,
+          "fileCategory": "code"
+        },
+        {
+          "path": "app/page.tsx",
+          "language": "typescript",
+          "sizeLines": 65,
+          "fileCategory": "code"
+        },
+        {
+          "path": "components/navbar.tsx",
+          "language": "typescript",
+          "sizeLines": 137,
+          "fileCategory": "code"
+        },
+        {
+          "path": "config/__init__.py",
+          "language": "python",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "config/asgi.py",
+          "language": "python",
+          "sizeLines": 16,
+          "fileCategory": "code"
+        },
+        {
+          "path": "config/settings.py",
+          "language": "python",
+          "sizeLines": 130,
+          "fileCategory": "code"
+        },
+        {
+          "path": "config/urls.py",
+          "language": "python",
+          "sizeLines": 22,
+          "fileCategory": "code"
+        },
+        {
+          "path": "config/wsgi.py",
+          "language": "python",
+          "sizeLines": 16,
+          "fileCategory": "code"
+        },
+        {
+          "path": "eslint.config.mjs",
+          "language": "javascript",
+          "sizeLines": 18,
+          "fileCategory": "code"
+        },
+        {
+          "path": "manage.py",
+          "language": "python",
+          "sizeLines": 22,
+          "fileCategory": "code"
+        },
+        {
+          "path": "next.config.ts",
+          "language": "typescript",
+          "sizeLines": 7,
+          "fileCategory": "code"
+        },
+        {
+          "path": "portal/__init__.py",
+          "language": "python",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "portal/apps.py",
+          "language": "python",
+          "sizeLines": 6,
+          "fileCategory": "code"
+        },
+        {
+          "path": "portal/management/__init__.py",
+          "language": "python",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        ".claude/settings.json": [],
+        ".understand-anything/.understandignore": [],
+        "accounts/__init__.py": [],
+        "accounts/admin.py": [
+          "accounts/models.py"
+        ],
+        "accounts/apps.py": [],
+        "accounts/migrations/__init__.py": [],
+        "accounts/migrations/0001_initial.py": [],
+        "accounts/migrations/0002_add_grade_level.py": [],
+        "accounts/models.py": [],
+        "accounts/tests.py": [],
+        "app/globals.css": [],
+        "app/layout.tsx": [
+          "app/globals.css",
+          "components/navbar.tsx"
+        ],
+        "app/page.tsx": [],
+        "components/navbar.tsx": [],
+        "config/__init__.py": [],
+        "config/asgi.py": [],
+        "config/settings.py": [],
+        "config/urls.py": [],
+        "config/wsgi.py": [],
+        "eslint.config.mjs": [],
+        "manage.py": [],
+        "next.config.ts": [],
+        "portal/__init__.py": [],
+        "portal/apps.py": [],
+        "portal/management/__init__.py": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 8,
+      "files": [
+        {
+          "path": "portal/management/commands/__init__.py",
+          "language": "python",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "portal/management/commands/create_test_accounts.py",
+          "language": "python",
+          "sizeLines": 50,
+          "fileCategory": "code"
+        },
+        {
+          "path": "portal/migrations/__init__.py",
+          "language": "python",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "portal/migrations/0001_initial.py",
+          "language": "python",
+          "sizeLines": 101,
+          "fileCategory": "code"
+        },
+        {
+          "path": "portal/migrations/0002_competition_deadline_competition_is_published_and_more.py",
+          "language": "python",
+          "sizeLines": 146,
+          "fileCategory": "code"
+        },
+        {
+          "path": "portal/migrations/0003_competition_drive_file_id_news_drive_file_id.py",
+          "language": "python",
+          "sizeLines": 23,
+          "fileCategory": "code"
+        },
+        {
+          "path": "portal/migrations/0004_replace_drive_with_local_imagefield.py",
+          "language": "python",
+          "sizeLines": 39,
+          "fileCategory": "code"
+        },
+        {
+          "path": "portal/migrations/0005_add_point_models.py",
+          "language": "python",
+          "sizeLines": 67,
+          "fileCategory": "code"
+        },
+        {
+          "path": "portal/migrations/0006_competition_is_archived_news_is_archived_and_more.py",
+          "language": "python",
+          "sizeLines": 28,
+          "fileCategory": "code"
+        },
+        {
+          "path": "portal/tests.py",
+          "language": "python",
+          "sizeLines": 336,
+          "fileCategory": "code"
+        },
+        {
+          "path": "postcss.config.mjs",
+          "language": "javascript",
+          "sizeLines": 7,
+          "fileCategory": "code"
+        },
+        {
+          "path": "static/css/styles.css",
+          "language": "css",
+          "sizeLines": 237,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/accounts/login.html",
+          "language": "html",
+          "sizeLines": 55,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/accounts/register.html",
+          "language": "html",
+          "sizeLines": 79,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "templates/base.html",
+          "language": "html",
+          "sizeLines": 122,
+          "fileCategory": "markup"
+        }
+      ],
+      "batchImportData": {
+        "portal/management/commands/__init__.py": [],
+        "portal/management/commands/create_test_accounts.py": [],
+        "portal/migrations/__init__.py": [],
+        "portal/migrations/0001_initial.py": [],
+        "portal/migrations/0002_competition_deadline_competition_is_published_and_more.py": [],
+        "portal/migrations/0003_competition_drive_file_id_news_drive_file_id.py": [],
+        "portal/migrations/0004_replace_drive_with_local_imagefield.py": [],
+        "portal/migrations/0005_add_point_models.py": [],
+        "portal/migrations/0006_competition_is_archived_news_is_archived_and_more.py": [],
+        "portal/tests.py": [],
+        "postcss.config.mjs": [],
+        "static/css/styles.css": [],
+        "templates/accounts/login.html": [],
+        "templates/accounts/register.html": [],
+        "templates/base.html": []
+      },
+      "neighborMap": {}
+    }
+  ]
+}

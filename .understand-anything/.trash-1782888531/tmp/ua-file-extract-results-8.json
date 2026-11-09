@@ -1,0 +1,1213 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 15,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "portal/management/commands/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "portal/management/commands/create_test_accounts.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 50,
+      "nonEmptyLines": 43,
+      "classes": [
+        {
+          "name": "Command",
+          "startLine": 12,
+          "endLine": 50,
+          "methods": [
+            "handle"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Command",
+          "line": 12,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "handle",
+          "callee": "User.objects.get_or_create",
+          "lineNumber": 16
+        },
+        {
+          "caller": "handle",
+          "callee": "student.set_password",
+          "lineNumber": 25
+        },
+        {
+          "caller": "handle",
+          "callee": "student.save",
+          "lineNumber": 26
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 27
+        },
+        {
+          "caller": "handle",
+          "callee": "self.style.SUCCESS",
+          "lineNumber": 27
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 29
+        },
+        {
+          "caller": "handle",
+          "callee": "User.objects.get_or_create",
+          "lineNumber": 31
+        },
+        {
+          "caller": "handle",
+          "callee": "committee.set_password",
+          "lineNumber": 40
+        },
+        {
+          "caller": "handle",
+          "callee": "committee.save",
+          "lineNumber": 41
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 42
+        },
+        {
+          "caller": "handle",
+          "callee": "self.style.SUCCESS",
+          "lineNumber": 42
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 44
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 46
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 47
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 48
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 49
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 50
+        },
+        {
+          "caller": "handle",
+          "callee": "self.style.WARNING",
+          "lineNumber": 50
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "portal/migrations/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "portal/migrations/0001_initial.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 101,
+      "nonEmptyLines": 95,
+      "classes": [
+        {
+          "name": "Migration",
+          "startLine": 8,
+          "endLine": 101,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Migration",
+          "line": 8,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "portal/migrations/0002_competition_deadline_competition_is_published_and_more.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 146,
+      "nonEmptyLines": 141,
+      "classes": [
+        {
+          "name": "Migration",
+          "startLine": 8,
+          "endLine": 146,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Migration",
+          "line": 8,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "portal/migrations/0003_competition_drive_file_id_news_drive_file_id.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 23,
+      "nonEmptyLines": 18,
+      "classes": [
+        {
+          "name": "Migration",
+          "startLine": 6,
+          "endLine": 23,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Migration",
+          "line": 6,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "portal/migrations/0004_replace_drive_with_local_imagefield.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 39,
+      "nonEmptyLines": 34,
+      "classes": [
+        {
+          "name": "Migration",
+          "startLine": 6,
+          "endLine": 39,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Migration",
+          "line": 6,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "portal/migrations/0005_add_point_models.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 67,
+      "nonEmptyLines": 62,
+      "classes": [
+        {
+          "name": "Migration",
+          "startLine": 8,
+          "endLine": 67,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Migration",
+          "line": 8,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "portal/migrations/0006_competition_is_archived_news_is_archived_and_more.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 28,
+      "nonEmptyLines": 23,
+      "classes": [
+        {
+          "name": "Migration",
+          "startLine": 6,
+          "endLine": 28,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Migration",
+          "line": 6,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "portal/tests.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 336,
+      "nonEmptyLines": 292,
+      "functions": [
+        {
+          "name": "_make_uploaded_file",
+          "startLine": 10,
+          "endLine": 16,
+          "params": [
+            "name",
+            "content_type"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "ImageUploadTest",
+          "startLine": 19,
+          "endLine": 158,
+          "methods": [
+            "setUp",
+            "test_news_create_with_image_saves",
+            "test_news_create_without_image_saves",
+            "test_news_edit_with_image_replaces",
+            "test_competition_create_with_image_saves",
+            "test_competition_create_without_image_saves",
+            "test_student_cannot_create_news",
+            "test_student_cannot_create_competition",
+            "test_news_create_form_renders",
+            "test_competition_create_form_renders"
+          ],
+          "properties": []
+        },
+        {
+          "name": "PointsTest",
+          "startLine": 161,
+          "endLine": 289,
+          "methods": [
+            "setUp",
+            "_submit",
+            "test_points_page_renders",
+            "test_point_history_renders",
+            "test_student_cannot_access_committee_points",
+            "test_submit_proof_creates_pending",
+            "test_approve_adds_points",
+            "test_approve_twice_does_not_double_add",
+            "test_reject_approved_submission_blocked",
+            "test_reject_pending_changes_status",
+            "test_rejected_submission_allows_resubmit"
+          ],
+          "properties": []
+        },
+        {
+          "name": "ImageValidationTest",
+          "startLine": 292,
+          "endLine": 336,
+          "methods": [
+            "setUp",
+            "test_news_rejects_wrong_content_type",
+            "test_competition_rejects_oversized_image"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_make_uploaded_file",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "ImageUploadTest",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "PointsTest",
+          "line": 161,
+          "isDefault": false
+        },
+        {
+          "name": "ImageValidationTest",
+          "line": 292,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_make_uploaded_file",
+          "callee": "BytesIO",
+          "lineNumber": 13
+        },
+        {
+          "caller": "_make_uploaded_file",
+          "callee": "Image.new('RGB', (1, 1), color=(200, 50, 50)).save",
+          "lineNumber": 15
+        },
+        {
+          "caller": "_make_uploaded_file",
+          "callee": "Image.new",
+          "lineNumber": 15
+        },
+        {
+          "caller": "_make_uploaded_file",
+          "callee": "SimpleUploadedFile",
+          "lineNumber": 16
+        },
+        {
+          "caller": "_make_uploaded_file",
+          "callee": "buf.getvalue",
+          "lineNumber": 16
+        },
+        {
+          "caller": "setUp",
+          "callee": "User.objects.create_user",
+          "lineNumber": 26
+        },
+        {
+          "caller": "setUp",
+          "callee": "User.objects.create_user",
+          "lineNumber": 32
+        },
+        {
+          "caller": "setUp",
+          "callee": "Client",
+          "lineNumber": 38
+        },
+        {
+          "caller": "setUp",
+          "callee": "self.c_client.login",
+          "lineNumber": 39
+        },
+        {
+          "caller": "setUp",
+          "callee": "Client",
+          "lineNumber": 40
+        },
+        {
+          "caller": "setUp",
+          "callee": "self.s_client.login",
+          "lineNumber": 41
+        },
+        {
+          "caller": "test_news_create_with_image_saves",
+          "callee": "self.c_client.post",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_news_create_with_image_saves",
+          "callee": "reverse",
+          "lineNumber": 47
+        },
+        {
+          "caller": "test_news_create_with_image_saves",
+          "callee": "_make_uploaded_file",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_news_create_with_image_saves",
+          "callee": "self.assertRedirects",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_news_create_with_image_saves",
+          "callee": "reverse",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_news_create_with_image_saves",
+          "callee": "News.objects.get",
+          "lineNumber": 58
+        },
+        {
+          "caller": "test_news_create_with_image_saves",
+          "callee": "self.assertTrue",
+          "lineNumber": 59
+        },
+        {
+          "caller": "test_news_create_with_image_saves",
+          "callee": "bool",
+          "lineNumber": 59
+        },
+        {
+          "caller": "test_news_create_without_image_saves",
+          "callee": "self.c_client.post",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_news_create_without_image_saves",
+          "callee": "reverse",
+          "lineNumber": 63
+        },
+        {
+          "caller": "test_news_create_without_image_saves",
+          "callee": "self.assertRedirects",
+          "lineNumber": 71
+        },
+        {
+          "caller": "test_news_create_without_image_saves",
+          "callee": "reverse",
+          "lineNumber": 71
+        },
+        {
+          "caller": "test_news_create_without_image_saves",
+          "callee": "News.objects.get",
+          "lineNumber": 73
+        },
+        {
+          "caller": "test_news_create_without_image_saves",
+          "callee": "self.assertFalse",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_news_create_without_image_saves",
+          "callee": "bool",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_news_edit_with_image_replaces",
+          "callee": "News.objects.create",
+          "lineNumber": 80
+        },
+        {
+          "caller": "test_news_edit_with_image_replaces",
+          "callee": "self.c_client.post",
+          "lineNumber": 84
+        },
+        {
+          "caller": "test_news_edit_with_image_replaces",
+          "callee": "reverse",
+          "lineNumber": 85
+        },
+        {
+          "caller": "test_news_edit_with_image_replaces",
+          "callee": "_make_uploaded_file",
+          "lineNumber": 91
+        },
+        {
+          "caller": "test_news_edit_with_image_replaces",
+          "callee": "self.assertRedirects",
+          "lineNumber": 94
+        },
+        {
+          "caller": "test_news_edit_with_image_replaces",
+          "callee": "reverse",
+          "lineNumber": 94
+        },
+        {
+          "caller": "test_news_edit_with_image_replaces",
+          "callee": "item.refresh_from_db",
+          "lineNumber": 95
+        },
+        {
+          "caller": "test_news_edit_with_image_replaces",
+          "callee": "self.assertTrue",
+          "lineNumber": 96
+        },
+        {
+          "caller": "test_news_edit_with_image_replaces",
+          "callee": "bool",
+          "lineNumber": 96
+        },
+        {
+          "caller": "test_competition_create_with_image_saves",
+          "callee": "self.c_client.post",
+          "lineNumber": 101
+        },
+        {
+          "caller": "test_competition_create_with_image_saves",
+          "callee": "reverse",
+          "lineNumber": 102
+        },
+        {
+          "caller": "test_competition_create_with_image_saves",
+          "callee": "_make_uploaded_file",
+          "lineNumber": 107
+        },
+        {
+          "caller": "test_competition_create_with_image_saves",
+          "callee": "self.assertRedirects",
+          "lineNumber": 110
+        },
+        {
+          "caller": "test_competition_create_with_image_saves",
+          "callee": "reverse",
+          "lineNumber": 110
+        },
+        {
+          "caller": "test_competition_create_with_image_saves",
+          "callee": "Competition.objects.get",
+          "lineNumber": 112
+        },
+        {
+          "caller": "test_competition_create_with_image_saves",
+          "callee": "self.assertTrue",
+          "lineNumber": 113
+        },
+        {
+          "caller": "test_competition_create_with_image_saves",
+          "callee": "bool",
+          "lineNumber": 113
+        },
+        {
+          "caller": "test_competition_create_without_image_saves",
+          "callee": "self.c_client.post",
+          "lineNumber": 116
+        },
+        {
+          "caller": "test_competition_create_without_image_saves",
+          "callee": "reverse",
+          "lineNumber": 117
+        },
+        {
+          "caller": "test_competition_create_without_image_saves",
+          "callee": "self.assertRedirects",
+          "lineNumber": 124
+        },
+        {
+          "caller": "test_competition_create_without_image_saves",
+          "callee": "reverse",
+          "lineNumber": 124
+        },
+        {
+          "caller": "test_competition_create_without_image_saves",
+          "callee": "self.assertTrue",
+          "lineNumber": 126
+        },
+        {
+          "caller": "test_competition_create_without_image_saves",
+          "callee": "Competition.objects.filter(title='การแข่งขันไม่มีรูป').exists",
+          "lineNumber": 126
+        },
+        {
+          "caller": "test_competition_create_without_image_saves",
+          "callee": "Competition.objects.filter",
+          "lineNumber": 126
+        },
+        {
+          "caller": "test_student_cannot_create_news",
+          "callee": "self.s_client.post",
+          "lineNumber": 131
+        },
+        {
+          "caller": "test_student_cannot_create_news",
+          "callee": "reverse",
+          "lineNumber": 132
+        },
+        {
+          "caller": "test_student_cannot_create_news",
+          "callee": "self.assertIn",
+          "lineNumber": 135
+        },
+        {
+          "caller": "test_student_cannot_create_news",
+          "callee": "self.assertFalse",
+          "lineNumber": 137
+        },
+        {
+          "caller": "test_student_cannot_create_news",
+          "callee": "News.objects.filter(title='hack').exists",
+          "lineNumber": 137
+        },
+        {
+          "caller": "test_student_cannot_create_news",
+          "callee": "News.objects.filter",
+          "lineNumber": 137
+        },
+        {
+          "caller": "test_student_cannot_create_competition",
+          "callee": "self.s_client.post",
+          "lineNumber": 140
+        },
+        {
+          "caller": "test_student_cannot_create_competition",
+          "callee": "reverse",
+          "lineNumber": 141
+        },
+        {
+          "caller": "test_student_cannot_create_competition",
+          "callee": "self.assertIn",
+          "lineNumber": 144
+        },
+        {
+          "caller": "test_student_cannot_create_competition",
+          "callee": "self.assertFalse",
+          "lineNumber": 146
+        },
+        {
+          "caller": "test_student_cannot_create_competition",
+          "callee": "Competition.objects.filter(title='hack').exists",
+          "lineNumber": 146
+        },
+        {
+          "caller": "test_student_cannot_create_competition",
+          "callee": "Competition.objects.filter",
+          "lineNumber": 146
+        },
+        {
+          "caller": "test_news_create_form_renders",
+          "callee": "self.assertEqual",
+          "lineNumber": 151
+        },
+        {
+          "caller": "test_news_create_form_renders",
+          "callee": "self.c_client.get",
+          "lineNumber": 152
+        },
+        {
+          "caller": "test_news_create_form_renders",
+          "callee": "reverse",
+          "lineNumber": 152
+        },
+        {
+          "caller": "test_competition_create_form_renders",
+          "callee": "self.assertEqual",
+          "lineNumber": 156
+        },
+        {
+          "caller": "test_competition_create_form_renders",
+          "callee": "self.c_client.get",
+          "lineNumber": 157
+        },
+        {
+          "caller": "test_competition_create_form_renders",
+          "callee": "reverse",
+          "lineNumber": 157
+        },
+        {
+          "caller": "setUp",
+          "callee": "User.objects.create_user",
+          "lineNumber": 165
+        },
+        {
+          "caller": "setUp",
+          "callee": "User.objects.create_user",
+          "lineNumber": 171
+        },
+        {
+          "caller": "setUp",
+          "callee": "Client",
+          "lineNumber": 177
+        },
+        {
+          "caller": "setUp",
+          "callee": "self.c_client.login",
+          "lineNumber": 178
+        },
+        {
+          "caller": "setUp",
+          "callee": "Client",
+          "lineNumber": 179
+        },
+        {
+          "caller": "setUp",
+          "callee": "self.s_client.login",
+          "lineNumber": 180
+        },
+        {
+          "caller": "setUp",
+          "callee": "PointActivity.objects.create",
+          "lineNumber": 183
+        },
+        {
+          "caller": "_submit",
+          "callee": "PointSubmission.objects.create",
+          "lineNumber": 192
+        },
+        {
+          "caller": "_submit",
+          "callee": "_make_uploaded_file",
+          "lineNumber": 195
+        },
+        {
+          "caller": "test_points_page_renders",
+          "callee": "self.assertEqual",
+          "lineNumber": 202
+        },
+        {
+          "caller": "test_points_page_renders",
+          "callee": "self.s_client.get",
+          "lineNumber": 202
+        },
+        {
+          "caller": "test_points_page_renders",
+          "callee": "reverse",
+          "lineNumber": 202
+        },
+        {
+          "caller": "test_point_history_renders",
+          "callee": "self.assertEqual",
+          "lineNumber": 205
+        },
+        {
+          "caller": "test_point_history_renders",
+          "callee": "self.s_client.get",
+          "lineNumber": 205
+        },
+        {
+          "caller": "test_point_history_renders",
+          "callee": "reverse",
+          "lineNumber": 205
+        },
+        {
+          "caller": "test_student_cannot_access_committee_points",
+          "callee": "self.s_client.get",
+          "lineNumber": 208
+        },
+        {
+          "caller": "test_student_cannot_access_committee_points",
+          "callee": "reverse",
+          "lineNumber": 208
+        },
+        {
+          "caller": "test_student_cannot_access_committee_points",
+          "callee": "self.assertIn",
+          "lineNumber": 209
+        },
+        {
+          "caller": "test_submit_proof_creates_pending",
+          "callee": "self.s_client.post",
+          "lineNumber": 215
+        },
+        {
+          "caller": "test_submit_proof_creates_pending",
+          "callee": "reverse",
+          "lineNumber": 216
+        },
+        {
+          "caller": "test_submit_proof_creates_pending",
+          "callee": "_make_uploaded_file",
+          "lineNumber": 219
+        },
+        {
+          "caller": "test_submit_proof_creates_pending",
+          "callee": "self.assertRedirects",
+          "lineNumber": 222
+        },
+        {
+          "caller": "test_submit_proof_creates_pending",
+          "callee": "reverse",
+          "lineNumber": 222
+        },
+        {
+          "caller": "test_submit_proof_creates_pending",
+          "callee": "PointSubmission.objects.get",
+          "lineNumber": 223
+        },
+        {
+          "caller": "test_submit_proof_creates_pending",
+          "callee": "self.assertEqual",
+          "lineNumber": 224
+        },
+        {
+          "caller": "test_approve_adds_points",
+          "callee": "self._submit",
+          "lineNumber": 230
+        },
+        {
+          "caller": "test_approve_adds_points",
+          "callee": "self.c_client.post",
+          "lineNumber": 231
+        },
+        {
+          "caller": "test_approve_adds_points",
+          "callee": "reverse",
+          "lineNumber": 231
+        },
+        {
+          "caller": "test_approve_adds_points",
+          "callee": "UserPointProfile.objects.get",
+          "lineNumber": 232
+        },
+        {
+          "caller": "test_approve_adds_points",
+          "callee": "self.assertEqual",
+          "lineNumber": 233
+        },
+        {
+          "caller": "test_approve_adds_points",
+          "callee": "sub.refresh_from_db",
+          "lineNumber": 234
+        },
+        {
+          "caller": "test_approve_adds_points",
+          "callee": "self.assertEqual",
+          "lineNumber": 235
+        },
+        {
+          "caller": "test_approve_twice_does_not_double_add",
+          "callee": "self._submit",
+          "lineNumber": 239
+        },
+        {
+          "caller": "test_approve_twice_does_not_double_add",
+          "callee": "self.c_client.post",
+          "lineNumber": 240
+        },
+        {
+          "caller": "test_approve_twice_does_not_double_add",
+          "callee": "reverse",
+          "lineNumber": 240
+        },
+        {
+          "caller": "test_approve_twice_does_not_double_add",
+          "callee": "self.c_client.post",
+          "lineNumber": 241
+        },
+        {
+          "caller": "test_approve_twice_does_not_double_add",
+          "callee": "reverse",
+          "lineNumber": 241
+        },
+        {
+          "caller": "test_approve_twice_does_not_double_add",
+          "callee": "UserPointProfile.objects.get",
+          "lineNumber": 242
+        },
+        {
+          "caller": "test_approve_twice_does_not_double_add",
+          "callee": "self.assertEqual",
+          "lineNumber": 243
+        },
+        {
+          "caller": "test_reject_approved_submission_blocked",
+          "callee": "self._submit",
+          "lineNumber": 249
+        },
+        {
+          "caller": "test_reject_approved_submission_blocked",
+          "callee": "sub.save",
+          "lineNumber": 251
+        },
+        {
+          "caller": "test_reject_approved_submission_blocked",
+          "callee": "self.c_client.post",
+          "lineNumber": 252
+        },
+        {
+          "caller": "test_reject_approved_submission_blocked",
+          "callee": "reverse",
+          "lineNumber": 253
+        },
+        {
+          "caller": "test_reject_approved_submission_blocked",
+          "callee": "self.assertRedirects",
+          "lineNumber": 256
+        },
+        {
+          "caller": "test_reject_approved_submission_blocked",
+          "callee": "reverse",
+          "lineNumber": 256
+        },
+        {
+          "caller": "test_reject_approved_submission_blocked",
+          "callee": "sub.refresh_from_db",
+          "lineNumber": 257
+        },
+        {
+          "caller": "test_reject_approved_submission_blocked",
+          "callee": "self.assertEqual",
+          "lineNumber": 258
+        },
+        {
+          "caller": "test_reject_pending_changes_status",
+          "callee": "self._submit",
+          "lineNumber": 262
+        },
+        {
+          "caller": "test_reject_pending_changes_status",
+          "callee": "self.c_client.post",
+          "lineNumber": 263
+        },
+        {
+          "caller": "test_reject_pending_changes_status",
+          "callee": "reverse",
+          "lineNumber": 264
+        },
+        {
+          "caller": "test_reject_pending_changes_status",
+          "callee": "sub.refresh_from_db",
+          "lineNumber": 267
+        },
+        {
+          "caller": "test_reject_pending_changes_status",
+          "callee": "self.assertEqual",
+          "lineNumber": 268
+        },
+        {
+          "caller": "test_reject_pending_changes_status",
+          "callee": "self.assertEqual",
+          "lineNumber": 269
+        },
+        {
+          "caller": "test_rejected_submission_allows_resubmit",
+          "callee": "self._submit",
+          "lineNumber": 273
+        },
+        {
+          "caller": "test_rejected_submission_allows_resubmit",
+          "callee": "sub.save",
+          "lineNumber": 275
+        },
+        {
+          "caller": "test_rejected_submission_allows_resubmit",
+          "callee": "self.s_client.post",
+          "lineNumber": 276
+        },
+        {
+          "caller": "test_rejected_submission_allows_resubmit",
+          "callee": "reverse",
+          "lineNumber": 277
+        },
+        {
+          "caller": "test_rejected_submission_allows_resubmit",
+          "callee": "_make_uploaded_file",
+          "lineNumber": 280
+        },
+        {
+          "caller": "test_rejected_submission_allows_resubmit",
+          "callee": "self.assertRedirects",
+          "lineNumber": 283
+        },
+        {
+          "caller": "test_rejected_submission_allows_resubmit",
+          "callee": "reverse",
+          "lineNumber": 283
+        },
+        {
+          "caller": "test_rejected_submission_allows_resubmit",
+          "callee": "self.assertEqual",
+          "lineNumber": 284
+        },
+        {
+          "caller": "test_rejected_submission_allows_resubmit",
+          "callee": "PointSubmission.objects.filter(\n                submitted_by=self.student, activity=self.activity\n            ).count",
+          "lineNumber": 285
+        },
+        {
+          "caller": "test_rejected_submission_allows_resubmit",
+          "callee": "PointSubmission.objects.filter",
+          "lineNumber": 285
+        },
+        {
+          "caller": "setUp",
+          "callee": "User.objects.create_user",
+          "lineNumber": 296
+        },
+        {
+          "caller": "setUp",
+          "callee": "Client",
+          "lineNumber": 302
+        },
+        {
+          "caller": "setUp",
+          "callee": "self.c_client.login",
+          "lineNumber": 303
+        },
+        {
+          "caller": "test_news_rejects_wrong_content_type",
+          "callee": "SimpleUploadedFile",
+          "lineNumber": 307
+        },
+        {
+          "caller": "test_news_rejects_wrong_content_type",
+          "callee": "self.c_client.post",
+          "lineNumber": 308
+        },
+        {
+          "caller": "test_news_rejects_wrong_content_type",
+          "callee": "reverse",
+          "lineNumber": 309
+        },
+        {
+          "caller": "test_news_rejects_wrong_content_type",
+          "callee": "self.assertEqual",
+          "lineNumber": 318
+        },
+        {
+          "caller": "test_news_rejects_wrong_content_type",
+          "callee": "self.assertFalse",
+          "lineNumber": 320
+        },
+        {
+          "caller": "test_news_rejects_wrong_content_type",
+          "callee": "News.objects.filter(title='ข่าวทดสอบ').exists",
+          "lineNumber": 320
+        },
+        {
+          "caller": "test_news_rejects_wrong_content_type",
+          "callee": "News.objects.filter",
+          "lineNumber": 320
+        },
+        {
+          "caller": "test_competition_rejects_oversized_image",
+          "callee": "SimpleUploadedFile",
+          "lineNumber": 324
+        },
+        {
+          "caller": "test_competition_rejects_oversized_image",
+          "callee": "self.c_client.post",
+          "lineNumber": 325
+        },
+        {
+          "caller": "test_competition_rejects_oversized_image",
+          "callee": "reverse",
+          "lineNumber": 326
+        },
+        {
+          "caller": "test_competition_rejects_oversized_image",
+          "callee": "self.assertEqual",
+          "lineNumber": 334
+        },
+        {
+          "caller": "test_competition_rejects_oversized_image",
+          "callee": "self.assertFalse",
+          "lineNumber": 336
+        },
+        {
+          "caller": "test_competition_rejects_oversized_image",
+          "callee": "Competition.objects.filter(title='แข่งขันทดสอบ').exists",
+          "lineNumber": 336
+        },
+        {
+          "caller": "test_competition_rejects_oversized_image",
+          "callee": "Competition.objects.filter",
+          "lineNumber": 336
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 1,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "postcss.config.mjs",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 7,
+      "nonEmptyLines": 6,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "static/css/styles.css",
+      "language": "css",
+      "fileCategory": "markup",
+      "totalLines": 237,
+      "nonEmptyLines": 200,
+      "metrics": {}
+    },
+    {
+      "path": "templates/accounts/login.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 55,
+      "nonEmptyLines": 45,
+      "metrics": {}
+    },
+    {
+      "path": "templates/accounts/register.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 79,
+      "nonEmptyLines": 67,
+      "metrics": {}
+    },
+    {
+      "path": "templates/base.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 122,
+      "nonEmptyLines": 111,
+      "metrics": {}
+    }
+  ]
+}

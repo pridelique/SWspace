@@ -1,0 +1,125 @@
+{
+  "scriptCompleted": true,
+  "stats": {
+    "filesScanned": 91,
+    "filesWithImports": 11,
+    "totalEdges": 13
+  },
+  "importMap": {
+    ".claude/settings.json": [],
+    ".env.example": [],
+    ".understand-anything/.understandignore": [],
+    "accounts/__init__.py": [],
+    "accounts/admin.py": [
+      "accounts/models.py"
+    ],
+    "accounts/apps.py": [],
+    "accounts/forms.py": [],
+    "accounts/migrations/__init__.py": [],
+    "accounts/migrations/0001_initial.py": [],
+    "accounts/migrations/0002_add_grade_level.py": [],
+    "accounts/models.py": [],
+    "accounts/tests.py": [],
+    "accounts/urls.py": [
+      "accounts/views.py"
+    ],
+    "accounts/views.py": [
+      "accounts/forms.py"
+    ],
+    "AGENTS.md": [],
+    "app/globals.css": [],
+    "app/layout.tsx": [
+      "app/globals.css",
+      "components/navbar.tsx"
+    ],
+    "app/page.tsx": [],
+    "CLAUDE.md": [],
+    "components/navbar.tsx": [],
+    "config/__init__.py": [],
+    "config/asgi.py": [],
+    "config/settings.py": [],
+    "config/urls.py": [],
+    "config/wsgi.py": [],
+    "DEPLOY.md": [],
+    "eslint.config.mjs": [],
+    "FINAL_QA_CHECKLIST.md": [],
+    "manage.py": [],
+    "next.config.ts": [],
+    "package.json": [],
+    "portal/__init__.py": [],
+    "portal/admin.py": [
+      "portal/models.py"
+    ],
+    "portal/apps.py": [],
+    "portal/forms.py": [
+      "portal/models.py"
+    ],
+    "portal/management/__init__.py": [],
+    "portal/management/commands/__init__.py": [],
+    "portal/management/commands/archive_old_media.py": [
+      "portal/models.py"
+    ],
+    "portal/management/commands/clear_mock_data.py": [
+      "portal/models.py"
+    ],
+    "portal/management/commands/create_test_accounts.py": [],
+    "portal/management/commands/seed_mock_data.py": [
+      "portal/models.py"
+    ],
+    "portal/migrations/__init__.py": [],
+    "portal/migrations/0001_initial.py": [],
+    "portal/migrations/0002_competition_deadline_competition_is_published_and_more.py": [],
+    "portal/migrations/0003_competition_drive_file_id_news_drive_file_id.py": [],
+    "portal/migrations/0004_replace_drive_with_local_imagefield.py": [],
+    "portal/migrations/0005_add_point_models.py": [],
+    "portal/migrations/0006_competition_is_archived_news_is_archived_and_more.py": [],
+    "portal/models.py": [],
+    "portal/tests.py": [],
+    "portal/urls.py": [
+      "portal/views.py"
+    ],
+    "portal/views.py": [
+      "portal/forms.py",
+      "portal/models.py"
+    ],
+    "postcss.config.mjs": [],
+    "README.md": [],
+    "requirements.txt": [],
+    "static/css/styles.css": [],
+    "templates/accounts/login.html": [],
+    "templates/accounts/register.html": [],
+    "templates/base.html": [],
+    "templates/portal/committee_competition_confirm_delete.html": [],
+    "templates/portal/committee_competition_form.html": [],
+    "templates/portal/committee_competition_list.html": [],
+    "templates/portal/committee_news_confirm_delete.html": [],
+    "templates/portal/committee_news_form.html": [],
+    "templates/portal/committee_news_list.html": [],
+    "templates/portal/committee_point_activity_confirm_delete.html": [],
+    "templates/portal/committee_point_activity_form.html": [],
+    "templates/portal/committee_point_submission_confirm_delete.html": [],
+    "templates/portal/committee_point_submission_reject_form.html": [],
+    "templates/portal/committee_points.html": [],
+    "templates/portal/committee_problem_report_confirm_delete.html": [],
+    "templates/portal/committee_problem_report_reject_form.html": [],
+    "templates/portal/committee_problem_reports_list.html": [],
+    "templates/portal/committee_study_note_confirm_delete.html": [],
+    "templates/portal/committee_study_notes_list.html": [],
+    "templates/portal/committee_volunteer_confirm_delete.html": [],
+    "templates/portal/committee_volunteer_form.html": [],
+    "templates/portal/committee_volunteer_list.html": [],
+    "templates/portal/committee.html": [],
+    "templates/portal/competitions.html": [],
+    "templates/portal/dashboard.html": [],
+    "templates/portal/news.html": [],
+    "templates/portal/point_history.html": [],
+    "templates/portal/point_submit.html": [],
+    "templates/portal/points.html": [],
+    "templates/portal/problem_report_form.html": [],
+    "templates/portal/problem_reports.html": [],
+    "templates/portal/study_note_form.html": [],
+    "templates/portal/study_notes.html": [],
+    "templates/portal/volunteer.html": [],
+    "tsconfig.json": []
+  }
+}

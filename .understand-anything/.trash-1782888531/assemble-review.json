@@ -1,0 +1,14 @@
+{
+  "fixedSectionOk": true,
+  "nodesRecovered": 0,
+  "edgesRestored": 0,
+  "crossBatchEdgesAdded": 0,
+  "typesRemapped": 0,
+  "complexityRemapped": 0,
+  "notes": [
+    "Graph is clean: 185 nodes, 258 edges, 0 nodes without id, 0 dangling edges in final output.",
+    "All node types are canonical (file, class, function, config, document). All complexity values are canonical (simple, moderate, complex).",
+    "All 13 import-map edges verified present in the assembled graph — no cross-batch gaps.",
+    "The 3 dropped 'tested_by' edges (accounts/models.py->accounts/tests.py, portal/views.py->portal/tests.py, portal/models.py->portal/tests.py) were correctly left dropped: 'tested_by' is not a canonical edge type in this graph (zero instances in final output) and the drops were classified as intentional fixes by the merge script. The stated drop reason ('orphan endpoint or test<->test / prod<->prod pair') does not literally match the prod->test direction of these edges — worth a note for upstream review of the merge script's tested_by filtering logic."
+  ]
+}

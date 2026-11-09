@@ -1,0 +1,137 @@
+{
+  "nodes": [
+    {
+      "id": "config:.env.example",
+      "type": "config",
+      "name": ".env.example",
+      "filePath": ".env.example",
+      "summary": "Template for local development environment variables covering Django core settings (SECRET_KEY, DEBUG, ALLOWED_HOSTS, COMMITTEE_VERIFICATION_CODE), optional PostgreSQL/Supabase database URL, and optional Cloudinary media storage credentials.",
+      "tags": ["configuration", "security", "environment", "deployment"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:AGENTS.md",
+      "type": "document",
+      "name": "AGENTS.md",
+      "filePath": "AGENTS.md",
+      "summary": "One-paragraph warning for AI coding agents that the Next.js version in this project has breaking changes; instructs agents to read the bundled docs in node_modules before generating any Next.js code.",
+      "tags": ["documentation", "architecture", "development"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:CLAUDE.md",
+      "type": "document",
+      "name": "CLAUDE.md",
+      "filePath": "CLAUDE.md",
+      "summary": "Developer reference for Claude AI detailing all management commands, the custom User model using email-based login with student/committee roles, access-control decorators, the five portal models, URL structure, and the full template hierarchy.",
+      "tags": ["documentation", "architecture", "development"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:DEPLOY.md",
+      "type": "document",
+      "name": "DEPLOY.md",
+      "filePath": "DEPLOY.md",
+      "summary": "Step-by-step deployment and update guide for PythonAnywhere hosting, covering initial setup, the code-push-and-reload update cycle, an optional automation script, server-side .env file management, and error-log investigation.",
+      "tags": ["documentation", "deployment", "infrastructure"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:FINAL_QA_CHECKLIST.md",
+      "type": "document",
+      "name": "FINAL_QA_CHECKLIST.md",
+      "filePath": "FINAL_QA_CHECKLIST.md",
+      "summary": "Pre-release quality-assurance checklist for SWspace with 13 sections covering project setup, authentication flows, all portal features (news, volunteer links, competitions, study notes, problem reports, points), committee access control, file upload security, and media archiving.",
+      "tags": ["documentation", "testing", "quality-assurance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Comprehensive Thai-language project overview for SWspace covering tech stack, local setup steps, test accounts, verification codes, full feature list, URL routes, project structure, a 38-test test-suite guide, mock data management commands, image archiving, and deploy notes.",
+      "tags": ["documentation", "entry-point", "overview"],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "package.json",
+      "summary": "Node.js package manifest for the SWspace Next.js frontend layer; declares Next.js 16.2.9, React 19, TypeScript 5, and Tailwind CSS 4 as dependencies, with standard dev, build, start, and lint scripts.",
+      "tags": ["configuration", "build-system", "frontend", "dependencies"],
+      "complexity": "simple",
+      "languageNotes": "Uses Next.js 16 (app router era) with React 19 and Tailwind CSS v4, which are newer major versions with potential breaking changes relative to common training data."
+    },
+    {
+      "id": "document:requirements.txt",
+      "type": "document",
+      "name": "requirements.txt",
+      "filePath": "requirements.txt",
+      "summary": "Python dependency manifest listing Django 4.2, Pillow for image handling, python-dotenv for .env loading, dj-database-url for database URL parsing, psycopg2-binary for PostgreSQL, and cloudinary plus django-cloudinary-storage for media storage.",
+      "tags": ["documentation", "dependencies", "backend"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "tsconfig.json",
+      "summary": "TypeScript compiler configuration for the Next.js frontend targeting ES2017 with strict mode enabled, JSX support via react-jsx, the Next.js compiler plugin, and a path alias mapping @/* to the project root.",
+      "tags": ["configuration", "typescript", "build-system"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "config:.env.example",
+      "target": "file:config/settings.py",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:config/settings.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CLAUDE.md",
+      "target": "file:accounts/models.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CLAUDE.md",
+      "target": "file:portal/views.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CLAUDE.md",
+      "target": "file:portal/models.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:DEPLOY.md",
+      "target": "config:.env.example",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:requirements.txt",
+      "target": "file:config/settings.py",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

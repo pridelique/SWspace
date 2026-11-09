@@ -1,0 +1,1298 @@
+{
+  "nodes": [
+    {
+      "id": "file:portal/forms.py",
+      "type": "file",
+      "name": "forms.py",
+      "filePath": "portal/forms.py",
+      "summary": "Defines all Django ModelForm classes for the portal app — news, volunteer links, competitions, study notes, problem reports, point activities, and point submissions — including custom validation for image uploads, Google Drive URL format, description length, point values, and duplicate submission prevention.",
+      "tags": ["validation", "forms", "service", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:portal/urls.py",
+      "type": "file",
+      "name": "urls.py",
+      "filePath": "portal/urls.py",
+      "summary": "Maps all URL patterns for the portal app, covering student-facing views for content browsing and form submissions, as well as committee-only management routes for CRUD operations across all content types and the points system.",
+      "tags": ["configuration", "routing", "api-handler", "middleware"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:portal/views.py",
+      "type": "file",
+      "name": "views.py",
+      "filePath": "portal/views.py",
+      "summary": "Implements all 39 view functions for the portal app, providing student-facing content views and a full set of committee management views for news, volunteer links, competitions, study notes, problem reports, and points, all enforced by login_required and a custom committee_required decorator.",
+      "tags": ["api-handler", "service", "middleware", "access-control"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:portal/forms.py:validate_image_file",
+      "type": "function",
+      "name": "validate_image_file",
+      "filePath": "portal/forms.py",
+      "lineRange": [9, 15],
+      "summary": "Shared validator that checks an uploaded file has an image read attribute and is within file size limits, raising a ValidationError otherwise.",
+      "tags": ["validation", "utility", "middleware"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/forms.py:NewsForm",
+      "type": "class",
+      "name": "NewsForm",
+      "filePath": "portal/forms.py",
+      "lineRange": [18, 38],
+      "summary": "ModelForm for creating and editing News items with a custom clean_image method that delegates image validation to validate_image_file.",
+      "tags": ["forms", "validation", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/forms.py:VolunteerLinkForm",
+      "type": "class",
+      "name": "VolunteerLinkForm",
+      "filePath": "portal/forms.py",
+      "lineRange": [41, 65],
+      "summary": "ModelForm for creating and editing VolunteerLink items with a custom __init__ that adjusts field widgets or choices before rendering.",
+      "tags": ["forms", "validation", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/forms.py:CompetitionForm",
+      "type": "class",
+      "name": "CompetitionForm",
+      "filePath": "portal/forms.py",
+      "lineRange": [68, 96],
+      "summary": "ModelForm for creating and editing Competition items with both custom __init__ field setup and a clean_image method for image file validation.",
+      "tags": ["forms", "validation", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:portal/forms.py:StudyNoteForm",
+      "type": "class",
+      "name": "StudyNoteForm",
+      "filePath": "portal/forms.py",
+      "lineRange": [99, 124],
+      "summary": "ModelForm for submitting study notes with a clean_drive_url method that enforces the link must originate from Google Drive.",
+      "tags": ["forms", "validation", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/forms.py:ProblemReportForm",
+      "type": "class",
+      "name": "ProblemReportForm",
+      "filePath": "portal/forms.py",
+      "lineRange": [127, 146],
+      "summary": "ModelForm for student problem report submissions with a clean_description method that enforces a minimum character count.",
+      "tags": ["forms", "validation", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/forms.py:PointActivityForm",
+      "type": "class",
+      "name": "PointActivityForm",
+      "filePath": "portal/forms.py",
+      "lineRange": [149, 170],
+      "summary": "ModelForm for committee members to create point activities with a clean_points validator that requires a positive point value.",
+      "tags": ["forms", "validation", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/forms.py:PointSubmissionForm",
+      "type": "class",
+      "name": "PointSubmissionForm",
+      "filePath": "portal/forms.py",
+      "lineRange": [173, 212],
+      "summary": "ModelForm for students to submit proof of a point-earning activity, filtering available activities to active ones, preventing duplicate pending/approved submissions in clean, and validating the proof image in clean_proof_image.",
+      "tags": ["forms", "validation", "data-model", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:portal/forms.py:PointRejectForm",
+      "type": "class",
+      "name": "PointRejectForm",
+      "filePath": "portal/forms.py",
+      "lineRange": [215, 224],
+      "summary": "Simple Django Form that captures an optional rejection reason when a committee member rejects a point submission.",
+      "tags": ["forms", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_required",
+      "type": "function",
+      "name": "committee_required",
+      "filePath": "portal/views.py",
+      "lineRange": [21, 30],
+      "summary": "Decorator that enforces committee role access, redirecting unauthenticated users to login and non-committee authenticated users back to the dashboard with an error message.",
+      "tags": ["middleware", "access-control", "decorator"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:dashboard",
+      "type": "function",
+      "name": "dashboard",
+      "filePath": "portal/views.py",
+      "lineRange": [36, 37],
+      "summary": "Student dashboard entry point that renders the main portal landing page after login.",
+      "tags": ["api-handler", "entry-point"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:news",
+      "type": "function",
+      "name": "news",
+      "filePath": "portal/views.py",
+      "lineRange": [41, 43],
+      "summary": "Student-facing view that fetches published news articles with creator info and renders the news listing page.",
+      "tags": ["api-handler", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:volunteer",
+      "type": "function",
+      "name": "volunteer",
+      "filePath": "portal/views.py",
+      "lineRange": [47, 49],
+      "summary": "Student-facing view that fetches published volunteer opportunity links and renders the volunteer listing page.",
+      "tags": ["api-handler", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:competitions",
+      "type": "function",
+      "name": "competitions",
+      "filePath": "portal/views.py",
+      "lineRange": [53, 55],
+      "summary": "Student-facing view that fetches published competition listings and renders the competitions page.",
+      "tags": ["api-handler", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:study_notes",
+      "type": "function",
+      "name": "study_notes",
+      "filePath": "portal/views.py",
+      "lineRange": [59, 61],
+      "summary": "Student-facing view that fetches approved study note submissions and renders the study notes page.",
+      "tags": ["api-handler", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:problem_reports",
+      "type": "function",
+      "name": "problem_reports",
+      "filePath": "portal/views.py",
+      "lineRange": [65, 69],
+      "summary": "Student-facing view that fetches approved problem reports with submitter info and renders the public problem reports listing.",
+      "tags": ["api-handler", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_dashboard",
+      "type": "function",
+      "name": "committee_dashboard",
+      "filePath": "portal/views.py",
+      "lineRange": [75, 87],
+      "summary": "Committee overview page that aggregates live counts for all content types and breaks down problem report and point submission statuses (pending, approved, rejected) for at-a-glance monitoring.",
+      "tags": ["api-handler", "committee", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:portal/views.py:committee_news_list",
+      "type": "function",
+      "name": "committee_news_list",
+      "filePath": "portal/views.py",
+      "lineRange": [93, 95],
+      "summary": "Committee list view for all news items including unpublished drafts, with creator info.",
+      "tags": ["api-handler", "committee"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_news_create",
+      "type": "function",
+      "name": "committee_news_create",
+      "filePath": "portal/views.py",
+      "lineRange": [99, 110],
+      "summary": "Committee view that handles GET display and POST processing of NewsForm, assigning the current user as creator before saving.",
+      "tags": ["api-handler", "committee", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_news_edit",
+      "type": "function",
+      "name": "committee_news_edit",
+      "filePath": "portal/views.py",
+      "lineRange": [114, 125],
+      "summary": "Committee view to edit an existing news article by primary key, pre-populating NewsForm with current data.",
+      "tags": ["api-handler", "committee", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_news_delete",
+      "type": "function",
+      "name": "committee_news_delete",
+      "filePath": "portal/views.py",
+      "lineRange": [129, 136],
+      "summary": "Committee confirmation and deletion view for a news item by primary key, showing a confirm page on GET and deleting on POST.",
+      "tags": ["api-handler", "committee"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_volunteer_list",
+      "type": "function",
+      "name": "committee_volunteer_list",
+      "filePath": "portal/views.py",
+      "lineRange": [142, 144],
+      "summary": "Committee list view for all volunteer links including unpublished ones, with creator info.",
+      "tags": ["api-handler", "committee"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_volunteer_create",
+      "type": "function",
+      "name": "committee_volunteer_create",
+      "filePath": "portal/views.py",
+      "lineRange": [148, 159],
+      "summary": "Committee view that handles GET display and POST processing of VolunteerLinkForm, assigning the current user as creator before saving.",
+      "tags": ["api-handler", "committee", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_volunteer_edit",
+      "type": "function",
+      "name": "committee_volunteer_edit",
+      "filePath": "portal/views.py",
+      "lineRange": [163, 174],
+      "summary": "Committee view to edit an existing volunteer link by primary key, pre-populating VolunteerLinkForm with current data.",
+      "tags": ["api-handler", "committee", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_volunteer_delete",
+      "type": "function",
+      "name": "committee_volunteer_delete",
+      "filePath": "portal/views.py",
+      "lineRange": [178, 185],
+      "summary": "Committee confirmation and deletion view for a volunteer link by primary key.",
+      "tags": ["api-handler", "committee"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_competition_list",
+      "type": "function",
+      "name": "committee_competition_list",
+      "filePath": "portal/views.py",
+      "lineRange": [191, 193],
+      "summary": "Committee list view for all competitions including unpublished ones, with creator info.",
+      "tags": ["api-handler", "committee"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_competition_create",
+      "type": "function",
+      "name": "committee_competition_create",
+      "filePath": "portal/views.py",
+      "lineRange": [197, 208],
+      "summary": "Committee view that handles GET display and POST processing of CompetitionForm, assigning the current user as creator before saving.",
+      "tags": ["api-handler", "committee", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_competition_edit",
+      "type": "function",
+      "name": "committee_competition_edit",
+      "filePath": "portal/views.py",
+      "lineRange": [212, 223],
+      "summary": "Committee view to edit an existing competition by primary key, pre-populating CompetitionForm with current data.",
+      "tags": ["api-handler", "committee", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_competition_delete",
+      "type": "function",
+      "name": "committee_competition_delete",
+      "filePath": "portal/views.py",
+      "lineRange": [227, 234],
+      "summary": "Committee confirmation and deletion view for a competition by primary key.",
+      "tags": ["api-handler", "committee"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:study_note_submit",
+      "type": "function",
+      "name": "study_note_submit",
+      "filePath": "portal/views.py",
+      "lineRange": [240, 249],
+      "summary": "Student-facing view for submitting a study note via StudyNoteForm, assigning the current user as submitter before saving.",
+      "tags": ["api-handler", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_study_notes_list",
+      "type": "function",
+      "name": "committee_study_notes_list",
+      "filePath": "portal/views.py",
+      "lineRange": [253, 255],
+      "summary": "Committee list view for all study note submissions ordered by creation date, with submitter info.",
+      "tags": ["api-handler", "committee"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_study_note_toggle_approval",
+      "type": "function",
+      "name": "committee_study_note_toggle_approval",
+      "filePath": "portal/views.py",
+      "lineRange": [259, 267],
+      "summary": "Committee POST-only view that flips the is_approved flag on a study note and redirects back to the list.",
+      "tags": ["api-handler", "committee"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_study_note_delete",
+      "type": "function",
+      "name": "committee_study_note_delete",
+      "filePath": "portal/views.py",
+      "lineRange": [271, 278],
+      "summary": "Committee confirmation and deletion view for a study note submission by primary key.",
+      "tags": ["api-handler", "committee"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:problem_report_submit",
+      "type": "function",
+      "name": "problem_report_submit",
+      "filePath": "portal/views.py",
+      "lineRange": [284, 293],
+      "summary": "Student-facing view for submitting a problem report via ProblemReportForm, assigning the current user as submitter before saving.",
+      "tags": ["api-handler", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_problem_reports_list",
+      "type": "function",
+      "name": "committee_problem_reports_list",
+      "filePath": "portal/views.py",
+      "lineRange": [297, 308],
+      "summary": "Committee list view for all problem reports with optional status filter passed via query parameter, showing submitter info and all status groups.",
+      "tags": ["api-handler", "committee", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:portal/views.py:committee_problem_report_approve",
+      "type": "function",
+      "name": "committee_problem_report_approve",
+      "filePath": "portal/views.py",
+      "lineRange": [312, 319],
+      "summary": "Committee POST-only view that sets a problem report's status to approved and redirects back to the list.",
+      "tags": ["api-handler", "committee"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_problem_report_reject",
+      "type": "function",
+      "name": "committee_problem_report_reject",
+      "filePath": "portal/views.py",
+      "lineRange": [323, 333],
+      "summary": "Committee view that renders a rejection confirmation page and on POST sets the problem report status to rejected with an optional admin note from POST data.",
+      "tags": ["api-handler", "committee"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_problem_report_delete",
+      "type": "function",
+      "name": "committee_problem_report_delete",
+      "filePath": "portal/views.py",
+      "lineRange": [337, 344],
+      "summary": "Committee confirmation and deletion view for a problem report by primary key.",
+      "tags": ["api-handler", "committee"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:points",
+      "type": "function",
+      "name": "points",
+      "filePath": "portal/views.py",
+      "lineRange": [350, 373],
+      "summary": "Student-facing points dashboard that loads or creates the user's UserPointProfile, fetches active point activities, and maps each to the student's latest submission so the template can show per-activity status.",
+      "tags": ["api-handler", "service", "entry-point"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:portal/views.py:point_submit",
+      "type": "function",
+      "name": "point_submit",
+      "filePath": "portal/views.py",
+      "lineRange": [377, 393],
+      "summary": "Student-facing view for submitting activity proof via PointSubmissionForm, optionally pre-selecting an activity from a query parameter and assigning the current user as submitter before saving.",
+      "tags": ["api-handler", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:portal/views.py:point_history",
+      "type": "function",
+      "name": "point_history",
+      "filePath": "portal/views.py",
+      "lineRange": [397, 404],
+      "summary": "Student-facing view listing all of the current user's point submissions with activity info, ordered by creation date.",
+      "tags": ["api-handler", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_points",
+      "type": "function",
+      "name": "committee_points",
+      "filePath": "portal/views.py",
+      "lineRange": [410, 428],
+      "summary": "Committee view listing all point activities and all point submissions with full relation data, supporting an optional status filter via query parameter for approvals workflow.",
+      "tags": ["api-handler", "committee", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:portal/views.py:committee_point_activity_create",
+      "type": "function",
+      "name": "committee_point_activity_create",
+      "filePath": "portal/views.py",
+      "lineRange": [432, 443],
+      "summary": "Committee view to create a new point activity via PointActivityForm, assigning the current user as creator before saving.",
+      "tags": ["api-handler", "committee", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_point_activity_edit",
+      "type": "function",
+      "name": "committee_point_activity_edit",
+      "filePath": "portal/views.py",
+      "lineRange": [447, 458],
+      "summary": "Committee view to edit an existing point activity by primary key, pre-populating PointActivityForm with current data.",
+      "tags": ["api-handler", "committee", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_point_activity_delete",
+      "type": "function",
+      "name": "committee_point_activity_delete",
+      "filePath": "portal/views.py",
+      "lineRange": [462, 469],
+      "summary": "Committee confirmation and deletion view for a point activity by primary key.",
+      "tags": ["api-handler", "committee"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_point_submission_approve",
+      "type": "function",
+      "name": "committee_point_submission_approve",
+      "filePath": "portal/views.py",
+      "lineRange": [473, 493],
+      "summary": "Committee POST-only view that atomically approves a point submission, updates approval metadata, and increments the student's UserPointProfile total using an F-expression to avoid race conditions.",
+      "tags": ["api-handler", "committee", "service"],
+      "complexity": "moderate",
+      "languageNotes": "Uses transaction.atomic and F-expression for safe concurrent point accumulation."
+    },
+    {
+      "id": "function:portal/views.py:committee_point_submission_reject",
+      "type": "function",
+      "name": "committee_point_submission_reject",
+      "filePath": "portal/views.py",
+      "lineRange": [497, 512],
+      "summary": "Committee view that presents a PointRejectForm and on POST marks the submission as rejected, storing the rejection reason from form data.",
+      "tags": ["api-handler", "committee"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_point_submission_delete",
+      "type": "function",
+      "name": "committee_point_submission_delete",
+      "filePath": "portal/views.py",
+      "lineRange": [516, 522],
+      "summary": "Committee view to delete a point submission by primary key after confirmation.",
+      "tags": ["api-handler", "committee"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:portal/forms.py",
+      "target": "file:portal/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:portal/urls.py",
+      "target": "file:portal/views.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "file:portal/forms.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "file:portal/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "function:portal/forms.py:validate_image_file",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "function:portal/forms.py:validate_image_file",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:NewsForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:NewsForm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:VolunteerLinkForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:VolunteerLinkForm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:CompetitionForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:CompetitionForm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:StudyNoteForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:StudyNoteForm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:ProblemReportForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:ProblemReportForm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:PointActivityForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:PointActivityForm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:PointSubmissionForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:PointSubmissionForm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:PointRejectForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:PointRejectForm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_required",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_required",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:dashboard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:dashboard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:news",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:news",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:volunteer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:volunteer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:competitions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:competitions",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:study_notes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:study_notes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:problem_reports",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:problem_reports",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_dashboard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_dashboard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_news_list",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_news_list",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_news_create",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_news_create",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_news_edit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_news_edit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_news_delete",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_news_delete",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_volunteer_list",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_volunteer_list",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_volunteer_create",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_volunteer_create",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_volunteer_edit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_volunteer_edit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_volunteer_delete",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_volunteer_delete",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_competition_list",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_competition_list",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_competition_create",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_competition_create",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_competition_edit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_competition_edit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_competition_delete",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_competition_delete",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:study_note_submit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:study_note_submit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_study_notes_list",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_study_notes_list",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_study_note_toggle_approval",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_study_note_toggle_approval",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_study_note_delete",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_study_note_delete",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:problem_report_submit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:problem_report_submit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_problem_reports_list",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_problem_reports_list",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_problem_report_approve",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_problem_report_approve",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_problem_report_reject",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_problem_report_reject",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_problem_report_delete",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_problem_report_delete",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:points",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:points",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:point_submit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:point_submit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:point_history",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:point_history",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_points",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_points",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_activity_create",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_activity_create",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_activity_edit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_activity_edit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_activity_delete",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_activity_delete",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_submission_approve",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_submission_approve",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_submission_reject",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_submission_reject",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_submission_delete",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_submission_delete",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:committee_news_create",
+      "target": "class:portal/forms.py:NewsForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:committee_news_edit",
+      "target": "class:portal/forms.py:NewsForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:committee_volunteer_create",
+      "target": "class:portal/forms.py:VolunteerLinkForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:committee_volunteer_edit",
+      "target": "class:portal/forms.py:VolunteerLinkForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:committee_competition_create",
+      "target": "class:portal/forms.py:CompetitionForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:committee_competition_edit",
+      "target": "class:portal/forms.py:CompetitionForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:study_note_submit",
+      "target": "class:portal/forms.py:StudyNoteForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:problem_report_submit",
+      "target": "class:portal/forms.py:ProblemReportForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:point_submit",
+      "target": "class:portal/forms.py:PointSubmissionForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:committee_point_submission_reject",
+      "target": "class:portal/forms.py:PointRejectForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:committee_point_activity_create",
+      "target": "class:portal/forms.py:PointActivityForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:committee_point_activity_edit",
+      "target": "class:portal/forms.py:PointActivityForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 11,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "templates/portal/competitions.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 60,
+      "nonEmptyLines": 57,
+      "metrics": {}
+    },
+    {
+      "path": "templates/portal/dashboard.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 125,
+      "nonEmptyLines": 109,
+      "metrics": {}
+    },
+    {
+      "path": "templates/portal/news.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 54,
+      "nonEmptyLines": 51,
+      "metrics": {}
+    },
+    {
+      "path": "templates/portal/point_history.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 61,
+      "nonEmptyLines": 58,
+      "metrics": {}
+    },
+    {
+      "path": "templates/portal/point_submit.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 58,
+      "nonEmptyLines": 50,
+      "metrics": {}
+    },
+    {
+      "path": "templates/portal/points.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 77,
+      "nonEmptyLines": 68,
+      "metrics": {}
+    },
+    {
+      "path": "templates/portal/problem_report_form.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 64,
+      "nonEmptyLines": 56,
+      "metrics": {}
+    },
+    {
+      "path": "templates/portal/problem_reports.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 55,
+      "nonEmptyLines": 49,
+      "metrics": {}
+    },
+    {
+      "path": "templates/portal/study_note_form.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 92,
+      "nonEmptyLines": 83,
+      "metrics": {}
+    },
+    {
+      "path": "templates/portal/study_notes.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 55,
+      "nonEmptyLines": 50,
+      "metrics": {}
+    },
+    {
+      "path": "templates/portal/volunteer.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 45,
+      "nonEmptyLines": 42,
+      "metrics": {}
+    }
+  ]
+}

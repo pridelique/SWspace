@@ -1,0 +1,325 @@
+{
+  "nodes": [
+    {
+      "id": "file:portal/management/commands/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "portal/management/commands/__init__.py",
+      "summary": "Empty Python package init file that marks the management commands directory as a package, enabling Django to discover custom management commands.",
+      "tags": ["package-init", "management-command", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:portal/management/commands/create_test_accounts.py",
+      "type": "file",
+      "name": "create_test_accounts.py",
+      "filePath": "portal/management/commands/create_test_accounts.py",
+      "summary": "Django management command that seeds one student and one committee test account with known credentials for development and manual testing.",
+      "tags": ["management-command", "utility", "development", "seeding"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:portal/management/commands/create_test_accounts.py:Command",
+      "type": "class",
+      "name": "Command",
+      "filePath": "portal/management/commands/create_test_accounts.py",
+      "lineRange": [12, 50],
+      "summary": "BaseCommand subclass with a handle method that uses get_or_create to safely create a test student and a test committee user, printing their credentials to stdout on completion.",
+      "tags": ["management-command", "development", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:portal/migrations/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "portal/migrations/__init__.py",
+      "summary": "Empty Python package init file that marks the migrations directory as a package so Django's migration loader can discover and apply portal app migrations.",
+      "tags": ["package-init", "migration", "database"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:portal/migrations/0001_initial.py",
+      "type": "file",
+      "name": "0001_initial.py",
+      "filePath": "portal/migrations/0001_initial.py",
+      "summary": "Initial Django migration that creates the core portal models: News, VolunteerLink, Competition, StudyNote, and ProblemReport, along with their base fields and foreign key relationships to the user model.",
+      "tags": ["migration", "database", "schema-definition", "initial"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:portal/migrations/0002_competition_deadline_competition_is_published_and_more.py",
+      "type": "file",
+      "name": "0002_competition_deadline_competition_is_published_and_more.py",
+      "filePath": "portal/migrations/0002_competition_deadline_competition_is_published_and_more.py",
+      "summary": "Adds deadline and is_published fields to Competition, adds is_published to VolunteerLink and News, and alters field definitions across multiple portal models.",
+      "tags": ["migration", "database", "schema-definition"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:portal/migrations/0003_competition_drive_file_id_news_drive_file_id.py",
+      "type": "file",
+      "name": "0003_competition_drive_file_id_news_drive_file_id.py",
+      "filePath": "portal/migrations/0003_competition_drive_file_id_news_drive_file_id.py",
+      "summary": "Adds a drive_file_id CharField to both the Competition and News models to store Google Drive file references alongside content.",
+      "tags": ["migration", "database", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:portal/migrations/0004_replace_drive_with_local_imagefield.py",
+      "type": "file",
+      "name": "0004_replace_drive_with_local_imagefield.py",
+      "filePath": "portal/migrations/0004_replace_drive_with_local_imagefield.py",
+      "summary": "Removes Google Drive file ID fields from Competition and News and replaces them with local ImageField columns, migrating image storage from Drive to server-local files.",
+      "tags": ["migration", "database", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:portal/migrations/0005_add_point_models.py",
+      "type": "file",
+      "name": "0005_add_point_models.py",
+      "filePath": "portal/migrations/0005_add_point_models.py",
+      "summary": "Introduces three new models for the points system: PointActivity (defining scoreable activities), PointSubmission (student proof submissions with status tracking), and UserPointProfile (aggregated student point totals).",
+      "tags": ["migration", "database", "schema-definition"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:portal/migrations/0006_competition_is_archived_news_is_archived_and_more.py",
+      "type": "file",
+      "name": "0006_competition_is_archived_news_is_archived_and_more.py",
+      "filePath": "portal/migrations/0006_competition_is_archived_news_is_archived_and_more.py",
+      "summary": "Adds is_archived BooleanField to Competition, News, and VolunteerLink models so committee members can hide older content without deleting it.",
+      "tags": ["migration", "database", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:portal/tests.py",
+      "type": "file",
+      "name": "tests.py",
+      "filePath": "portal/tests.py",
+      "summary": "Comprehensive test suite for the portal app covering image upload workflows (News and Competition), the full points submission/approval/rejection lifecycle, and image content-type and size validation across 20 test cases in three test classes.",
+      "tags": ["test", "validation", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:portal/tests.py:_make_uploaded_file",
+      "type": "function",
+      "name": "_make_uploaded_file",
+      "filePath": "portal/tests.py",
+      "lineRange": [10, 16],
+      "summary": "Helper that builds an in-memory SimpleUploadedFile containing a 1x1 pixel Pillow image for use as a test fixture in upload-related tests.",
+      "tags": ["test", "utility", "fixture"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/tests.py:ImageUploadTest",
+      "type": "class",
+      "name": "ImageUploadTest",
+      "filePath": "portal/tests.py",
+      "lineRange": [19, 158],
+      "summary": "TestCase covering committee image upload for News and Competition (create and edit), access-control rejection when a student attempts to create these items, and form rendering checks; uses separate committee and student test clients.",
+      "tags": ["test", "api-handler", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:portal/tests.py:PointsTest",
+      "type": "class",
+      "name": "PointsTest",
+      "filePath": "portal/tests.py",
+      "lineRange": [161, 289],
+      "summary": "TestCase exercising the full points lifecycle: page rendering, proof submission creating a pending submission, committee approval adding points to UserPointProfile, idempotent double-approval, rejection of already-approved submissions, and resubmission after rejection.",
+      "tags": ["test", "validation", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:portal/tests.py:ImageValidationTest",
+      "type": "class",
+      "name": "ImageValidationTest",
+      "filePath": "portal/tests.py",
+      "lineRange": [292, 336],
+      "summary": "TestCase verifying that the portal rejects uploads with incorrect content types and oversized images for News and Competition, confirming no records are persisted on invalid input.",
+      "tags": ["test", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:postcss.config.mjs",
+      "type": "file",
+      "name": "postcss.config.mjs",
+      "filePath": "postcss.config.mjs",
+      "summary": "PostCSS configuration exporting the active plugins (likely Tailwind CSS and Autoprefixer) used to transform CSS during the frontend build step.",
+      "tags": ["configuration", "build-system", "css"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:static/css/styles.css",
+      "type": "file",
+      "name": "styles.css",
+      "filePath": "static/css/styles.css",
+      "summary": "Project-wide stylesheet defining layout, typography, color variables, component styles for cards, buttons, navigation, and responsive breakpoints shared across all portal pages.",
+      "tags": ["stylesheet", "ui", "markup"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/accounts/login.html",
+      "type": "file",
+      "name": "login.html",
+      "filePath": "templates/accounts/login.html",
+      "summary": "Login page template extending base.html that renders the email/password form with CSRF protection and error display for the school portal authentication flow.",
+      "tags": ["template", "authentication", "markup", "ui"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:templates/accounts/register.html",
+      "type": "file",
+      "name": "register.html",
+      "filePath": "templates/accounts/register.html",
+      "summary": "Registration page template extending base.html with fields for email, password, and optional committee verification code; includes inline field error rendering.",
+      "tags": ["template", "authentication", "markup", "ui", "form"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/base.html",
+      "type": "file",
+      "name": "base.html",
+      "filePath": "templates/base.html",
+      "summary": "Shared base layout template that defines the HTML shell, navigation bar with role-aware menu items (committee vs. student), static CSS/JS includes, and template blocks that all portal pages extend.",
+      "tags": ["template", "layout", "markup", "ui"],
+      "complexity": "moderate",
+      "languageNotes": "Uses Django template inheritance blocks (block content, block title) and the {% load static %} tag; navigation conditionally renders committee-only links via {% if user.is_committee %}."
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:portal/management/commands/create_test_accounts.py",
+      "target": "class:portal/management/commands/create_test_accounts.py:Command",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/management/commands/create_test_accounts.py",
+      "target": "class:portal/management/commands/create_test_accounts.py:Command",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/tests.py",
+      "target": "function:portal/tests.py:_make_uploaded_file",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/tests.py",
+      "target": "class:portal/tests.py:ImageUploadTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/tests.py",
+      "target": "class:portal/tests.py:PointsTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/tests.py",
+      "target": "class:portal/tests.py:ImageValidationTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/tests.py",
+      "target": "function:portal/tests.py:_make_uploaded_file",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/tests.py",
+      "target": "class:portal/tests.py:ImageUploadTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/tests.py",
+      "target": "class:portal/tests.py:PointsTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/tests.py",
+      "target": "class:portal/tests.py:ImageValidationTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/migrations/0002_competition_deadline_competition_is_published_and_more.py",
+      "target": "file:portal/migrations/0001_initial.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:portal/migrations/0003_competition_drive_file_id_news_drive_file_id.py",
+      "target": "file:portal/migrations/0002_competition_deadline_competition_is_published_and_more.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:portal/migrations/0004_replace_drive_with_local_imagefield.py",
+      "target": "file:portal/migrations/0003_competition_drive_file_id_news_drive_file_id.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:portal/migrations/0005_add_point_models.py",
+      "target": "file:portal/migrations/0004_replace_drive_with_local_imagefield.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:portal/migrations/0006_competition_is_archived_news_is_archived_and_more.py",
+      "target": "file:portal/migrations/0005_add_point_models.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/accounts/login.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/accounts/register.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "file:portal/tests.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "file:portal/tests.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

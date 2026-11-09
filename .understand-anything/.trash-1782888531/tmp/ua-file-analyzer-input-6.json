@@ -1,0 +1,29 @@
+{
+  "projectRoot": "D:/00_SourceCode/00_AI_App/SW Website",
+  "batchFiles": [
+    {"path": "templates/portal/competitions.html", "language": "html", "sizeLines": 60, "fileCategory": "markup"},
+    {"path": "templates/portal/dashboard.html", "language": "html", "sizeLines": 125, "fileCategory": "markup"},
+    {"path": "templates/portal/news.html", "language": "html", "sizeLines": 54, "fileCategory": "markup"},
+    {"path": "templates/portal/point_history.html", "language": "html", "sizeLines": 61, "fileCategory": "markup"},
+    {"path": "templates/portal/point_submit.html", "language": "html", "sizeLines": 58, "fileCategory": "markup"},
+    {"path": "templates/portal/points.html", "language": "html", "sizeLines": 77, "fileCategory": "markup"},
+    {"path": "templates/portal/problem_report_form.html", "language": "html", "sizeLines": 64, "fileCategory": "markup"},
+    {"path": "templates/portal/problem_reports.html", "language": "html", "sizeLines": 55, "fileCategory": "markup"},
+    {"path": "templates/portal/study_note_form.html", "language": "html", "sizeLines": 92, "fileCategory": "markup"},
+    {"path": "templates/portal/study_notes.html", "language": "html", "sizeLines": 55, "fileCategory": "markup"},
+    {"path": "templates/portal/volunteer.html", "language": "html", "sizeLines": 45, "fileCategory": "markup"}
+  ],
+  "batchImportData": {
+    "templates/portal/competitions.html": [],
+    "templates/portal/dashboard.html": [],
+    "templates/portal/news.html": [],
+    "templates/portal/point_history.html": [],
+    "templates/portal/point_submit.html": [],
+    "templates/portal/points.html": [],
+    "templates/portal/problem_report_form.html": [],
+    "templates/portal/problem_reports.html": [],
+    "templates/portal/study_note_form.html": [],
+    "templates/portal/study_notes.html": [],
+    "templates/portal/volunteer.html": []
+  }
+}

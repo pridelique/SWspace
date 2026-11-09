@@ -1,0 +1,13 @@
+{
+  "projectRoot": "D:/00_SourceCode/00_AI_App/SW Website",
+  "batchFiles": [
+    {"path": "accounts/forms.py", "language": "python", "sizeLines": 81, "fileCategory": "code"},
+    {"path": "accounts/urls.py", "language": "python", "sizeLines": 11, "fileCategory": "code"},
+    {"path": "accounts/views.py", "language": "python", "sizeLines": 63, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "accounts/forms.py": [],
+    "accounts/urls.py": ["accounts/views.py"],
+    "accounts/views.py": ["accounts/forms.py"]
+  }
+}

@@ -1,0 +1,142 @@
+[
+  {
+    "id": "layer:api",
+    "name": "API Layer",
+    "description": "Django view functions and URL routing for both the accounts (auth) and portal (student/committee) apps, including the root URL dispatcher in config/urls.py.",
+    "nodeIds": [
+      "file:portal/views.py",
+      "file:portal/urls.py",
+      "file:accounts/views.py",
+      "file:accounts/urls.py",
+      "file:config/urls.py"
+    ]
+  },
+  {
+    "id": "layer:data",
+    "name": "Data Layer",
+    "description": "Django ORM model definitions for the custom User and eight portal models (News, VolunteerLink, Competition, StudyNote, ProblemReport, PointActivity, PointSubmission, UserPointProfile), their admin registrations, and the full database migration history for both apps.",
+    "nodeIds": [
+      "file:portal/models.py",
+      "file:accounts/models.py",
+      "file:portal/admin.py",
+      "file:accounts/admin.py",
+      "file:portal/migrations/__init__.py",
+      "file:portal/migrations/0001_initial.py",
+      "file:portal/migrations/0002_competition_deadline_competition_is_published_and_more.py",
+      "file:portal/migrations/0003_competition_drive_file_id_news_drive_file_id.py",
+      "file:portal/migrations/0004_replace_drive_with_local_imagefield.py",
+      "file:portal/migrations/0005_add_point_models.py",
+      "file:portal/migrations/0006_competition_is_archived_news_is_archived_and_more.py",
+      "file:accounts/migrations/__init__.py",
+      "file:accounts/migrations/0001_initial.py",
+      "file:accounts/migrations/0002_add_grade_level.py"
+    ]
+  },
+  {
+    "id": "layer:ui",
+    "name": "UI Layer",
+    "description": "All user-facing presentation assets: Django server-rendered HTML templates for both student and committee views, Django ModelForms for input validation and rendering, the Next.js frontend (layout, homepage, navbar), and project-wide stylesheets.",
+    "nodeIds": [
+      "file:templates/base.html",
+      "file:templates/accounts/login.html",
+      "file:templates/accounts/register.html",
+      "file:templates/portal/committee.html",
+      "file:templates/portal/committee_competition_confirm_delete.html",
+      "file:templates/portal/committee_competition_form.html",
+      "file:templates/portal/committee_competition_list.html",
+      "file:templates/portal/committee_news_confirm_delete.html",
+      "file:templates/portal/committee_news_form.html",
+      "file:templates/portal/committee_news_list.html",
+      "file:templates/portal/committee_point_activity_confirm_delete.html",
+      "file:templates/portal/committee_point_activity_form.html",
+      "file:templates/portal/committee_point_submission_confirm_delete.html",
+      "file:templates/portal/committee_point_submission_reject_form.html",
+      "file:templates/portal/committee_points.html",
+      "file:templates/portal/committee_problem_report_confirm_delete.html",
+      "file:templates/portal/committee_problem_report_reject_form.html",
+      "file:templates/portal/committee_problem_reports_list.html",
+      "file:templates/portal/committee_study_note_confirm_delete.html",
+      "file:templates/portal/committee_study_notes_list.html",
+      "file:templates/portal/committee_volunteer_confirm_delete.html",
+      "file:templates/portal/committee_volunteer_form.html",
+      "file:templates/portal/committee_volunteer_list.html",
+      "file:templates/portal/competitions.html",
+      "file:templates/portal/dashboard.html",
+      "file:templates/portal/news.html",
+      "file:templates/portal/point_history.html",
+      "file:templates/portal/point_submit.html",
+      "file:templates/portal/points.html",
+      "file:templates/portal/problem_report_form.html",
+      "file:templates/portal/problem_reports.html",
+      "file:templates/portal/study_note_form.html",
+      "file:templates/portal/study_notes.html",
+      "file:templates/portal/volunteer.html",
+      "file:portal/forms.py",
+      "file:accounts/forms.py",
+      "file:app/globals.css",
+      "file:app/layout.tsx",
+      "file:app/page.tsx",
+      "file:components/navbar.tsx",
+      "file:static/css/styles.css"
+    ]
+  },
+  {
+    "id": "layer:service",
+    "name": "Service Layer",
+    "description": "Django management commands that handle operational tasks outside the request cycle: archiving old media, seeding and clearing mock data, and creating test accounts.",
+    "nodeIds": [
+      "file:portal/management/commands/archive_old_media.py",
+      "file:portal/management/commands/clear_mock_data.py",
+      "file:portal/management/commands/seed_mock_data.py",
+      "file:portal/management/commands/create_test_accounts.py",
+      "file:portal/management/__init__.py",
+      "file:portal/management/commands/__init__.py"
+    ]
+  },
+  {
+    "id": "layer:config",
+    "name": "Configuration Layer",
+    "description": "Django project settings, WSGI/ASGI server entry points, app registrations, the CLI management entry point, and all Next.js and Node.js build configuration files including TypeScript, ESLint, PostCSS, and environment templates.",
+    "nodeIds": [
+      "file:config/settings.py",
+      "file:config/asgi.py",
+      "file:config/wsgi.py",
+      "file:config/__init__.py",
+      "file:manage.py",
+      "file:portal/apps.py",
+      "file:portal/__init__.py",
+      "file:accounts/apps.py",
+      "file:accounts/__init__.py",
+      "file:next.config.ts",
+      "file:eslint.config.mjs",
+      "file:postcss.config.mjs",
+      "config:package.json",
+      "config:tsconfig.json",
+      "config:.env.example",
+      "config:.claude/settings.json",
+      "file:.understand-anything/.understandignore"
+    ]
+  },
+  {
+    "id": "layer:test",
+    "name": "Test Layer",
+    "description": "Automated test suites covering accounts (registration, login, validation) and portal (image uploads, points workflow, committee access control) functionality.",
+    "nodeIds": [
+      "file:portal/tests.py",
+      "file:accounts/tests.py"
+    ]
+  },
+  {
+    "id": "layer:documentation",
+    "name": "Documentation",
+    "description": "Project documentation covering setup, deployment to PythonAnywhere, architecture reference for AI agents, a pre-release QA checklist, and the Python dependency manifest.",
+    "nodeIds": [
+      "document:README.md",
+      "document:CLAUDE.md",
+      "document:AGENTS.md",
+      "document:DEPLOY.md",
+      "document:FINAL_QA_CHECKLIST.md",
+      "document:requirements.txt"
+    ]
+  }
+]

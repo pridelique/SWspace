@@ -33,3 +33,6 @@ config.txt
 # Student roster (personal data)
 *.xlsx
 ~$*
+
+node_modules/
+.next/

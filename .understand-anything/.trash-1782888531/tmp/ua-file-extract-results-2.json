@@ -1,0 +1,361 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "accounts/forms.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 81,
+      "nonEmptyLines": 71,
+      "classes": [
+        {
+          "name": "RegisterForm",
+          "startLine": 18,
+          "endLine": 81,
+          "methods": [
+            "clean_email",
+            "clean_verification_code",
+            "clean_password",
+            "clean",
+            "determine_role",
+            "determine_grade_level"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "RegisterForm",
+          "line": 18,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "clean_email",
+          "callee": "self.cleaned_data['email'].lower().strip",
+          "lineNumber": 43
+        },
+        {
+          "caller": "clean_email",
+          "callee": "self.cleaned_data['email'].lower",
+          "lineNumber": 43
+        },
+        {
+          "caller": "clean_email",
+          "callee": "email.endswith",
+          "lineNumber": 45
+        },
+        {
+          "caller": "clean_email",
+          "callee": "forms.ValidationError",
+          "lineNumber": 46
+        },
+        {
+          "caller": "clean_email",
+          "callee": "User.objects.filter(email=email).exists",
+          "lineNumber": 47
+        },
+        {
+          "caller": "clean_email",
+          "callee": "User.objects.filter",
+          "lineNumber": 47
+        },
+        {
+          "caller": "clean_email",
+          "callee": "forms.ValidationError",
+          "lineNumber": 48
+        },
+        {
+          "caller": "clean_verification_code",
+          "callee": "self.cleaned_data.get('verification_code', '').strip().upper",
+          "lineNumber": 52
+        },
+        {
+          "caller": "clean_verification_code",
+          "callee": "self.cleaned_data.get('verification_code', '').strip",
+          "lineNumber": 52
+        },
+        {
+          "caller": "clean_verification_code",
+          "callee": "self.cleaned_data.get",
+          "lineNumber": 52
+        },
+        {
+          "caller": "clean_verification_code",
+          "callee": "forms.ValidationError",
+          "lineNumber": 57
+        },
+        {
+          "caller": "clean_password",
+          "callee": "self.cleaned_data.get",
+          "lineNumber": 60
+        },
+        {
+          "caller": "clean_password",
+          "callee": "validate_password",
+          "lineNumber": 62
+        },
+        {
+          "caller": "clean",
+          "callee": "super().clean",
+          "lineNumber": 66
+        },
+        {
+          "caller": "clean",
+          "callee": "super",
+          "lineNumber": 66
+        },
+        {
+          "caller": "clean",
+          "callee": "cleaned_data.get",
+          "lineNumber": 67
+        },
+        {
+          "caller": "clean",
+          "callee": "cleaned_data.get",
+          "lineNumber": 68
+        },
+        {
+          "caller": "clean",
+          "callee": "self.add_error",
+          "lineNumber": 70
+        },
+        {
+          "caller": "determine_role",
+          "callee": "self.cleaned_data.get",
+          "lineNumber": 74
+        },
+        {
+          "caller": "determine_grade_level",
+          "callee": "self.cleaned_data.get",
+          "lineNumber": 80
+        },
+        {
+          "caller": "determine_grade_level",
+          "callee": "STUDENT_CODE_GRADE_MAP.get",
+          "lineNumber": 81
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "accounts/urls.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 11,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "accounts/views.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 63,
+      "nonEmptyLines": 51,
+      "functions": [
+        {
+          "name": "register_view",
+          "startLine": 12,
+          "endLine": 32,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "login_view",
+          "startLine": 35,
+          "endLine": 55,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "logout_view",
+          "startLine": 58,
+          "endLine": 63,
+          "params": [
+            "request"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "register_view",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "login_view",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "logout_view",
+          "line": 58,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "register_view",
+          "callee": "redirect",
+          "lineNumber": 14
+        },
+        {
+          "caller": "register_view",
+          "callee": "RegisterForm",
+          "lineNumber": 16
+        },
+        {
+          "caller": "register_view",
+          "callee": "form.is_valid",
+          "lineNumber": 17
+        },
+        {
+          "caller": "register_view",
+          "callee": "form.determine_role",
+          "lineNumber": 18
+        },
+        {
+          "caller": "register_view",
+          "callee": "form.determine_grade_level",
+          "lineNumber": 19
+        },
+        {
+          "caller": "register_view",
+          "callee": "User.objects.create_user",
+          "lineNumber": 20
+        },
+        {
+          "caller": "register_view",
+          "callee": "auth.login",
+          "lineNumber": 28
+        },
+        {
+          "caller": "register_view",
+          "callee": "messages.success",
+          "lineNumber": 29
+        },
+        {
+          "caller": "register_view",
+          "callee": "redirect",
+          "lineNumber": 30
+        },
+        {
+          "caller": "register_view",
+          "callee": "render",
+          "lineNumber": 32
+        },
+        {
+          "caller": "login_view",
+          "callee": "redirect",
+          "lineNumber": 37
+        },
+        {
+          "caller": "login_view",
+          "callee": "AuthenticationForm",
+          "lineNumber": 39
+        },
+        {
+          "caller": "login_view",
+          "callee": "form.is_valid",
+          "lineNumber": 40
+        },
+        {
+          "caller": "login_view",
+          "callee": "form.get_user",
+          "lineNumber": 41
+        },
+        {
+          "caller": "login_view",
+          "callee": "auth.login",
+          "lineNumber": 42
+        },
+        {
+          "caller": "login_view",
+          "callee": "messages.success",
+          "lineNumber": 43
+        },
+        {
+          "caller": "login_view",
+          "callee": "request.GET.get",
+          "lineNumber": 44
+        },
+        {
+          "caller": "login_view",
+          "callee": "url_has_allowed_host_and_scheme",
+          "lineNumber": 45
+        },
+        {
+          "caller": "login_view",
+          "callee": "request.get_host",
+          "lineNumber": 47
+        },
+        {
+          "caller": "login_view",
+          "callee": "request.is_secure",
+          "lineNumber": 48
+        },
+        {
+          "caller": "login_view",
+          "callee": "redirect",
+          "lineNumber": 50
+        },
+        {
+          "caller": "login_view",
+          "callee": "redirect",
+          "lineNumber": 51
+        },
+        {
+          "caller": "login_view",
+          "callee": "messages.error",
+          "lineNumber": 53
+        },
+        {
+          "caller": "login_view",
+          "callee": "render",
+          "lineNumber": 55
+        },
+        {
+          "caller": "logout_view",
+          "callee": "auth.logout",
+          "lineNumber": 60
+        },
+        {
+          "caller": "logout_view",
+          "callee": "messages.info",
+          "lineNumber": 61
+        },
+        {
+          "caller": "logout_view",
+          "callee": "redirect",
+          "lineNumber": 62
+        },
+        {
+          "caller": "logout_view",
+          "callee": "redirect",
+          "lineNumber": 63
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    }
+  ]
+}

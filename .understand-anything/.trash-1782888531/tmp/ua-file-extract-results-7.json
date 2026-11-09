@@ -1,0 +1,1178 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": ".claude/settings.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 5,
+      "nonEmptyLines": 5,
+      "sections": [
+        {
+          "heading": "enabledPlugins",
+          "level": 1,
+          "line": 2
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    },
+    {
+      "path": ".understand-anything/.understandignore",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 43,
+      "metrics": {}
+    },
+    {
+      "path": "accounts/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "accounts/admin.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 24,
+      "nonEmptyLines": 20,
+      "classes": [
+        {
+          "name": "UserAdmin",
+          "startLine": 8,
+          "endLine": 24,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "UserAdmin",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "accounts/apps.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 6,
+      "nonEmptyLines": 4,
+      "classes": [
+        {
+          "name": "AccountsConfig",
+          "startLine": 4,
+          "endLine": 6,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "AccountsConfig",
+          "line": 4,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "accounts/migrations/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "accounts/migrations/0001_initial.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 42,
+      "nonEmptyLines": 36,
+      "classes": [
+        {
+          "name": "Migration",
+          "startLine": 7,
+          "endLine": 42,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Migration",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "accounts/migrations/0002_add_grade_level.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 13,
+      "classes": [
+        {
+          "name": "Migration",
+          "startLine": 6,
+          "endLine": 18,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Migration",
+          "line": 6,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "accounts/models.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 48,
+      "nonEmptyLines": 38,
+      "classes": [
+        {
+          "name": "UserManager",
+          "startLine": 5,
+          "endLine": 20,
+          "methods": [
+            "create_user",
+            "create_superuser"
+          ],
+          "properties": []
+        },
+        {
+          "name": "User",
+          "startLine": 23,
+          "endLine": 48,
+          "methods": [
+            "is_committee",
+            "__str__"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "UserManager",
+          "line": 5,
+          "isDefault": false
+        },
+        {
+          "name": "User",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "create_user",
+          "callee": "ValueError",
+          "lineNumber": 8
+        },
+        {
+          "caller": "create_user",
+          "callee": "self.normalize_email",
+          "lineNumber": 9
+        },
+        {
+          "caller": "create_user",
+          "callee": "self.model",
+          "lineNumber": 10
+        },
+        {
+          "caller": "create_user",
+          "callee": "user.set_password",
+          "lineNumber": 11
+        },
+        {
+          "caller": "create_user",
+          "callee": "user.save",
+          "lineNumber": 12
+        },
+        {
+          "caller": "create_superuser",
+          "callee": "extra_fields.setdefault",
+          "lineNumber": 16
+        },
+        {
+          "caller": "create_superuser",
+          "callee": "extra_fields.setdefault",
+          "lineNumber": 17
+        },
+        {
+          "caller": "create_superuser",
+          "callee": "extra_fields.setdefault",
+          "lineNumber": 18
+        },
+        {
+          "caller": "create_superuser",
+          "callee": "extra_fields.setdefault",
+          "lineNumber": 19
+        },
+        {
+          "caller": "create_superuser",
+          "callee": "self.create_user",
+          "lineNumber": 20
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "accounts/tests.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 155,
+      "nonEmptyLines": 127,
+      "functions": [
+        {
+          "name": "_post_register",
+          "startLine": 13,
+          "endLine": 22,
+          "params": [
+            "client",
+            "**overrides"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "RegisterTest",
+          "startLine": 25,
+          "endLine": 87,
+          "methods": [
+            "setUp",
+            "test_student_registration_succeeds",
+            "test_student_grade_level_assigned",
+            "test_all_grade_codes_map_correctly",
+            "test_committee_registration_sets_role",
+            "test_committee_grade_level_empty",
+            "test_invalid_verification_code_rejected",
+            "test_non_school_email_rejected",
+            "test_duplicate_email_rejected",
+            "test_password_mismatch_rejected",
+            "test_authenticated_user_redirected_from_register"
+          ],
+          "properties": []
+        },
+        {
+          "name": "LoginTest",
+          "startLine": 90,
+          "endLine": 138,
+          "methods": [
+            "setUp",
+            "test_login_with_correct_credentials",
+            "test_login_with_wrong_password",
+            "test_login_with_unknown_email",
+            "test_authenticated_user_redirected_from_login",
+            "test_safe_next_redirect_followed",
+            "test_unsafe_next_redirect_ignored"
+          ],
+          "properties": []
+        },
+        {
+          "name": "LogoutTest",
+          "startLine": 141,
+          "endLine": 155,
+          "methods": [
+            "setUp",
+            "test_post_logout_redirects_to_login",
+            "test_get_logout_redirects_to_dashboard"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_post_register",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterTest",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "LoginTest",
+          "line": 90,
+          "isDefault": false
+        },
+        {
+          "name": "LogoutTest",
+          "line": 141,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_post_register",
+          "callee": "data.update",
+          "lineNumber": 21
+        },
+        {
+          "caller": "_post_register",
+          "callee": "client.post",
+          "lineNumber": 22
+        },
+        {
+          "caller": "_post_register",
+          "callee": "reverse",
+          "lineNumber": 22
+        },
+        {
+          "caller": "setUp",
+          "callee": "Client",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_student_registration_succeeds",
+          "callee": "_post_register",
+          "lineNumber": 30
+        },
+        {
+          "caller": "test_student_registration_succeeds",
+          "callee": "self.assertRedirects",
+          "lineNumber": 31
+        },
+        {
+          "caller": "test_student_registration_succeeds",
+          "callee": "reverse",
+          "lineNumber": 31
+        },
+        {
+          "caller": "test_student_registration_succeeds",
+          "callee": "User.objects.get",
+          "lineNumber": 32
+        },
+        {
+          "caller": "test_student_registration_succeeds",
+          "callee": "self.assertEqual",
+          "lineNumber": 33
+        },
+        {
+          "caller": "test_student_grade_level_assigned",
+          "callee": "_post_register",
+          "lineNumber": 36
+        },
+        {
+          "caller": "test_student_grade_level_assigned",
+          "callee": "self.assertEqual",
+          "lineNumber": 37
+        },
+        {
+          "caller": "test_student_grade_level_assigned",
+          "callee": "User.objects.get",
+          "lineNumber": 37
+        },
+        {
+          "caller": "test_all_grade_codes_map_correctly",
+          "callee": "enumerate",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_all_grade_codes_map_correctly",
+          "callee": "grade_map.items",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_all_grade_codes_map_correctly",
+          "callee": "_post_register",
+          "lineNumber": 50
+        },
+        {
+          "caller": "test_all_grade_codes_map_correctly",
+          "callee": "Client",
+          "lineNumber": 50
+        },
+        {
+          "caller": "test_all_grade_codes_map_correctly",
+          "callee": "self.assertEqual",
+          "lineNumber": 51
+        },
+        {
+          "caller": "test_all_grade_codes_map_correctly",
+          "callee": "User.objects.get",
+          "lineNumber": 51
+        },
+        {
+          "caller": "test_committee_registration_sets_role",
+          "callee": "_post_register",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_committee_registration_sets_role",
+          "callee": "User.objects.get",
+          "lineNumber": 55
+        },
+        {
+          "caller": "test_committee_registration_sets_role",
+          "callee": "self.assertEqual",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_committee_registration_sets_role",
+          "callee": "self.assertTrue",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_committee_registration_sets_role",
+          "callee": "user.is_committee",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_committee_grade_level_empty",
+          "callee": "_post_register",
+          "lineNumber": 60
+        },
+        {
+          "caller": "test_committee_grade_level_empty",
+          "callee": "self.assertEqual",
+          "lineNumber": 61
+        },
+        {
+          "caller": "test_committee_grade_level_empty",
+          "callee": "User.objects.get",
+          "lineNumber": 61
+        },
+        {
+          "caller": "test_invalid_verification_code_rejected",
+          "callee": "_post_register",
+          "lineNumber": 64
+        },
+        {
+          "caller": "test_invalid_verification_code_rejected",
+          "callee": "self.assertEqual",
+          "lineNumber": 65
+        },
+        {
+          "caller": "test_invalid_verification_code_rejected",
+          "callee": "self.assertFalse",
+          "lineNumber": 66
+        },
+        {
+          "caller": "test_invalid_verification_code_rejected",
+          "callee": "User.objects.filter(email=VALID_EMAIL).exists",
+          "lineNumber": 66
+        },
+        {
+          "caller": "test_invalid_verification_code_rejected",
+          "callee": "User.objects.filter",
+          "lineNumber": 66
+        },
+        {
+          "caller": "test_non_school_email_rejected",
+          "callee": "_post_register",
+          "lineNumber": 69
+        },
+        {
+          "caller": "test_non_school_email_rejected",
+          "callee": "self.assertEqual",
+          "lineNumber": 70
+        },
+        {
+          "caller": "test_non_school_email_rejected",
+          "callee": "self.assertFalse",
+          "lineNumber": 71
+        },
+        {
+          "caller": "test_non_school_email_rejected",
+          "callee": "User.objects.filter(email='test@gmail.com').exists",
+          "lineNumber": 71
+        },
+        {
+          "caller": "test_non_school_email_rejected",
+          "callee": "User.objects.filter",
+          "lineNumber": 71
+        },
+        {
+          "caller": "test_duplicate_email_rejected",
+          "callee": "_post_register",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_duplicate_email_rejected",
+          "callee": "_post_register",
+          "lineNumber": 75
+        },
+        {
+          "caller": "test_duplicate_email_rejected",
+          "callee": "Client",
+          "lineNumber": 75
+        },
+        {
+          "caller": "test_duplicate_email_rejected",
+          "callee": "self.assertEqual",
+          "lineNumber": 76
+        },
+        {
+          "caller": "test_duplicate_email_rejected",
+          "callee": "self.assertEqual",
+          "lineNumber": 77
+        },
+        {
+          "caller": "test_duplicate_email_rejected",
+          "callee": "User.objects.filter(email=VALID_EMAIL).count",
+          "lineNumber": 77
+        },
+        {
+          "caller": "test_duplicate_email_rejected",
+          "callee": "User.objects.filter",
+          "lineNumber": 77
+        },
+        {
+          "caller": "test_password_mismatch_rejected",
+          "callee": "_post_register",
+          "lineNumber": 80
+        },
+        {
+          "caller": "test_password_mismatch_rejected",
+          "callee": "self.assertEqual",
+          "lineNumber": 81
+        },
+        {
+          "caller": "test_password_mismatch_rejected",
+          "callee": "self.assertFalse",
+          "lineNumber": 82
+        },
+        {
+          "caller": "test_password_mismatch_rejected",
+          "callee": "User.objects.filter(email=VALID_EMAIL).exists",
+          "lineNumber": 82
+        },
+        {
+          "caller": "test_password_mismatch_rejected",
+          "callee": "User.objects.filter",
+          "lineNumber": 82
+        },
+        {
+          "caller": "test_authenticated_user_redirected_from_register",
+          "callee": "_post_register",
+          "lineNumber": 85
+        },
+        {
+          "caller": "test_authenticated_user_redirected_from_register",
+          "callee": "self.client.get",
+          "lineNumber": 86
+        },
+        {
+          "caller": "test_authenticated_user_redirected_from_register",
+          "callee": "reverse",
+          "lineNumber": 86
+        },
+        {
+          "caller": "test_authenticated_user_redirected_from_register",
+          "callee": "self.assertRedirects",
+          "lineNumber": 87
+        },
+        {
+          "caller": "test_authenticated_user_redirected_from_register",
+          "callee": "reverse",
+          "lineNumber": 87
+        },
+        {
+          "caller": "setUp",
+          "callee": "Client",
+          "lineNumber": 92
+        },
+        {
+          "caller": "setUp",
+          "callee": "User.objects.create_user",
+          "lineNumber": 93
+        },
+        {
+          "caller": "test_login_with_correct_credentials",
+          "callee": "self.client.post",
+          "lineNumber": 101
+        },
+        {
+          "caller": "test_login_with_correct_credentials",
+          "callee": "reverse",
+          "lineNumber": 101
+        },
+        {
+          "caller": "test_login_with_correct_credentials",
+          "callee": "self.assertRedirects",
+          "lineNumber": 105
+        },
+        {
+          "caller": "test_login_with_correct_credentials",
+          "callee": "reverse",
+          "lineNumber": 105
+        },
+        {
+          "caller": "test_login_with_wrong_password",
+          "callee": "self.client.post",
+          "lineNumber": 108
+        },
+        {
+          "caller": "test_login_with_wrong_password",
+          "callee": "reverse",
+          "lineNumber": 108
+        },
+        {
+          "caller": "test_login_with_wrong_password",
+          "callee": "self.assertEqual",
+          "lineNumber": 112
+        },
+        {
+          "caller": "test_login_with_unknown_email",
+          "callee": "self.client.post",
+          "lineNumber": 115
+        },
+        {
+          "caller": "test_login_with_unknown_email",
+          "callee": "reverse",
+          "lineNumber": 115
+        },
+        {
+          "caller": "test_login_with_unknown_email",
+          "callee": "self.assertEqual",
+          "lineNumber": 119
+        },
+        {
+          "caller": "test_authenticated_user_redirected_from_login",
+          "callee": "self.client.login",
+          "lineNumber": 122
+        },
+        {
+          "caller": "test_authenticated_user_redirected_from_login",
+          "callee": "self.client.get",
+          "lineNumber": 123
+        },
+        {
+          "caller": "test_authenticated_user_redirected_from_login",
+          "callee": "reverse",
+          "lineNumber": 123
+        },
+        {
+          "caller": "test_authenticated_user_redirected_from_login",
+          "callee": "self.assertRedirects",
+          "lineNumber": 124
+        },
+        {
+          "caller": "test_authenticated_user_redirected_from_login",
+          "callee": "reverse",
+          "lineNumber": 124
+        },
+        {
+          "caller": "test_safe_next_redirect_followed",
+          "callee": "self.client.post",
+          "lineNumber": 127
+        },
+        {
+          "caller": "test_safe_next_redirect_followed",
+          "callee": "reverse",
+          "lineNumber": 128
+        },
+        {
+          "caller": "test_safe_next_redirect_followed",
+          "callee": "self.assertRedirects",
+          "lineNumber": 131
+        },
+        {
+          "caller": "test_unsafe_next_redirect_ignored",
+          "callee": "self.client.post",
+          "lineNumber": 134
+        },
+        {
+          "caller": "test_unsafe_next_redirect_ignored",
+          "callee": "reverse",
+          "lineNumber": 135
+        },
+        {
+          "caller": "test_unsafe_next_redirect_ignored",
+          "callee": "self.assertRedirects",
+          "lineNumber": 138
+        },
+        {
+          "caller": "test_unsafe_next_redirect_ignored",
+          "callee": "reverse",
+          "lineNumber": 138
+        },
+        {
+          "caller": "setUp",
+          "callee": "Client",
+          "lineNumber": 143
+        },
+        {
+          "caller": "setUp",
+          "callee": "User.objects.create_user",
+          "lineNumber": 144
+        },
+        {
+          "caller": "setUp",
+          "callee": "self.client.login",
+          "lineNumber": 147
+        },
+        {
+          "caller": "test_post_logout_redirects_to_login",
+          "callee": "self.client.post",
+          "lineNumber": 150
+        },
+        {
+          "caller": "test_post_logout_redirects_to_login",
+          "callee": "reverse",
+          "lineNumber": 150
+        },
+        {
+          "caller": "test_post_logout_redirects_to_login",
+          "callee": "self.assertRedirects",
+          "lineNumber": 151
+        },
+        {
+          "caller": "test_post_logout_redirects_to_login",
+          "callee": "reverse",
+          "lineNumber": 151
+        },
+        {
+          "caller": "test_get_logout_redirects_to_dashboard",
+          "callee": "self.client.get",
+          "lineNumber": 154
+        },
+        {
+          "caller": "test_get_logout_redirects_to_dashboard",
+          "callee": "reverse",
+          "lineNumber": 154
+        },
+        {
+          "caller": "test_get_logout_redirects_to_dashboard",
+          "callee": "self.assertRedirects",
+          "lineNumber": 155
+        },
+        {
+          "caller": "test_get_logout_redirects_to_dashboard",
+          "callee": "reverse",
+          "lineNumber": 155
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 1,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "app/globals.css",
+      "language": "css",
+      "fileCategory": "markup",
+      "totalLines": 26,
+      "nonEmptyLines": 22,
+      "metrics": {}
+    },
+    {
+      "path": "app/layout.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 34,
+      "nonEmptyLines": 29,
+      "functions": [
+        {
+          "name": "RootLayout",
+          "startLine": 18,
+          "endLine": 34,
+          "params": [
+            "{\r\n  children,\r\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "RootLayout",
+          "line": 18,
+          "isDefault": true
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "app/page.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 65,
+      "nonEmptyLines": 64,
+      "functions": [
+        {
+          "name": "Home",
+          "startLine": 3,
+          "endLine": 65,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Home",
+          "line": 3,
+          "isDefault": true
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/navbar.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 138,
+      "nonEmptyLines": 115,
+      "functions": [
+        {
+          "name": "Navbar",
+          "startLine": 7,
+          "endLine": 138,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Navbar",
+          "line": 7,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Navbar",
+          "callee": "useState",
+          "lineNumber": 8
+        },
+        {
+          "caller": "Navbar",
+          "callee": "useState",
+          "lineNumber": 9
+        },
+        {
+          "caller": "Navbar",
+          "callee": "useState",
+          "lineNumber": 10
+        },
+        {
+          "caller": "Navbar",
+          "callee": "setMenuOpen",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Navbar",
+          "callee": "setMenuOpen",
+          "lineNumber": 81
+        },
+        {
+          "caller": "Navbar",
+          "callee": "setMenuOpen",
+          "lineNumber": 87
+        },
+        {
+          "caller": "Navbar",
+          "callee": "setMenuOpen",
+          "lineNumber": 98
+        },
+        {
+          "caller": "Navbar",
+          "callee": "setMenuOpen",
+          "lineNumber": 106
+        },
+        {
+          "caller": "Navbar",
+          "callee": "setMenuOpen",
+          "lineNumber": 114
+        },
+        {
+          "caller": "Navbar",
+          "callee": "setMenuOpen",
+          "lineNumber": 122
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "config/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "config/asgi.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 10,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "config/settings.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 130,
+      "nonEmptyLines": 104,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "config/urls.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 22,
+      "nonEmptyLines": 17,
+      "functions": [
+        {
+          "name": "root_redirect",
+          "startLine": 8,
+          "endLine": 11,
+          "params": [
+            "request"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "root_redirect",
+          "line": 8,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "root_redirect",
+          "callee": "redirect",
+          "lineNumber": 10
+        },
+        {
+          "caller": "root_redirect",
+          "callee": "redirect",
+          "lineNumber": 11
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "config/wsgi.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 10,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "eslint.config.mjs",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 16,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "manage.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 22,
+      "nonEmptyLines": 18,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 7,
+          "endLine": 18,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "os.environ.setdefault",
+          "lineNumber": 9
+        },
+        {
+          "caller": "main",
+          "callee": "ImportError",
+          "lineNumber": 13
+        },
+        {
+          "caller": "main",
+          "callee": "execute_from_command_line",
+          "lineNumber": 18
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "next.config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 7,
+      "nonEmptyLines": 5,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "portal/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "portal/apps.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 6,
+      "nonEmptyLines": 4,
+      "classes": [
+        {
+          "name": "PortalConfig",
+          "startLine": 4,
+          "endLine": 6,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PortalConfig",
+          "line": 4,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "portal/management/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

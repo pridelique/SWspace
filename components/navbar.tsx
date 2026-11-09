@@ -9,8 +9,6 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [mobileProductOpen, setMobileProductOpen] = useState(false)
 
-  if (status === "loading") return <div>Loading...</div>
-
   return (
     <>
       <header className="fixed top-0 left-0 w-full bg-gray-900 font-bold text-[10px] tracking-tight z-50 border-b border-gray-600">

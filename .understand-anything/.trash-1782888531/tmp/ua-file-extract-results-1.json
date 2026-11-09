@@ -1,0 +1,1196 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 5,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "portal/admin.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 117,
+      "nonEmptyLines": 100,
+      "classes": [
+        {
+          "name": "NewsAdmin",
+          "startLine": 10,
+          "endLine": 21,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "VolunteerLinkAdmin",
+          "startLine": 25,
+          "endLine": 36,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "CompetitionAdmin",
+          "startLine": 40,
+          "endLine": 51,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "StudyNoteAdmin",
+          "startLine": 55,
+          "endLine": 67,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "ProblemReportAdmin",
+          "startLine": 71,
+          "endLine": 82,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "PointActivityAdmin",
+          "startLine": 86,
+          "endLine": 96,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "PointSubmissionAdmin",
+          "startLine": 100,
+          "endLine": 110,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "UserPointProfileAdmin",
+          "startLine": 114,
+          "endLine": 117,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "NewsAdmin",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "VolunteerLinkAdmin",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "CompetitionAdmin",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "StudyNoteAdmin",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "ProblemReportAdmin",
+          "line": 70,
+          "isDefault": false
+        },
+        {
+          "name": "PointActivityAdmin",
+          "line": 85,
+          "isDefault": false
+        },
+        {
+          "name": "PointSubmissionAdmin",
+          "line": 99,
+          "isDefault": false
+        },
+        {
+          "name": "UserPointProfileAdmin",
+          "line": 113,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 8,
+        "functionCount": 0,
+        "classCount": 8
+      }
+    },
+    {
+      "path": "portal/management/commands/archive_old_media.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 112,
+      "nonEmptyLines": 90,
+      "functions": [
+        {
+          "name": "_subtract_months",
+          "startLine": 15,
+          "endLine": 20,
+          "params": [
+            "dt",
+            "months"
+          ]
+        },
+        {
+          "name": "_compress",
+          "startLine": 23,
+          "endLine": 37,
+          "params": [
+            "image_field"
+          ]
+        },
+        {
+          "name": "_save_local",
+          "startLine": 40,
+          "endLine": 43,
+          "params": [
+            "image_field",
+            "data"
+          ]
+        },
+        {
+          "name": "_save_cloudinary",
+          "startLine": 46,
+          "endLine": 55,
+          "params": [
+            "image_field",
+            "data"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "Command",
+          "startLine": 58,
+          "endLine": 112,
+          "methods": [
+            "add_arguments",
+            "handle"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_subtract_months",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "_compress",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "_save_local",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "_save_cloudinary",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "Command",
+          "line": 58,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_subtract_months",
+          "callee": "min",
+          "lineNumber": 19
+        },
+        {
+          "caller": "_subtract_months",
+          "callee": "calendar.monthrange",
+          "lineNumber": 19
+        },
+        {
+          "caller": "_subtract_months",
+          "callee": "dt.replace",
+          "lineNumber": 20
+        },
+        {
+          "caller": "_compress",
+          "callee": "image_field.open",
+          "lineNumber": 25
+        },
+        {
+          "caller": "_compress",
+          "callee": "Image.open",
+          "lineNumber": 26
+        },
+        {
+          "caller": "_compress",
+          "callee": "img.load",
+          "lineNumber": 27
+        },
+        {
+          "caller": "_compress",
+          "callee": "image_field.close",
+          "lineNumber": 28
+        },
+        {
+          "caller": "_compress",
+          "callee": "img.convert",
+          "lineNumber": 30
+        },
+        {
+          "caller": "_compress",
+          "callee": "max",
+          "lineNumber": 32
+        },
+        {
+          "caller": "_compress",
+          "callee": "max",
+          "lineNumber": 33
+        },
+        {
+          "caller": "_compress",
+          "callee": "img.resize",
+          "lineNumber": 34
+        },
+        {
+          "caller": "_compress",
+          "callee": "int",
+          "lineNumber": 34
+        },
+        {
+          "caller": "_compress",
+          "callee": "int",
+          "lineNumber": 34
+        },
+        {
+          "caller": "_compress",
+          "callee": "io.BytesIO",
+          "lineNumber": 35
+        },
+        {
+          "caller": "_compress",
+          "callee": "img.save",
+          "lineNumber": 36
+        },
+        {
+          "caller": "_compress",
+          "callee": "buf.getvalue",
+          "lineNumber": 37
+        },
+        {
+          "caller": "_save_local",
+          "callee": "os.path.join",
+          "lineNumber": 41
+        },
+        {
+          "caller": "_save_local",
+          "callee": "open",
+          "lineNumber": 42
+        },
+        {
+          "caller": "_save_local",
+          "callee": "fh.write",
+          "lineNumber": 43
+        },
+        {
+          "caller": "_save_cloudinary",
+          "callee": "os.path.splitext",
+          "lineNumber": 48
+        },
+        {
+          "caller": "_save_cloudinary",
+          "callee": "cloudinary.uploader.upload",
+          "lineNumber": 49
+        },
+        {
+          "caller": "_save_cloudinary",
+          "callee": "io.BytesIO",
+          "lineNumber": 50
+        },
+        {
+          "caller": "add_arguments",
+          "callee": "parser.add_argument",
+          "lineNumber": 62
+        },
+        {
+          "caller": "handle",
+          "callee": "getattr",
+          "lineNumber": 65
+        },
+        {
+          "caller": "handle",
+          "callee": "_subtract_months",
+          "lineNumber": 66
+        },
+        {
+          "caller": "handle",
+          "callee": "timezone.now",
+          "lineNumber": 66
+        },
+        {
+          "caller": "handle",
+          "callee": "bool",
+          "lineNumber": 68
+        },
+        {
+          "caller": "handle",
+          "callee": "getattr(settings, 'CLOUDINARY_STORAGE', {}).get",
+          "lineNumber": 68
+        },
+        {
+          "caller": "handle",
+          "callee": "getattr",
+          "lineNumber": 68
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 70
+        },
+        {
+          "caller": "handle",
+          "callee": "cutoff.date",
+          "lineNumber": 70
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 72
+        },
+        {
+          "caller": "handle",
+          "callee": "Model.objects.filter",
+          "lineNumber": 82
+        },
+        {
+          "caller": "handle",
+          "callee": "qs.iterator",
+          "lineNumber": 83
+        },
+        {
+          "caller": "handle",
+          "callee": "getattr",
+          "lineNumber": 83
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 84
+        },
+        {
+          "caller": "handle",
+          "callee": "len",
+          "lineNumber": 84
+        },
+        {
+          "caller": "handle",
+          "callee": "len",
+          "lineNumber": 87
+        },
+        {
+          "caller": "handle",
+          "callee": "getattr",
+          "lineNumber": 92
+        },
+        {
+          "caller": "handle",
+          "callee": "_compress",
+          "lineNumber": 94
+        },
+        {
+          "caller": "handle",
+          "callee": "_save_cloudinary",
+          "lineNumber": 96
+        },
+        {
+          "caller": "handle",
+          "callee": "_save_local",
+          "lineNumber": 98
+        },
+        {
+          "caller": "handle",
+          "callee": "obj.save",
+          "lineNumber": 100
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stderr.write",
+          "lineNumber": 103
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 105
+        },
+        {
+          "caller": "handle",
+          "callee": "len",
+          "lineNumber": 105
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 110
+        },
+        {
+          "caller": "handle",
+          "callee": "self.style.WARNING",
+          "lineNumber": 110
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 112
+        },
+        {
+          "caller": "handle",
+          "callee": "self.style.SUCCESS",
+          "lineNumber": 112
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 5,
+        "functionCount": 4,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "portal/management/commands/clear_mock_data.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 67,
+      "nonEmptyLines": 54,
+      "functions": [
+        {
+          "name": "_delete_file",
+          "startLine": 9,
+          "endLine": 14,
+          "params": [
+            "field"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "Command",
+          "startLine": 17,
+          "endLine": 67,
+          "methods": [
+            "add_arguments",
+            "handle"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_delete_file",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "Command",
+          "line": 17,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_delete_file",
+          "callee": "field.delete",
+          "lineNumber": 12
+        },
+        {
+          "caller": "add_arguments",
+          "callee": "parser.add_argument",
+          "lineNumber": 21
+        },
+        {
+          "caller": "handle",
+          "callee": "News.objects.count",
+          "lineNumber": 25
+        },
+        {
+          "caller": "handle",
+          "callee": "VolunteerLink.objects.count",
+          "lineNumber": 26
+        },
+        {
+          "caller": "handle",
+          "callee": "Competition.objects.count",
+          "lineNumber": 27
+        },
+        {
+          "caller": "handle",
+          "callee": "StudyNote.objects.count",
+          "lineNumber": 28
+        },
+        {
+          "caller": "handle",
+          "callee": "ProblemReport.objects.count",
+          "lineNumber": 29
+        },
+        {
+          "caller": "handle",
+          "callee": "PointSubmission.objects.count",
+          "lineNumber": 30
+        },
+        {
+          "caller": "handle",
+          "callee": "PointActivity.objects.count",
+          "lineNumber": 31
+        },
+        {
+          "caller": "handle",
+          "callee": "UserPointProfile.objects.count",
+          "lineNumber": 32
+        },
+        {
+          "caller": "handle",
+          "callee": "sum",
+          "lineNumber": 34
+        },
+        {
+          "caller": "handle",
+          "callee": "counts.values",
+          "lineNumber": 34
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 37
+        },
+        {
+          "caller": "handle",
+          "callee": "counts.items",
+          "lineNumber": 40
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 41
+        },
+        {
+          "caller": "handle",
+          "callee": "input",
+          "lineNumber": 44
+        },
+        {
+          "caller": "handle",
+          "callee": "confirm.strip().lower",
+          "lineNumber": 45
+        },
+        {
+          "caller": "handle",
+          "callee": "confirm.strip",
+          "lineNumber": 45
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 46
+        },
+        {
+          "caller": "handle",
+          "callee": "PointSubmission.objects.all",
+          "lineNumber": 50
+        },
+        {
+          "caller": "handle",
+          "callee": "_delete_file",
+          "lineNumber": 51
+        },
+        {
+          "caller": "handle",
+          "callee": "News.objects.all",
+          "lineNumber": 52
+        },
+        {
+          "caller": "handle",
+          "callee": "_delete_file",
+          "lineNumber": 53
+        },
+        {
+          "caller": "handle",
+          "callee": "Competition.objects.all",
+          "lineNumber": 54
+        },
+        {
+          "caller": "handle",
+          "callee": "_delete_file",
+          "lineNumber": 55
+        },
+        {
+          "caller": "handle",
+          "callee": "UserPointProfile.objects.all().delete",
+          "lineNumber": 58
+        },
+        {
+          "caller": "handle",
+          "callee": "UserPointProfile.objects.all",
+          "lineNumber": 58
+        },
+        {
+          "caller": "handle",
+          "callee": "PointSubmission.objects.all().delete",
+          "lineNumber": 59
+        },
+        {
+          "caller": "handle",
+          "callee": "PointSubmission.objects.all",
+          "lineNumber": 59
+        },
+        {
+          "caller": "handle",
+          "callee": "PointActivity.objects.all().delete",
+          "lineNumber": 60
+        },
+        {
+          "caller": "handle",
+          "callee": "PointActivity.objects.all",
+          "lineNumber": 60
+        },
+        {
+          "caller": "handle",
+          "callee": "ProblemReport.objects.all().delete",
+          "lineNumber": 61
+        },
+        {
+          "caller": "handle",
+          "callee": "ProblemReport.objects.all",
+          "lineNumber": 61
+        },
+        {
+          "caller": "handle",
+          "callee": "StudyNote.objects.all().delete",
+          "lineNumber": 62
+        },
+        {
+          "caller": "handle",
+          "callee": "StudyNote.objects.all",
+          "lineNumber": 62
+        },
+        {
+          "caller": "handle",
+          "callee": "Competition.objects.all().delete",
+          "lineNumber": 63
+        },
+        {
+          "caller": "handle",
+          "callee": "Competition.objects.all",
+          "lineNumber": 63
+        },
+        {
+          "caller": "handle",
+          "callee": "VolunteerLink.objects.all().delete",
+          "lineNumber": 64
+        },
+        {
+          "caller": "handle",
+          "callee": "VolunteerLink.objects.all",
+          "lineNumber": 64
+        },
+        {
+          "caller": "handle",
+          "callee": "News.objects.all().delete",
+          "lineNumber": 65
+        },
+        {
+          "caller": "handle",
+          "callee": "News.objects.all",
+          "lineNumber": 65
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 67
+        },
+        {
+          "caller": "handle",
+          "callee": "self.style.SUCCESS",
+          "lineNumber": 67
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "portal/management/commands/seed_mock_data.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 200,
+      "nonEmptyLines": 182,
+      "functions": [
+        {
+          "name": "_image_file",
+          "startLine": 19,
+          "endLine": 24,
+          "params": [
+            "name",
+            "color"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "Command",
+          "startLine": 27,
+          "endLine": 200,
+          "methods": [
+            "handle"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_image_file",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "Command",
+          "line": 27,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_image_file",
+          "callee": "Image.new",
+          "lineNumber": 21
+        },
+        {
+          "caller": "_image_file",
+          "callee": "BytesIO",
+          "lineNumber": 22
+        },
+        {
+          "caller": "_image_file",
+          "callee": "img.save",
+          "lineNumber": 23
+        },
+        {
+          "caller": "_image_file",
+          "callee": "ContentFile",
+          "lineNumber": 24
+        },
+        {
+          "caller": "_image_file",
+          "callee": "buf.getvalue",
+          "lineNumber": 24
+        },
+        {
+          "caller": "handle",
+          "callee": "timezone.now",
+          "lineNumber": 31
+        },
+        {
+          "caller": "handle",
+          "callee": "User.objects.get",
+          "lineNumber": 34
+        },
+        {
+          "caller": "handle",
+          "callee": "User.objects.get",
+          "lineNumber": 35
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stderr.write",
+          "lineNumber": 37
+        },
+        {
+          "caller": "handle",
+          "callee": "News.objects.get_or_create",
+          "lineNumber": 56
+        },
+        {
+          "caller": "handle",
+          "callee": "dict",
+          "lineNumber": 58
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 60
+        },
+        {
+          "caller": "handle",
+          "callee": "len",
+          "lineNumber": 60
+        },
+        {
+          "caller": "handle",
+          "callee": "(now + timedelta(days=30)).date",
+          "lineNumber": 67
+        },
+        {
+          "caller": "handle",
+          "callee": "timedelta",
+          "lineNumber": 67
+        },
+        {
+          "caller": "handle",
+          "callee": "(now + timedelta(days=45)).date",
+          "lineNumber": 71
+        },
+        {
+          "caller": "handle",
+          "callee": "timedelta",
+          "lineNumber": 71
+        },
+        {
+          "caller": "handle",
+          "callee": "VolunteerLink.objects.get_or_create",
+          "lineNumber": 74
+        },
+        {
+          "caller": "handle",
+          "callee": "dict",
+          "lineNumber": 76
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 81
+        },
+        {
+          "caller": "handle",
+          "callee": "len",
+          "lineNumber": 81
+        },
+        {
+          "caller": "handle",
+          "callee": "(now + timedelta(days=20)).date",
+          "lineNumber": 88
+        },
+        {
+          "caller": "handle",
+          "callee": "timedelta",
+          "lineNumber": 88
+        },
+        {
+          "caller": "handle",
+          "callee": "(now + timedelta(days=60)).date",
+          "lineNumber": 92
+        },
+        {
+          "caller": "handle",
+          "callee": "timedelta",
+          "lineNumber": 92
+        },
+        {
+          "caller": "handle",
+          "callee": "(now + timedelta(days=15)).date",
+          "lineNumber": 96
+        },
+        {
+          "caller": "handle",
+          "callee": "timedelta",
+          "lineNumber": 96
+        },
+        {
+          "caller": "handle",
+          "callee": "Competition.objects.get_or_create",
+          "lineNumber": 99
+        },
+        {
+          "caller": "handle",
+          "callee": "dict",
+          "lineNumber": 101
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 106
+        },
+        {
+          "caller": "handle",
+          "callee": "len",
+          "lineNumber": 106
+        },
+        {
+          "caller": "handle",
+          "callee": "StudyNote.objects.get_or_create",
+          "lineNumber": 120
+        },
+        {
+          "caller": "handle",
+          "callee": "dict",
+          "lineNumber": 122
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 127
+        },
+        {
+          "caller": "handle",
+          "callee": "len",
+          "lineNumber": 127
+        },
+        {
+          "caller": "handle",
+          "callee": "ProblemReport.objects.get_or_create",
+          "lineNumber": 144
+        },
+        {
+          "caller": "handle",
+          "callee": "dict",
+          "lineNumber": 146
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 151
+        },
+        {
+          "caller": "handle",
+          "callee": "len",
+          "lineNumber": 151
+        },
+        {
+          "caller": "handle",
+          "callee": "PointActivity.objects.get_or_create",
+          "lineNumber": 164
+        },
+        {
+          "caller": "handle",
+          "callee": "dict",
+          "lineNumber": 166
+        },
+        {
+          "caller": "handle",
+          "callee": "activities.append",
+          "lineNumber": 168
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 169
+        },
+        {
+          "caller": "handle",
+          "callee": "len",
+          "lineNumber": 169
+        },
+        {
+          "caller": "handle",
+          "callee": "PointSubmission.objects.get_or_create",
+          "lineNumber": 172
+        },
+        {
+          "caller": "handle",
+          "callee": "dict",
+          "lineNumber": 175
+        },
+        {
+          "caller": "handle",
+          "callee": "_image_file",
+          "lineNumber": 180
+        },
+        {
+          "caller": "handle",
+          "callee": "PointSubmission.objects.get_or_create",
+          "lineNumber": 183
+        },
+        {
+          "caller": "handle",
+          "callee": "dict",
+          "lineNumber": 186
+        },
+        {
+          "caller": "handle",
+          "callee": "_image_file",
+          "lineNumber": 188
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 191
+        },
+        {
+          "caller": "handle",
+          "callee": "UserPointProfile.objects.get_or_create",
+          "lineNumber": 194
+        },
+        {
+          "caller": "handle",
+          "callee": "profile.save",
+          "lineNumber": 197
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 198
+        },
+        {
+          "caller": "handle",
+          "callee": "self.stdout.write",
+          "lineNumber": 200
+        },
+        {
+          "caller": "handle",
+          "callee": "self.style.SUCCESS",
+          "lineNumber": 200
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "portal/models.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 253,
+      "nonEmptyLines": 216,
+      "classes": [
+        {
+          "name": "News",
+          "startLine": 6,
+          "endLine": 39,
+          "methods": [
+            "__str__"
+          ],
+          "properties": []
+        },
+        {
+          "name": "VolunteerLink",
+          "startLine": 42,
+          "endLine": 64,
+          "methods": [
+            "__str__"
+          ],
+          "properties": []
+        },
+        {
+          "name": "Competition",
+          "startLine": 67,
+          "endLine": 91,
+          "methods": [
+            "__str__"
+          ],
+          "properties": []
+        },
+        {
+          "name": "StudyNote",
+          "startLine": 94,
+          "endLine": 131,
+          "methods": [
+            "__str__",
+            "display_credit"
+          ],
+          "properties": []
+        },
+        {
+          "name": "ProblemReport",
+          "startLine": 134,
+          "endLine": 166,
+          "methods": [
+            "__str__"
+          ],
+          "properties": []
+        },
+        {
+          "name": "PointActivity",
+          "startLine": 169,
+          "endLine": 189,
+          "methods": [
+            "__str__"
+          ],
+          "properties": []
+        },
+        {
+          "name": "PointSubmission",
+          "startLine": 192,
+          "endLine": 236,
+          "methods": [
+            "__str__"
+          ],
+          "properties": []
+        },
+        {
+          "name": "UserPointProfile",
+          "startLine": 239,
+          "endLine": 253,
+          "methods": [
+            "__str__"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "News",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "VolunteerLink",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "Competition",
+          "line": 67,
+          "isDefault": false
+        },
+        {
+          "name": "StudyNote",
+          "line": 94,
+          "isDefault": false
+        },
+        {
+          "name": "ProblemReport",
+          "line": 134,
+          "isDefault": false
+        },
+        {
+          "name": "PointActivity",
+          "line": 169,
+          "isDefault": false
+        },
+        {
+          "name": "PointSubmission",
+          "line": 192,
+          "isDefault": false
+        },
+        {
+          "name": "UserPointProfile",
+          "line": 239,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__str__",
+          "callee": "self.get_status_display",
+          "lineNumber": 166
+        },
+        {
+          "caller": "__str__",
+          "callee": "self.get_status_display",
+          "lineNumber": 236
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 8,
+        "functionCount": 0,
+        "classCount": 8
+      }
+    }
+  ]
+}

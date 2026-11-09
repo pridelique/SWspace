@@ -1,0 +1,2019 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "portal/forms.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 224,
+      "nonEmptyLines": 194,
+      "functions": [
+        {
+          "name": "validate_image_file",
+          "startLine": 9,
+          "endLine": 15,
+          "params": [
+            "f"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "NewsForm",
+          "startLine": 18,
+          "endLine": 38,
+          "methods": [
+            "clean_image"
+          ],
+          "properties": []
+        },
+        {
+          "name": "VolunteerLinkForm",
+          "startLine": 41,
+          "endLine": 65,
+          "methods": [
+            "__init__"
+          ],
+          "properties": []
+        },
+        {
+          "name": "CompetitionForm",
+          "startLine": 68,
+          "endLine": 96,
+          "methods": [
+            "__init__",
+            "clean_image"
+          ],
+          "properties": []
+        },
+        {
+          "name": "StudyNoteForm",
+          "startLine": 99,
+          "endLine": 124,
+          "methods": [
+            "clean_drive_url"
+          ],
+          "properties": []
+        },
+        {
+          "name": "ProblemReportForm",
+          "startLine": 127,
+          "endLine": 146,
+          "methods": [
+            "clean_description"
+          ],
+          "properties": []
+        },
+        {
+          "name": "PointActivityForm",
+          "startLine": 149,
+          "endLine": 170,
+          "methods": [
+            "clean_points"
+          ],
+          "properties": []
+        },
+        {
+          "name": "PointSubmissionForm",
+          "startLine": 173,
+          "endLine": 212,
+          "methods": [
+            "__init__",
+            "clean",
+            "clean_proof_image"
+          ],
+          "properties": []
+        },
+        {
+          "name": "PointRejectForm",
+          "startLine": 215,
+          "endLine": 224,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "validate_image_file",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "NewsForm",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "VolunteerLinkForm",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "CompetitionForm",
+          "line": 68,
+          "isDefault": false
+        },
+        {
+          "name": "StudyNoteForm",
+          "line": 99,
+          "isDefault": false
+        },
+        {
+          "name": "ProblemReportForm",
+          "line": 127,
+          "isDefault": false
+        },
+        {
+          "name": "PointActivityForm",
+          "line": 149,
+          "isDefault": false
+        },
+        {
+          "name": "PointSubmissionForm",
+          "line": 173,
+          "isDefault": false
+        },
+        {
+          "name": "PointRejectForm",
+          "line": 215,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "validate_image_file",
+          "callee": "hasattr",
+          "lineNumber": 10
+        },
+        {
+          "caller": "validate_image_file",
+          "callee": "forms.ValidationError",
+          "lineNumber": 12
+        },
+        {
+          "caller": "validate_image_file",
+          "callee": "forms.ValidationError",
+          "lineNumber": 14
+        },
+        {
+          "caller": "clean_image",
+          "callee": "validate_image_file",
+          "lineNumber": 38
+        },
+        {
+          "caller": "clean_image",
+          "callee": "self.cleaned_data.get",
+          "lineNumber": 38
+        },
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 63
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 63
+        },
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 92
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 92
+        },
+        {
+          "caller": "clean_image",
+          "callee": "validate_image_file",
+          "lineNumber": 96
+        },
+        {
+          "caller": "clean_image",
+          "callee": "self.cleaned_data.get",
+          "lineNumber": 96
+        },
+        {
+          "caller": "clean_drive_url",
+          "callee": "self.cleaned_data.get",
+          "lineNumber": 121
+        },
+        {
+          "caller": "clean_drive_url",
+          "callee": "url.lower",
+          "lineNumber": 122
+        },
+        {
+          "caller": "clean_drive_url",
+          "callee": "forms.ValidationError",
+          "lineNumber": 123
+        },
+        {
+          "caller": "clean_description",
+          "callee": "self.cleaned_data.get",
+          "lineNumber": 143
+        },
+        {
+          "caller": "clean_description",
+          "callee": "len",
+          "lineNumber": 144
+        },
+        {
+          "caller": "clean_description",
+          "callee": "forms.ValidationError",
+          "lineNumber": 145
+        },
+        {
+          "caller": "clean_points",
+          "callee": "self.cleaned_data.get",
+          "lineNumber": 167
+        },
+        {
+          "caller": "clean_points",
+          "callee": "forms.ValidationError",
+          "lineNumber": 169
+        },
+        {
+          "caller": "__init__",
+          "callee": "kwargs.pop",
+          "lineNumber": 190
+        },
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 191
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 191
+        },
+        {
+          "caller": "__init__",
+          "callee": "PointActivity.objects.filter",
+          "lineNumber": 192
+        },
+        {
+          "caller": "clean",
+          "callee": "super().clean",
+          "lineNumber": 195
+        },
+        {
+          "caller": "clean",
+          "callee": "super",
+          "lineNumber": 195
+        },
+        {
+          "caller": "clean",
+          "callee": "cleaned_data.get",
+          "lineNumber": 196
+        },
+        {
+          "caller": "clean",
+          "callee": "PointSubmission.objects\n                .filter(submitted_by=self.user, activity=activity)\n                .order_by('-created_at')\n                .first",
+          "lineNumber": 199
+        },
+        {
+          "caller": "clean",
+          "callee": "PointSubmission.objects\n                .filter(submitted_by=self.user, activity=activity)\n                .order_by",
+          "lineNumber": 199
+        },
+        {
+          "caller": "clean",
+          "callee": "PointSubmission.objects\n                .filter",
+          "lineNumber": 199
+        },
+        {
+          "caller": "clean",
+          "callee": "forms.ValidationError",
+          "lineNumber": 206
+        },
+        {
+          "caller": "clean",
+          "callee": "forms.ValidationError",
+          "lineNumber": 208
+        },
+        {
+          "caller": "clean_proof_image",
+          "callee": "validate_image_file",
+          "lineNumber": 212
+        },
+        {
+          "caller": "clean_proof_image",
+          "callee": "self.cleaned_data.get",
+          "lineNumber": 212
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 9,
+        "functionCount": 1,
+        "classCount": 8
+      }
+    },
+    {
+      "path": "portal/urls.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 63,
+      "nonEmptyLines": 52,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "portal/views.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 522,
+      "nonEmptyLines": 430,
+      "functions": [
+        {
+          "name": "committee_required",
+          "startLine": 21,
+          "endLine": 30,
+          "params": [
+            "view_func"
+          ]
+        },
+        {
+          "name": "dashboard",
+          "startLine": 36,
+          "endLine": 37,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "news",
+          "startLine": 41,
+          "endLine": 43,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "volunteer",
+          "startLine": 47,
+          "endLine": 49,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "competitions",
+          "startLine": 53,
+          "endLine": 55,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "study_notes",
+          "startLine": 59,
+          "endLine": 61,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "problem_reports",
+          "startLine": 65,
+          "endLine": 69,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "committee_dashboard",
+          "startLine": 75,
+          "endLine": 87,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "committee_news_list",
+          "startLine": 93,
+          "endLine": 95,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "committee_news_create",
+          "startLine": 99,
+          "endLine": 110,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "committee_news_edit",
+          "startLine": 114,
+          "endLine": 125,
+          "params": [
+            "request",
+            "pk"
+          ]
+        },
+        {
+          "name": "committee_news_delete",
+          "startLine": 129,
+          "endLine": 136,
+          "params": [
+            "request",
+            "pk"
+          ]
+        },
+        {
+          "name": "committee_volunteer_list",
+          "startLine": 142,
+          "endLine": 144,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "committee_volunteer_create",
+          "startLine": 148,
+          "endLine": 159,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "committee_volunteer_edit",
+          "startLine": 163,
+          "endLine": 174,
+          "params": [
+            "request",
+            "pk"
+          ]
+        },
+        {
+          "name": "committee_volunteer_delete",
+          "startLine": 178,
+          "endLine": 185,
+          "params": [
+            "request",
+            "pk"
+          ]
+        },
+        {
+          "name": "committee_competition_list",
+          "startLine": 191,
+          "endLine": 193,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "committee_competition_create",
+          "startLine": 197,
+          "endLine": 208,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "committee_competition_edit",
+          "startLine": 212,
+          "endLine": 223,
+          "params": [
+            "request",
+            "pk"
+          ]
+        },
+        {
+          "name": "committee_competition_delete",
+          "startLine": 227,
+          "endLine": 234,
+          "params": [
+            "request",
+            "pk"
+          ]
+        },
+        {
+          "name": "study_note_submit",
+          "startLine": 240,
+          "endLine": 249,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "committee_study_notes_list",
+          "startLine": 253,
+          "endLine": 255,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "committee_study_note_toggle_approval",
+          "startLine": 259,
+          "endLine": 267,
+          "params": [
+            "request",
+            "pk"
+          ]
+        },
+        {
+          "name": "committee_study_note_delete",
+          "startLine": 271,
+          "endLine": 278,
+          "params": [
+            "request",
+            "pk"
+          ]
+        },
+        {
+          "name": "problem_report_submit",
+          "startLine": 284,
+          "endLine": 293,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "committee_problem_reports_list",
+          "startLine": 297,
+          "endLine": 308,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "committee_problem_report_approve",
+          "startLine": 312,
+          "endLine": 319,
+          "params": [
+            "request",
+            "pk"
+          ]
+        },
+        {
+          "name": "committee_problem_report_reject",
+          "startLine": 323,
+          "endLine": 333,
+          "params": [
+            "request",
+            "pk"
+          ]
+        },
+        {
+          "name": "committee_problem_report_delete",
+          "startLine": 337,
+          "endLine": 344,
+          "params": [
+            "request",
+            "pk"
+          ]
+        },
+        {
+          "name": "points",
+          "startLine": 350,
+          "endLine": 373,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "point_submit",
+          "startLine": 377,
+          "endLine": 393,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "point_history",
+          "startLine": 397,
+          "endLine": 404,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "committee_points",
+          "startLine": 410,
+          "endLine": 428,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "committee_point_activity_create",
+          "startLine": 432,
+          "endLine": 443,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "committee_point_activity_edit",
+          "startLine": 447,
+          "endLine": 458,
+          "params": [
+            "request",
+            "pk"
+          ]
+        },
+        {
+          "name": "committee_point_activity_delete",
+          "startLine": 462,
+          "endLine": 469,
+          "params": [
+            "request",
+            "pk"
+          ]
+        },
+        {
+          "name": "committee_point_submission_approve",
+          "startLine": 473,
+          "endLine": 493,
+          "params": [
+            "request",
+            "pk"
+          ]
+        },
+        {
+          "name": "committee_point_submission_reject",
+          "startLine": 497,
+          "endLine": 512,
+          "params": [
+            "request",
+            "pk"
+          ]
+        },
+        {
+          "name": "committee_point_submission_delete",
+          "startLine": 516,
+          "endLine": 522,
+          "params": [
+            "request",
+            "pk"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "committee_required",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "dashboard",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "news",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "volunteer",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "competitions",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "study_notes",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "problem_reports",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "committee_dashboard",
+          "line": 74,
+          "isDefault": false
+        },
+        {
+          "name": "committee_news_list",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "committee_news_create",
+          "line": 98,
+          "isDefault": false
+        },
+        {
+          "name": "committee_news_edit",
+          "line": 113,
+          "isDefault": false
+        },
+        {
+          "name": "committee_news_delete",
+          "line": 128,
+          "isDefault": false
+        },
+        {
+          "name": "committee_volunteer_list",
+          "line": 141,
+          "isDefault": false
+        },
+        {
+          "name": "committee_volunteer_create",
+          "line": 147,
+          "isDefault": false
+        },
+        {
+          "name": "committee_volunteer_edit",
+          "line": 162,
+          "isDefault": false
+        },
+        {
+          "name": "committee_volunteer_delete",
+          "line": 177,
+          "isDefault": false
+        },
+        {
+          "name": "committee_competition_list",
+          "line": 190,
+          "isDefault": false
+        },
+        {
+          "name": "committee_competition_create",
+          "line": 196,
+          "isDefault": false
+        },
+        {
+          "name": "committee_competition_edit",
+          "line": 211,
+          "isDefault": false
+        },
+        {
+          "name": "committee_competition_delete",
+          "line": 226,
+          "isDefault": false
+        },
+        {
+          "name": "study_note_submit",
+          "line": 239,
+          "isDefault": false
+        },
+        {
+          "name": "committee_study_notes_list",
+          "line": 252,
+          "isDefault": false
+        },
+        {
+          "name": "committee_study_note_toggle_approval",
+          "line": 258,
+          "isDefault": false
+        },
+        {
+          "name": "committee_study_note_delete",
+          "line": 270,
+          "isDefault": false
+        },
+        {
+          "name": "problem_report_submit",
+          "line": 283,
+          "isDefault": false
+        },
+        {
+          "name": "committee_problem_reports_list",
+          "line": 296,
+          "isDefault": false
+        },
+        {
+          "name": "committee_problem_report_approve",
+          "line": 311,
+          "isDefault": false
+        },
+        {
+          "name": "committee_problem_report_reject",
+          "line": 322,
+          "isDefault": false
+        },
+        {
+          "name": "committee_problem_report_delete",
+          "line": 336,
+          "isDefault": false
+        },
+        {
+          "name": "points",
+          "line": 349,
+          "isDefault": false
+        },
+        {
+          "name": "point_submit",
+          "line": 376,
+          "isDefault": false
+        },
+        {
+          "name": "point_history",
+          "line": 396,
+          "isDefault": false
+        },
+        {
+          "name": "committee_points",
+          "line": 409,
+          "isDefault": false
+        },
+        {
+          "name": "committee_point_activity_create",
+          "line": 431,
+          "isDefault": false
+        },
+        {
+          "name": "committee_point_activity_edit",
+          "line": 446,
+          "isDefault": false
+        },
+        {
+          "name": "committee_point_activity_delete",
+          "line": 461,
+          "isDefault": false
+        },
+        {
+          "name": "committee_point_submission_approve",
+          "line": 472,
+          "isDefault": false
+        },
+        {
+          "name": "committee_point_submission_reject",
+          "line": 496,
+          "isDefault": false
+        },
+        {
+          "name": "committee_point_submission_delete",
+          "line": 515,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "committee_required",
+          "callee": "wraps",
+          "lineNumber": 22
+        },
+        {
+          "caller": "wrapper",
+          "callee": "redirect",
+          "lineNumber": 25
+        },
+        {
+          "caller": "wrapper",
+          "callee": "request.user.is_committee",
+          "lineNumber": 26
+        },
+        {
+          "caller": "wrapper",
+          "callee": "messages.error",
+          "lineNumber": 27
+        },
+        {
+          "caller": "wrapper",
+          "callee": "redirect",
+          "lineNumber": 28
+        },
+        {
+          "caller": "wrapper",
+          "callee": "view_func",
+          "lineNumber": 29
+        },
+        {
+          "caller": "dashboard",
+          "callee": "render",
+          "lineNumber": 37
+        },
+        {
+          "caller": "news",
+          "callee": "News.objects.filter(is_published=True).select_related",
+          "lineNumber": 42
+        },
+        {
+          "caller": "news",
+          "callee": "News.objects.filter",
+          "lineNumber": 42
+        },
+        {
+          "caller": "news",
+          "callee": "render",
+          "lineNumber": 43
+        },
+        {
+          "caller": "volunteer",
+          "callee": "VolunteerLink.objects.filter(is_published=True).select_related",
+          "lineNumber": 48
+        },
+        {
+          "caller": "volunteer",
+          "callee": "VolunteerLink.objects.filter",
+          "lineNumber": 48
+        },
+        {
+          "caller": "volunteer",
+          "callee": "render",
+          "lineNumber": 49
+        },
+        {
+          "caller": "competitions",
+          "callee": "Competition.objects.filter(is_published=True).select_related",
+          "lineNumber": 54
+        },
+        {
+          "caller": "competitions",
+          "callee": "Competition.objects.filter",
+          "lineNumber": 54
+        },
+        {
+          "caller": "competitions",
+          "callee": "render",
+          "lineNumber": 55
+        },
+        {
+          "caller": "study_notes",
+          "callee": "StudyNote.objects.filter(is_approved=True).select_related",
+          "lineNumber": 60
+        },
+        {
+          "caller": "study_notes",
+          "callee": "StudyNote.objects.filter",
+          "lineNumber": 60
+        },
+        {
+          "caller": "study_notes",
+          "callee": "render",
+          "lineNumber": 61
+        },
+        {
+          "caller": "problem_reports",
+          "callee": "ProblemReport.objects.filter(\n        status=ProblemReport.STATUS_APPROVED\n    ).select_related",
+          "lineNumber": 66
+        },
+        {
+          "caller": "problem_reports",
+          "callee": "ProblemReport.objects.filter",
+          "lineNumber": 66
+        },
+        {
+          "caller": "problem_reports",
+          "callee": "render",
+          "lineNumber": 69
+        },
+        {
+          "caller": "committee_dashboard",
+          "callee": "News.objects.count",
+          "lineNumber": 77
+        },
+        {
+          "caller": "committee_dashboard",
+          "callee": "VolunteerLink.objects.count",
+          "lineNumber": 78
+        },
+        {
+          "caller": "committee_dashboard",
+          "callee": "Competition.objects.count",
+          "lineNumber": 79
+        },
+        {
+          "caller": "committee_dashboard",
+          "callee": "StudyNote.objects.count",
+          "lineNumber": 80
+        },
+        {
+          "caller": "committee_dashboard",
+          "callee": "ProblemReport.objects.filter(status=ProblemReport.STATUS_PENDING).count",
+          "lineNumber": 81
+        },
+        {
+          "caller": "committee_dashboard",
+          "callee": "ProblemReport.objects.filter",
+          "lineNumber": 81
+        },
+        {
+          "caller": "committee_dashboard",
+          "callee": "ProblemReport.objects.filter(status=ProblemReport.STATUS_APPROVED).count",
+          "lineNumber": 82
+        },
+        {
+          "caller": "committee_dashboard",
+          "callee": "ProblemReport.objects.filter",
+          "lineNumber": 82
+        },
+        {
+          "caller": "committee_dashboard",
+          "callee": "ProblemReport.objects.filter(status=ProblemReport.STATUS_REJECTED).count",
+          "lineNumber": 83
+        },
+        {
+          "caller": "committee_dashboard",
+          "callee": "ProblemReport.objects.filter",
+          "lineNumber": 83
+        },
+        {
+          "caller": "committee_dashboard",
+          "callee": "PointSubmission.objects.filter(status=PointSubmission.STATUS_PENDING).count",
+          "lineNumber": 84
+        },
+        {
+          "caller": "committee_dashboard",
+          "callee": "PointSubmission.objects.filter",
+          "lineNumber": 84
+        },
+        {
+          "caller": "committee_dashboard",
+          "callee": "PointActivity.objects.filter(is_active=True).count",
+          "lineNumber": 85
+        },
+        {
+          "caller": "committee_dashboard",
+          "callee": "PointActivity.objects.filter",
+          "lineNumber": 85
+        },
+        {
+          "caller": "committee_dashboard",
+          "callee": "render",
+          "lineNumber": 87
+        },
+        {
+          "caller": "committee_news_list",
+          "callee": "News.objects.all().select_related",
+          "lineNumber": 94
+        },
+        {
+          "caller": "committee_news_list",
+          "callee": "News.objects.all",
+          "lineNumber": 94
+        },
+        {
+          "caller": "committee_news_list",
+          "callee": "render",
+          "lineNumber": 95
+        },
+        {
+          "caller": "committee_news_create",
+          "callee": "NewsForm",
+          "lineNumber": 100
+        },
+        {
+          "caller": "committee_news_create",
+          "callee": "form.is_valid",
+          "lineNumber": 101
+        },
+        {
+          "caller": "committee_news_create",
+          "callee": "form.save",
+          "lineNumber": 102
+        },
+        {
+          "caller": "committee_news_create",
+          "callee": "item.save",
+          "lineNumber": 104
+        },
+        {
+          "caller": "committee_news_create",
+          "callee": "messages.success",
+          "lineNumber": 105
+        },
+        {
+          "caller": "committee_news_create",
+          "callee": "redirect",
+          "lineNumber": 106
+        },
+        {
+          "caller": "committee_news_create",
+          "callee": "render",
+          "lineNumber": 107
+        },
+        {
+          "caller": "committee_news_edit",
+          "callee": "get_object_or_404",
+          "lineNumber": 115
+        },
+        {
+          "caller": "committee_news_edit",
+          "callee": "NewsForm",
+          "lineNumber": 116
+        },
+        {
+          "caller": "committee_news_edit",
+          "callee": "form.is_valid",
+          "lineNumber": 117
+        },
+        {
+          "caller": "committee_news_edit",
+          "callee": "form.save",
+          "lineNumber": 118
+        },
+        {
+          "caller": "committee_news_edit",
+          "callee": "messages.success",
+          "lineNumber": 119
+        },
+        {
+          "caller": "committee_news_edit",
+          "callee": "redirect",
+          "lineNumber": 120
+        },
+        {
+          "caller": "committee_news_edit",
+          "callee": "render",
+          "lineNumber": 121
+        },
+        {
+          "caller": "committee_news_delete",
+          "callee": "get_object_or_404",
+          "lineNumber": 130
+        },
+        {
+          "caller": "committee_news_delete",
+          "callee": "item.delete",
+          "lineNumber": 133
+        },
+        {
+          "caller": "committee_news_delete",
+          "callee": "messages.success",
+          "lineNumber": 134
+        },
+        {
+          "caller": "committee_news_delete",
+          "callee": "redirect",
+          "lineNumber": 135
+        },
+        {
+          "caller": "committee_news_delete",
+          "callee": "render",
+          "lineNumber": 136
+        },
+        {
+          "caller": "committee_volunteer_list",
+          "callee": "VolunteerLink.objects.all().select_related",
+          "lineNumber": 143
+        },
+        {
+          "caller": "committee_volunteer_list",
+          "callee": "VolunteerLink.objects.all",
+          "lineNumber": 143
+        },
+        {
+          "caller": "committee_volunteer_list",
+          "callee": "render",
+          "lineNumber": 144
+        },
+        {
+          "caller": "committee_volunteer_create",
+          "callee": "VolunteerLinkForm",
+          "lineNumber": 149
+        },
+        {
+          "caller": "committee_volunteer_create",
+          "callee": "form.is_valid",
+          "lineNumber": 150
+        },
+        {
+          "caller": "committee_volunteer_create",
+          "callee": "form.save",
+          "lineNumber": 151
+        },
+        {
+          "caller": "committee_volunteer_create",
+          "callee": "item.save",
+          "lineNumber": 153
+        },
+        {
+          "caller": "committee_volunteer_create",
+          "callee": "messages.success",
+          "lineNumber": 154
+        },
+        {
+          "caller": "committee_volunteer_create",
+          "callee": "redirect",
+          "lineNumber": 155
+        },
+        {
+          "caller": "committee_volunteer_create",
+          "callee": "render",
+          "lineNumber": 156
+        },
+        {
+          "caller": "committee_volunteer_edit",
+          "callee": "get_object_or_404",
+          "lineNumber": 164
+        },
+        {
+          "caller": "committee_volunteer_edit",
+          "callee": "VolunteerLinkForm",
+          "lineNumber": 165
+        },
+        {
+          "caller": "committee_volunteer_edit",
+          "callee": "form.is_valid",
+          "lineNumber": 166
+        },
+        {
+          "caller": "committee_volunteer_edit",
+          "callee": "form.save",
+          "lineNumber": 167
+        },
+        {
+          "caller": "committee_volunteer_edit",
+          "callee": "messages.success",
+          "lineNumber": 168
+        },
+        {
+          "caller": "committee_volunteer_edit",
+          "callee": "redirect",
+          "lineNumber": 169
+        },
+        {
+          "caller": "committee_volunteer_edit",
+          "callee": "render",
+          "lineNumber": 170
+        },
+        {
+          "caller": "committee_volunteer_delete",
+          "callee": "get_object_or_404",
+          "lineNumber": 179
+        },
+        {
+          "caller": "committee_volunteer_delete",
+          "callee": "item.delete",
+          "lineNumber": 182
+        },
+        {
+          "caller": "committee_volunteer_delete",
+          "callee": "messages.success",
+          "lineNumber": 183
+        },
+        {
+          "caller": "committee_volunteer_delete",
+          "callee": "redirect",
+          "lineNumber": 184
+        },
+        {
+          "caller": "committee_volunteer_delete",
+          "callee": "render",
+          "lineNumber": 185
+        },
+        {
+          "caller": "committee_competition_list",
+          "callee": "Competition.objects.all().select_related",
+          "lineNumber": 192
+        },
+        {
+          "caller": "committee_competition_list",
+          "callee": "Competition.objects.all",
+          "lineNumber": 192
+        },
+        {
+          "caller": "committee_competition_list",
+          "callee": "render",
+          "lineNumber": 193
+        },
+        {
+          "caller": "committee_competition_create",
+          "callee": "CompetitionForm",
+          "lineNumber": 198
+        },
+        {
+          "caller": "committee_competition_create",
+          "callee": "form.is_valid",
+          "lineNumber": 199
+        },
+        {
+          "caller": "committee_competition_create",
+          "callee": "form.save",
+          "lineNumber": 200
+        },
+        {
+          "caller": "committee_competition_create",
+          "callee": "item.save",
+          "lineNumber": 202
+        },
+        {
+          "caller": "committee_competition_create",
+          "callee": "messages.success",
+          "lineNumber": 203
+        },
+        {
+          "caller": "committee_competition_create",
+          "callee": "redirect",
+          "lineNumber": 204
+        },
+        {
+          "caller": "committee_competition_create",
+          "callee": "render",
+          "lineNumber": 205
+        },
+        {
+          "caller": "committee_competition_edit",
+          "callee": "get_object_or_404",
+          "lineNumber": 213
+        },
+        {
+          "caller": "committee_competition_edit",
+          "callee": "CompetitionForm",
+          "lineNumber": 214
+        },
+        {
+          "caller": "committee_competition_edit",
+          "callee": "form.is_valid",
+          "lineNumber": 215
+        },
+        {
+          "caller": "committee_competition_edit",
+          "callee": "form.save",
+          "lineNumber": 216
+        },
+        {
+          "caller": "committee_competition_edit",
+          "callee": "messages.success",
+          "lineNumber": 217
+        },
+        {
+          "caller": "committee_competition_edit",
+          "callee": "redirect",
+          "lineNumber": 218
+        },
+        {
+          "caller": "committee_competition_edit",
+          "callee": "render",
+          "lineNumber": 219
+        },
+        {
+          "caller": "committee_competition_delete",
+          "callee": "get_object_or_404",
+          "lineNumber": 228
+        },
+        {
+          "caller": "committee_competition_delete",
+          "callee": "item.delete",
+          "lineNumber": 231
+        },
+        {
+          "caller": "committee_competition_delete",
+          "callee": "messages.success",
+          "lineNumber": 232
+        },
+        {
+          "caller": "committee_competition_delete",
+          "callee": "redirect",
+          "lineNumber": 233
+        },
+        {
+          "caller": "committee_competition_delete",
+          "callee": "render",
+          "lineNumber": 234
+        },
+        {
+          "caller": "study_note_submit",
+          "callee": "StudyNoteForm",
+          "lineNumber": 241
+        },
+        {
+          "caller": "study_note_submit",
+          "callee": "form.is_valid",
+          "lineNumber": 242
+        },
+        {
+          "caller": "study_note_submit",
+          "callee": "form.save",
+          "lineNumber": 243
+        },
+        {
+          "caller": "study_note_submit",
+          "callee": "item.save",
+          "lineNumber": 246
+        },
+        {
+          "caller": "study_note_submit",
+          "callee": "messages.success",
+          "lineNumber": 247
+        },
+        {
+          "caller": "study_note_submit",
+          "callee": "redirect",
+          "lineNumber": 248
+        },
+        {
+          "caller": "study_note_submit",
+          "callee": "render",
+          "lineNumber": 249
+        },
+        {
+          "caller": "committee_study_notes_list",
+          "callee": "StudyNote.objects.all().select_related('submitted_by').order_by",
+          "lineNumber": 254
+        },
+        {
+          "caller": "committee_study_notes_list",
+          "callee": "StudyNote.objects.all().select_related",
+          "lineNumber": 254
+        },
+        {
+          "caller": "committee_study_notes_list",
+          "callee": "StudyNote.objects.all",
+          "lineNumber": 254
+        },
+        {
+          "caller": "committee_study_notes_list",
+          "callee": "render",
+          "lineNumber": 255
+        },
+        {
+          "caller": "committee_study_note_toggle_approval",
+          "callee": "redirect",
+          "lineNumber": 261
+        },
+        {
+          "caller": "committee_study_note_toggle_approval",
+          "callee": "get_object_or_404",
+          "lineNumber": 262
+        },
+        {
+          "caller": "committee_study_note_toggle_approval",
+          "callee": "item.save",
+          "lineNumber": 264
+        },
+        {
+          "caller": "committee_study_note_toggle_approval",
+          "callee": "messages.success",
+          "lineNumber": 266
+        },
+        {
+          "caller": "committee_study_note_toggle_approval",
+          "callee": "redirect",
+          "lineNumber": 267
+        },
+        {
+          "caller": "committee_study_note_delete",
+          "callee": "get_object_or_404",
+          "lineNumber": 272
+        },
+        {
+          "caller": "committee_study_note_delete",
+          "callee": "item.delete",
+          "lineNumber": 275
+        },
+        {
+          "caller": "committee_study_note_delete",
+          "callee": "messages.success",
+          "lineNumber": 276
+        },
+        {
+          "caller": "committee_study_note_delete",
+          "callee": "redirect",
+          "lineNumber": 277
+        },
+        {
+          "caller": "committee_study_note_delete",
+          "callee": "render",
+          "lineNumber": 278
+        },
+        {
+          "caller": "problem_report_submit",
+          "callee": "ProblemReportForm",
+          "lineNumber": 285
+        },
+        {
+          "caller": "problem_report_submit",
+          "callee": "form.is_valid",
+          "lineNumber": 286
+        },
+        {
+          "caller": "problem_report_submit",
+          "callee": "form.save",
+          "lineNumber": 287
+        },
+        {
+          "caller": "problem_report_submit",
+          "callee": "item.save",
+          "lineNumber": 290
+        },
+        {
+          "caller": "problem_report_submit",
+          "callee": "messages.success",
+          "lineNumber": 291
+        },
+        {
+          "caller": "problem_report_submit",
+          "callee": "redirect",
+          "lineNumber": 292
+        },
+        {
+          "caller": "problem_report_submit",
+          "callee": "render",
+          "lineNumber": 293
+        },
+        {
+          "caller": "committee_problem_reports_list",
+          "callee": "request.GET.get",
+          "lineNumber": 298
+        },
+        {
+          "caller": "committee_problem_reports_list",
+          "callee": "ProblemReport.objects.all().select_related('submitted_by').order_by",
+          "lineNumber": 299
+        },
+        {
+          "caller": "committee_problem_reports_list",
+          "callee": "ProblemReport.objects.all().select_related",
+          "lineNumber": 299
+        },
+        {
+          "caller": "committee_problem_reports_list",
+          "callee": "ProblemReport.objects.all",
+          "lineNumber": 299
+        },
+        {
+          "caller": "committee_problem_reports_list",
+          "callee": "items.filter",
+          "lineNumber": 301
+        },
+        {
+          "caller": "committee_problem_reports_list",
+          "callee": "render",
+          "lineNumber": 302
+        },
+        {
+          "caller": "committee_problem_report_approve",
+          "callee": "redirect",
+          "lineNumber": 314
+        },
+        {
+          "caller": "committee_problem_report_approve",
+          "callee": "get_object_or_404",
+          "lineNumber": 315
+        },
+        {
+          "caller": "committee_problem_report_approve",
+          "callee": "item.save",
+          "lineNumber": 317
+        },
+        {
+          "caller": "committee_problem_report_approve",
+          "callee": "messages.success",
+          "lineNumber": 318
+        },
+        {
+          "caller": "committee_problem_report_approve",
+          "callee": "redirect",
+          "lineNumber": 319
+        },
+        {
+          "caller": "committee_problem_report_reject",
+          "callee": "get_object_or_404",
+          "lineNumber": 324
+        },
+        {
+          "caller": "committee_problem_report_reject",
+          "callee": "request.POST.get('admin_note', '').strip",
+          "lineNumber": 327
+        },
+        {
+          "caller": "committee_problem_report_reject",
+          "callee": "request.POST.get",
+          "lineNumber": 327
+        },
+        {
+          "caller": "committee_problem_report_reject",
+          "callee": "item.save",
+          "lineNumber": 330
+        },
+        {
+          "caller": "committee_problem_report_reject",
+          "callee": "messages.success",
+          "lineNumber": 331
+        },
+        {
+          "caller": "committee_problem_report_reject",
+          "callee": "redirect",
+          "lineNumber": 332
+        },
+        {
+          "caller": "committee_problem_report_reject",
+          "callee": "render",
+          "lineNumber": 333
+        },
+        {
+          "caller": "committee_problem_report_delete",
+          "callee": "get_object_or_404",
+          "lineNumber": 338
+        },
+        {
+          "caller": "committee_problem_report_delete",
+          "callee": "item.delete",
+          "lineNumber": 341
+        },
+        {
+          "caller": "committee_problem_report_delete",
+          "callee": "messages.success",
+          "lineNumber": 342
+        },
+        {
+          "caller": "committee_problem_report_delete",
+          "callee": "redirect",
+          "lineNumber": 343
+        },
+        {
+          "caller": "committee_problem_report_delete",
+          "callee": "render",
+          "lineNumber": 344
+        },
+        {
+          "caller": "points",
+          "callee": "UserPointProfile.objects.get_or_create",
+          "lineNumber": 351
+        },
+        {
+          "caller": "points",
+          "callee": "PointActivity.objects.filter",
+          "lineNumber": 352
+        },
+        {
+          "caller": "points",
+          "callee": "PointSubmission.objects\n        .filter(submitted_by=request.user, activity__in=activities)\n        .select_related('activity')\n        .order_by",
+          "lineNumber": 355
+        },
+        {
+          "caller": "points",
+          "callee": "PointSubmission.objects\n        .filter(submitted_by=request.user, activity__in=activities)\n        .select_related",
+          "lineNumber": 355
+        },
+        {
+          "caller": "points",
+          "callee": "PointSubmission.objects\n        .filter",
+          "lineNumber": 355
+        },
+        {
+          "caller": "points",
+          "callee": "latest_by_activity.get",
+          "lineNumber": 366
+        },
+        {
+          "caller": "points",
+          "callee": "render",
+          "lineNumber": 370
+        },
+        {
+          "caller": "point_submit",
+          "callee": "request.GET.get",
+          "lineNumber": 379
+        },
+        {
+          "caller": "point_submit",
+          "callee": "PointSubmissionForm",
+          "lineNumber": 383
+        },
+        {
+          "caller": "point_submit",
+          "callee": "form.is_valid",
+          "lineNumber": 384
+        },
+        {
+          "caller": "point_submit",
+          "callee": "form.save",
+          "lineNumber": 385
+        },
+        {
+          "caller": "point_submit",
+          "callee": "submission.save",
+          "lineNumber": 388
+        },
+        {
+          "caller": "point_submit",
+          "callee": "messages.success",
+          "lineNumber": 389
+        },
+        {
+          "caller": "point_submit",
+          "callee": "redirect",
+          "lineNumber": 390
+        },
+        {
+          "caller": "point_submit",
+          "callee": "PointSubmissionForm",
+          "lineNumber": 392
+        },
+        {
+          "caller": "point_submit",
+          "callee": "render",
+          "lineNumber": 393
+        },
+        {
+          "caller": "point_history",
+          "callee": "PointSubmission.objects\n        .filter(submitted_by=request.user)\n        .select_related('activity')\n        .order_by",
+          "lineNumber": 399
+        },
+        {
+          "caller": "point_history",
+          "callee": "PointSubmission.objects\n        .filter(submitted_by=request.user)\n        .select_related",
+          "lineNumber": 399
+        },
+        {
+          "caller": "point_history",
+          "callee": "PointSubmission.objects\n        .filter",
+          "lineNumber": 399
+        },
+        {
+          "caller": "point_history",
+          "callee": "render",
+          "lineNumber": 404
+        },
+        {
+          "caller": "committee_points",
+          "callee": "PointActivity.objects.all().select_related",
+          "lineNumber": 411
+        },
+        {
+          "caller": "committee_points",
+          "callee": "PointActivity.objects.all",
+          "lineNumber": 411
+        },
+        {
+          "caller": "committee_points",
+          "callee": "request.GET.get",
+          "lineNumber": 412
+        },
+        {
+          "caller": "committee_points",
+          "callee": "PointSubmission.objects\n        .all()\n        .select_related('activity', 'submitted_by', 'approved_by')\n        .order_by",
+          "lineNumber": 414
+        },
+        {
+          "caller": "committee_points",
+          "callee": "PointSubmission.objects\n        .all()\n        .select_related",
+          "lineNumber": 414
+        },
+        {
+          "caller": "committee_points",
+          "callee": "PointSubmission.objects\n        .all",
+          "lineNumber": 414
+        },
+        {
+          "caller": "committee_points",
+          "callee": "submissions.filter",
+          "lineNumber": 420
+        },
+        {
+          "caller": "committee_points",
+          "callee": "render",
+          "lineNumber": 421
+        },
+        {
+          "caller": "committee_point_activity_create",
+          "callee": "PointActivityForm",
+          "lineNumber": 433
+        },
+        {
+          "caller": "committee_point_activity_create",
+          "callee": "form.is_valid",
+          "lineNumber": 434
+        },
+        {
+          "caller": "committee_point_activity_create",
+          "callee": "form.save",
+          "lineNumber": 435
+        },
+        {
+          "caller": "committee_point_activity_create",
+          "callee": "activity.save",
+          "lineNumber": 437
+        },
+        {
+          "caller": "committee_point_activity_create",
+          "callee": "messages.success",
+          "lineNumber": 438
+        },
+        {
+          "caller": "committee_point_activity_create",
+          "callee": "redirect",
+          "lineNumber": 439
+        },
+        {
+          "caller": "committee_point_activity_create",
+          "callee": "render",
+          "lineNumber": 440
+        },
+        {
+          "caller": "committee_point_activity_edit",
+          "callee": "get_object_or_404",
+          "lineNumber": 448
+        },
+        {
+          "caller": "committee_point_activity_edit",
+          "callee": "PointActivityForm",
+          "lineNumber": 449
+        },
+        {
+          "caller": "committee_point_activity_edit",
+          "callee": "form.is_valid",
+          "lineNumber": 450
+        },
+        {
+          "caller": "committee_point_activity_edit",
+          "callee": "form.save",
+          "lineNumber": 451
+        },
+        {
+          "caller": "committee_point_activity_edit",
+          "callee": "messages.success",
+          "lineNumber": 452
+        },
+        {
+          "caller": "committee_point_activity_edit",
+          "callee": "redirect",
+          "lineNumber": 453
+        },
+        {
+          "caller": "committee_point_activity_edit",
+          "callee": "render",
+          "lineNumber": 454
+        },
+        {
+          "caller": "committee_point_activity_delete",
+          "callee": "get_object_or_404",
+          "lineNumber": 463
+        },
+        {
+          "caller": "committee_point_activity_delete",
+          "callee": "activity.delete",
+          "lineNumber": 466
+        },
+        {
+          "caller": "committee_point_activity_delete",
+          "callee": "messages.success",
+          "lineNumber": 467
+        },
+        {
+          "caller": "committee_point_activity_delete",
+          "callee": "redirect",
+          "lineNumber": 468
+        },
+        {
+          "caller": "committee_point_activity_delete",
+          "callee": "render",
+          "lineNumber": 469
+        },
+        {
+          "caller": "committee_point_submission_approve",
+          "callee": "redirect",
+          "lineNumber": 475
+        },
+        {
+          "caller": "committee_point_submission_approve",
+          "callee": "get_object_or_404",
+          "lineNumber": 476
+        },
+        {
+          "caller": "committee_point_submission_approve",
+          "callee": "messages.warning",
+          "lineNumber": 478
+        },
+        {
+          "caller": "committee_point_submission_approve",
+          "callee": "redirect",
+          "lineNumber": 479
+        },
+        {
+          "caller": "committee_point_submission_approve",
+          "callee": "transaction.atomic",
+          "lineNumber": 480
+        },
+        {
+          "caller": "committee_point_submission_approve",
+          "callee": "timezone.now",
+          "lineNumber": 483
+        },
+        {
+          "caller": "committee_point_submission_approve",
+          "callee": "submission.save",
+          "lineNumber": 484
+        },
+        {
+          "caller": "committee_point_submission_approve",
+          "callee": "UserPointProfile.objects.get_or_create",
+          "lineNumber": 485
+        },
+        {
+          "caller": "committee_point_submission_approve",
+          "callee": "UserPointProfile.objects.filter(pk=profile.pk).update",
+          "lineNumber": 486
+        },
+        {
+          "caller": "committee_point_submission_approve",
+          "callee": "UserPointProfile.objects.filter",
+          "lineNumber": 486
+        },
+        {
+          "caller": "committee_point_submission_approve",
+          "callee": "F",
+          "lineNumber": 487
+        },
+        {
+          "caller": "committee_point_submission_approve",
+          "callee": "messages.success",
+          "lineNumber": 489
+        },
+        {
+          "caller": "committee_point_submission_approve",
+          "callee": "redirect",
+          "lineNumber": 493
+        },
+        {
+          "caller": "committee_point_submission_reject",
+          "callee": "get_object_or_404",
+          "lineNumber": 498
+        },
+        {
+          "caller": "committee_point_submission_reject",
+          "callee": "messages.error",
+          "lineNumber": 500
+        },
+        {
+          "caller": "committee_point_submission_reject",
+          "callee": "redirect",
+          "lineNumber": 501
+        },
+        {
+          "caller": "committee_point_submission_reject",
+          "callee": "PointRejectForm",
+          "lineNumber": 502
+        },
+        {
+          "caller": "committee_point_submission_reject",
+          "callee": "form.is_valid",
+          "lineNumber": 503
+        },
+        {
+          "caller": "committee_point_submission_reject",
+          "callee": "form.cleaned_data.get",
+          "lineNumber": 505
+        },
+        {
+          "caller": "committee_point_submission_reject",
+          "callee": "submission.save",
+          "lineNumber": 506
+        },
+        {
+          "caller": "committee_point_submission_reject",
+          "callee": "messages.success",
+          "lineNumber": 507
+        },
+        {
+          "caller": "committee_point_submission_reject",
+          "callee": "redirect",
+          "lineNumber": 508
+        },
+        {
+          "caller": "committee_point_submission_reject",
+          "callee": "render",
+          "lineNumber": 509
+        },
+        {
+          "caller": "committee_point_submission_delete",
+          "callee": "get_object_or_404",
+          "lineNumber": 517
+        },
+        {
+          "caller": "committee_point_submission_delete",
+          "callee": "submission.delete",
+          "lineNumber": 519
+        },
+        {
+          "caller": "committee_point_submission_delete",
+          "callee": "messages.success",
+          "lineNumber": 520
+        },
+        {
+          "caller": "committee_point_submission_delete",
+          "callee": "redirect",
+          "lineNumber": 521
+        },
+        {
+          "caller": "committee_point_submission_delete",
+          "callee": "render",
+          "lineNumber": 522
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 39,
+        "functionCount": 39,
+        "classCount": 0
+      }
+    }
+  ]
+}

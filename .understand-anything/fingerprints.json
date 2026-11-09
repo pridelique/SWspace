@@ -1,0 +1,2735 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "e71951513edfd3ed8d3ee629e7985c3039be93ce",
+  "generatedAt": "2026-07-01T06:48:05.808Z",
+  "files": {
+    ".claude/settings.json": {
+      "filePath": ".claude/settings.json",
+      "contentHash": "43fd9292d8554aea3381e56d82032711f710bf8de2cec4c06ef2966351c70934",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 6,
+      "hasStructuralAnalysis": true
+    },
+    ".env.example": {
+      "filePath": ".env.example",
+      "contentHash": "8f6380690a7ea9b2afaa30a8fc744d7fc0920c065ebd97699d6509fe077dd563",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 23,
+      "hasStructuralAnalysis": true
+    },
+    ".understand-anything/.understandignore": {
+      "filePath": ".understand-anything/.understandignore",
+      "contentHash": "e9016904e36f302208f19973b8e73e43c74140acf3e049e3229b29cdc9fd4a25",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 48,
+      "hasStructuralAnalysis": false
+    },
+    "accounts/__init__.py": {
+      "filePath": "accounts/__init__.py",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    "accounts/admin.py": {
+      "filePath": "accounts/admin.py",
+      "contentHash": "4311b3dd9df722f4bfc54b675740cb8eb0bc2ff8e76a2f39e145a80f4bdd2e70",
+      "functions": [],
+      "classes": [
+        {
+          "name": "UserAdmin",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 17
+        }
+      ],
+      "imports": [
+        {
+          "source": "django.contrib",
+          "specifiers": [
+            "admin"
+          ]
+        },
+        {
+          "source": "django.contrib.auth.admin",
+          "specifiers": [
+            "BaseUserAdmin"
+          ]
+        },
+        {
+          "source": ".models",
+          "specifiers": [
+            "User"
+          ]
+        }
+      ],
+      "exports": [
+        "UserAdmin"
+      ],
+      "totalLines": 25,
+      "hasStructuralAnalysis": true
+    },
+    "accounts/apps.py": {
+      "filePath": "accounts/apps.py",
+      "contentHash": "daa8d1019ba864cb1a62daec4483f407d6bfccd9266990d61b86fc7f50b71f27",
+      "functions": [],
+      "classes": [
+        {
+          "name": "AccountsConfig",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "imports": [
+        {
+          "source": "django.apps",
+          "specifiers": [
+            "AppConfig"
+          ]
+        }
+      ],
+      "exports": [
+        "AccountsConfig"
+      ],
+      "totalLines": 7,
+      "hasStructuralAnalysis": true
+    },
+    "accounts/forms.py": {
+      "filePath": "accounts/forms.py",
+      "contentHash": "dd8e4a4ff731e39ac33f023d3bb745730c9763b2570039a624a10eb10cd186f7",
+      "functions": [],
+      "classes": [
+        {
+          "name": "RegisterForm",
+          "methods": [
+            "clean_email",
+            "clean_verification_code",
+            "clean_password",
+            "clean",
+            "determine_role",
+            "determine_grade_level"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 64
+        }
+      ],
+      "imports": [
+        {
+          "source": "django",
+          "specifiers": [
+            "forms"
+          ]
+        },
+        {
+          "source": "django.conf",
+          "specifiers": [
+            "settings"
+          ]
+        },
+        {
+          "source": "django.contrib.auth",
+          "specifiers": [
+            "get_user_model"
+          ]
+        },
+        {
+          "source": "django.contrib.auth.password_validation",
+          "specifiers": [
+            "validate_password"
+          ]
+        }
+      ],
+      "exports": [
+        "RegisterForm"
+      ],
+      "totalLines": 82,
+      "hasStructuralAnalysis": true
+    },
+    "accounts/migrations/__init__.py": {
+      "filePath": "accounts/migrations/__init__.py",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    "accounts/migrations/0001_initial.py": {
+      "filePath": "accounts/migrations/0001_initial.py",
+      "contentHash": "44e830db389fef7d91a4f0e3d77687e7041eaa7f7725783f2dc23789012ba01b",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Migration",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 36
+        }
+      ],
+      "imports": [
+        {
+          "source": "django.db",
+          "specifiers": [
+            "migrations",
+            "models"
+          ]
+        },
+        {
+          "source": "django.utils.timezone",
+          "specifiers": [
+            "django.utils.timezone"
+          ]
+        }
+      ],
+      "exports": [
+        "Migration"
+      ],
+      "totalLines": 43,
+      "hasStructuralAnalysis": true
+    },
+    "accounts/migrations/0002_add_grade_level.py": {
+      "filePath": "accounts/migrations/0002_add_grade_level.py",
+      "contentHash": "464abc6bec6f50a4ff218eb8fc03a5fc93a66710ad1a094dece0677568648a80",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Migration",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 13
+        }
+      ],
+      "imports": [
+        {
+          "source": "django.db",
+          "specifiers": [
+            "migrations",
+            "models"
+          ]
+        }
+      ],
+      "exports": [
+        "Migration"
+      ],
+      "totalLines": 19,
+      "hasStructuralAnalysis": true
+    },
+    "accounts/models.py": {
+      "filePath": "accounts/models.py",
+      "contentHash": "773b80cd5eb25c000ce8bddbd13bd602c28a62217cb730b66d253a3f27972a04",
+      "functions": [],
+      "classes": [
+        {
+          "name": "UserManager",
+          "methods": [
+            "create_user",
+            "create_superuser"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "User",
+          "methods": [
+            "is_committee",
+            "__str__"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 26
+        }
+      ],
+      "imports": [
+        {
+          "source": "django.contrib.auth.models",
+          "specifiers": [
+            "AbstractUser",
+            "BaseUserManager"
+          ]
+        },
+        {
+          "source": "django.db",
+          "specifiers": [
+            "models"
+          ]
+        }
+      ],
+      "exports": [
+        "UserManager",
+        "User"
+      ],
+      "totalLines": 49,
+      "hasStructuralAnalysis": true
+    },
+    "accounts/tests.py": {
+      "filePath": "accounts/tests.py",
+      "contentHash": "f5bdacb5b4e0c35191f5000abff7789b8b29a83b509faee94b0521ae1239f430",
+      "functions": [
+        {
+          "name": "_post_register",
+          "params": [
+            "client",
+            "**overrides"
+          ],
+          "exported": true,
+          "lineCount": 10
+        }
+      ],
+      "classes": [
+        {
+          "name": "RegisterTest",
+          "methods": [
+            "setUp",
+            "test_student_registration_succeeds",
+            "test_student_grade_level_assigned",
+            "test_all_grade_codes_map_correctly",
+            "test_committee_registration_sets_role",
+            "test_committee_grade_level_empty",
+            "test_invalid_verification_code_rejected",
+            "test_non_school_email_rejected",
+            "test_duplicate_email_rejected",
+            "test_password_mismatch_rejected",
+            "test_authenticated_user_redirected_from_register"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 63
+        },
+        {
+          "name": "LoginTest",
+          "methods": [
+            "setUp",
+            "test_login_with_correct_credentials",
+            "test_login_with_wrong_password",
+            "test_login_with_unknown_email",
+            "test_authenticated_user_redirected_from_login",
+            "test_safe_next_redirect_followed",
+            "test_unsafe_next_redirect_ignored"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 49
+        },
+        {
+          "name": "LogoutTest",
+          "methods": [
+            "setUp",
+            "test_post_logout_redirects_to_login",
+            "test_get_logout_redirects_to_dashboard"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 15
+        }
+      ],
+      "imports": [
+        {
+          "source": "django.contrib.auth",
+          "specifiers": [
+            "get_user_model"
+          ]
+        },
+        {
+          "source": "django.test",
+          "specifiers": [
+            "Client",
+            "TestCase"
+          ]
+        },
+        {
+          "source": "django.urls",
+          "specifiers": [
+            "reverse"
+          ]
+        }
+      ],
+      "exports": [
+        "_post_register",
+        "RegisterTest",
+        "LoginTest",
+        "LogoutTest"
+      ],
+      "totalLines": 156,
+      "hasStructuralAnalysis": true
+    },
+    "accounts/urls.py": {
+      "filePath": "accounts/urls.py",
+      "contentHash": "8807c4d10e69ce7c8530d07d1a7602eb2d9fb70e14a6e652e9eb46f0fee10f71",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "django.urls",
+          "specifiers": [
+            "path"
+          ]
+        },
+        {
+          "source": ".",
+          "specifiers": [
+            "views"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 12,
+      "hasStructuralAnalysis": true
+    },
+    "accounts/views.py": {
+      "filePath": "accounts/views.py",
+      "contentHash": "d24d216b5254ab36d190cc68f1fbf265ebe19084dfd63c3fda1b987b0d469773",
+      "functions": [
+        {
+          "name": "register_view",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "login_view",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "logout_view",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "django.contrib",
+          "specifiers": [
+            "auth",
+            "messages"
+          ]
+        },
+        {
+          "source": "django.contrib.auth",
+          "specifiers": [
+            "get_user_model"
+          ]
+        },
+        {
+          "source": "django.contrib.auth.forms",
+          "specifiers": [
+            "AuthenticationForm"
+          ]
+        },
+        {
+          "source": "django.shortcuts",
+          "specifiers": [
+            "redirect",
+            "render"
+          ]
+        },
+        {
+          "source": "django.utils.http",
+          "specifiers": [
+            "url_has_allowed_host_and_scheme"
+          ]
+        },
+        {
+          "source": ".forms",
+          "specifiers": [
+            "RegisterForm"
+          ]
+        }
+      ],
+      "exports": [
+        "register_view",
+        "login_view",
+        "logout_view"
+      ],
+      "totalLines": 64,
+      "hasStructuralAnalysis": true
+    },
+    "AGENTS.md": {
+      "filePath": "AGENTS.md",
+      "contentHash": "ceaa13d29db2c2ce408ba5d00fb6c5cccc0eadeb336cf076cfea699f985b9fd8",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 6,
+      "hasStructuralAnalysis": true
+    },
+    "app/globals.css": {
+      "filePath": "app/globals.css",
+      "contentHash": "94d307fb925a3264dd331975b5e17170b1d887f361669cf839bdf37cc7a40db8",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 27,
+      "hasStructuralAnalysis": false
+    },
+    "app/layout.tsx": {
+      "filePath": "app/layout.tsx",
+      "contentHash": "ecbf16840895feac23ffe0346b625c1825b2877afa2a3bfbc22f02cb653f2b12",
+      "functions": [
+        {
+          "name": "RootLayout",
+          "params": [
+            "{\r\n  children,\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 17
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/font/google",
+          "specifiers": [
+            "Geist"
+          ]
+        },
+        {
+          "source": "next/font/google",
+          "specifiers": [
+            "Poppins"
+          ]
+        },
+        {
+          "source": "next/font/google",
+          "specifiers": [
+            "Inter"
+          ]
+        },
+        {
+          "source": "next/font/google",
+          "specifiers": [
+            "Manrope"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "ReactNode"
+          ]
+        },
+        {
+          "source": "@/components/navbar",
+          "specifiers": [
+            "Navbar"
+          ]
+        },
+        {
+          "source": "./globals.css",
+          "specifiers": []
+        }
+      ],
+      "exports": [
+        "RootLayout"
+      ],
+      "totalLines": 34,
+      "hasStructuralAnalysis": true
+    },
+    "app/page.tsx": {
+      "filePath": "app/page.tsx",
+      "contentHash": "d71027f89c65b4911e6d1a08670230ecab88131a211de1336c771ccdd27484f6",
+      "functions": [
+        {
+          "name": "Home",
+          "params": [],
+          "exported": true,
+          "lineCount": 63
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/image",
+          "specifiers": [
+            "Image"
+          ]
+        }
+      ],
+      "exports": [
+        "Home"
+      ],
+      "totalLines": 66,
+      "hasStructuralAnalysis": true
+    },
+    "CLAUDE.md": {
+      "filePath": "CLAUDE.md",
+      "contentHash": "4eb8620d34b7d76a23a12bec36ee02324247e9cbb18feb3f745ae89cee23f419",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 85,
+      "hasStructuralAnalysis": true
+    },
+    "components/navbar.tsx": {
+      "filePath": "components/navbar.tsx",
+      "contentHash": "e0fd87c72d5e6871b87535325ec5027d5da0405b42371bf369a06993a0c37d47",
+      "functions": [
+        {
+          "name": "Navbar",
+          "params": [],
+          "exported": true,
+          "lineCount": 132
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/image",
+          "specifiers": [
+            "Image"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        }
+      ],
+      "exports": [
+        "Navbar"
+      ],
+      "totalLines": 138,
+      "hasStructuralAnalysis": true
+    },
+    "config/__init__.py": {
+      "filePath": "config/__init__.py",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    "config/asgi.py": {
+      "filePath": "config/asgi.py",
+      "contentHash": "0d51b4f8d128299e67eb0022f72079ab8d60a1a759ce02ea6104cc62f5c6fc0a",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "django.core.asgi",
+          "specifiers": [
+            "get_asgi_application"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 17,
+      "hasStructuralAnalysis": true
+    },
+    "config/settings.py": {
+      "filePath": "config/settings.py",
+      "contentHash": "206bc7e2ee1bc805d07592bcdf2b32dbc31038cdec07067a97b0b2664c5936ca",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "dj_database_url",
+          "specifiers": [
+            "dj_database_url"
+          ]
+        },
+        {
+          "source": "dotenv",
+          "specifiers": [
+            "load_dotenv"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 131,
+      "hasStructuralAnalysis": true
+    },
+    "config/urls.py": {
+      "filePath": "config/urls.py",
+      "contentHash": "0c04ac235c91075ad66cb1860faf0ab5c3f87ebb4e3c7d20bee9c985f70c3c58",
+      "functions": [
+        {
+          "name": "root_redirect",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "django.conf",
+          "specifiers": [
+            "settings"
+          ]
+        },
+        {
+          "source": "django.conf.urls.static",
+          "specifiers": [
+            "static"
+          ]
+        },
+        {
+          "source": "django.contrib",
+          "specifiers": [
+            "admin"
+          ]
+        },
+        {
+          "source": "django.shortcuts",
+          "specifiers": [
+            "redirect"
+          ]
+        },
+        {
+          "source": "django.urls",
+          "specifiers": [
+            "include",
+            "path"
+          ]
+        }
+      ],
+      "exports": [
+        "root_redirect"
+      ],
+      "totalLines": 23,
+      "hasStructuralAnalysis": true
+    },
+    "config/wsgi.py": {
+      "filePath": "config/wsgi.py",
+      "contentHash": "df3fe84fabcd863ba31fd1c07779b494cf67afaf0e360a257ec95bab0a1f2d7a",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "django.core.wsgi",
+          "specifiers": [
+            "get_wsgi_application"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 17,
+      "hasStructuralAnalysis": true
+    },
+    "DEPLOY.md": {
+      "filePath": "DEPLOY.md",
+      "contentHash": "9e23c1458ae3b7c05db1d1223f1f75620ae22cc8a950e3de8eb2b2cee965f47f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 189,
+      "hasStructuralAnalysis": true
+    },
+    "eslint.config.mjs": {
+      "filePath": "eslint.config.mjs",
+      "contentHash": "275a07c13fc7c83a652efcfa9fb6a207c451a2f5088e6793415ce44281285720",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "eslint/config",
+          "specifiers": [
+            "defineConfig",
+            "globalIgnores"
+          ]
+        },
+        {
+          "source": "eslint-config-next/core-web-vitals",
+          "specifiers": [
+            "nextVitals"
+          ]
+        },
+        {
+          "source": "eslint-config-next/typescript",
+          "specifiers": [
+            "nextTs"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 19,
+      "hasStructuralAnalysis": true
+    },
+    "FINAL_QA_CHECKLIST.md": {
+      "filePath": "FINAL_QA_CHECKLIST.md",
+      "contentHash": "ace16119fbaed742c43dbf724cf22787717c1d9db698f353b7d48f56643754f7",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 159,
+      "hasStructuralAnalysis": true
+    },
+    "manage.py": {
+      "filePath": "manage.py",
+      "contentHash": "b30eeb4890cb6f315cc238313808f636db29e9906b61cc6f6051567156a0097b",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 12
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 23,
+      "hasStructuralAnalysis": true
+    },
+    "next.config.ts": {
+      "filePath": "next.config.ts",
+      "contentHash": "a972c4f0ffa6dd714e7909b02d1ac19d2f2fe3d01f191efd2c5054bd6f142ec1",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "NextConfig"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 8,
+      "hasStructuralAnalysis": true
+    },
+    "package.json": {
+      "filePath": "package.json",
+      "contentHash": "5e3ccdacdf4d829827ec497073538c16e7765e9012f0610095012f014a30dce0",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 27,
+      "hasStructuralAnalysis": true
+    },
+    "portal/__init__.py": {
+      "filePath": "portal/__init__.py",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    "portal/admin.py": {
+      "filePath": "portal/admin.py",
+      "contentHash": "5a12331e09dac15ab5506ec5908baaf8e5cd84640c42768c84d8316d1c2e8002",
+      "functions": [],
+      "classes": [
+        {
+          "name": "NewsAdmin",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "VolunteerLinkAdmin",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "CompetitionAdmin",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "StudyNoteAdmin",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "ProblemReportAdmin",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "PointActivityAdmin",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "PointSubmissionAdmin",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "UserPointProfileAdmin",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "imports": [
+        {
+          "source": "django.contrib",
+          "specifiers": [
+            "admin"
+          ]
+        },
+        {
+          "source": ".models",
+          "specifiers": [
+            "Competition",
+            "News",
+            "PointActivity",
+            "PointSubmission",
+            "ProblemReport",
+            "StudyNote",
+            "UserPointProfile",
+            "VolunteerLink"
+          ]
+        }
+      ],
+      "exports": [
+        "NewsAdmin",
+        "VolunteerLinkAdmin",
+        "CompetitionAdmin",
+        "StudyNoteAdmin",
+        "ProblemReportAdmin",
+        "PointActivityAdmin",
+        "PointSubmissionAdmin",
+        "UserPointProfileAdmin"
+      ],
+      "totalLines": 118,
+      "hasStructuralAnalysis": true
+    },
+    "portal/apps.py": {
+      "filePath": "portal/apps.py",
+      "contentHash": "23d363ab9a8b3683a33e810ed8c8f9bf2de3f50bd11cd326ded7de591b29a3c5",
+      "functions": [],
+      "classes": [
+        {
+          "name": "PortalConfig",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "imports": [
+        {
+          "source": "django.apps",
+          "specifiers": [
+            "AppConfig"
+          ]
+        }
+      ],
+      "exports": [
+        "PortalConfig"
+      ],
+      "totalLines": 7,
+      "hasStructuralAnalysis": true
+    },
+    "portal/forms.py": {
+      "filePath": "portal/forms.py",
+      "contentHash": "d8bbe4a1398350cb10176e7337a9a54eb397b133df26848b1de29750cf6dc415",
+      "functions": [
+        {
+          "name": "validate_image_file",
+          "params": [
+            "f"
+          ],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [
+        {
+          "name": "NewsForm",
+          "methods": [
+            "clean_image"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "VolunteerLinkForm",
+          "methods": [
+            "__init__"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 25
+        },
+        {
+          "name": "CompetitionForm",
+          "methods": [
+            "__init__",
+            "clean_image"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 29
+        },
+        {
+          "name": "StudyNoteForm",
+          "methods": [
+            "clean_drive_url"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 26
+        },
+        {
+          "name": "ProblemReportForm",
+          "methods": [
+            "clean_description"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "PointActivityForm",
+          "methods": [
+            "clean_points"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 22
+        },
+        {
+          "name": "PointSubmissionForm",
+          "methods": [
+            "__init__",
+            "clean",
+            "clean_proof_image"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 40
+        },
+        {
+          "name": "PointRejectForm",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 10
+        }
+      ],
+      "imports": [
+        {
+          "source": "django",
+          "specifiers": [
+            "forms"
+          ]
+        },
+        {
+          "source": ".models",
+          "specifiers": [
+            "Competition",
+            "News",
+            "PointActivity",
+            "PointSubmission",
+            "ProblemReport",
+            "StudyNote",
+            "VolunteerLink"
+          ]
+        }
+      ],
+      "exports": [
+        "validate_image_file",
+        "NewsForm",
+        "VolunteerLinkForm",
+        "CompetitionForm",
+        "StudyNoteForm",
+        "ProblemReportForm",
+        "PointActivityForm",
+        "PointSubmissionForm",
+        "PointRejectForm"
+      ],
+      "totalLines": 225,
+      "hasStructuralAnalysis": true
+    },
+    "portal/management/__init__.py": {
+      "filePath": "portal/management/__init__.py",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    "portal/management/commands/__init__.py": {
+      "filePath": "portal/management/commands/__init__.py",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    "portal/management/commands/archive_old_media.py": {
+      "filePath": "portal/management/commands/archive_old_media.py",
+      "contentHash": "d4559538da31a367c041765fc3c7a5e125c0890e0e5f1f366025f4e765f60e6e",
+      "functions": [
+        {
+          "name": "_subtract_months",
+          "params": [
+            "dt",
+            "months"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "_compress",
+          "params": [
+            "image_field"
+          ],
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "_save_local",
+          "params": [
+            "image_field",
+            "data"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "_save_cloudinary",
+          "params": [
+            "image_field",
+            "data"
+          ],
+          "exported": true,
+          "lineCount": 10
+        }
+      ],
+      "classes": [
+        {
+          "name": "Command",
+          "methods": [
+            "add_arguments",
+            "handle"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 55
+        }
+      ],
+      "imports": [
+        {
+          "source": "calendar",
+          "specifiers": [
+            "calendar"
+          ]
+        },
+        {
+          "source": "io",
+          "specifiers": [
+            "io"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "django.conf",
+          "specifiers": [
+            "settings"
+          ]
+        },
+        {
+          "source": "django.core.management.base",
+          "specifiers": [
+            "BaseCommand"
+          ]
+        },
+        {
+          "source": "django.utils",
+          "specifiers": [
+            "timezone"
+          ]
+        },
+        {
+          "source": "portal.models",
+          "specifiers": [
+            "Competition",
+            "News",
+            "PointSubmission"
+          ]
+        }
+      ],
+      "exports": [
+        "_subtract_months",
+        "_compress",
+        "_save_local",
+        "_save_cloudinary",
+        "Command"
+      ],
+      "totalLines": 113,
+      "hasStructuralAnalysis": true
+    },
+    "portal/management/commands/clear_mock_data.py": {
+      "filePath": "portal/management/commands/clear_mock_data.py",
+      "contentHash": "88856263993bd3f62c42f9829e68b4dd9d85af44540f9325e084fb8177e72e36",
+      "functions": [
+        {
+          "name": "_delete_file",
+          "params": [
+            "field"
+          ],
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "classes": [
+        {
+          "name": "Command",
+          "methods": [
+            "add_arguments",
+            "handle"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 51
+        }
+      ],
+      "imports": [
+        {
+          "source": "django.core.management.base",
+          "specifiers": [
+            "BaseCommand"
+          ]
+        },
+        {
+          "source": "portal.models",
+          "specifiers": [
+            "Competition",
+            "News",
+            "PointActivity",
+            "PointSubmission",
+            "ProblemReport",
+            "StudyNote",
+            "UserPointProfile",
+            "VolunteerLink"
+          ]
+        }
+      ],
+      "exports": [
+        "_delete_file",
+        "Command"
+      ],
+      "totalLines": 68,
+      "hasStructuralAnalysis": true
+    },
+    "portal/management/commands/create_test_accounts.py": {
+      "filePath": "portal/management/commands/create_test_accounts.py",
+      "contentHash": "1755cac5f279f49915e0bfc24e3d6cd6c1f5488b4f2731c3ddc0b0059e04fdea",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Command",
+          "methods": [
+            "handle"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 39
+        }
+      ],
+      "imports": [
+        {
+          "source": "django.contrib.auth",
+          "specifiers": [
+            "get_user_model"
+          ]
+        },
+        {
+          "source": "django.core.management.base",
+          "specifiers": [
+            "BaseCommand"
+          ]
+        }
+      ],
+      "exports": [
+        "Command"
+      ],
+      "totalLines": 51,
+      "hasStructuralAnalysis": true
+    },
+    "portal/management/commands/seed_mock_data.py": {
+      "filePath": "portal/management/commands/seed_mock_data.py",
+      "contentHash": "4947a7e15e0bb28ed036a6928a5bafdd2a041bbc2cbde434313dfebb76b6971e",
+      "functions": [
+        {
+          "name": "_image_file",
+          "params": [
+            "name",
+            "color"
+          ],
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "classes": [
+        {
+          "name": "Command",
+          "methods": [
+            "handle"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 174
+        }
+      ],
+      "imports": [
+        {
+          "source": "datetime",
+          "specifiers": [
+            "timedelta"
+          ]
+        },
+        {
+          "source": "io",
+          "specifiers": [
+            "BytesIO"
+          ]
+        },
+        {
+          "source": "django.contrib.auth",
+          "specifiers": [
+            "get_user_model"
+          ]
+        },
+        {
+          "source": "django.core.files.base",
+          "specifiers": [
+            "ContentFile"
+          ]
+        },
+        {
+          "source": "django.core.management.base",
+          "specifiers": [
+            "BaseCommand"
+          ]
+        },
+        {
+          "source": "django.utils",
+          "specifiers": [
+            "timezone"
+          ]
+        },
+        {
+          "source": "portal.models",
+          "specifiers": [
+            "Competition",
+            "News",
+            "PointActivity",
+            "PointSubmission",
+            "ProblemReport",
+            "StudyNote",
+            "UserPointProfile",
+            "VolunteerLink"
+          ]
+        }
+      ],
+      "exports": [
+        "_image_file",
+        "Command"
+      ],
+      "totalLines": 201,
+      "hasStructuralAnalysis": true
+    },
+    "portal/migrations/__init__.py": {
+      "filePath": "portal/migrations/__init__.py",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    "portal/migrations/0001_initial.py": {
+      "filePath": "portal/migrations/0001_initial.py",
+      "contentHash": "473a260b528fd64956dbfe6a707894a0041eb322b56207fd9b55ded137ebe8e0",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Migration",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 94
+        }
+      ],
+      "imports": [
+        {
+          "source": "django.conf",
+          "specifiers": [
+            "settings"
+          ]
+        },
+        {
+          "source": "django.db",
+          "specifiers": [
+            "migrations",
+            "models"
+          ]
+        },
+        {
+          "source": "django.db.models.deletion",
+          "specifiers": [
+            "django.db.models.deletion"
+          ]
+        }
+      ],
+      "exports": [
+        "Migration"
+      ],
+      "totalLines": 102,
+      "hasStructuralAnalysis": true
+    },
+    "portal/migrations/0002_competition_deadline_competition_is_published_and_more.py": {
+      "filePath": "portal/migrations/0002_competition_deadline_competition_is_published_and_more.py",
+      "contentHash": "8fec80a1d92852a47bd50228f19e08238d7a181186f7bcbfeaaedc5d1fb17304",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Migration",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 139
+        }
+      ],
+      "imports": [
+        {
+          "source": "django.conf",
+          "specifiers": [
+            "settings"
+          ]
+        },
+        {
+          "source": "django.db",
+          "specifiers": [
+            "migrations",
+            "models"
+          ]
+        },
+        {
+          "source": "django.db.models.deletion",
+          "specifiers": [
+            "django.db.models.deletion"
+          ]
+        }
+      ],
+      "exports": [
+        "Migration"
+      ],
+      "totalLines": 147,
+      "hasStructuralAnalysis": true
+    },
+    "portal/migrations/0003_competition_drive_file_id_news_drive_file_id.py": {
+      "filePath": "portal/migrations/0003_competition_drive_file_id_news_drive_file_id.py",
+      "contentHash": "7057aeeed355733a1d31b868882416ec0656327d19c1d74cfc6991a714522ae3",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Migration",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 18
+        }
+      ],
+      "imports": [
+        {
+          "source": "django.db",
+          "specifiers": [
+            "migrations",
+            "models"
+          ]
+        }
+      ],
+      "exports": [
+        "Migration"
+      ],
+      "totalLines": 24,
+      "hasStructuralAnalysis": true
+    },
+    "portal/migrations/0004_replace_drive_with_local_imagefield.py": {
+      "filePath": "portal/migrations/0004_replace_drive_with_local_imagefield.py",
+      "contentHash": "079aad33bfacc522c891ddeb4c75698728cbc2d73abcc407e8267115f3348bd5",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Migration",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 34
+        }
+      ],
+      "imports": [
+        {
+          "source": "django.db",
+          "specifiers": [
+            "migrations",
+            "models"
+          ]
+        }
+      ],
+      "exports": [
+        "Migration"
+      ],
+      "totalLines": 40,
+      "hasStructuralAnalysis": true
+    },
+    "portal/migrations/0005_add_point_models.py": {
+      "filePath": "portal/migrations/0005_add_point_models.py",
+      "contentHash": "3c00d9825a116a8e3d741c6d502fc13125204185030c3666f478d018d9640be0",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Migration",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 60
+        }
+      ],
+      "imports": [
+        {
+          "source": "django.conf",
+          "specifiers": [
+            "settings"
+          ]
+        },
+        {
+          "source": "django.db",
+          "specifiers": [
+            "migrations",
+            "models"
+          ]
+        },
+        {
+          "source": "django.db.models.deletion",
+          "specifiers": [
+            "django.db.models.deletion"
+          ]
+        }
+      ],
+      "exports": [
+        "Migration"
+      ],
+      "totalLines": 68,
+      "hasStructuralAnalysis": true
+    },
+    "portal/migrations/0006_competition_is_archived_news_is_archived_and_more.py": {
+      "filePath": "portal/migrations/0006_competition_is_archived_news_is_archived_and_more.py",
+      "contentHash": "925c87689fc4c56fe51bd4143b0a3ab14b278554fc4ed7157f41431954ece934",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Migration",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 23
+        }
+      ],
+      "imports": [
+        {
+          "source": "django.db",
+          "specifiers": [
+            "migrations",
+            "models"
+          ]
+        }
+      ],
+      "exports": [
+        "Migration"
+      ],
+      "totalLines": 29,
+      "hasStructuralAnalysis": true
+    },
+    "portal/models.py": {
+      "filePath": "portal/models.py",
+      "contentHash": "3098d117d79f63d143f8caa848e7ea71e91be9015fc55cdf9ba3800cb35334d3",
+      "functions": [],
+      "classes": [
+        {
+          "name": "News",
+          "methods": [
+            "__str__"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 34
+        },
+        {
+          "name": "VolunteerLink",
+          "methods": [
+            "__str__"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 23
+        },
+        {
+          "name": "Competition",
+          "methods": [
+            "__str__"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 25
+        },
+        {
+          "name": "StudyNote",
+          "methods": [
+            "__str__",
+            "display_credit"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 38
+        },
+        {
+          "name": "ProblemReport",
+          "methods": [
+            "__str__"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 33
+        },
+        {
+          "name": "PointActivity",
+          "methods": [
+            "__str__"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "PointSubmission",
+          "methods": [
+            "__str__"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 45
+        },
+        {
+          "name": "UserPointProfile",
+          "methods": [
+            "__str__"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 15
+        }
+      ],
+      "imports": [
+        {
+          "source": "django.conf",
+          "specifiers": [
+            "settings"
+          ]
+        },
+        {
+          "source": "django.db",
+          "specifiers": [
+            "models"
+          ]
+        },
+        {
+          "source": "django.utils",
+          "specifiers": [
+            "timezone"
+          ]
+        }
+      ],
+      "exports": [
+        "News",
+        "VolunteerLink",
+        "Competition",
+        "StudyNote",
+        "ProblemReport",
+        "PointActivity",
+        "PointSubmission",
+        "UserPointProfile"
+      ],
+      "totalLines": 254,
+      "hasStructuralAnalysis": true
+    },
+    "portal/tests.py": {
+      "filePath": "portal/tests.py",
+      "contentHash": "8794b6cffdfc28349134ec03a0f209e3fc317fd85d2c5e0b78754e2ba7e7c8e7",
+      "functions": [
+        {
+          "name": "_make_uploaded_file",
+          "params": [
+            "name",
+            "content_type"
+          ],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [
+        {
+          "name": "ImageUploadTest",
+          "methods": [
+            "setUp",
+            "test_news_create_with_image_saves",
+            "test_news_create_without_image_saves",
+            "test_news_edit_with_image_replaces",
+            "test_competition_create_with_image_saves",
+            "test_competition_create_without_image_saves",
+            "test_student_cannot_create_news",
+            "test_student_cannot_create_competition",
+            "test_news_create_form_renders",
+            "test_competition_create_form_renders"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 140
+        },
+        {
+          "name": "PointsTest",
+          "methods": [
+            "setUp",
+            "_submit",
+            "test_points_page_renders",
+            "test_point_history_renders",
+            "test_student_cannot_access_committee_points",
+            "test_submit_proof_creates_pending",
+            "test_approve_adds_points",
+            "test_approve_twice_does_not_double_add",
+            "test_reject_approved_submission_blocked",
+            "test_reject_pending_changes_status",
+            "test_rejected_submission_allows_resubmit"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 129
+        },
+        {
+          "name": "ImageValidationTest",
+          "methods": [
+            "setUp",
+            "test_news_rejects_wrong_content_type",
+            "test_competition_rejects_oversized_image"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 45
+        }
+      ],
+      "imports": [
+        {
+          "source": "io",
+          "specifiers": [
+            "BytesIO"
+          ]
+        },
+        {
+          "source": "django.contrib.auth",
+          "specifiers": [
+            "get_user_model"
+          ]
+        },
+        {
+          "source": "django.test",
+          "specifiers": [
+            "Client",
+            "TestCase"
+          ]
+        },
+        {
+          "source": "django.urls",
+          "specifiers": [
+            "reverse"
+          ]
+        }
+      ],
+      "exports": [
+        "_make_uploaded_file",
+        "ImageUploadTest",
+        "PointsTest",
+        "ImageValidationTest"
+      ],
+      "totalLines": 337,
+      "hasStructuralAnalysis": true
+    },
+    "portal/urls.py": {
+      "filePath": "portal/urls.py",
+      "contentHash": "e83cb67fe6ddde6e13b8f62e200f5330ca8a6496437fe686c78a89c1d0fdaaef",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "django.urls",
+          "specifiers": [
+            "path"
+          ]
+        },
+        {
+          "source": ".",
+          "specifiers": [
+            "views"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 64,
+      "hasStructuralAnalysis": true
+    },
+    "portal/views.py": {
+      "filePath": "portal/views.py",
+      "contentHash": "7790eb1b2fc1059afa698ac53909b4f5ee801712c0ce127df8b0176a74109080",
+      "functions": [
+        {
+          "name": "committee_required",
+          "params": [
+            "view_func"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "dashboard",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "news",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "volunteer",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "competitions",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "study_notes",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "problem_reports",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "committee_dashboard",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "committee_news_list",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "committee_news_create",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "committee_news_edit",
+          "params": [
+            "request",
+            "pk"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "committee_news_delete",
+          "params": [
+            "request",
+            "pk"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "committee_volunteer_list",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "committee_volunteer_create",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "committee_volunteer_edit",
+          "params": [
+            "request",
+            "pk"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "committee_volunteer_delete",
+          "params": [
+            "request",
+            "pk"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "committee_competition_list",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "committee_competition_create",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "committee_competition_edit",
+          "params": [
+            "request",
+            "pk"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "committee_competition_delete",
+          "params": [
+            "request",
+            "pk"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "study_note_submit",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "committee_study_notes_list",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "committee_study_note_toggle_approval",
+          "params": [
+            "request",
+            "pk"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "committee_study_note_delete",
+          "params": [
+            "request",
+            "pk"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "problem_report_submit",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "committee_problem_reports_list",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "committee_problem_report_approve",
+          "params": [
+            "request",
+            "pk"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "committee_problem_report_reject",
+          "params": [
+            "request",
+            "pk"
+          ],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "committee_problem_report_delete",
+          "params": [
+            "request",
+            "pk"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "points",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "point_submit",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "point_history",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "committee_points",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "committee_point_activity_create",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "committee_point_activity_edit",
+          "params": [
+            "request",
+            "pk"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "committee_point_activity_delete",
+          "params": [
+            "request",
+            "pk"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "committee_point_submission_approve",
+          "params": [
+            "request",
+            "pk"
+          ],
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "committee_point_submission_reject",
+          "params": [
+            "request",
+            "pk"
+          ],
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "committee_point_submission_delete",
+          "params": [
+            "request",
+            "pk"
+          ],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "functools",
+          "specifiers": [
+            "wraps"
+          ]
+        },
+        {
+          "source": "django.conf",
+          "specifiers": [
+            "settings"
+          ]
+        },
+        {
+          "source": "django.contrib",
+          "specifiers": [
+            "messages"
+          ]
+        },
+        {
+          "source": "django.contrib.auth.decorators",
+          "specifiers": [
+            "login_required"
+          ]
+        },
+        {
+          "source": "django.db",
+          "specifiers": [
+            "transaction"
+          ]
+        },
+        {
+          "source": "django.db.models",
+          "specifiers": [
+            "F"
+          ]
+        },
+        {
+          "source": "django.shortcuts",
+          "specifiers": [
+            "get_object_or_404",
+            "redirect",
+            "render"
+          ]
+        },
+        {
+          "source": "django.utils",
+          "specifiers": [
+            "timezone"
+          ]
+        },
+        {
+          "source": ".forms",
+          "specifiers": [
+            "CompetitionForm",
+            "NewsForm",
+            "PointActivityForm",
+            "PointRejectForm",
+            "PointSubmissionForm",
+            "ProblemReportForm",
+            "StudyNoteForm",
+            "VolunteerLinkForm"
+          ]
+        },
+        {
+          "source": ".models",
+          "specifiers": [
+            "Competition",
+            "News",
+            "PointActivity",
+            "PointSubmission",
+            "ProblemReport",
+            "StudyNote",
+            "UserPointProfile",
+            "VolunteerLink"
+          ]
+        }
+      ],
+      "exports": [
+        "committee_required",
+        "dashboard",
+        "news",
+        "volunteer",
+        "competitions",
+        "study_notes",
+        "problem_reports",
+        "committee_dashboard",
+        "committee_news_list",
+        "committee_news_create",
+        "committee_news_edit",
+        "committee_news_delete",
+        "committee_volunteer_list",
+        "committee_volunteer_create",
+        "committee_volunteer_edit",
+        "committee_volunteer_delete",
+        "committee_competition_list",
+        "committee_competition_create",
+        "committee_competition_edit",
+        "committee_competition_delete",
+        "study_note_submit",
+        "committee_study_notes_list",
+        "committee_study_note_toggle_approval",
+        "committee_study_note_delete",
+        "problem_report_submit",
+        "committee_problem_reports_list",
+        "committee_problem_report_approve",
+        "committee_problem_report_reject",
+        "committee_problem_report_delete",
+        "points",
+        "point_submit",
+        "point_history",
+        "committee_points",
+        "committee_point_activity_create",
+        "committee_point_activity_edit",
+        "committee_point_activity_delete",
+        "committee_point_submission_approve",
+        "committee_point_submission_reject",
+        "committee_point_submission_delete"
+      ],
+      "totalLines": 523,
+      "hasStructuralAnalysis": true
+    },
+    "postcss.config.mjs": {
+      "filePath": "postcss.config.mjs",
+      "contentHash": "7b299d3d3b16699ddda397c0b2373b3af4f25f8fc9ccc9b3d9e64ef083bc1c21",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 8,
+      "hasStructuralAnalysis": true
+    },
+    "README.md": {
+      "filePath": "README.md",
+      "contentHash": "62857a77784bd3398fc553220dcc455fcf44e4c486b5df057b572213422f0a4f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 330,
+      "hasStructuralAnalysis": true
+    },
+    "requirements.txt": {
+      "filePath": "requirements.txt",
+      "contentHash": "584051487a5f64dff0cec5ad25de37180743a2a4d90499cc2cead472ab58b473",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 8,
+      "hasStructuralAnalysis": false
+    },
+    "static/css/styles.css": {
+      "filePath": "static/css/styles.css",
+      "contentHash": "2a135c24d8b0662d5fb5066e9b05bc2b5c67d8366314a233436898b431c20858",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 238,
+      "hasStructuralAnalysis": false
+    },
+    "templates/accounts/login.html": {
+      "filePath": "templates/accounts/login.html",
+      "contentHash": "cefed0ef44e39fde3dda42e0836a6b30dc285282f3f9e5287f90191d2c0c16d6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 56,
+      "hasStructuralAnalysis": false
+    },
+    "templates/accounts/register.html": {
+      "filePath": "templates/accounts/register.html",
+      "contentHash": "d7b775ac7695134cd8a39e433a0db98b5b18724998fd7d8f561e3a07243ef0d7",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 80,
+      "hasStructuralAnalysis": false
+    },
+    "templates/base.html": {
+      "filePath": "templates/base.html",
+      "contentHash": "5d07dc81e495f61438a348a866a798b6d1cd50aca28c9511e324d205858e7852",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 123,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/committee_competition_confirm_delete.html": {
+      "filePath": "templates/portal/committee_competition_confirm_delete.html",
+      "contentHash": "b8a9986147dd308c3ed93956c437614ae9d1256d4f29bf2f933cfdf3f6e3d4ba",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 52,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/committee_competition_form.html": {
+      "filePath": "templates/portal/committee_competition_form.html",
+      "contentHash": "f2edc419d671902c3a6f32b17c72064b9ee2e418c2d2550c494ecb9989c10aa9",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 108,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/committee_competition_list.html": {
+      "filePath": "templates/portal/committee_competition_list.html",
+      "contentHash": "c03edd3a7cf85b75b7c7f61729634ac6941b39d0cb2cc0ef04b0445bd805ddee",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 72,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/committee_news_confirm_delete.html": {
+      "filePath": "templates/portal/committee_news_confirm_delete.html",
+      "contentHash": "41797349ca2334c92c9d27522ee4678e4ce2a7c4465ca57b9bb4bdcb1c265177",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 53,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/committee_news_form.html": {
+      "filePath": "templates/portal/committee_news_form.html",
+      "contentHash": "6a8688e68d2ad0a0ce4af346f410ca4dc7d18b59a933d3cfb25a15ba3a401514",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 87,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/committee_news_list.html": {
+      "filePath": "templates/portal/committee_news_list.html",
+      "contentHash": "c8a2e3fdaf598b6633952b9aaf3ea145fc72bb66a2d20624f4b9b6d4300db7c9",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 77,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/committee_point_activity_confirm_delete.html": {
+      "filePath": "templates/portal/committee_point_activity_confirm_delete.html",
+      "contentHash": "b0a212a9aa1a5dcab098ca70cf12ead1f1330a3ac41beb5e8a2ac8c28ce1ff7c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 31,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/committee_point_activity_form.html": {
+      "filePath": "templates/portal/committee_point_activity_form.html",
+      "contentHash": "1e7ba61564ac9cbe68123741f6f02acf033c7d6da1b1dc9f027a302d0dde780f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 70,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/committee_point_submission_confirm_delete.html": {
+      "filePath": "templates/portal/committee_point_submission_confirm_delete.html",
+      "contentHash": "44bd5d19a3576a93f4ca1574240f8e6f2017507ce34fc7c3f13ca1161bc6839f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 38,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/committee_point_submission_reject_form.html": {
+      "filePath": "templates/portal/committee_point_submission_reject_form.html",
+      "contentHash": "a5fb3f8670b1d3185d80762db1c96d66f04ae4c11af60d0d6d3e050632b8924e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 51,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/committee_points.html": {
+      "filePath": "templates/portal/committee_points.html",
+      "contentHash": "a99101af9a46922ff81601087f9edc0f0e265d9bda1b7c9df1500551db4832b5",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 151,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/committee_problem_report_confirm_delete.html": {
+      "filePath": "templates/portal/committee_problem_report_confirm_delete.html",
+      "contentHash": "1533218db32f8495fdb3f58ef7d1c0bbf0554c86284b240aa89aff18bdb65a1d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 52,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/committee_problem_report_reject_form.html": {
+      "filePath": "templates/portal/committee_problem_report_reject_form.html",
+      "contentHash": "9f4205a89969381dd23a47f9a870d91c70b579b8dbed7fc92db39aab7af5ff21",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 50,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/committee_problem_reports_list.html": {
+      "filePath": "templates/portal/committee_problem_reports_list.html",
+      "contentHash": "e9cef6490ead7255d890df63ab06f8410b2d66c1984e753aebf21866d6e709a3",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 106,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/committee_study_note_confirm_delete.html": {
+      "filePath": "templates/portal/committee_study_note_confirm_delete.html",
+      "contentHash": "c6cef4f04e27eca38296e37956050e9b45a27930d3efca1761adb2084adff170",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 45,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/committee_study_notes_list.html": {
+      "filePath": "templates/portal/committee_study_notes_list.html",
+      "contentHash": "372c54d3129fd0c347f0ea8af66550425e7143b69570362ccbc1abab76bfb140",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 80,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/committee_volunteer_confirm_delete.html": {
+      "filePath": "templates/portal/committee_volunteer_confirm_delete.html",
+      "contentHash": "c30d12c8b4f92b91f9fa32ddbc525fdd74595f11d04f076c94d141e3d86e6d7f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 52,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/committee_volunteer_form.html": {
+      "filePath": "templates/portal/committee_volunteer_form.html",
+      "contentHash": "2a5940ded4d80f5f42ad3f3b22a4483409b412887914da8967e7b5a58630a45a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 91,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/committee_volunteer_list.html": {
+      "filePath": "templates/portal/committee_volunteer_list.html",
+      "contentHash": "73e0daf9ea226deb40aa230172e7d123eaab6f3acadc02d44980bb6b1b68c528",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 72,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/committee.html": {
+      "filePath": "templates/portal/committee.html",
+      "contentHash": "ee27a2134c2d8650be2f0a5a4142c5fc0b4126aa9af5c6dff5efd16a0d780cdb",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 186,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/competitions.html": {
+      "filePath": "templates/portal/competitions.html",
+      "contentHash": "f8b4a953629f34327c7332168ecbf070520c4e7a5d8dcc4d092f4767915fb32e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 61,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/dashboard.html": {
+      "filePath": "templates/portal/dashboard.html",
+      "contentHash": "44568885668e3bf5b63f88fd41c38a6cc9bcf4bbd41616a153a1a1162a25dbfb",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 126,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/news.html": {
+      "filePath": "templates/portal/news.html",
+      "contentHash": "47a15e019a4acbc512a70c0fb4e40bb5378c9e2d40062644bf7324aac7816c4a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 55,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/point_history.html": {
+      "filePath": "templates/portal/point_history.html",
+      "contentHash": "fe65705c4982ba077d22083e2df0e1beaf60dc28671f50e86c0bed8efeb3f455",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 62,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/point_submit.html": {
+      "filePath": "templates/portal/point_submit.html",
+      "contentHash": "12323347ef0a8e8215806810fc6fb991e655761141be3d1fd17c89370b502232",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 59,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/points.html": {
+      "filePath": "templates/portal/points.html",
+      "contentHash": "d43e1b8e3dbb82b0778ee2480633ac60fd329fe71341976fe8f3640ee446fd81",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 78,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/problem_report_form.html": {
+      "filePath": "templates/portal/problem_report_form.html",
+      "contentHash": "f41f8650a6e4bcaf291dde3e73d9b5fd001a9e48ba71d792a0fc893785255d10",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 65,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/problem_reports.html": {
+      "filePath": "templates/portal/problem_reports.html",
+      "contentHash": "82ff14416ce10ba3249c1e6065b6a8e16f2dc087357d947bc1abfb5322fcf120",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 56,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/study_note_form.html": {
+      "filePath": "templates/portal/study_note_form.html",
+      "contentHash": "fb870bf15957548444be6572617cd3517ba0d5521eb0ce75a55ba03a85c0b8b9",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 93,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/study_notes.html": {
+      "filePath": "templates/portal/study_notes.html",
+      "contentHash": "2ae1c436d0f5c772ee8726dd40a09ed5d4fbc51791d02ddc7962c9311d66e9f4",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 56,
+      "hasStructuralAnalysis": false
+    },
+    "templates/portal/volunteer.html": {
+      "filePath": "templates/portal/volunteer.html",
+      "contentHash": "19df24f1773dfebeeb718dabeec1798087468d6fa95cf90683fbda394ffb6a85",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 46,
+      "hasStructuralAnalysis": false
+    },
+    "tsconfig.json": {
+      "filePath": "tsconfig.json",
+      "contentHash": "fbff01604d6cb54694be707f26e7a0eb21a6ef796b888c6a1dab1839fa7c6ccc",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 35,
+      "hasStructuralAnalysis": true
+    }
+  }
+}

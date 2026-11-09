@@ -1,0 +1,13 @@
+{
+  "projectRoot": "D:/00_SourceCode/00_AI_App/SW Website",
+  "batchFiles": [
+    {"path": "portal/forms.py", "language": "python", "sizeLines": 224, "fileCategory": "code"},
+    {"path": "portal/urls.py", "language": "python", "sizeLines": 63, "fileCategory": "code"},
+    {"path": "portal/views.py", "language": "python", "sizeLines": 522, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "portal/forms.py": ["portal/models.py"],
+    "portal/urls.py": ["portal/views.py"],
+    "portal/views.py": ["portal/forms.py", "portal/models.py"]
+  }
+}

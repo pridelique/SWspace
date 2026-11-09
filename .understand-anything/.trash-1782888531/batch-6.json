@@ -1,0 +1,252 @@
+{
+  "nodes": [
+    {
+      "id": "file:templates/portal/competitions.html",
+      "type": "file",
+      "name": "competitions.html",
+      "filePath": "templates/portal/competitions.html",
+      "summary": "Student-facing template that renders a responsive card grid of published academic competitions, showing title, organizer, deadline badge, truncated description, and an external registration link. Displays an empty state when no competitions exist.",
+      "tags": ["markup", "portal", "list-view", "student-facing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/dashboard.html",
+      "type": "file",
+      "name": "dashboard.html",
+      "filePath": "templates/portal/dashboard.html",
+      "summary": "Main portal landing page that greets the logged-in student by name and role, conditionally shows a committee shortcut banner, and renders navigation cards linking to all six portal features plus an external media resource. Acts as the central hub for the school portal.",
+      "tags": ["markup", "portal", "entry-point", "navigation", "dashboard"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/news.html",
+      "type": "file",
+      "name": "news.html",
+      "filePath": "templates/portal/news.html",
+      "summary": "Displays school news announcements as a card grid, showing an optional cover image, a color-coded category badge (internal/external/urgent), title, truncated description, and publication date. Falls back to an empty state message.",
+      "tags": ["markup", "portal", "list-view", "student-facing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/point_history.html",
+      "type": "file",
+      "name": "point_history.html",
+      "filePath": "templates/portal/point_history.html",
+      "summary": "Renders a full-width table listing the current student's point submission history, with columns for activity name, point value, proof image thumbnail, approval status badge, admin notes, and submission timestamp. Shows an empty state with a submit prompt when no submissions exist.",
+      "tags": ["markup", "portal", "points", "student-facing", "history"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/point_submit.html",
+      "type": "file",
+      "name": "point_submit.html",
+      "filePath": "templates/portal/point_submit.html",
+      "summary": "Form template for students to submit proof of activity participation, with a dropdown to select the activity and an image upload field (JPG/PNG/WEBP up to 5 MB). Includes an informational notice that submissions require committee approval before points are awarded.",
+      "tags": ["markup", "portal", "form", "points", "student-facing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/points.html",
+      "type": "file",
+      "name": "points.html",
+      "filePath": "templates/portal/points.html",
+      "summary": "Points hub template that prominently displays the student's total accumulated score and then lists each available activity with its point value and the student's current submission status (approved, pending, rejected, or unsubmitted). Links to submission form and full history page.",
+      "tags": ["markup", "portal", "points", "student-facing", "dashboard"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/problem_report_form.html",
+      "type": "file",
+      "name": "problem_report_form.html",
+      "filePath": "templates/portal/problem_report_form.html",
+      "summary": "Form template allowing students to submit a problem report with title, description, and optional location fields. Displays an informational banner explaining that reports are subject to committee approval before becoming public.",
+      "tags": ["markup", "portal", "form", "problem-report", "student-facing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/problem_reports.html",
+      "type": "file",
+      "name": "problem_reports.html",
+      "filePath": "templates/portal/problem_reports.html",
+      "summary": "Lists committee-approved problem reports submitted by students, showing title, location, description, optional admin notes, and creation date. Includes a prominent button to submit a new report and displays an empty state when no approved reports exist.",
+      "tags": ["markup", "portal", "list-view", "problem-report", "student-facing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:templates/portal/study_note_form.html",
+      "type": "file",
+      "name": "study_note_form.html",
+      "filePath": "templates/portal/study_note_form.html",
+      "summary": "Form template for students to share a study note summary via a Google Drive link, capturing title, grade level, subject, Drive URL, optional credit name, and an anonymous submission toggle. Provides guidance on making the Drive file publicly accessible.",
+      "tags": ["markup", "portal", "form", "study-notes", "student-facing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/study_notes.html",
+      "type": "file",
+      "name": "study_notes.html",
+      "filePath": "templates/portal/study_notes.html",
+      "summary": "Displays approved student-shared study note summaries, regrouped by grade level using Django's regroup tag, with subject and grade badges, credit attribution, and an external Google Drive link for each note. Includes a submit button and empty state.",
+      "tags": ["markup", "portal", "list-view", "study-notes", "student-facing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/volunteer.html",
+      "type": "file",
+      "name": "volunteer.html",
+      "filePath": "templates/portal/volunteer.html",
+      "summary": "Renders published volunteer activity listings as a two-column card grid, showing title, organizer, optional deadline badge, description, and an external registration link. Displays an empty state message when no activities are available.",
+      "tags": ["markup", "portal", "list-view", "student-facing"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:templates/portal/competitions.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/portal/dashboard.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/portal/news.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/portal/point_history.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/portal/point_submit.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/portal/points.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/portal/problem_report_form.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/portal/problem_reports.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/portal/study_note_form.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/portal/study_notes.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/portal/volunteer.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/portal/dashboard.html",
+      "target": "file:templates/portal/news.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/dashboard.html",
+      "target": "file:templates/portal/volunteer.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/dashboard.html",
+      "target": "file:templates/portal/competitions.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/dashboard.html",
+      "target": "file:templates/portal/study_notes.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/dashboard.html",
+      "target": "file:templates/portal/problem_reports.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/dashboard.html",
+      "target": "file:templates/portal/points.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/point_submit.html",
+      "target": "file:templates/portal/points.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/point_history.html",
+      "target": "file:templates/portal/points.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/problem_report_form.html",
+      "target": "file:templates/portal/problem_reports.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/study_note_form.html",
+      "target": "file:templates/portal/study_notes.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

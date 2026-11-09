@@ -1,0 +1,501 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 9,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": ".env.example",
+      "language": "config",
+      "fileCategory": "config",
+      "totalLines": 22,
+      "nonEmptyLines": 17,
+      "definitions": [
+        {
+          "name": "SECRET_KEY",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 5,
+          "endLine": 5
+        },
+        {
+          "name": "DEBUG",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 6,
+          "endLine": 6
+        },
+        {
+          "name": "ALLOWED_HOSTS",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 7,
+          "endLine": 7
+        },
+        {
+          "name": "COMMITTEE_VERIFICATION_CODE",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 13,
+          "endLine": 13
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 4
+      }
+    },
+    {
+      "path": "AGENTS.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 5,
+      "nonEmptyLines": 4,
+      "sections": [
+        {
+          "heading": "This is NOT the Next.js you know",
+          "level": 1,
+          "line": 2
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    },
+    {
+      "path": "CLAUDE.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 84,
+      "nonEmptyLines": 59,
+      "sections": [
+        {
+          "heading": "CLAUDE.md",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Commands",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Architecture",
+          "level": 2,
+          "line": 28
+        },
+        {
+          "heading": "User model (`accounts/models.py`)",
+          "level": 3,
+          "line": 32
+        },
+        {
+          "heading": "Access control (`portal/views.py`)",
+          "level": 3,
+          "line": 42
+        },
+        {
+          "heading": "Portal models (`portal/models.py`)",
+          "level": 3,
+          "line": 50
+        },
+        {
+          "heading": "URL structure",
+          "level": 3,
+          "line": 64
+        },
+        {
+          "heading": "Templates",
+          "level": 3,
+          "line": 71
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "DEPLOY.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 188,
+      "nonEmptyLines": 132,
+      "sections": [
+        {
+          "heading": "Deploy & Update Guide — PythonAnywhere",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "ภาพรวม Workflow",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "ส่วน A: Deploy ครั้งแรก",
+          "level": 2,
+          "line": 15
+        },
+        {
+          "heading": "ส่วน B: อัพเดตโค้ด (ทำทุกครั้งที่แก้ไข)",
+          "level": 2,
+          "line": 73
+        },
+        {
+          "heading": "1. แก้โค้ดและทดสอบบน machine ของคุณ",
+          "level": 3,
+          "line": 75
+        },
+        {
+          "heading": "2. Commit และ Push ขึ้น GitHub",
+          "level": 3,
+          "line": 83
+        },
+        {
+          "heading": "3. Pull และ Reload บน PythonAnywhere",
+          "level": 3,
+          "line": 91
+        },
+        {
+          "heading": "ส่วน C: Script อัตโนมัติ (ทางเลือก)",
+          "level": 2,
+          "line": 114
+        },
+        {
+          "heading": "ส่วน D: แก้ไขไฟล์ .env บน server",
+          "level": 2,
+          "line": 148
+        },
+        {
+          "heading": "ส่วน E: ตรวจสอบ Error",
+          "level": 2,
+          "line": 165
+        },
+        {
+          "heading": "สรุปคำสั่งที่ใช้บ่อย",
+          "level": 2,
+          "line": 178
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 11
+      }
+    },
+    {
+      "path": "FINAL_QA_CHECKLIST.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 158,
+      "nonEmptyLines": 116,
+      "sections": [
+        {
+          "heading": "FINAL QA CHECKLIST — SWspace",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. Project Setup",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "2. Registration",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "3. Login / Logout",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "4. Dashboard",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "5. ข่าวสาร (News)",
+          "level": 2,
+          "line": 57
+        },
+        {
+          "heading": "6. จิตอาสา (Volunteer Links)",
+          "level": 2,
+          "line": 70
+        },
+        {
+          "heading": "7. การแข่งขัน (Competitions)",
+          "level": 2,
+          "line": 80
+        },
+        {
+          "heading": "8. แชร์สรุป (Study Notes)",
+          "level": 2,
+          "line": 89
+        },
+        {
+          "heading": "9. แจ้งปัญหา (Problem Reports)",
+          "level": 2,
+          "line": 99
+        },
+        {
+          "heading": "10. ระบบสะสมแต้ม (Points)",
+          "level": 2,
+          "line": 110
+        },
+        {
+          "heading": "11. Committee Dashboard Access Control",
+          "level": 2,
+          "line": 125
+        },
+        {
+          "heading": "12. File Upload Security",
+          "level": 2,
+          "line": 138
+        },
+        {
+          "heading": "13. Media & Archive",
+          "level": 2,
+          "line": 149
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 14
+      }
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 329,
+      "nonEmptyLines": 238,
+      "sections": [
+        {
+          "heading": "SWspace — ระบบเว็บไซต์กลางสำหรับนักเรียนสตรีวิทยา",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Tech Stack",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "วิธีรันโปรเจกต์ (How to Run Locally)",
+          "level": 2,
+          "line": 21
+        },
+        {
+          "heading": "1. ติดตั้ง dependencies",
+          "level": 3,
+          "line": 23
+        },
+        {
+          "heading": "2. สร้างฐานข้อมูล",
+          "level": 3,
+          "line": 29
+        },
+        {
+          "heading": "3. สร้างบัญชีทดสอบ",
+          "level": 3,
+          "line": 36
+        },
+        {
+          "heading": "4. รันเซิร์ฟเวอร์",
+          "level": 3,
+          "line": 44
+        },
+        {
+          "heading": "บัญชีทดสอบ (Test Accounts)",
+          "level": 2,
+          "line": 63
+        },
+        {
+          "heading": "รหัสยืนยันตัวตน (Verification Codes)",
+          "level": 2,
+          "line": 76
+        },
+        {
+          "heading": "ฟีเจอร์ทั้งหมด (Feature List)",
+          "level": 2,
+          "line": 93
+        },
+        {
+          "heading": "Tester Checklist",
+          "level": 2,
+          "line": 108
+        },
+        {
+          "heading": "Known Limitations / ข้อจำกัดที่ทราบ",
+          "level": 2,
+          "line": 142
+        },
+        {
+          "heading": "Local Media Storage",
+          "level": 2,
+          "line": 151
+        },
+        {
+          "heading": "Mock Data สำหรับนำเสนอ",
+          "level": 2,
+          "line": 166
+        },
+        {
+          "heading": "เพิ่ม Mock Data",
+          "level": 3,
+          "line": 168
+        },
+        {
+          "heading": "ลบ Mock Data",
+          "level": 3,
+          "line": 186
+        },
+        {
+          "heading": "Reset และ Seed ใหม่",
+          "level": 3,
+          "line": 201
+        },
+        {
+          "heading": "การรัน Tests",
+          "level": 2,
+          "line": 209
+        },
+        {
+          "heading": "สิ่งที่ครอบคลุมใน test suite (38 tests)",
+          "level": 3,
+          "line": 220
+        },
+        {
+          "heading": "การ Archive รูปภาพเก่า",
+          "level": 2,
+          "line": 233
+        },
+        {
+          "heading": "URL Routes",
+          "level": 2,
+          "line": 260
+        },
+        {
+          "heading": "โครงสร้างโปรเจกต์",
+          "level": 2,
+          "line": 279
+        },
+        {
+          "heading": "Deploy Notes",
+          "level": 2,
+          "line": 303
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 23
+      }
+    },
+    {
+      "path": "package.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 26,
+      "nonEmptyLines": 26,
+      "sections": [
+        {
+          "heading": "name",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "version",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "private",
+          "level": 1,
+          "line": 4
+        },
+        {
+          "heading": "scripts",
+          "level": 1,
+          "line": 5
+        },
+        {
+          "heading": "dependencies",
+          "level": 1,
+          "line": 11
+        },
+        {
+          "heading": "devDependencies",
+          "level": 1,
+          "line": 16
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "path": "requirements.txt",
+      "language": "txt",
+      "fileCategory": "docs",
+      "totalLines": 7,
+      "nonEmptyLines": 7,
+      "metrics": {}
+    },
+    {
+      "path": "tsconfig.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 34,
+      "nonEmptyLines": 34,
+      "sections": [
+        {
+          "heading": "compilerOptions",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "include",
+          "level": 1,
+          "line": 25
+        },
+        {
+          "heading": "exclude",
+          "level": 1,
+          "line": 33
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 3
+      }
+    }
+  ]
+}

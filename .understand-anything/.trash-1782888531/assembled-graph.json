@@ -1,0 +1,4928 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "swspace",
+    "languages": [
+      "python",
+      "html",
+      "typescript",
+      "css",
+      "markdown",
+      "json"
+    ],
+    "frameworks": [
+      "Django",
+      "Next.js",
+      "React"
+    ],
+    "description": "A school portal web application for Satriwit School students, providing news, volunteer links, competitions, study notes, problem reports, and a points accumulation system. Built with Django 4.2, two user roles: student and committee.",
+    "analyzedAt": "2026-07-01T06:47:04.998935+00:00",
+    "gitCommitHash": "e71951513edfd3ed8d3ee629e7985c3039be93ce"
+  },
+  "nodes": [
+    {
+      "id": "file:portal/admin.py",
+      "type": "file",
+      "name": "admin.py",
+      "filePath": "portal/admin.py",
+      "summary": "Registers all eight portal models with Django's admin interface, configuring list display, search fields, and filters for News, VolunteerLink, Competition, StudyNote, ProblemReport, PointActivity, PointSubmission, and UserPointProfile.",
+      "tags": [
+        "configuration",
+        "admin",
+        "service",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:portal/management/commands/archive_old_media.py",
+      "type": "file",
+      "name": "archive_old_media.py",
+      "filePath": "portal/management/commands/archive_old_media.py",
+      "summary": "Django management command that locates portal model records older than a configurable number of months, compresses their images using Pillow, and re-saves them to either local storage or Cloudinary to reduce storage footprint.",
+      "tags": [
+        "utility",
+        "script",
+        "data-pipeline",
+        "maintenance"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Uses a dual-backend save strategy: detects CLOUDINARY_STORAGE settings at runtime and routes to either _save_cloudinary or _save_local accordingly."
+    },
+    {
+      "id": "file:portal/management/commands/clear_mock_data.py",
+      "type": "file",
+      "name": "clear_mock_data.py",
+      "filePath": "portal/management/commands/clear_mock_data.py",
+      "summary": "Django management command that deletes all mock data records from every portal model, cleans up associated media files, and prompts for user confirmation before proceeding.",
+      "tags": [
+        "utility",
+        "script",
+        "test",
+        "maintenance"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:portal/management/commands/seed_mock_data.py",
+      "type": "file",
+      "name": "seed_mock_data.py",
+      "filePath": "portal/management/commands/seed_mock_data.py",
+      "summary": "Django management command that seeds the database with representative sample records for all portal models including news, volunteer links, competitions, study notes, problem reports, and point activities, supporting development and QA workflows.",
+      "tags": [
+        "utility",
+        "script",
+        "test",
+        "data-pipeline"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:portal/models.py",
+      "type": "file",
+      "name": "models.py",
+      "filePath": "portal/models.py",
+      "summary": "Defines the eight core Django ORM models for the portal app — News, VolunteerLink, Competition, StudyNote, ProblemReport, PointActivity, PointSubmission, and UserPointProfile — with is_published/is_approved flags, foreign keys to the custom user model, and optional media fields.",
+      "tags": [
+        "data-model",
+        "service",
+        "schema-definition"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Follows a consistent Django model pattern: each committee-managed model uses is_published and a created_by FK, while student-submitted models use is_approved or a status choice field with a submitted_by FK."
+    },
+    {
+      "id": "class:portal/admin.py:NewsAdmin",
+      "type": "class",
+      "name": "NewsAdmin",
+      "filePath": "portal/admin.py",
+      "lineRange": [
+        10,
+        21
+      ],
+      "summary": "Django ModelAdmin for the News model, configuring list display with title, author, published status, and creation date.",
+      "tags": [
+        "admin",
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/admin.py:VolunteerLinkAdmin",
+      "type": "class",
+      "name": "VolunteerLinkAdmin",
+      "filePath": "portal/admin.py",
+      "lineRange": [
+        25,
+        36
+      ],
+      "summary": "Django ModelAdmin for the VolunteerLink model, configuring admin list display and search for volunteer opportunity entries.",
+      "tags": [
+        "admin",
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/admin.py:CompetitionAdmin",
+      "type": "class",
+      "name": "CompetitionAdmin",
+      "filePath": "portal/admin.py",
+      "lineRange": [
+        40,
+        51
+      ],
+      "summary": "Django ModelAdmin for the Competition model, configuring admin list display and search for academic competition entries.",
+      "tags": [
+        "admin",
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/admin.py:StudyNoteAdmin",
+      "type": "class",
+      "name": "StudyNoteAdmin",
+      "filePath": "portal/admin.py",
+      "lineRange": [
+        55,
+        67
+      ],
+      "summary": "Django ModelAdmin for the StudyNote model, configuring list display with approval status and file attachment visibility.",
+      "tags": [
+        "admin",
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/admin.py:ProblemReportAdmin",
+      "type": "class",
+      "name": "ProblemReportAdmin",
+      "filePath": "portal/admin.py",
+      "lineRange": [
+        71,
+        82
+      ],
+      "summary": "Django ModelAdmin for the ProblemReport model, exposing status (pending/approved/rejected) and submitter information in the admin list view.",
+      "tags": [
+        "admin",
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/admin.py:PointActivityAdmin",
+      "type": "class",
+      "name": "PointActivityAdmin",
+      "filePath": "portal/admin.py",
+      "lineRange": [
+        86,
+        96
+      ],
+      "summary": "Django ModelAdmin for the PointActivity model, configuring display of activity name and point value in the admin interface.",
+      "tags": [
+        "admin",
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/admin.py:PointSubmissionAdmin",
+      "type": "class",
+      "name": "PointSubmissionAdmin",
+      "filePath": "portal/admin.py",
+      "lineRange": [
+        100,
+        110
+      ],
+      "summary": "Django ModelAdmin for the PointSubmission model, showing student, activity, status, and proof image in the admin list view.",
+      "tags": [
+        "admin",
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/admin.py:UserPointProfileAdmin",
+      "type": "class",
+      "name": "UserPointProfileAdmin",
+      "filePath": "portal/admin.py",
+      "lineRange": [
+        114,
+        117
+      ],
+      "summary": "Django ModelAdmin for the UserPointProfile model, exposing the user and cumulative approved points total.",
+      "tags": [
+        "admin",
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/management/commands/archive_old_media.py:_subtract_months",
+      "type": "function",
+      "name": "_subtract_months",
+      "filePath": "portal/management/commands/archive_old_media.py",
+      "lineRange": [
+        15,
+        20
+      ],
+      "summary": "Helper that subtracts a given number of months from a datetime, clamping to the last day of the target month using calendar.monthrange.",
+      "tags": [
+        "utility",
+        "date"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/management/commands/archive_old_media.py:_compress",
+      "type": "function",
+      "name": "_compress",
+      "filePath": "portal/management/commands/archive_old_media.py",
+      "lineRange": [
+        23,
+        37
+      ],
+      "summary": "Opens an image field, converts it to RGB, resizes to a maximum dimension of 800px using Pillow, and returns JPEG-compressed bytes.",
+      "tags": [
+        "utility",
+        "image-processing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/management/commands/archive_old_media.py:_save_local",
+      "type": "function",
+      "name": "_save_local",
+      "filePath": "portal/management/commands/archive_old_media.py",
+      "lineRange": [
+        40,
+        43
+      ],
+      "summary": "Writes compressed image bytes back to the file system at the image field's existing path.",
+      "tags": [
+        "utility",
+        "storage"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/management/commands/archive_old_media.py:_save_cloudinary",
+      "type": "function",
+      "name": "_save_cloudinary",
+      "filePath": "portal/management/commands/archive_old_media.py",
+      "lineRange": [
+        46,
+        55
+      ],
+      "summary": "Uploads compressed image bytes to Cloudinary using the existing public ID and overwrites the stored URL on the image field.",
+      "tags": [
+        "utility",
+        "storage",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/management/commands/archive_old_media.py:Command",
+      "type": "class",
+      "name": "Command",
+      "filePath": "portal/management/commands/archive_old_media.py",
+      "lineRange": [
+        58,
+        112
+      ],
+      "summary": "Django management command class implementing the archive_old_media command; accepts a --months argument, determines storage backend, iterates all portal models with image fields, and compresses qualifying old records.",
+      "tags": [
+        "script",
+        "service",
+        "maintenance"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:portal/management/commands/clear_mock_data.py:_delete_file",
+      "type": "function",
+      "name": "_delete_file",
+      "filePath": "portal/management/commands/clear_mock_data.py",
+      "lineRange": [
+        9,
+        14
+      ],
+      "summary": "Deletes the physical file associated with a Django ImageField or FileField, including the storage backend record.",
+      "tags": [
+        "utility",
+        "storage"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/management/commands/clear_mock_data.py:Command",
+      "type": "class",
+      "name": "Command",
+      "filePath": "portal/management/commands/clear_mock_data.py",
+      "lineRange": [
+        17,
+        67
+      ],
+      "summary": "Django management command class implementing clear_mock_data; counts existing records across all portal models, prompts for confirmation, deletes media files, and bulk-deletes all records in dependency order.",
+      "tags": [
+        "script",
+        "test",
+        "maintenance"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:portal/management/commands/seed_mock_data.py:_image_file",
+      "type": "function",
+      "name": "_image_file",
+      "filePath": "portal/management/commands/seed_mock_data.py",
+      "lineRange": [
+        19,
+        24
+      ],
+      "summary": "Generates an in-memory PIL image of a specified color and returns it as a Django ContentFile suitable for assigning to an ImageField.",
+      "tags": [
+        "utility",
+        "test",
+        "image-processing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/management/commands/seed_mock_data.py:Command",
+      "type": "class",
+      "name": "Command",
+      "filePath": "portal/management/commands/seed_mock_data.py",
+      "lineRange": [
+        27,
+        200
+      ],
+      "summary": "Django management command class implementing seed_mock_data; uses get_or_create to idempotently insert sample records for all eight portal models, including generated placeholder images for media fields.",
+      "tags": [
+        "script",
+        "test",
+        "data-pipeline"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:portal/models.py:News",
+      "type": "class",
+      "name": "News",
+      "filePath": "portal/models.py",
+      "lineRange": [
+        6,
+        39
+      ],
+      "summary": "Django model for committee-published news articles with title, body, optional cover image, published flag, archive status, and a FK to the creating committee member.",
+      "tags": [
+        "data-model",
+        "content"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/models.py:VolunteerLink",
+      "type": "class",
+      "name": "VolunteerLink",
+      "filePath": "portal/models.py",
+      "lineRange": [
+        42,
+        64
+      ],
+      "summary": "Django model for committee-published volunteer opportunity entries with title, external URL, description, open/close dates, and a published flag.",
+      "tags": [
+        "data-model",
+        "content"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/models.py:Competition",
+      "type": "class",
+      "name": "Competition",
+      "filePath": "portal/models.py",
+      "lineRange": [
+        67,
+        91
+      ],
+      "summary": "Django model for academic competition listings with title, description, registration/deadline dates, target audience, optional image, and a published flag.",
+      "tags": [
+        "data-model",
+        "content"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/models.py:StudyNote",
+      "type": "class",
+      "name": "StudyNote",
+      "filePath": "portal/models.py",
+      "lineRange": [
+        94,
+        131
+      ],
+      "summary": "Django model for student-uploaded study materials with file attachment, subject, grade level, optional credit attribution, and committee approval flag; provides a display_credit helper method.",
+      "tags": [
+        "data-model",
+        "content"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:portal/models.py:ProblemReport",
+      "type": "class",
+      "name": "ProblemReport",
+      "filePath": "portal/models.py",
+      "lineRange": [
+        134,
+        166
+      ],
+      "summary": "Django model for student-submitted problem reports with description, category, a three-state status field (pending/approved/rejected), rejection reason, and committee reviewer tracking.",
+      "tags": [
+        "data-model",
+        "content"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:portal/models.py:PointActivity",
+      "type": "class",
+      "name": "PointActivity",
+      "filePath": "portal/models.py",
+      "lineRange": [
+        169,
+        189
+      ],
+      "summary": "Django model defining a point-earning activity category with name, description, and an integer point value; created by committee members.",
+      "tags": [
+        "data-model",
+        "content"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/models.py:PointSubmission",
+      "type": "class",
+      "name": "PointSubmission",
+      "filePath": "portal/models.py",
+      "lineRange": [
+        192,
+        236
+      ],
+      "summary": "Django model for student proof-of-participation submissions for a PointActivity, tracking proof image, three-state status, rejection reason, reviewer, and timestamps.",
+      "tags": [
+        "data-model",
+        "content"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:portal/models.py:UserPointProfile",
+      "type": "class",
+      "name": "UserPointProfile",
+      "filePath": "portal/models.py",
+      "lineRange": [
+        239,
+        253
+      ],
+      "summary": "Django model storing each user's cumulative total of approved points, maintained as a denormalized counter updated when submissions are approved or rejected.",
+      "tags": [
+        "data-model",
+        "content"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:accounts/forms.py",
+      "type": "file",
+      "name": "forms.py",
+      "filePath": "accounts/forms.py",
+      "summary": "Defines the RegisterForm Django form with email-domain validation, verification-code-based role and grade-level determination, and password strength checking for the accounts app registration flow.",
+      "tags": [
+        "validation",
+        "form",
+        "registration",
+        "authentication"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:accounts/urls.py",
+      "type": "file",
+      "name": "urls.py",
+      "filePath": "accounts/urls.py",
+      "summary": "URL routing configuration for the accounts app, mapping register, login, and logout paths to their respective view functions.",
+      "tags": [
+        "routing",
+        "configuration",
+        "authentication"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:accounts/views.py",
+      "type": "file",
+      "name": "views.py",
+      "filePath": "accounts/views.py",
+      "summary": "View functions handling user registration (with role and grade assignment via RegisterForm), email/password login with safe next-URL redirect support, and logout for the accounts app.",
+      "tags": [
+        "api-handler",
+        "authentication",
+        "registration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:accounts/forms.py:RegisterForm",
+      "type": "class",
+      "name": "RegisterForm",
+      "filePath": "accounts/forms.py",
+      "lineRange": [
+        18,
+        81
+      ],
+      "summary": "Django ModelForm subclass that validates user registration input: enforces the school email domain, resolves verification codes to committee role or student grade level, and runs Django password validators.",
+      "tags": [
+        "validation",
+        "form",
+        "registration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:accounts/views.py:register_view",
+      "type": "function",
+      "name": "register_view",
+      "filePath": "accounts/views.py",
+      "lineRange": [
+        12,
+        32
+      ],
+      "summary": "Handles GET/POST for user registration: validates RegisterForm, creates the User with the resolved role and grade level, logs the user in, and redirects to dashboard.",
+      "tags": [
+        "api-handler",
+        "registration",
+        "authentication"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:accounts/views.py:login_view",
+      "type": "function",
+      "name": "login_view",
+      "filePath": "accounts/views.py",
+      "lineRange": [
+        35,
+        55
+      ],
+      "summary": "Handles GET/POST for user login using Django AuthenticationForm, logs the user in, and performs a safe redirect to the next parameter or dashboard.",
+      "tags": [
+        "api-handler",
+        "authentication",
+        "login"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:accounts/views.py:logout_view",
+      "type": "function",
+      "name": "logout_view",
+      "filePath": "accounts/views.py",
+      "lineRange": [
+        58,
+        63
+      ],
+      "summary": "Logs out the current user and redirects to the login page.",
+      "tags": [
+        "api-handler",
+        "authentication",
+        "logout"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:portal/forms.py",
+      "type": "file",
+      "name": "forms.py",
+      "filePath": "portal/forms.py",
+      "summary": "Defines all Django ModelForm classes for the portal app — news, volunteer links, competitions, study notes, problem reports, point activities, and point submissions — including custom validation for image uploads, Google Drive URL format, description length, point values, and duplicate submission prevention.",
+      "tags": [
+        "validation",
+        "forms",
+        "service",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:portal/urls.py",
+      "type": "file",
+      "name": "urls.py",
+      "filePath": "portal/urls.py",
+      "summary": "Maps all URL patterns for the portal app, covering student-facing views for content browsing and form submissions, as well as committee-only management routes for CRUD operations across all content types and the points system.",
+      "tags": [
+        "configuration",
+        "routing",
+        "api-handler",
+        "middleware"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:portal/views.py",
+      "type": "file",
+      "name": "views.py",
+      "filePath": "portal/views.py",
+      "summary": "Implements all 39 view functions for the portal app, providing student-facing content views and a full set of committee management views for news, volunteer links, competitions, study notes, problem reports, and points, all enforced by login_required and a custom committee_required decorator.",
+      "tags": [
+        "api-handler",
+        "service",
+        "middleware",
+        "access-control"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:portal/forms.py:validate_image_file",
+      "type": "function",
+      "name": "validate_image_file",
+      "filePath": "portal/forms.py",
+      "lineRange": [
+        9,
+        15
+      ],
+      "summary": "Shared validator that checks an uploaded file has an image read attribute and is within file size limits, raising a ValidationError otherwise.",
+      "tags": [
+        "validation",
+        "utility",
+        "middleware"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/forms.py:NewsForm",
+      "type": "class",
+      "name": "NewsForm",
+      "filePath": "portal/forms.py",
+      "lineRange": [
+        18,
+        38
+      ],
+      "summary": "ModelForm for creating and editing News items with a custom clean_image method that delegates image validation to validate_image_file.",
+      "tags": [
+        "forms",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/forms.py:VolunteerLinkForm",
+      "type": "class",
+      "name": "VolunteerLinkForm",
+      "filePath": "portal/forms.py",
+      "lineRange": [
+        41,
+        65
+      ],
+      "summary": "ModelForm for creating and editing VolunteerLink items with a custom __init__ that adjusts field widgets or choices before rendering.",
+      "tags": [
+        "forms",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/forms.py:CompetitionForm",
+      "type": "class",
+      "name": "CompetitionForm",
+      "filePath": "portal/forms.py",
+      "lineRange": [
+        68,
+        96
+      ],
+      "summary": "ModelForm for creating and editing Competition items with both custom __init__ field setup and a clean_image method for image file validation.",
+      "tags": [
+        "forms",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:portal/forms.py:StudyNoteForm",
+      "type": "class",
+      "name": "StudyNoteForm",
+      "filePath": "portal/forms.py",
+      "lineRange": [
+        99,
+        124
+      ],
+      "summary": "ModelForm for submitting study notes with a clean_drive_url method that enforces the link must originate from Google Drive.",
+      "tags": [
+        "forms",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/forms.py:ProblemReportForm",
+      "type": "class",
+      "name": "ProblemReportForm",
+      "filePath": "portal/forms.py",
+      "lineRange": [
+        127,
+        146
+      ],
+      "summary": "ModelForm for student problem report submissions with a clean_description method that enforces a minimum character count.",
+      "tags": [
+        "forms",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/forms.py:PointActivityForm",
+      "type": "class",
+      "name": "PointActivityForm",
+      "filePath": "portal/forms.py",
+      "lineRange": [
+        149,
+        170
+      ],
+      "summary": "ModelForm for committee members to create point activities with a clean_points validator that requires a positive point value.",
+      "tags": [
+        "forms",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/forms.py:PointSubmissionForm",
+      "type": "class",
+      "name": "PointSubmissionForm",
+      "filePath": "portal/forms.py",
+      "lineRange": [
+        173,
+        212
+      ],
+      "summary": "ModelForm for students to submit proof of a point-earning activity, filtering available activities to active ones, preventing duplicate pending/approved submissions in clean, and validating the proof image in clean_proof_image.",
+      "tags": [
+        "forms",
+        "validation",
+        "data-model",
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:portal/forms.py:PointRejectForm",
+      "type": "class",
+      "name": "PointRejectForm",
+      "filePath": "portal/forms.py",
+      "lineRange": [
+        215,
+        224
+      ],
+      "summary": "Simple Django Form that captures an optional rejection reason when a committee member rejects a point submission.",
+      "tags": [
+        "forms",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_required",
+      "type": "function",
+      "name": "committee_required",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        21,
+        30
+      ],
+      "summary": "Decorator that enforces committee role access, redirecting unauthenticated users to login and non-committee authenticated users back to the dashboard with an error message.",
+      "tags": [
+        "middleware",
+        "access-control",
+        "decorator"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:dashboard",
+      "type": "function",
+      "name": "dashboard",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        36,
+        37
+      ],
+      "summary": "Student dashboard entry point that renders the main portal landing page after login.",
+      "tags": [
+        "api-handler",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:news",
+      "type": "function",
+      "name": "news",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        41,
+        43
+      ],
+      "summary": "Student-facing view that fetches published news articles with creator info and renders the news listing page.",
+      "tags": [
+        "api-handler",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:volunteer",
+      "type": "function",
+      "name": "volunteer",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        47,
+        49
+      ],
+      "summary": "Student-facing view that fetches published volunteer opportunity links and renders the volunteer listing page.",
+      "tags": [
+        "api-handler",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:competitions",
+      "type": "function",
+      "name": "competitions",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        53,
+        55
+      ],
+      "summary": "Student-facing view that fetches published competition listings and renders the competitions page.",
+      "tags": [
+        "api-handler",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:study_notes",
+      "type": "function",
+      "name": "study_notes",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        59,
+        61
+      ],
+      "summary": "Student-facing view that fetches approved study note submissions and renders the study notes page.",
+      "tags": [
+        "api-handler",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:problem_reports",
+      "type": "function",
+      "name": "problem_reports",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        65,
+        69
+      ],
+      "summary": "Student-facing view that fetches approved problem reports with submitter info and renders the public problem reports listing.",
+      "tags": [
+        "api-handler",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_dashboard",
+      "type": "function",
+      "name": "committee_dashboard",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        75,
+        87
+      ],
+      "summary": "Committee overview page that aggregates live counts for all content types and breaks down problem report and point submission statuses (pending, approved, rejected) for at-a-glance monitoring.",
+      "tags": [
+        "api-handler",
+        "committee",
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:portal/views.py:committee_news_list",
+      "type": "function",
+      "name": "committee_news_list",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        93,
+        95
+      ],
+      "summary": "Committee list view for all news items including unpublished drafts, with creator info.",
+      "tags": [
+        "api-handler",
+        "committee"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_news_create",
+      "type": "function",
+      "name": "committee_news_create",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        99,
+        110
+      ],
+      "summary": "Committee view that handles GET display and POST processing of NewsForm, assigning the current user as creator before saving.",
+      "tags": [
+        "api-handler",
+        "committee",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_news_edit",
+      "type": "function",
+      "name": "committee_news_edit",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        114,
+        125
+      ],
+      "summary": "Committee view to edit an existing news article by primary key, pre-populating NewsForm with current data.",
+      "tags": [
+        "api-handler",
+        "committee",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_news_delete",
+      "type": "function",
+      "name": "committee_news_delete",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        129,
+        136
+      ],
+      "summary": "Committee confirmation and deletion view for a news item by primary key, showing a confirm page on GET and deleting on POST.",
+      "tags": [
+        "api-handler",
+        "committee"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_volunteer_list",
+      "type": "function",
+      "name": "committee_volunteer_list",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        142,
+        144
+      ],
+      "summary": "Committee list view for all volunteer links including unpublished ones, with creator info.",
+      "tags": [
+        "api-handler",
+        "committee"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_volunteer_create",
+      "type": "function",
+      "name": "committee_volunteer_create",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        148,
+        159
+      ],
+      "summary": "Committee view that handles GET display and POST processing of VolunteerLinkForm, assigning the current user as creator before saving.",
+      "tags": [
+        "api-handler",
+        "committee",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_volunteer_edit",
+      "type": "function",
+      "name": "committee_volunteer_edit",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        163,
+        174
+      ],
+      "summary": "Committee view to edit an existing volunteer link by primary key, pre-populating VolunteerLinkForm with current data.",
+      "tags": [
+        "api-handler",
+        "committee",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_volunteer_delete",
+      "type": "function",
+      "name": "committee_volunteer_delete",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        178,
+        185
+      ],
+      "summary": "Committee confirmation and deletion view for a volunteer link by primary key.",
+      "tags": [
+        "api-handler",
+        "committee"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_competition_list",
+      "type": "function",
+      "name": "committee_competition_list",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        191,
+        193
+      ],
+      "summary": "Committee list view for all competitions including unpublished ones, with creator info.",
+      "tags": [
+        "api-handler",
+        "committee"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_competition_create",
+      "type": "function",
+      "name": "committee_competition_create",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        197,
+        208
+      ],
+      "summary": "Committee view that handles GET display and POST processing of CompetitionForm, assigning the current user as creator before saving.",
+      "tags": [
+        "api-handler",
+        "committee",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_competition_edit",
+      "type": "function",
+      "name": "committee_competition_edit",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        212,
+        223
+      ],
+      "summary": "Committee view to edit an existing competition by primary key, pre-populating CompetitionForm with current data.",
+      "tags": [
+        "api-handler",
+        "committee",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_competition_delete",
+      "type": "function",
+      "name": "committee_competition_delete",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        227,
+        234
+      ],
+      "summary": "Committee confirmation and deletion view for a competition by primary key.",
+      "tags": [
+        "api-handler",
+        "committee"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:study_note_submit",
+      "type": "function",
+      "name": "study_note_submit",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        240,
+        249
+      ],
+      "summary": "Student-facing view for submitting a study note via StudyNoteForm, assigning the current user as submitter before saving.",
+      "tags": [
+        "api-handler",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_study_notes_list",
+      "type": "function",
+      "name": "committee_study_notes_list",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        253,
+        255
+      ],
+      "summary": "Committee list view for all study note submissions ordered by creation date, with submitter info.",
+      "tags": [
+        "api-handler",
+        "committee"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_study_note_toggle_approval",
+      "type": "function",
+      "name": "committee_study_note_toggle_approval",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        259,
+        267
+      ],
+      "summary": "Committee POST-only view that flips the is_approved flag on a study note and redirects back to the list.",
+      "tags": [
+        "api-handler",
+        "committee"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_study_note_delete",
+      "type": "function",
+      "name": "committee_study_note_delete",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        271,
+        278
+      ],
+      "summary": "Committee confirmation and deletion view for a study note submission by primary key.",
+      "tags": [
+        "api-handler",
+        "committee"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:problem_report_submit",
+      "type": "function",
+      "name": "problem_report_submit",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        284,
+        293
+      ],
+      "summary": "Student-facing view for submitting a problem report via ProblemReportForm, assigning the current user as submitter before saving.",
+      "tags": [
+        "api-handler",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_problem_reports_list",
+      "type": "function",
+      "name": "committee_problem_reports_list",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        297,
+        308
+      ],
+      "summary": "Committee list view for all problem reports with optional status filter passed via query parameter, showing submitter info and all status groups.",
+      "tags": [
+        "api-handler",
+        "committee",
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:portal/views.py:committee_problem_report_approve",
+      "type": "function",
+      "name": "committee_problem_report_approve",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        312,
+        319
+      ],
+      "summary": "Committee POST-only view that sets a problem report's status to approved and redirects back to the list.",
+      "tags": [
+        "api-handler",
+        "committee"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_problem_report_reject",
+      "type": "function",
+      "name": "committee_problem_report_reject",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        323,
+        333
+      ],
+      "summary": "Committee view that renders a rejection confirmation page and on POST sets the problem report status to rejected with an optional admin note from POST data.",
+      "tags": [
+        "api-handler",
+        "committee"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_problem_report_delete",
+      "type": "function",
+      "name": "committee_problem_report_delete",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        337,
+        344
+      ],
+      "summary": "Committee confirmation and deletion view for a problem report by primary key.",
+      "tags": [
+        "api-handler",
+        "committee"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:points",
+      "type": "function",
+      "name": "points",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        350,
+        373
+      ],
+      "summary": "Student-facing points dashboard that loads or creates the user's UserPointProfile, fetches active point activities, and maps each to the student's latest submission so the template can show per-activity status.",
+      "tags": [
+        "api-handler",
+        "service",
+        "entry-point"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:portal/views.py:point_submit",
+      "type": "function",
+      "name": "point_submit",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        377,
+        393
+      ],
+      "summary": "Student-facing view for submitting activity proof via PointSubmissionForm, optionally pre-selecting an activity from a query parameter and assigning the current user as submitter before saving.",
+      "tags": [
+        "api-handler",
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:portal/views.py:point_history",
+      "type": "function",
+      "name": "point_history",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        397,
+        404
+      ],
+      "summary": "Student-facing view listing all of the current user's point submissions with activity info, ordered by creation date.",
+      "tags": [
+        "api-handler",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_points",
+      "type": "function",
+      "name": "committee_points",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        410,
+        428
+      ],
+      "summary": "Committee view listing all point activities and all point submissions with full relation data, supporting an optional status filter via query parameter for approvals workflow.",
+      "tags": [
+        "api-handler",
+        "committee",
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:portal/views.py:committee_point_activity_create",
+      "type": "function",
+      "name": "committee_point_activity_create",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        432,
+        443
+      ],
+      "summary": "Committee view to create a new point activity via PointActivityForm, assigning the current user as creator before saving.",
+      "tags": [
+        "api-handler",
+        "committee",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_point_activity_edit",
+      "type": "function",
+      "name": "committee_point_activity_edit",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        447,
+        458
+      ],
+      "summary": "Committee view to edit an existing point activity by primary key, pre-populating PointActivityForm with current data.",
+      "tags": [
+        "api-handler",
+        "committee",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_point_activity_delete",
+      "type": "function",
+      "name": "committee_point_activity_delete",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        462,
+        469
+      ],
+      "summary": "Committee confirmation and deletion view for a point activity by primary key.",
+      "tags": [
+        "api-handler",
+        "committee"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_point_submission_approve",
+      "type": "function",
+      "name": "committee_point_submission_approve",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        473,
+        493
+      ],
+      "summary": "Committee POST-only view that atomically approves a point submission, updates approval metadata, and increments the student's UserPointProfile total using an F-expression to avoid race conditions.",
+      "tags": [
+        "api-handler",
+        "committee",
+        "service"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Uses transaction.atomic and F-expression for safe concurrent point accumulation."
+    },
+    {
+      "id": "function:portal/views.py:committee_point_submission_reject",
+      "type": "function",
+      "name": "committee_point_submission_reject",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        497,
+        512
+      ],
+      "summary": "Committee view that presents a PointRejectForm and on POST marks the submission as rejected, storing the rejection reason from form data.",
+      "tags": [
+        "api-handler",
+        "committee"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:portal/views.py:committee_point_submission_delete",
+      "type": "function",
+      "name": "committee_point_submission_delete",
+      "filePath": "portal/views.py",
+      "lineRange": [
+        516,
+        522
+      ],
+      "summary": "Committee view to delete a point submission by primary key after confirmation.",
+      "tags": [
+        "api-handler",
+        "committee"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:.env.example",
+      "type": "config",
+      "name": ".env.example",
+      "filePath": ".env.example",
+      "summary": "Template for local development environment variables covering Django core settings (SECRET_KEY, DEBUG, ALLOWED_HOSTS, COMMITTEE_VERIFICATION_CODE), optional PostgreSQL/Supabase database URL, and optional Cloudinary media storage credentials.",
+      "tags": [
+        "configuration",
+        "security",
+        "environment",
+        "deployment"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:AGENTS.md",
+      "type": "document",
+      "name": "AGENTS.md",
+      "filePath": "AGENTS.md",
+      "summary": "One-paragraph warning for AI coding agents that the Next.js version in this project has breaking changes; instructs agents to read the bundled docs in node_modules before generating any Next.js code.",
+      "tags": [
+        "documentation",
+        "architecture",
+        "development"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:CLAUDE.md",
+      "type": "document",
+      "name": "CLAUDE.md",
+      "filePath": "CLAUDE.md",
+      "summary": "Developer reference for Claude AI detailing all management commands, the custom User model using email-based login with student/committee roles, access-control decorators, the five portal models, URL structure, and the full template hierarchy.",
+      "tags": [
+        "documentation",
+        "architecture",
+        "development"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:DEPLOY.md",
+      "type": "document",
+      "name": "DEPLOY.md",
+      "filePath": "DEPLOY.md",
+      "summary": "Step-by-step deployment and update guide for PythonAnywhere hosting, covering initial setup, the code-push-and-reload update cycle, an optional automation script, server-side .env file management, and error-log investigation.",
+      "tags": [
+        "documentation",
+        "deployment",
+        "infrastructure"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:FINAL_QA_CHECKLIST.md",
+      "type": "document",
+      "name": "FINAL_QA_CHECKLIST.md",
+      "filePath": "FINAL_QA_CHECKLIST.md",
+      "summary": "Pre-release quality-assurance checklist for SWspace with 13 sections covering project setup, authentication flows, all portal features (news, volunteer links, competitions, study notes, problem reports, points), committee access control, file upload security, and media archiving.",
+      "tags": [
+        "documentation",
+        "testing",
+        "quality-assurance"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Comprehensive Thai-language project overview for SWspace covering tech stack, local setup steps, test accounts, verification codes, full feature list, URL routes, project structure, a 38-test test-suite guide, mock data management commands, image archiving, and deploy notes.",
+      "tags": [
+        "documentation",
+        "entry-point",
+        "overview"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "package.json",
+      "summary": "Node.js package manifest for the SWspace Next.js frontend layer; declares Next.js 16.2.9, React 19, TypeScript 5, and Tailwind CSS 4 as dependencies, with standard dev, build, start, and lint scripts.",
+      "tags": [
+        "configuration",
+        "build-system",
+        "frontend",
+        "dependencies"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Uses Next.js 16 (app router era) with React 19 and Tailwind CSS v4, which are newer major versions with potential breaking changes relative to common training data."
+    },
+    {
+      "id": "document:requirements.txt",
+      "type": "document",
+      "name": "requirements.txt",
+      "filePath": "requirements.txt",
+      "summary": "Python dependency manifest listing Django 4.2, Pillow for image handling, python-dotenv for .env loading, dj-database-url for database URL parsing, psycopg2-binary for PostgreSQL, and cloudinary plus django-cloudinary-storage for media storage.",
+      "tags": [
+        "documentation",
+        "dependencies",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "tsconfig.json",
+      "summary": "TypeScript compiler configuration for the Next.js frontend targeting ES2017 with strict mode enabled, JSX support via react-jsx, the Next.js compiler plugin, and a path alias mapping @/* to the project root.",
+      "tags": [
+        "configuration",
+        "typescript",
+        "build-system"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:templates/portal/committee.html",
+      "type": "file",
+      "name": "committee.html",
+      "filePath": "templates/portal/committee.html",
+      "summary": "Main committee management dashboard template displaying navigation cards and summary statistics for all committee-managed sections: news, volunteer links, competitions, study notes, problem reports, and points.",
+      "tags": [
+        "committee",
+        "dashboard",
+        "administration",
+        "django-template",
+        "portal"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Django template extending base.html; uses template tags and context variables to render section-level statistics and navigation."
+    },
+    {
+      "id": "file:templates/portal/committee_competition_confirm_delete.html",
+      "type": "file",
+      "name": "committee_competition_confirm_delete.html",
+      "filePath": "templates/portal/committee_competition_confirm_delete.html",
+      "summary": "Confirmation dialog template prompting committee members to confirm deletion of a competition entry before the delete action is submitted.",
+      "tags": [
+        "committee",
+        "competition",
+        "confirm-delete",
+        "django-template",
+        "administration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:templates/portal/committee_competition_form.html",
+      "type": "file",
+      "name": "committee_competition_form.html",
+      "filePath": "templates/portal/committee_competition_form.html",
+      "summary": "Form template for creating or editing a competition entry, including fields for title, description, dates, and publication status used by committee members.",
+      "tags": [
+        "committee",
+        "competition",
+        "form",
+        "django-template",
+        "administration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/committee_competition_list.html",
+      "type": "file",
+      "name": "committee_competition_list.html",
+      "filePath": "templates/portal/committee_competition_list.html",
+      "summary": "List view template displaying all competition entries with inline management actions (edit, delete, publish toggle) available to committee members.",
+      "tags": [
+        "committee",
+        "competition",
+        "list-view",
+        "django-template",
+        "administration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/committee_news_confirm_delete.html",
+      "type": "file",
+      "name": "committee_news_confirm_delete.html",
+      "filePath": "templates/portal/committee_news_confirm_delete.html",
+      "summary": "Confirmation dialog template prompting committee members to confirm deletion of a news item before the delete action is submitted.",
+      "tags": [
+        "committee",
+        "news",
+        "confirm-delete",
+        "django-template",
+        "administration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:templates/portal/committee_news_form.html",
+      "type": "file",
+      "name": "committee_news_form.html",
+      "filePath": "templates/portal/committee_news_form.html",
+      "summary": "Form template for creating or editing a news item, including fields for title, content, and publication status used by committee members.",
+      "tags": [
+        "committee",
+        "news",
+        "form",
+        "django-template",
+        "administration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/committee_news_list.html",
+      "type": "file",
+      "name": "committee_news_list.html",
+      "filePath": "templates/portal/committee_news_list.html",
+      "summary": "List view template displaying all news items with inline management actions (edit, delete, publish toggle) available to committee members.",
+      "tags": [
+        "committee",
+        "news",
+        "list-view",
+        "django-template",
+        "administration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/committee_point_activity_confirm_delete.html",
+      "type": "file",
+      "name": "committee_point_activity_confirm_delete.html",
+      "filePath": "templates/portal/committee_point_activity_confirm_delete.html",
+      "summary": "Confirmation dialog template prompting committee members to confirm deletion of a point activity entry before the delete action is submitted.",
+      "tags": [
+        "committee",
+        "points",
+        "confirm-delete",
+        "django-template",
+        "administration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:templates/portal/committee_point_activity_form.html",
+      "type": "file",
+      "name": "committee_point_activity_form.html",
+      "filePath": "templates/portal/committee_point_activity_form.html",
+      "summary": "Form template for creating or editing a point activity entry, including fields for activity name, description, and point value used by committee members.",
+      "tags": [
+        "committee",
+        "points",
+        "form",
+        "django-template",
+        "administration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/committee_point_submission_confirm_delete.html",
+      "type": "file",
+      "name": "committee_point_submission_confirm_delete.html",
+      "filePath": "templates/portal/committee_point_submission_confirm_delete.html",
+      "summary": "Confirmation dialog template prompting committee members to confirm deletion of a student point submission before the delete action is submitted.",
+      "tags": [
+        "committee",
+        "points",
+        "confirm-delete",
+        "django-template",
+        "administration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:templates/portal/committee_point_submission_reject_form.html",
+      "type": "file",
+      "name": "committee_point_submission_reject_form.html",
+      "filePath": "templates/portal/committee_point_submission_reject_form.html",
+      "summary": "Form template for committee members to provide a rejection reason when declining a student point submission request.",
+      "tags": [
+        "committee",
+        "points",
+        "reject-form",
+        "django-template",
+        "administration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:templates/portal/committee_points.html",
+      "type": "file",
+      "name": "committee_points.html",
+      "filePath": "templates/portal/committee_points.html",
+      "summary": "Points management dashboard template showing committee members a unified view of point activities and pending student submissions with approve, reject, and delete actions.",
+      "tags": [
+        "committee",
+        "points",
+        "dashboard",
+        "django-template",
+        "administration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/committee_problem_report_confirm_delete.html",
+      "type": "file",
+      "name": "committee_problem_report_confirm_delete.html",
+      "filePath": "templates/portal/committee_problem_report_confirm_delete.html",
+      "summary": "Confirmation dialog template prompting committee members to confirm deletion of a problem report before the delete action is submitted.",
+      "tags": [
+        "committee",
+        "problem-report",
+        "confirm-delete",
+        "django-template",
+        "administration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:templates/portal/committee_problem_report_reject_form.html",
+      "type": "file",
+      "name": "committee_problem_report_reject_form.html",
+      "filePath": "templates/portal/committee_problem_report_reject_form.html",
+      "summary": "Form template for committee members to provide a rejection reason when declining a student-submitted problem report.",
+      "tags": [
+        "committee",
+        "problem-report",
+        "reject-form",
+        "django-template",
+        "administration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:templates/portal/committee_problem_reports_list.html",
+      "type": "file",
+      "name": "committee_problem_reports_list.html",
+      "filePath": "templates/portal/committee_problem_reports_list.html",
+      "summary": "List view template displaying all student-submitted problem reports with status indicators and inline management actions (approve, reject, delete) available to committee members.",
+      "tags": [
+        "committee",
+        "problem-report",
+        "list-view",
+        "django-template",
+        "administration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/committee_study_note_confirm_delete.html",
+      "type": "file",
+      "name": "committee_study_note_confirm_delete.html",
+      "filePath": "templates/portal/committee_study_note_confirm_delete.html",
+      "summary": "Confirmation dialog template prompting committee members to confirm deletion of a student-submitted study note before the delete action is submitted.",
+      "tags": [
+        "committee",
+        "study-notes",
+        "confirm-delete",
+        "django-template",
+        "administration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:templates/portal/committee_study_notes_list.html",
+      "type": "file",
+      "name": "committee_study_notes_list.html",
+      "filePath": "templates/portal/committee_study_notes_list.html",
+      "summary": "List view template displaying all student-submitted study notes with approval status and management actions (approve, delete) available to committee members.",
+      "tags": [
+        "committee",
+        "study-notes",
+        "list-view",
+        "django-template",
+        "administration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/committee_volunteer_confirm_delete.html",
+      "type": "file",
+      "name": "committee_volunteer_confirm_delete.html",
+      "filePath": "templates/portal/committee_volunteer_confirm_delete.html",
+      "summary": "Confirmation dialog template prompting committee members to confirm deletion of a volunteer link entry before the delete action is submitted.",
+      "tags": [
+        "committee",
+        "volunteer",
+        "confirm-delete",
+        "django-template",
+        "administration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:templates/portal/committee_volunteer_form.html",
+      "type": "file",
+      "name": "committee_volunteer_form.html",
+      "filePath": "templates/portal/committee_volunteer_form.html",
+      "summary": "Form template for creating or editing a volunteer link entry, including fields for title, URL, description, and publication status used by committee members.",
+      "tags": [
+        "committee",
+        "volunteer",
+        "form",
+        "django-template",
+        "administration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/committee_volunteer_list.html",
+      "type": "file",
+      "name": "committee_volunteer_list.html",
+      "filePath": "templates/portal/committee_volunteer_list.html",
+      "summary": "List view template displaying all volunteer link entries with inline management actions (edit, delete, publish toggle) available to committee members.",
+      "tags": [
+        "committee",
+        "volunteer",
+        "list-view",
+        "django-template",
+        "administration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/competitions.html",
+      "type": "file",
+      "name": "competitions.html",
+      "filePath": "templates/portal/competitions.html",
+      "summary": "Student-facing template that renders a responsive card grid of published academic competitions, showing title, organizer, deadline badge, truncated description, and an external registration link. Displays an empty state when no competitions exist.",
+      "tags": [
+        "markup",
+        "portal",
+        "list-view",
+        "student-facing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/dashboard.html",
+      "type": "file",
+      "name": "dashboard.html",
+      "filePath": "templates/portal/dashboard.html",
+      "summary": "Main portal landing page that greets the logged-in student by name and role, conditionally shows a committee shortcut banner, and renders navigation cards linking to all six portal features plus an external media resource. Acts as the central hub for the school portal.",
+      "tags": [
+        "markup",
+        "portal",
+        "entry-point",
+        "navigation",
+        "dashboard"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/news.html",
+      "type": "file",
+      "name": "news.html",
+      "filePath": "templates/portal/news.html",
+      "summary": "Displays school news announcements as a card grid, showing an optional cover image, a color-coded category badge (internal/external/urgent), title, truncated description, and publication date. Falls back to an empty state message.",
+      "tags": [
+        "markup",
+        "portal",
+        "list-view",
+        "student-facing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/point_history.html",
+      "type": "file",
+      "name": "point_history.html",
+      "filePath": "templates/portal/point_history.html",
+      "summary": "Renders a full-width table listing the current student's point submission history, with columns for activity name, point value, proof image thumbnail, approval status badge, admin notes, and submission timestamp. Shows an empty state with a submit prompt when no submissions exist.",
+      "tags": [
+        "markup",
+        "portal",
+        "points",
+        "student-facing",
+        "history"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/point_submit.html",
+      "type": "file",
+      "name": "point_submit.html",
+      "filePath": "templates/portal/point_submit.html",
+      "summary": "Form template for students to submit proof of activity participation, with a dropdown to select the activity and an image upload field (JPG/PNG/WEBP up to 5 MB). Includes an informational notice that submissions require committee approval before points are awarded.",
+      "tags": [
+        "markup",
+        "portal",
+        "form",
+        "points",
+        "student-facing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/points.html",
+      "type": "file",
+      "name": "points.html",
+      "filePath": "templates/portal/points.html",
+      "summary": "Points hub template that prominently displays the student's total accumulated score and then lists each available activity with its point value and the student's current submission status (approved, pending, rejected, or unsubmitted). Links to submission form and full history page.",
+      "tags": [
+        "markup",
+        "portal",
+        "points",
+        "student-facing",
+        "dashboard"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/problem_report_form.html",
+      "type": "file",
+      "name": "problem_report_form.html",
+      "filePath": "templates/portal/problem_report_form.html",
+      "summary": "Form template allowing students to submit a problem report with title, description, and optional location fields. Displays an informational banner explaining that reports are subject to committee approval before becoming public.",
+      "tags": [
+        "markup",
+        "portal",
+        "form",
+        "problem-report",
+        "student-facing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/problem_reports.html",
+      "type": "file",
+      "name": "problem_reports.html",
+      "filePath": "templates/portal/problem_reports.html",
+      "summary": "Lists committee-approved problem reports submitted by students, showing title, location, description, optional admin notes, and creation date. Includes a prominent button to submit a new report and displays an empty state when no approved reports exist.",
+      "tags": [
+        "markup",
+        "portal",
+        "list-view",
+        "problem-report",
+        "student-facing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:templates/portal/study_note_form.html",
+      "type": "file",
+      "name": "study_note_form.html",
+      "filePath": "templates/portal/study_note_form.html",
+      "summary": "Form template for students to share a study note summary via a Google Drive link, capturing title, grade level, subject, Drive URL, optional credit name, and an anonymous submission toggle. Provides guidance on making the Drive file publicly accessible.",
+      "tags": [
+        "markup",
+        "portal",
+        "form",
+        "study-notes",
+        "student-facing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/study_notes.html",
+      "type": "file",
+      "name": "study_notes.html",
+      "filePath": "templates/portal/study_notes.html",
+      "summary": "Displays approved student-shared study note summaries, regrouped by grade level using Django's regroup tag, with subject and grade badges, credit attribution, and an external Google Drive link for each note. Includes a submit button and empty state.",
+      "tags": [
+        "markup",
+        "portal",
+        "list-view",
+        "study-notes",
+        "student-facing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/volunteer.html",
+      "type": "file",
+      "name": "volunteer.html",
+      "filePath": "templates/portal/volunteer.html",
+      "summary": "Renders published volunteer activity listings as a two-column card grid, showing title, organizer, optional deadline badge, description, and an external registration link. Displays an empty state message when no activities are available.",
+      "tags": [
+        "markup",
+        "portal",
+        "list-view",
+        "student-facing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:.claude/settings.json",
+      "type": "config",
+      "name": "settings.json",
+      "filePath": ".claude/settings.json",
+      "summary": "Claude Code project settings enabling the understand-anything plugin for knowledge graph generation on this project.",
+      "tags": [
+        "configuration",
+        "claude-code",
+        "tooling"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.understand-anything/.understandignore",
+      "type": "file",
+      "name": ".understandignore",
+      "filePath": ".understand-anything/.understandignore",
+      "summary": "Ignore pattern file specifying paths and file types the understand-anything scanner should exclude when building the knowledge graph.",
+      "tags": [
+        "configuration",
+        "tooling",
+        "documentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:accounts/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "accounts/__init__.py",
+      "summary": "Empty Python package initializer marking the accounts directory as a Django app package.",
+      "tags": [
+        "entry-point",
+        "python",
+        "django"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:accounts/admin.py",
+      "type": "file",
+      "name": "admin.py",
+      "filePath": "accounts/admin.py",
+      "summary": "Django admin configuration registering the custom User model with fieldsets, email-based search, and display options tailored for the school portal.",
+      "tags": [
+        "admin",
+        "configuration",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:accounts/admin.py:UserAdmin",
+      "type": "class",
+      "name": "UserAdmin",
+      "filePath": "accounts/admin.py",
+      "lineRange": [
+        8,
+        24
+      ],
+      "summary": "Custom ModelAdmin for the User model configuring the admin list display, search fields, and fieldsets to include email, role, and grade_level.",
+      "tags": [
+        "admin",
+        "configuration",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:accounts/apps.py",
+      "type": "file",
+      "name": "apps.py",
+      "filePath": "accounts/apps.py",
+      "summary": "Django AppConfig subclass declaring the accounts app with its default auto field and dotted name.",
+      "tags": [
+        "configuration",
+        "django"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:accounts/migrations/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "accounts/migrations/__init__.py",
+      "summary": "Empty Python package initializer marking the accounts migrations directory as a package.",
+      "tags": [
+        "migration",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:accounts/migrations/0001_initial.py",
+      "type": "file",
+      "name": "0001_initial.py",
+      "filePath": "accounts/migrations/0001_initial.py",
+      "summary": "Initial Django migration creating the custom User table with all fields including email, role, grade_level, and standard AbstractUser fields.",
+      "tags": [
+        "migration",
+        "database",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:accounts/migrations/0002_add_grade_level.py",
+      "type": "file",
+      "name": "0002_add_grade_level.py",
+      "filePath": "accounts/migrations/0002_add_grade_level.py",
+      "summary": "Django migration adding the grade_level field to the User table after the initial schema was created.",
+      "tags": [
+        "migration",
+        "database",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:accounts/models.py",
+      "type": "file",
+      "name": "models.py",
+      "filePath": "accounts/models.py",
+      "summary": "Defines the custom User model using email as the primary login field with student and committee roles, grade level, and Satriwit school email domain validation.",
+      "tags": [
+        "data-model",
+        "authentication",
+        "user-management"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:accounts/models.py:UserManager",
+      "type": "class",
+      "name": "UserManager",
+      "filePath": "accounts/models.py",
+      "lineRange": [
+        5,
+        20
+      ],
+      "summary": "Custom manager for the User model providing create_user and create_superuser factory methods with email normalization and password hashing.",
+      "tags": [
+        "data-model",
+        "factory",
+        "authentication"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:accounts/models.py:User",
+      "type": "class",
+      "name": "User",
+      "filePath": "accounts/models.py",
+      "lineRange": [
+        23,
+        48
+      ],
+      "summary": "Custom AbstractUser subclass that removes the username field, uses email as USERNAME_FIELD, and adds role (student/committee) and grade_level fields with an is_committee() helper method.",
+      "tags": [
+        "data-model",
+        "authentication",
+        "user-management"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:accounts/tests.py",
+      "type": "file",
+      "name": "tests.py",
+      "filePath": "accounts/tests.py",
+      "summary": "Comprehensive test suite for the accounts app covering user registration, login, logout, role assignment, grade level mapping, email domain validation, and redirect security.",
+      "tags": [
+        "test",
+        "authentication",
+        "validation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:accounts/tests.py:_post_register",
+      "type": "function",
+      "name": "_post_register",
+      "filePath": "accounts/tests.py",
+      "lineRange": [
+        13,
+        22
+      ],
+      "summary": "Module-level helper that POSTs a registration form to the register URL with default valid data and accepts keyword overrides for individual field testing.",
+      "tags": [
+        "test",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:accounts/tests.py:RegisterTest",
+      "type": "class",
+      "name": "RegisterTest",
+      "filePath": "accounts/tests.py",
+      "lineRange": [
+        25,
+        87
+      ],
+      "summary": "TestCase covering all registration paths including successful student and committee registration, grade level assignment, email domain enforcement, duplicate detection, and password mismatch rejection.",
+      "tags": [
+        "test",
+        "authentication",
+        "validation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:accounts/tests.py:LoginTest",
+      "type": "class",
+      "name": "LoginTest",
+      "filePath": "accounts/tests.py",
+      "lineRange": [
+        90,
+        138
+      ],
+      "summary": "TestCase verifying login with correct/incorrect credentials, unknown emails, authenticated-user redirect, and safe versus unsafe next-parameter redirect handling.",
+      "tags": [
+        "test",
+        "authentication",
+        "security"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:accounts/tests.py:LogoutTest",
+      "type": "class",
+      "name": "LogoutTest",
+      "filePath": "accounts/tests.py",
+      "lineRange": [
+        141,
+        155
+      ],
+      "summary": "TestCase confirming that POST to logout redirects to the login page and GET to logout redirects to the dashboard.",
+      "tags": [
+        "test",
+        "authentication"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app/globals.css",
+      "type": "file",
+      "name": "globals.css",
+      "filePath": "app/globals.css",
+      "summary": "Global CSS entry point for the Next.js frontend, importing Tailwind CSS directives and defining base custom properties.",
+      "tags": [
+        "css",
+        "styling",
+        "markup"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app/layout.tsx",
+      "type": "file",
+      "name": "layout.tsx",
+      "filePath": "app/layout.tsx",
+      "summary": "Root Next.js layout component that wraps all pages with the Navbar, applies Geist font, and sets HTML lang and metadata for the school portal frontend.",
+      "tags": [
+        "entry-point",
+        "component",
+        "layout"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/layout.tsx:RootLayout",
+      "type": "function",
+      "name": "RootLayout",
+      "filePath": "app/layout.tsx",
+      "lineRange": [
+        18,
+        34
+      ],
+      "summary": "Default export React component that provides the HTML shell, applies Geist Sans and Mono fonts, and renders the Navbar above the page children.",
+      "tags": [
+        "component",
+        "layout",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app/page.tsx",
+      "type": "file",
+      "name": "page.tsx",
+      "filePath": "app/page.tsx",
+      "summary": "Homepage component for the Next.js frontend serving as the landing page for the Satriwit school portal with links to portal features.",
+      "tags": [
+        "component",
+        "entry-point"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:app/page.tsx:Home",
+      "type": "function",
+      "name": "Home",
+      "filePath": "app/page.tsx",
+      "lineRange": [
+        3,
+        65
+      ],
+      "summary": "Default export React component rendering the portal landing page with hero section and navigation links to news, competitions, and study notes.",
+      "tags": [
+        "component",
+        "entry-point"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:components/navbar.tsx",
+      "type": "file",
+      "name": "navbar.tsx",
+      "filePath": "components/navbar.tsx",
+      "summary": "Responsive navigation bar component with mobile hamburger menu, scroll-aware styling, and links to all portal sections for the Next.js frontend.",
+      "tags": [
+        "component",
+        "navigation",
+        "ui"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:components/navbar.tsx:Navbar",
+      "type": "function",
+      "name": "Navbar",
+      "filePath": "components/navbar.tsx",
+      "lineRange": [
+        7,
+        138
+      ],
+      "summary": "Default export client component using three useState hooks to manage mobile menu open state, scroll position, and active link, rendering a full navigation bar with responsive mobile drawer.",
+      "tags": [
+        "component",
+        "navigation",
+        "ui"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Uses 'use client' directive for React 19 / Next.js App Router client-side interactivity with useState hooks."
+    },
+    {
+      "id": "file:config/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "config/__init__.py",
+      "summary": "Empty Python package initializer marking the config directory as the Django project settings package.",
+      "tags": [
+        "entry-point",
+        "python",
+        "django"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:config/asgi.py",
+      "type": "file",
+      "name": "asgi.py",
+      "filePath": "config/asgi.py",
+      "summary": "ASGI application entrypoint exposing the Django application callable for async-capable deployment servers.",
+      "tags": [
+        "entry-point",
+        "deployment",
+        "django"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:config/settings.py",
+      "type": "file",
+      "name": "settings.py",
+      "filePath": "config/settings.py",
+      "summary": "Django project settings defining installed apps, middleware, database, custom auth backend, and school-specific constants including STUDENT_EMAIL_DOMAIN and COMMITTEE_VERIFICATION_CODE.",
+      "tags": [
+        "configuration",
+        "django",
+        "security"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:config/urls.py",
+      "type": "file",
+      "name": "urls.py",
+      "filePath": "config/urls.py",
+      "summary": "Root URL configuration routing dashboard, accounts, and portal paths, with a root_redirect view that sends visitors to the dashboard or login page.",
+      "tags": [
+        "api-handler",
+        "routing",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:config/urls.py:root_redirect",
+      "type": "function",
+      "name": "root_redirect",
+      "filePath": "config/urls.py",
+      "lineRange": [
+        8,
+        11
+      ],
+      "summary": "View function that redirects the root URL to the portal dashboard for authenticated users or to the accounts login page for anonymous visitors.",
+      "tags": [
+        "api-handler",
+        "routing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:config/wsgi.py",
+      "type": "file",
+      "name": "wsgi.py",
+      "filePath": "config/wsgi.py",
+      "summary": "WSGI application entrypoint exposing the Django application callable for traditional synchronous deployment servers such as Gunicorn.",
+      "tags": [
+        "entry-point",
+        "deployment",
+        "django"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:eslint.config.mjs",
+      "type": "file",
+      "name": "eslint.config.mjs",
+      "filePath": "eslint.config.mjs",
+      "summary": "ESLint flat configuration for the Next.js TypeScript project enabling the recommended rule set and Next.js core web vitals linting.",
+      "tags": [
+        "configuration",
+        "linting",
+        "build-system"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:manage.py",
+      "type": "file",
+      "name": "manage.py",
+      "filePath": "manage.py",
+      "summary": "Django management script providing the CLI entry point for running the development server, applying migrations, executing tests, and creating superusers.",
+      "tags": [
+        "entry-point",
+        "cli",
+        "django"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:manage.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "manage.py",
+      "lineRange": [
+        7,
+        18
+      ],
+      "summary": "Entry point function that sets DJANGO_SETTINGS_MODULE to config.settings and delegates to Django's execute_from_command_line utility.",
+      "tags": [
+        "entry-point",
+        "cli"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:next.config.ts",
+      "type": "file",
+      "name": "next.config.ts",
+      "filePath": "next.config.ts",
+      "summary": "Next.js project configuration defining build and runtime settings for the school portal frontend.",
+      "tags": [
+        "configuration",
+        "nextjs",
+        "build-system"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:portal/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "portal/__init__.py",
+      "summary": "Empty Python package initializer marking the portal directory as a Django app package.",
+      "tags": [
+        "entry-point",
+        "python",
+        "django"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:portal/apps.py",
+      "type": "file",
+      "name": "apps.py",
+      "filePath": "portal/apps.py",
+      "summary": "Django AppConfig subclass declaring the portal app with its default auto field and dotted name.",
+      "tags": [
+        "configuration",
+        "django"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:portal/management/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "portal/management/__init__.py",
+      "summary": "Empty Python package initializer marking the portal management commands directory as a package.",
+      "tags": [
+        "entry-point",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:portal/management/commands/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "portal/management/commands/__init__.py",
+      "summary": "Empty Python package init file that marks the management commands directory as a package, enabling Django to discover custom management commands.",
+      "tags": [
+        "package-init",
+        "management-command",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:portal/management/commands/create_test_accounts.py",
+      "type": "file",
+      "name": "create_test_accounts.py",
+      "filePath": "portal/management/commands/create_test_accounts.py",
+      "summary": "Django management command that seeds one student and one committee test account with known credentials for development and manual testing.",
+      "tags": [
+        "management-command",
+        "utility",
+        "development",
+        "seeding"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:portal/management/commands/create_test_accounts.py:Command",
+      "type": "class",
+      "name": "Command",
+      "filePath": "portal/management/commands/create_test_accounts.py",
+      "lineRange": [
+        12,
+        50
+      ],
+      "summary": "BaseCommand subclass with a handle method that uses get_or_create to safely create a test student and a test committee user, printing their credentials to stdout on completion.",
+      "tags": [
+        "management-command",
+        "development",
+        "utility"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:portal/migrations/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "portal/migrations/__init__.py",
+      "summary": "Empty Python package init file that marks the migrations directory as a package so Django's migration loader can discover and apply portal app migrations.",
+      "tags": [
+        "package-init",
+        "migration",
+        "database"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:portal/migrations/0001_initial.py",
+      "type": "file",
+      "name": "0001_initial.py",
+      "filePath": "portal/migrations/0001_initial.py",
+      "summary": "Initial Django migration that creates the core portal models: News, VolunteerLink, Competition, StudyNote, and ProblemReport, along with their base fields and foreign key relationships to the user model.",
+      "tags": [
+        "migration",
+        "database",
+        "schema-definition",
+        "initial"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:portal/migrations/0002_competition_deadline_competition_is_published_and_more.py",
+      "type": "file",
+      "name": "0002_competition_deadline_competition_is_published_and_more.py",
+      "filePath": "portal/migrations/0002_competition_deadline_competition_is_published_and_more.py",
+      "summary": "Adds deadline and is_published fields to Competition, adds is_published to VolunteerLink and News, and alters field definitions across multiple portal models.",
+      "tags": [
+        "migration",
+        "database",
+        "schema-definition"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:portal/migrations/0003_competition_drive_file_id_news_drive_file_id.py",
+      "type": "file",
+      "name": "0003_competition_drive_file_id_news_drive_file_id.py",
+      "filePath": "portal/migrations/0003_competition_drive_file_id_news_drive_file_id.py",
+      "summary": "Adds a drive_file_id CharField to both the Competition and News models to store Google Drive file references alongside content.",
+      "tags": [
+        "migration",
+        "database",
+        "schema-definition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:portal/migrations/0004_replace_drive_with_local_imagefield.py",
+      "type": "file",
+      "name": "0004_replace_drive_with_local_imagefield.py",
+      "filePath": "portal/migrations/0004_replace_drive_with_local_imagefield.py",
+      "summary": "Removes Google Drive file ID fields from Competition and News and replaces them with local ImageField columns, migrating image storage from Drive to server-local files.",
+      "tags": [
+        "migration",
+        "database",
+        "schema-definition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:portal/migrations/0005_add_point_models.py",
+      "type": "file",
+      "name": "0005_add_point_models.py",
+      "filePath": "portal/migrations/0005_add_point_models.py",
+      "summary": "Introduces three new models for the points system: PointActivity (defining scoreable activities), PointSubmission (student proof submissions with status tracking), and UserPointProfile (aggregated student point totals).",
+      "tags": [
+        "migration",
+        "database",
+        "schema-definition"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:portal/migrations/0006_competition_is_archived_news_is_archived_and_more.py",
+      "type": "file",
+      "name": "0006_competition_is_archived_news_is_archived_and_more.py",
+      "filePath": "portal/migrations/0006_competition_is_archived_news_is_archived_and_more.py",
+      "summary": "Adds is_archived BooleanField to Competition, News, and VolunteerLink models so committee members can hide older content without deleting it.",
+      "tags": [
+        "migration",
+        "database",
+        "schema-definition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:portal/tests.py",
+      "type": "file",
+      "name": "tests.py",
+      "filePath": "portal/tests.py",
+      "summary": "Comprehensive test suite for the portal app covering image upload workflows (News and Competition), the full points submission/approval/rejection lifecycle, and image content-type and size validation across 20 test cases in three test classes.",
+      "tags": [
+        "test",
+        "validation",
+        "api-handler"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:portal/tests.py:_make_uploaded_file",
+      "type": "function",
+      "name": "_make_uploaded_file",
+      "filePath": "portal/tests.py",
+      "lineRange": [
+        10,
+        16
+      ],
+      "summary": "Helper that builds an in-memory SimpleUploadedFile containing a 1x1 pixel Pillow image for use as a test fixture in upload-related tests.",
+      "tags": [
+        "test",
+        "utility",
+        "fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:portal/tests.py:ImageUploadTest",
+      "type": "class",
+      "name": "ImageUploadTest",
+      "filePath": "portal/tests.py",
+      "lineRange": [
+        19,
+        158
+      ],
+      "summary": "TestCase covering committee image upload for News and Competition (create and edit), access-control rejection when a student attempts to create these items, and form rendering checks; uses separate committee and student test clients.",
+      "tags": [
+        "test",
+        "api-handler",
+        "validation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:portal/tests.py:PointsTest",
+      "type": "class",
+      "name": "PointsTest",
+      "filePath": "portal/tests.py",
+      "lineRange": [
+        161,
+        289
+      ],
+      "summary": "TestCase exercising the full points lifecycle: page rendering, proof submission creating a pending submission, committee approval adding points to UserPointProfile, idempotent double-approval, rejection of already-approved submissions, and resubmission after rejection.",
+      "tags": [
+        "test",
+        "validation",
+        "service"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:portal/tests.py:ImageValidationTest",
+      "type": "class",
+      "name": "ImageValidationTest",
+      "filePath": "portal/tests.py",
+      "lineRange": [
+        292,
+        336
+      ],
+      "summary": "TestCase verifying that the portal rejects uploads with incorrect content types and oversized images for News and Competition, confirming no records are persisted on invalid input.",
+      "tags": [
+        "test",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:postcss.config.mjs",
+      "type": "file",
+      "name": "postcss.config.mjs",
+      "filePath": "postcss.config.mjs",
+      "summary": "PostCSS configuration exporting the active plugins (likely Tailwind CSS and Autoprefixer) used to transform CSS during the frontend build step.",
+      "tags": [
+        "configuration",
+        "build-system",
+        "css"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:static/css/styles.css",
+      "type": "file",
+      "name": "styles.css",
+      "filePath": "static/css/styles.css",
+      "summary": "Project-wide stylesheet defining layout, typography, color variables, component styles for cards, buttons, navigation, and responsive breakpoints shared across all portal pages.",
+      "tags": [
+        "stylesheet",
+        "ui",
+        "markup"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/accounts/login.html",
+      "type": "file",
+      "name": "login.html",
+      "filePath": "templates/accounts/login.html",
+      "summary": "Login page template extending base.html that renders the email/password form with CSRF protection and error display for the school portal authentication flow.",
+      "tags": [
+        "template",
+        "authentication",
+        "markup",
+        "ui"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:templates/accounts/register.html",
+      "type": "file",
+      "name": "register.html",
+      "filePath": "templates/accounts/register.html",
+      "summary": "Registration page template extending base.html with fields for email, password, and optional committee verification code; includes inline field error rendering.",
+      "tags": [
+        "template",
+        "authentication",
+        "markup",
+        "ui",
+        "form"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/base.html",
+      "type": "file",
+      "name": "base.html",
+      "filePath": "templates/base.html",
+      "summary": "Shared base layout template that defines the HTML shell, navigation bar with role-aware menu items (committee vs. student), static CSS/JS includes, and template blocks that all portal pages extend.",
+      "tags": [
+        "template",
+        "layout",
+        "markup",
+        "ui"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Uses Django template inheritance blocks (block content, block title) and the {% load static %} tag; navigation conditionally renders committee-only links via {% if user.is_committee %}."
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:portal/admin.py",
+      "target": "file:portal/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:portal/management/commands/archive_old_media.py",
+      "target": "file:portal/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:portal/management/commands/clear_mock_data.py",
+      "target": "file:portal/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:portal/management/commands/seed_mock_data.py",
+      "target": "file:portal/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:portal/admin.py",
+      "target": "class:portal/admin.py:NewsAdmin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/admin.py",
+      "target": "class:portal/admin.py:VolunteerLinkAdmin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/admin.py",
+      "target": "class:portal/admin.py:CompetitionAdmin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/admin.py",
+      "target": "class:portal/admin.py:StudyNoteAdmin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/admin.py",
+      "target": "class:portal/admin.py:ProblemReportAdmin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/admin.py",
+      "target": "class:portal/admin.py:PointActivityAdmin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/admin.py",
+      "target": "class:portal/admin.py:PointSubmissionAdmin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/admin.py",
+      "target": "class:portal/admin.py:UserPointProfileAdmin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/management/commands/archive_old_media.py",
+      "target": "function:portal/management/commands/archive_old_media.py:_subtract_months",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/management/commands/archive_old_media.py",
+      "target": "function:portal/management/commands/archive_old_media.py:_compress",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/management/commands/archive_old_media.py",
+      "target": "function:portal/management/commands/archive_old_media.py:_save_local",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/management/commands/archive_old_media.py",
+      "target": "function:portal/management/commands/archive_old_media.py:_save_cloudinary",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/management/commands/archive_old_media.py",
+      "target": "class:portal/management/commands/archive_old_media.py:Command",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/management/commands/clear_mock_data.py",
+      "target": "function:portal/management/commands/clear_mock_data.py:_delete_file",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/management/commands/clear_mock_data.py",
+      "target": "class:portal/management/commands/clear_mock_data.py:Command",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/management/commands/seed_mock_data.py",
+      "target": "function:portal/management/commands/seed_mock_data.py:_image_file",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/management/commands/seed_mock_data.py",
+      "target": "class:portal/management/commands/seed_mock_data.py:Command",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:News",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:VolunteerLink",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:Competition",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:StudyNote",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:ProblemReport",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:PointActivity",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:PointSubmission",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:UserPointProfile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:News",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:VolunteerLink",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:Competition",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:StudyNote",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:ProblemReport",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:PointActivity",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:PointSubmission",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/models.py",
+      "target": "class:portal/models.py:UserPointProfile",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:accounts/urls.py",
+      "target": "file:accounts/views.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:accounts/views.py",
+      "target": "file:accounts/forms.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:accounts/forms.py",
+      "target": "class:accounts/forms.py:RegisterForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:accounts/views.py",
+      "target": "function:accounts/views.py:register_view",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:accounts/views.py",
+      "target": "function:accounts/views.py:login_view",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:accounts/views.py",
+      "target": "function:accounts/views.py:logout_view",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:accounts/forms.py",
+      "target": "class:accounts/forms.py:RegisterForm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:accounts/views.py",
+      "target": "function:accounts/views.py:register_view",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:accounts/views.py",
+      "target": "function:accounts/views.py:login_view",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:accounts/views.py",
+      "target": "function:accounts/views.py:logout_view",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:accounts/views.py:register_view",
+      "target": "class:accounts/forms.py:RegisterForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "file:portal/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:portal/urls.py",
+      "target": "file:portal/views.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "file:portal/forms.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "file:portal/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "function:portal/forms.py:validate_image_file",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "function:portal/forms.py:validate_image_file",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:NewsForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:NewsForm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:VolunteerLinkForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:VolunteerLinkForm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:CompetitionForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:CompetitionForm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:StudyNoteForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:StudyNoteForm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:ProblemReportForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:ProblemReportForm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:PointActivityForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:PointActivityForm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:PointSubmissionForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:PointSubmissionForm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:PointRejectForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/forms.py",
+      "target": "class:portal/forms.py:PointRejectForm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_required",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_required",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:dashboard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:dashboard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:news",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:news",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:volunteer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:volunteer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:competitions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:competitions",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:study_notes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:study_notes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:problem_reports",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:problem_reports",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_dashboard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_dashboard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_news_list",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_news_list",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_news_create",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_news_create",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_news_edit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_news_edit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_news_delete",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_news_delete",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_volunteer_list",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_volunteer_list",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_volunteer_create",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_volunteer_create",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_volunteer_edit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_volunteer_edit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_volunteer_delete",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_volunteer_delete",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_competition_list",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_competition_list",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_competition_create",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_competition_create",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_competition_edit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_competition_edit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_competition_delete",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_competition_delete",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:study_note_submit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:study_note_submit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_study_notes_list",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_study_notes_list",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_study_note_toggle_approval",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_study_note_toggle_approval",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_study_note_delete",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_study_note_delete",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:problem_report_submit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:problem_report_submit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_problem_reports_list",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_problem_reports_list",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_problem_report_approve",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_problem_report_approve",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_problem_report_reject",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_problem_report_reject",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_problem_report_delete",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_problem_report_delete",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:points",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:points",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:point_submit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:point_submit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:point_history",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:point_history",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_points",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_points",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_activity_create",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_activity_create",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_activity_edit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_activity_edit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_activity_delete",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_activity_delete",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_submission_approve",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_submission_approve",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_submission_reject",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_submission_reject",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_submission_delete",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/views.py",
+      "target": "function:portal/views.py:committee_point_submission_delete",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:committee_news_create",
+      "target": "class:portal/forms.py:NewsForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:committee_news_edit",
+      "target": "class:portal/forms.py:NewsForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:committee_volunteer_create",
+      "target": "class:portal/forms.py:VolunteerLinkForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:committee_volunteer_edit",
+      "target": "class:portal/forms.py:VolunteerLinkForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:committee_competition_create",
+      "target": "class:portal/forms.py:CompetitionForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:committee_competition_edit",
+      "target": "class:portal/forms.py:CompetitionForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:study_note_submit",
+      "target": "class:portal/forms.py:StudyNoteForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:problem_report_submit",
+      "target": "class:portal/forms.py:ProblemReportForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:point_submit",
+      "target": "class:portal/forms.py:PointSubmissionForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:committee_point_submission_reject",
+      "target": "class:portal/forms.py:PointRejectForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:committee_point_activity_create",
+      "target": "class:portal/forms.py:PointActivityForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:portal/views.py:committee_point_activity_edit",
+      "target": "class:portal/forms.py:PointActivityForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "config:.env.example",
+      "target": "file:config/settings.py",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:config/settings.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CLAUDE.md",
+      "target": "file:accounts/models.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CLAUDE.md",
+      "target": "file:portal/views.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CLAUDE.md",
+      "target": "file:portal/models.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:DEPLOY.md",
+      "target": "config:.env.example",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:requirements.txt",
+      "target": "file:config/settings.py",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee.html",
+      "target": "file:templates/portal/committee_news_list.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee.html",
+      "target": "file:templates/portal/committee_competition_list.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee.html",
+      "target": "file:templates/portal/committee_volunteer_list.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee.html",
+      "target": "file:templates/portal/committee_study_notes_list.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee.html",
+      "target": "file:templates/portal/committee_problem_reports_list.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee.html",
+      "target": "file:templates/portal/committee_points.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_news_list.html",
+      "target": "file:templates/portal/committee_news_form.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_news_list.html",
+      "target": "file:templates/portal/committee_news_confirm_delete.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_news_form.html",
+      "target": "file:templates/portal/committee_news_confirm_delete.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_competition_list.html",
+      "target": "file:templates/portal/committee_competition_form.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_competition_list.html",
+      "target": "file:templates/portal/committee_competition_confirm_delete.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_competition_form.html",
+      "target": "file:templates/portal/committee_competition_confirm_delete.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_volunteer_list.html",
+      "target": "file:templates/portal/committee_volunteer_form.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_volunteer_list.html",
+      "target": "file:templates/portal/committee_volunteer_confirm_delete.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_volunteer_form.html",
+      "target": "file:templates/portal/committee_volunteer_confirm_delete.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_study_notes_list.html",
+      "target": "file:templates/portal/committee_study_note_confirm_delete.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_problem_reports_list.html",
+      "target": "file:templates/portal/committee_problem_report_confirm_delete.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_problem_reports_list.html",
+      "target": "file:templates/portal/committee_problem_report_reject_form.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_problem_report_confirm_delete.html",
+      "target": "file:templates/portal/committee_problem_report_reject_form.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_points.html",
+      "target": "file:templates/portal/committee_point_activity_form.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_points.html",
+      "target": "file:templates/portal/committee_point_activity_confirm_delete.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_points.html",
+      "target": "file:templates/portal/committee_point_submission_confirm_delete.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_points.html",
+      "target": "file:templates/portal/committee_point_submission_reject_form.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/competitions.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/portal/dashboard.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/portal/news.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/portal/point_history.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/portal/point_submit.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/portal/points.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/portal/problem_report_form.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/portal/problem_reports.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/portal/study_note_form.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/portal/study_notes.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/portal/volunteer.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/portal/dashboard.html",
+      "target": "file:templates/portal/news.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/dashboard.html",
+      "target": "file:templates/portal/volunteer.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/dashboard.html",
+      "target": "file:templates/portal/competitions.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/dashboard.html",
+      "target": "file:templates/portal/study_notes.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/dashboard.html",
+      "target": "file:templates/portal/problem_reports.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/dashboard.html",
+      "target": "file:templates/portal/points.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/point_submit.html",
+      "target": "file:templates/portal/points.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/point_history.html",
+      "target": "file:templates/portal/points.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/problem_report_form.html",
+      "target": "file:templates/portal/problem_reports.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/study_note_form.html",
+      "target": "file:templates/portal/study_notes.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:accounts/admin.py",
+      "target": "file:accounts/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/layout.tsx",
+      "target": "file:app/globals.css",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/layout.tsx",
+      "target": "file:components/navbar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:accounts/admin.py",
+      "target": "class:accounts/admin.py:UserAdmin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:accounts/models.py",
+      "target": "class:accounts/models.py:UserManager",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:accounts/models.py",
+      "target": "class:accounts/models.py:User",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:accounts/tests.py",
+      "target": "function:accounts/tests.py:_post_register",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:accounts/tests.py",
+      "target": "class:accounts/tests.py:RegisterTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:accounts/tests.py",
+      "target": "class:accounts/tests.py:LoginTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:accounts/tests.py",
+      "target": "class:accounts/tests.py:LogoutTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:app/layout.tsx",
+      "target": "function:app/layout.tsx:RootLayout",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:app/page.tsx",
+      "target": "function:app/page.tsx:Home",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/navbar.tsx",
+      "target": "function:components/navbar.tsx:Navbar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:config/urls.py",
+      "target": "function:config/urls.py:root_redirect",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:manage.py",
+      "target": "function:manage.py:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:accounts/admin.py",
+      "target": "class:accounts/admin.py:UserAdmin",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:accounts/models.py",
+      "target": "class:accounts/models.py:UserManager",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:accounts/models.py",
+      "target": "class:accounts/models.py:User",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:accounts/tests.py",
+      "target": "function:accounts/tests.py:_post_register",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:accounts/tests.py",
+      "target": "class:accounts/tests.py:RegisterTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:accounts/tests.py",
+      "target": "class:accounts/tests.py:LoginTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:accounts/tests.py",
+      "target": "class:accounts/tests.py:LogoutTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/layout.tsx",
+      "target": "function:app/layout.tsx:RootLayout",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/page.tsx",
+      "target": "function:app/page.tsx:Home",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/navbar.tsx",
+      "target": "function:components/navbar.tsx:Navbar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:config/urls.py",
+      "target": "function:config/urls.py:root_redirect",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:manage.py",
+      "target": "function:manage.py:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:manage.py",
+      "target": "file:config/settings.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:config/asgi.py",
+      "target": "file:config/settings.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:config/wsgi.py",
+      "target": "file:config/settings.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:portal/management/commands/create_test_accounts.py",
+      "target": "class:portal/management/commands/create_test_accounts.py:Command",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/management/commands/create_test_accounts.py",
+      "target": "class:portal/management/commands/create_test_accounts.py:Command",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/tests.py",
+      "target": "function:portal/tests.py:_make_uploaded_file",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/tests.py",
+      "target": "class:portal/tests.py:ImageUploadTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/tests.py",
+      "target": "class:portal/tests.py:PointsTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/tests.py",
+      "target": "class:portal/tests.py:ImageValidationTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:portal/tests.py",
+      "target": "function:portal/tests.py:_make_uploaded_file",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/tests.py",
+      "target": "class:portal/tests.py:ImageUploadTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/tests.py",
+      "target": "class:portal/tests.py:PointsTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/tests.py",
+      "target": "class:portal/tests.py:ImageValidationTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:portal/migrations/0002_competition_deadline_competition_is_published_and_more.py",
+      "target": "file:portal/migrations/0001_initial.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:portal/migrations/0003_competition_drive_file_id_news_drive_file_id.py",
+      "target": "file:portal/migrations/0002_competition_deadline_competition_is_published_and_more.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:portal/migrations/0004_replace_drive_with_local_imagefield.py",
+      "target": "file:portal/migrations/0003_competition_drive_file_id_news_drive_file_id.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:portal/migrations/0005_add_point_models.py",
+      "target": "file:portal/migrations/0004_replace_drive_with_local_imagefield.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:portal/migrations/0006_competition_is_archived_news_is_archived_and_more.py",
+      "target": "file:portal/migrations/0005_add_point_models.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/accounts/login.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:templates/accounts/register.html",
+      "target": "file:templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:api",
+      "name": "API Layer",
+      "description": "Django view functions and URL routing for both the accounts (auth) and portal (student/committee) apps, including the root URL dispatcher in config/urls.py.",
+      "nodeIds": [
+        "file:portal/views.py",
+        "file:portal/urls.py",
+        "file:accounts/views.py",
+        "file:accounts/urls.py",
+        "file:config/urls.py"
+      ]
+    },
+    {
+      "id": "layer:data",
+      "name": "Data Layer",
+      "description": "Django ORM model definitions for the custom User and eight portal models (News, VolunteerLink, Competition, StudyNote, ProblemReport, PointActivity, PointSubmission, UserPointProfile), their admin registrations, and the full database migration history for both apps.",
+      "nodeIds": [
+        "file:portal/models.py",
+        "file:accounts/models.py",
+        "file:portal/admin.py",
+        "file:accounts/admin.py",
+        "file:portal/migrations/__init__.py",
+        "file:portal/migrations/0001_initial.py",
+        "file:portal/migrations/0002_competition_deadline_competition_is_published_and_more.py",
+        "file:portal/migrations/0003_competition_drive_file_id_news_drive_file_id.py",
+        "file:portal/migrations/0004_replace_drive_with_local_imagefield.py",
+        "file:portal/migrations/0005_add_point_models.py",
+        "file:portal/migrations/0006_competition_is_archived_news_is_archived_and_more.py",
+        "file:accounts/migrations/__init__.py",
+        "file:accounts/migrations/0001_initial.py",
+        "file:accounts/migrations/0002_add_grade_level.py"
+      ]
+    },
+    {
+      "id": "layer:ui",
+      "name": "UI Layer",
+      "description": "All user-facing presentation assets: Django server-rendered HTML templates for both student and committee views, Django ModelForms for input validation and rendering, the Next.js frontend (layout, homepage, navbar), and project-wide stylesheets.",
+      "nodeIds": [
+        "file:templates/base.html",
+        "file:templates/accounts/login.html",
+        "file:templates/accounts/register.html",
+        "file:templates/portal/committee.html",
+        "file:templates/portal/committee_competition_confirm_delete.html",
+        "file:templates/portal/committee_competition_form.html",
+        "file:templates/portal/committee_competition_list.html",
+        "file:templates/portal/committee_news_confirm_delete.html",
+        "file:templates/portal/committee_news_form.html",
+        "file:templates/portal/committee_news_list.html",
+        "file:templates/portal/committee_point_activity_confirm_delete.html",
+        "file:templates/portal/committee_point_activity_form.html",
+        "file:templates/portal/committee_point_submission_confirm_delete.html",
+        "file:templates/portal/committee_point_submission_reject_form.html",
+        "file:templates/portal/committee_points.html",
+        "file:templates/portal/committee_problem_report_confirm_delete.html",
+        "file:templates/portal/committee_problem_report_reject_form.html",
+        "file:templates/portal/committee_problem_reports_list.html",
+        "file:templates/portal/committee_study_note_confirm_delete.html",
+        "file:templates/portal/committee_study_notes_list.html",
+        "file:templates/portal/committee_volunteer_confirm_delete.html",
+        "file:templates/portal/committee_volunteer_form.html",
+        "file:templates/portal/committee_volunteer_list.html",
+        "file:templates/portal/competitions.html",
+        "file:templates/portal/dashboard.html",
+        "file:templates/portal/news.html",
+        "file:templates/portal/point_history.html",
+        "file:templates/portal/point_submit.html",
+        "file:templates/portal/points.html",
+        "file:templates/portal/problem_report_form.html",
+        "file:templates/portal/problem_reports.html",
+        "file:templates/portal/study_note_form.html",
+        "file:templates/portal/study_notes.html",
+        "file:templates/portal/volunteer.html",
+        "file:portal/forms.py",
+        "file:accounts/forms.py",
+        "file:app/globals.css",
+        "file:app/layout.tsx",
+        "file:app/page.tsx",
+        "file:components/navbar.tsx",
+        "file:static/css/styles.css"
+      ]
+    },
+    {
+      "id": "layer:service",
+      "name": "Service Layer",
+      "description": "Django management commands that handle operational tasks outside the request cycle: archiving old media, seeding and clearing mock data, and creating test accounts.",
+      "nodeIds": [
+        "file:portal/management/commands/archive_old_media.py",
+        "file:portal/management/commands/clear_mock_data.py",
+        "file:portal/management/commands/seed_mock_data.py",
+        "file:portal/management/commands/create_test_accounts.py",
+        "file:portal/management/__init__.py",
+        "file:portal/management/commands/__init__.py"
+      ]
+    },
+    {
+      "id": "layer:config",
+      "name": "Configuration Layer",
+      "description": "Django project settings, WSGI/ASGI server entry points, app registrations, the CLI management entry point, and all Next.js and Node.js build configuration files including TypeScript, ESLint, PostCSS, and environment templates.",
+      "nodeIds": [
+        "file:config/settings.py",
+        "file:config/asgi.py",
+        "file:config/wsgi.py",
+        "file:config/__init__.py",
+        "file:manage.py",
+        "file:portal/apps.py",
+        "file:portal/__init__.py",
+        "file:accounts/apps.py",
+        "file:accounts/__init__.py",
+        "file:next.config.ts",
+        "file:eslint.config.mjs",
+        "file:postcss.config.mjs",
+        "config:package.json",
+        "config:tsconfig.json",
+        "config:.env.example",
+        "config:.claude/settings.json",
+        "file:.understand-anything/.understandignore"
+      ]
+    },
+    {
+      "id": "layer:test",
+      "name": "Test Layer",
+      "description": "Automated test suites covering accounts (registration, login, validation) and portal (image uploads, points workflow, committee access control) functionality.",
+      "nodeIds": [
+        "file:portal/tests.py",
+        "file:accounts/tests.py"
+      ]
+    },
+    {
+      "id": "layer:documentation",
+      "name": "Documentation",
+      "description": "Project documentation covering setup, deployment to PythonAnywhere, architecture reference for AI agents, a pre-release QA checklist, and the Python dependency manifest.",
+      "nodeIds": [
+        "document:README.md",
+        "document:CLAUDE.md",
+        "document:AGENTS.md",
+        "document:DEPLOY.md",
+        "document:FINAL_QA_CHECKLIST.md",
+        "document:requirements.txt"
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "title": "Project Overview",
+      "description": "The README establishes the project's identity: SWspace is a central school portal for Satriwit School students, providing news, volunteer links, competitions, study notes, problem reports, and a points accumulation system. It documents the tech stack (Django 4.2, Bootstrap 5, SQLite), the two-role permission model (student vs. committee), and the project layout so you know what to expect before reading a single line of code.",
+      "nodeIds": [
+        "document:README.md"
+      ]
+    },
+    {
+      "order": 2,
+      "title": "CLI Entry Point & Settings",
+      "description": "manage.py is the Django CLI gate — every developer command (migrations, test runs, the dev server) flows through it. It delegates immediately to config/settings.py, which is the project's single most-depended-upon file (fan-in 6): it declares installed apps, the custom auth model, database engine, media paths, and the COMMITTEE_VERIFICATION_CODE and STUDENT_EMAIL_DOMAIN constants that drive the role system.",
+      "nodeIds": [
+        "file:manage.py",
+        "file:config/settings.py"
+      ],
+      "languageLesson": "Django's settings module is referenced by name via the DJANGO_SETTINGS_MODULE environment variable, not by a direct import. manage.py sets this variable automatically, which is why it must be run from the project root."
+    },
+    {
+      "order": 3,
+      "title": "Environment & Dependencies",
+      "description": "Before running the project you need two bootstrapping files. requirements.txt pins the Python dependencies — Django, Pillow for image handling, python-dotenv, psycopg2 for PostgreSQL, and cloudinary. The .env.example template documents every environment variable the settings module reads, including SECRET_KEY, database URL, and the committee verification code, acting as the handshake between developer setup and the settings layer from Step 2.",
+      "nodeIds": [
+        "document:requirements.txt",
+        "config:.env.example"
+      ]
+    },
+    {
+      "order": 4,
+      "title": "URL Routing Architecture",
+      "description": "Django routes HTTP requests through a hierarchy of URL files. config/urls.py is the root dispatcher: it redirects the bare root path to /dashboard/ and delegates /accounts/ to the accounts app and everything else to the portal app. accounts/urls.py maps the three auth endpoints (register, login, logout), while portal/urls.py carries all student and committee routes, giving you a complete map of every page in the application.",
+      "nodeIds": [
+        "file:config/urls.py",
+        "file:accounts/urls.py",
+        "file:portal/urls.py"
+      ],
+      "languageLesson": "Django's include() function lets each app own its URL namespace. The app_name = 'portal' declaration in portal/urls.py enables template reverse lookups like {% url 'portal:dashboard' %}, decoupling templates from hard-coded paths."
+    },
+    {
+      "order": 5,
+      "title": "Custom User Model",
+      "description": "accounts/models.py defines the project's User entity by subclassing AbstractUser and replacing the default username field with email as the login identifier. The model adds a role field with exactly two choices — student (default) and committee — plus a grade_level field. The is_committee() convenience method is used throughout the portal's access control layer and forms the single source of truth for permission checks.",
+      "nodeIds": [
+        "file:accounts/models.py"
+      ],
+      "languageLesson": "Django requires you to set AUTH_USER_MODEL before the first migration if you plan to subclass AbstractUser. Changing the auth model after migrations have run is extremely difficult, making this early design decision load-bearing for the entire project."
+    },
+    {
+      "order": 6,
+      "title": "Authentication Flow",
+      "description": "accounts/views.py implements three view functions — registration, login, and logout. The registration view processes accounts/forms.py's RegisterForm, which enforces two business rules at the form level: the submitted email must end with @satriwit.ac.th (the school domain), and if the user provides the correct verification code they are automatically assigned the committee role. These two form-level rules are the gatekeepers for every subsequent permission check in the portal.",
+      "nodeIds": [
+        "file:accounts/views.py",
+        "file:accounts/forms.py"
+      ],
+      "languageLesson": "Django's ModelForm.clean() method is the canonical place for cross-field validation. By checking both the email domain and the verification code inside clean(), the form keeps business rules out of the view function and makes them unit-testable in isolation."
+    },
+    {
+      "order": 7,
+      "title": "Portal Data Models",
+      "description": "portal/models.py is the most-imported file in the entire codebase (fan-in 7): it defines all eight core domain models. Five are content models — News, VolunteerLink, Competition, StudyNote, and ProblemReport — each with is_published or is_approved flags and a foreign key to the user who created or submitted it. The remaining three support the points system: PointActivity (a scoreable task), PointSubmission (a student's proof of completion), and UserPointProfile (the student's running score).",
+      "nodeIds": [
+        "file:portal/models.py"
+      ],
+      "languageLesson": "Django ORM models with is_published boolean flags follow a common pattern: committee users flip the flag to True to make content visible, and student-facing views filter with .filter(is_published=True). This single-flag approval workflow avoids a separate moderation queue table."
+    },
+    {
+      "order": 8,
+      "title": "Database Schema Evolution",
+      "description": "The portal's migration history tells the story of how the schema evolved. 0001_initial.py creates the original five content tables. Each subsequent migration adds a targeted change: deadline and is_published fields, then Google Drive references, then a pivot to local ImageFields as storage changed, then the three point models in 0005_add_point_models.py, and finally is_archived flags. Reading the chain gives you a compressed project history without touching git log.",
+      "nodeIds": [
+        "file:portal/migrations/0001_initial.py",
+        "file:portal/migrations/0005_add_point_models.py"
+      ],
+      "languageLesson": "Django migration files are Python scripts that Django applies sequentially. Each file declares a dependencies list pointing to the previous migration, forming a directed acyclic graph. Running python manage.py migrate replays the entire chain in order to bring any fresh database to the current schema."
+    },
+    {
+      "order": 9,
+      "title": "Portal Views & Access Control",
+      "description": "portal/views.py houses all 39 view functions for the portal app. It defines two decorators: the standard @login_required guard and a custom @committee_required decorator that first checks login, then calls user.is_committee() before allowing access. portal/forms.py provides ModelForm subclasses for every model from Step 7, adding file-size validation and field customization. Together, these two files implement the complete request-response cycle for every portal feature.",
+      "nodeIds": [
+        "file:portal/views.py",
+        "file:portal/forms.py"
+      ],
+      "languageLesson": "Django's decorator pattern for view guards chains cleanly: @committee_required wraps @login_required, so an unauthenticated user hits the login redirect first, and an authenticated student gets a 403. This ordering prevents leaking the existence of committee-only pages to logged-out users."
+    },
+    {
+      "order": 10,
+      "title": "Template System",
+      "description": "templates/base.html is the layout ancestor for every page in the project (fan-in 3): it loads Bootstrap 5 from CDN, links the project stylesheet, renders the navigation bar, and defines the content block that child templates override. templates/portal/dashboard.html is the first page a student sees after login — it extends base.html and surfaces links to all portal features, making it the clearest illustration of how Django's template inheritance model works in this project.",
+      "nodeIds": [
+        "file:templates/base.html",
+        "file:templates/portal/dashboard.html"
+      ],
+      "languageLesson": "Django template inheritance uses {% extends 'base.html' %} at the top of a child template and {% block content %}...{% endblock %} to inject page-specific content. The parent defines the skeleton; children fill the gaps. No JavaScript bundler is required — Bootstrap is loaded via a single CDN <link> tag."
+    },
+    {
+      "order": 11,
+      "title": "Student-Facing Feature Pages",
+      "description": "The student experience is delivered through a set of feature templates, each extending base.html. templates/portal/points.html shows the student's total score and lists available PointActivity items. templates/portal/study_notes.html renders peer-shared notes filtered to is_approved=True. templates/portal/problem_reports.html shows the approved subset of school problem reports. Each page is the read-only student view of a content model from Step 7, with separate form templates handling the submission side.",
+      "nodeIds": [
+        "file:templates/portal/points.html",
+        "file:templates/portal/study_notes.html",
+        "file:templates/portal/problem_reports.html"
+      ]
+    },
+    {
+      "order": 12,
+      "title": "Committee Management Interface",
+      "description": "Committee members see a different side of the portal. templates/portal/committee.html is the committee dashboard landing page, linking to per-model management sections. templates/portal/committee_points.html is the points management dashboard where committee members can create PointActivity items and review PointSubmission approvals. Each feature area follows the same list/form/confirm-delete template triad pattern, keeping the committee CRUD interface consistent and predictable.",
+      "nodeIds": [
+        "file:templates/portal/committee.html",
+        "file:templates/portal/committee_points.html"
+      ]
+    },
+    {
+      "order": 13,
+      "title": "Management Commands",
+      "description": "The portal/management/commands/ directory holds three operational utilities invoked via manage.py. seed_mock_data.py populates all eight portal models with realistic sample records for development and QA purposes. clear_mock_data.py is its counterpart, deleting those records cleanly. archive_old_media.py compresses old portal images to reclaim disk space. Each command imports portal/models.py directly, making them simple procedural scripts that bypass the HTTP layer entirely.",
+      "nodeIds": [
+        "file:portal/management/commands/seed_mock_data.py",
+        "file:portal/management/commands/clear_mock_data.py",
+        "file:portal/management/commands/archive_old_media.py"
+      ],
+      "languageLesson": "Django management commands extend BaseCommand and implement a handle() method. They are discovered automatically from any app's management/commands/ directory, making python manage.py <command_name> available without any registration step beyond creating the file."
+    },
+    {
+      "order": 14,
+      "title": "Test Suites",
+      "description": "accounts/tests.py covers the auth flows — registration with valid and invalid email domains, verification-code-based role assignment, login, and logout. portal/tests.py covers the portal-specific behaviors: image upload validation, the full points workflow (activity creation, student submission, committee approval and rejection). Reading the test cases alongside the views and models from Steps 6 and 9 shows exactly which business rules the project has explicitly committed to preserving.",
+      "nodeIds": [
+        "file:accounts/tests.py",
+        "file:portal/tests.py"
+      ],
+      "languageLesson": "Django's TestCase class wraps each test in a database transaction that is rolled back after the test, so tests are isolated without manual teardown. Client().post() simulates form submissions and Client().get() simulates page views, letting you test the full view-form-model stack without a running server."
+    },
+    {
+      "order": 15,
+      "title": "Deployment",
+      "description": "DEPLOY.md documents the production deployment procedure for PythonAnywhere hosting, covering WSGI configuration, static file collection, and database migration steps. It references config/.env.example from Step 3, specifying which environment variables must be set in the production environment before the app can start. This document closes the tour by connecting everything learned — settings, models, views, and templates — to how the application runs in production.",
+      "nodeIds": [
+        "document:DEPLOY.md",
+        "config:.env.example"
+      ]
+    }
+  ]
+}

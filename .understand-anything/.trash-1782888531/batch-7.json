@@ -1,0 +1,569 @@
+{
+  "nodes": [
+    {
+      "id": "config:.claude/settings.json",
+      "type": "config",
+      "name": "settings.json",
+      "filePath": ".claude/settings.json",
+      "summary": "Claude Code project settings enabling the understand-anything plugin for knowledge graph generation on this project.",
+      "tags": ["configuration", "claude-code", "tooling"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.understand-anything/.understandignore",
+      "type": "file",
+      "name": ".understandignore",
+      "filePath": ".understand-anything/.understandignore",
+      "summary": "Ignore pattern file specifying paths and file types the understand-anything scanner should exclude when building the knowledge graph.",
+      "tags": ["configuration", "tooling", "documentation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:accounts/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "accounts/__init__.py",
+      "summary": "Empty Python package initializer marking the accounts directory as a Django app package.",
+      "tags": ["entry-point", "python", "django"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:accounts/admin.py",
+      "type": "file",
+      "name": "admin.py",
+      "filePath": "accounts/admin.py",
+      "summary": "Django admin configuration registering the custom User model with fieldsets, email-based search, and display options tailored for the school portal.",
+      "tags": ["admin", "configuration", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:accounts/admin.py:UserAdmin",
+      "type": "class",
+      "name": "UserAdmin",
+      "filePath": "accounts/admin.py",
+      "lineRange": [8, 24],
+      "summary": "Custom ModelAdmin for the User model configuring the admin list display, search fields, and fieldsets to include email, role, and grade_level.",
+      "tags": ["admin", "configuration", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:accounts/apps.py",
+      "type": "file",
+      "name": "apps.py",
+      "filePath": "accounts/apps.py",
+      "summary": "Django AppConfig subclass declaring the accounts app with its default auto field and dotted name.",
+      "tags": ["configuration", "django"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:accounts/migrations/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "accounts/migrations/__init__.py",
+      "summary": "Empty Python package initializer marking the accounts migrations directory as a package.",
+      "tags": ["migration", "python"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:accounts/migrations/0001_initial.py",
+      "type": "file",
+      "name": "0001_initial.py",
+      "filePath": "accounts/migrations/0001_initial.py",
+      "summary": "Initial Django migration creating the custom User table with all fields including email, role, grade_level, and standard AbstractUser fields.",
+      "tags": ["migration", "database", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:accounts/migrations/0002_add_grade_level.py",
+      "type": "file",
+      "name": "0002_add_grade_level.py",
+      "filePath": "accounts/migrations/0002_add_grade_level.py",
+      "summary": "Django migration adding the grade_level field to the User table after the initial schema was created.",
+      "tags": ["migration", "database", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:accounts/models.py",
+      "type": "file",
+      "name": "models.py",
+      "filePath": "accounts/models.py",
+      "summary": "Defines the custom User model using email as the primary login field with student and committee roles, grade level, and Satriwit school email domain validation.",
+      "tags": ["data-model", "authentication", "user-management"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:accounts/models.py:UserManager",
+      "type": "class",
+      "name": "UserManager",
+      "filePath": "accounts/models.py",
+      "lineRange": [5, 20],
+      "summary": "Custom manager for the User model providing create_user and create_superuser factory methods with email normalization and password hashing.",
+      "tags": ["data-model", "factory", "authentication"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:accounts/models.py:User",
+      "type": "class",
+      "name": "User",
+      "filePath": "accounts/models.py",
+      "lineRange": [23, 48],
+      "summary": "Custom AbstractUser subclass that removes the username field, uses email as USERNAME_FIELD, and adds role (student/committee) and grade_level fields with an is_committee() helper method.",
+      "tags": ["data-model", "authentication", "user-management"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:accounts/tests.py",
+      "type": "file",
+      "name": "tests.py",
+      "filePath": "accounts/tests.py",
+      "summary": "Comprehensive test suite for the accounts app covering user registration, login, logout, role assignment, grade level mapping, email domain validation, and redirect security.",
+      "tags": ["test", "authentication", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:accounts/tests.py:_post_register",
+      "type": "function",
+      "name": "_post_register",
+      "filePath": "accounts/tests.py",
+      "lineRange": [13, 22],
+      "summary": "Module-level helper that POSTs a registration form to the register URL with default valid data and accepts keyword overrides for individual field testing.",
+      "tags": ["test", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:accounts/tests.py:RegisterTest",
+      "type": "class",
+      "name": "RegisterTest",
+      "filePath": "accounts/tests.py",
+      "lineRange": [25, 87],
+      "summary": "TestCase covering all registration paths including successful student and committee registration, grade level assignment, email domain enforcement, duplicate detection, and password mismatch rejection.",
+      "tags": ["test", "authentication", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:accounts/tests.py:LoginTest",
+      "type": "class",
+      "name": "LoginTest",
+      "filePath": "accounts/tests.py",
+      "lineRange": [90, 138],
+      "summary": "TestCase verifying login with correct/incorrect credentials, unknown emails, authenticated-user redirect, and safe versus unsafe next-parameter redirect handling.",
+      "tags": ["test", "authentication", "security"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:accounts/tests.py:LogoutTest",
+      "type": "class",
+      "name": "LogoutTest",
+      "filePath": "accounts/tests.py",
+      "lineRange": [141, 155],
+      "summary": "TestCase confirming that POST to logout redirects to the login page and GET to logout redirects to the dashboard.",
+      "tags": ["test", "authentication"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app/globals.css",
+      "type": "file",
+      "name": "globals.css",
+      "filePath": "app/globals.css",
+      "summary": "Global CSS entry point for the Next.js frontend, importing Tailwind CSS directives and defining base custom properties.",
+      "tags": ["css", "styling", "markup"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app/layout.tsx",
+      "type": "file",
+      "name": "layout.tsx",
+      "filePath": "app/layout.tsx",
+      "summary": "Root Next.js layout component that wraps all pages with the Navbar, applies Geist font, and sets HTML lang and metadata for the school portal frontend.",
+      "tags": ["entry-point", "component", "layout"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/layout.tsx:RootLayout",
+      "type": "function",
+      "name": "RootLayout",
+      "filePath": "app/layout.tsx",
+      "lineRange": [18, 34],
+      "summary": "Default export React component that provides the HTML shell, applies Geist Sans and Mono fonts, and renders the Navbar above the page children.",
+      "tags": ["component", "layout", "entry-point"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app/page.tsx",
+      "type": "file",
+      "name": "page.tsx",
+      "filePath": "app/page.tsx",
+      "summary": "Homepage component for the Next.js frontend serving as the landing page for the Satriwit school portal with links to portal features.",
+      "tags": ["component", "entry-point"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:app/page.tsx:Home",
+      "type": "function",
+      "name": "Home",
+      "filePath": "app/page.tsx",
+      "lineRange": [3, 65],
+      "summary": "Default export React component rendering the portal landing page with hero section and navigation links to news, competitions, and study notes.",
+      "tags": ["component", "entry-point"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:components/navbar.tsx",
+      "type": "file",
+      "name": "navbar.tsx",
+      "filePath": "components/navbar.tsx",
+      "summary": "Responsive navigation bar component with mobile hamburger menu, scroll-aware styling, and links to all portal sections for the Next.js frontend.",
+      "tags": ["component", "navigation", "ui"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:components/navbar.tsx:Navbar",
+      "type": "function",
+      "name": "Navbar",
+      "filePath": "components/navbar.tsx",
+      "lineRange": [7, 138],
+      "summary": "Default export client component using three useState hooks to manage mobile menu open state, scroll position, and active link, rendering a full navigation bar with responsive mobile drawer.",
+      "tags": ["component", "navigation", "ui"],
+      "complexity": "complex",
+      "languageNotes": "Uses 'use client' directive for React 19 / Next.js App Router client-side interactivity with useState hooks."
+    },
+    {
+      "id": "file:config/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "config/__init__.py",
+      "summary": "Empty Python package initializer marking the config directory as the Django project settings package.",
+      "tags": ["entry-point", "python", "django"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:config/asgi.py",
+      "type": "file",
+      "name": "asgi.py",
+      "filePath": "config/asgi.py",
+      "summary": "ASGI application entrypoint exposing the Django application callable for async-capable deployment servers.",
+      "tags": ["entry-point", "deployment", "django"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:config/settings.py",
+      "type": "file",
+      "name": "settings.py",
+      "filePath": "config/settings.py",
+      "summary": "Django project settings defining installed apps, middleware, database, custom auth backend, and school-specific constants including STUDENT_EMAIL_DOMAIN and COMMITTEE_VERIFICATION_CODE.",
+      "tags": ["configuration", "django", "security"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:config/urls.py",
+      "type": "file",
+      "name": "urls.py",
+      "filePath": "config/urls.py",
+      "summary": "Root URL configuration routing dashboard, accounts, and portal paths, with a root_redirect view that sends visitors to the dashboard or login page.",
+      "tags": ["api-handler", "routing", "entry-point"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:config/urls.py:root_redirect",
+      "type": "function",
+      "name": "root_redirect",
+      "filePath": "config/urls.py",
+      "lineRange": [8, 11],
+      "summary": "View function that redirects the root URL to the portal dashboard for authenticated users or to the accounts login page for anonymous visitors.",
+      "tags": ["api-handler", "routing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:config/wsgi.py",
+      "type": "file",
+      "name": "wsgi.py",
+      "filePath": "config/wsgi.py",
+      "summary": "WSGI application entrypoint exposing the Django application callable for traditional synchronous deployment servers such as Gunicorn.",
+      "tags": ["entry-point", "deployment", "django"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:eslint.config.mjs",
+      "type": "file",
+      "name": "eslint.config.mjs",
+      "filePath": "eslint.config.mjs",
+      "summary": "ESLint flat configuration for the Next.js TypeScript project enabling the recommended rule set and Next.js core web vitals linting.",
+      "tags": ["configuration", "linting", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:manage.py",
+      "type": "file",
+      "name": "manage.py",
+      "filePath": "manage.py",
+      "summary": "Django management script providing the CLI entry point for running the development server, applying migrations, executing tests, and creating superusers.",
+      "tags": ["entry-point", "cli", "django"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:manage.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "manage.py",
+      "lineRange": [7, 18],
+      "summary": "Entry point function that sets DJANGO_SETTINGS_MODULE to config.settings and delegates to Django's execute_from_command_line utility.",
+      "tags": ["entry-point", "cli"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:next.config.ts",
+      "type": "file",
+      "name": "next.config.ts",
+      "filePath": "next.config.ts",
+      "summary": "Next.js project configuration defining build and runtime settings for the school portal frontend.",
+      "tags": ["configuration", "nextjs", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:portal/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "portal/__init__.py",
+      "summary": "Empty Python package initializer marking the portal directory as a Django app package.",
+      "tags": ["entry-point", "python", "django"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:portal/apps.py",
+      "type": "file",
+      "name": "apps.py",
+      "filePath": "portal/apps.py",
+      "summary": "Django AppConfig subclass declaring the portal app with its default auto field and dotted name.",
+      "tags": ["configuration", "django"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:portal/management/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "portal/management/__init__.py",
+      "summary": "Empty Python package initializer marking the portal management commands directory as a package.",
+      "tags": ["entry-point", "python"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:accounts/admin.py",
+      "target": "file:accounts/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/layout.tsx",
+      "target": "file:app/globals.css",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/layout.tsx",
+      "target": "file:components/navbar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:accounts/admin.py",
+      "target": "class:accounts/admin.py:UserAdmin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:accounts/models.py",
+      "target": "class:accounts/models.py:UserManager",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:accounts/models.py",
+      "target": "class:accounts/models.py:User",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:accounts/tests.py",
+      "target": "function:accounts/tests.py:_post_register",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:accounts/tests.py",
+      "target": "class:accounts/tests.py:RegisterTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:accounts/tests.py",
+      "target": "class:accounts/tests.py:LoginTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:accounts/tests.py",
+      "target": "class:accounts/tests.py:LogoutTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:app/layout.tsx",
+      "target": "function:app/layout.tsx:RootLayout",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:app/page.tsx",
+      "target": "function:app/page.tsx:Home",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/navbar.tsx",
+      "target": "function:components/navbar.tsx:Navbar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:config/urls.py",
+      "target": "function:config/urls.py:root_redirect",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:manage.py",
+      "target": "function:manage.py:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:accounts/admin.py",
+      "target": "class:accounts/admin.py:UserAdmin",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:accounts/models.py",
+      "target": "class:accounts/models.py:UserManager",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:accounts/models.py",
+      "target": "class:accounts/models.py:User",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:accounts/tests.py",
+      "target": "function:accounts/tests.py:_post_register",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:accounts/tests.py",
+      "target": "class:accounts/tests.py:RegisterTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:accounts/tests.py",
+      "target": "class:accounts/tests.py:LoginTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:accounts/tests.py",
+      "target": "class:accounts/tests.py:LogoutTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/layout.tsx",
+      "target": "function:app/layout.tsx:RootLayout",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/page.tsx",
+      "target": "function:app/page.tsx:Home",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/navbar.tsx",
+      "target": "function:components/navbar.tsx:Navbar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:config/urls.py",
+      "target": "function:config/urls.py:root_redirect",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:manage.py",
+      "target": "function:manage.py:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:accounts/models.py",
+      "target": "file:accounts/tests.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:manage.py",
+      "target": "file:config/settings.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:config/asgi.py",
+      "target": "file:config/settings.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:config/wsgi.py",
+      "target": "file:config/settings.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

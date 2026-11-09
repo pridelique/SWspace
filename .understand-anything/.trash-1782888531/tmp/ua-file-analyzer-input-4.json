@@ -1,0 +1,25 @@
+{
+  "projectRoot": "D:/00_SourceCode/00_AI_App/SW Website",
+  "batchFiles": [
+    {"path": ".env.example", "language": "config", "sizeLines": 22, "fileCategory": "config"},
+    {"path": "AGENTS.md", "language": "markdown", "sizeLines": 5, "fileCategory": "docs"},
+    {"path": "CLAUDE.md", "language": "markdown", "sizeLines": 84, "fileCategory": "docs"},
+    {"path": "DEPLOY.md", "language": "markdown", "sizeLines": 188, "fileCategory": "docs"},
+    {"path": "FINAL_QA_CHECKLIST.md", "language": "markdown", "sizeLines": 158, "fileCategory": "docs"},
+    {"path": "README.md", "language": "markdown", "sizeLines": 329, "fileCategory": "docs"},
+    {"path": "package.json", "language": "json", "sizeLines": 26, "fileCategory": "config"},
+    {"path": "requirements.txt", "language": "txt", "sizeLines": 7, "fileCategory": "docs"},
+    {"path": "tsconfig.json", "language": "json", "sizeLines": 34, "fileCategory": "config"}
+  ],
+  "batchImportData": {
+    ".env.example": [],
+    "AGENTS.md": [],
+    "CLAUDE.md": [],
+    "DEPLOY.md": [],
+    "FINAL_QA_CHECKLIST.md": [],
+    "README.md": [],
+    "package.json": [],
+    "requirements.txt": [],
+    "tsconfig.json": []
+  }
+}

@@ -1,0 +1,348 @@
+{
+  "nodes": [
+    {
+      "id": "file:templates/portal/committee.html",
+      "type": "file",
+      "name": "committee.html",
+      "filePath": "templates/portal/committee.html",
+      "summary": "Main committee management dashboard template displaying navigation cards and summary statistics for all committee-managed sections: news, volunteer links, competitions, study notes, problem reports, and points.",
+      "tags": ["committee", "dashboard", "administration", "django-template", "portal"],
+      "complexity": "moderate",
+      "languageNotes": "Django template extending base.html; uses template tags and context variables to render section-level statistics and navigation."
+    },
+    {
+      "id": "file:templates/portal/committee_competition_confirm_delete.html",
+      "type": "file",
+      "name": "committee_competition_confirm_delete.html",
+      "filePath": "templates/portal/committee_competition_confirm_delete.html",
+      "summary": "Confirmation dialog template prompting committee members to confirm deletion of a competition entry before the delete action is submitted.",
+      "tags": ["committee", "competition", "confirm-delete", "django-template", "administration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:templates/portal/committee_competition_form.html",
+      "type": "file",
+      "name": "committee_competition_form.html",
+      "filePath": "templates/portal/committee_competition_form.html",
+      "summary": "Form template for creating or editing a competition entry, including fields for title, description, dates, and publication status used by committee members.",
+      "tags": ["committee", "competition", "form", "django-template", "administration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/committee_competition_list.html",
+      "type": "file",
+      "name": "committee_competition_list.html",
+      "filePath": "templates/portal/committee_competition_list.html",
+      "summary": "List view template displaying all competition entries with inline management actions (edit, delete, publish toggle) available to committee members.",
+      "tags": ["committee", "competition", "list-view", "django-template", "administration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/committee_news_confirm_delete.html",
+      "type": "file",
+      "name": "committee_news_confirm_delete.html",
+      "filePath": "templates/portal/committee_news_confirm_delete.html",
+      "summary": "Confirmation dialog template prompting committee members to confirm deletion of a news item before the delete action is submitted.",
+      "tags": ["committee", "news", "confirm-delete", "django-template", "administration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:templates/portal/committee_news_form.html",
+      "type": "file",
+      "name": "committee_news_form.html",
+      "filePath": "templates/portal/committee_news_form.html",
+      "summary": "Form template for creating or editing a news item, including fields for title, content, and publication status used by committee members.",
+      "tags": ["committee", "news", "form", "django-template", "administration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/committee_news_list.html",
+      "type": "file",
+      "name": "committee_news_list.html",
+      "filePath": "templates/portal/committee_news_list.html",
+      "summary": "List view template displaying all news items with inline management actions (edit, delete, publish toggle) available to committee members.",
+      "tags": ["committee", "news", "list-view", "django-template", "administration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/committee_point_activity_confirm_delete.html",
+      "type": "file",
+      "name": "committee_point_activity_confirm_delete.html",
+      "filePath": "templates/portal/committee_point_activity_confirm_delete.html",
+      "summary": "Confirmation dialog template prompting committee members to confirm deletion of a point activity entry before the delete action is submitted.",
+      "tags": ["committee", "points", "confirm-delete", "django-template", "administration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:templates/portal/committee_point_activity_form.html",
+      "type": "file",
+      "name": "committee_point_activity_form.html",
+      "filePath": "templates/portal/committee_point_activity_form.html",
+      "summary": "Form template for creating or editing a point activity entry, including fields for activity name, description, and point value used by committee members.",
+      "tags": ["committee", "points", "form", "django-template", "administration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/committee_point_submission_confirm_delete.html",
+      "type": "file",
+      "name": "committee_point_submission_confirm_delete.html",
+      "filePath": "templates/portal/committee_point_submission_confirm_delete.html",
+      "summary": "Confirmation dialog template prompting committee members to confirm deletion of a student point submission before the delete action is submitted.",
+      "tags": ["committee", "points", "confirm-delete", "django-template", "administration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:templates/portal/committee_point_submission_reject_form.html",
+      "type": "file",
+      "name": "committee_point_submission_reject_form.html",
+      "filePath": "templates/portal/committee_point_submission_reject_form.html",
+      "summary": "Form template for committee members to provide a rejection reason when declining a student point submission request.",
+      "tags": ["committee", "points", "reject-form", "django-template", "administration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:templates/portal/committee_points.html",
+      "type": "file",
+      "name": "committee_points.html",
+      "filePath": "templates/portal/committee_points.html",
+      "summary": "Points management dashboard template showing committee members a unified view of point activities and pending student submissions with approve, reject, and delete actions.",
+      "tags": ["committee", "points", "dashboard", "django-template", "administration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/committee_problem_report_confirm_delete.html",
+      "type": "file",
+      "name": "committee_problem_report_confirm_delete.html",
+      "filePath": "templates/portal/committee_problem_report_confirm_delete.html",
+      "summary": "Confirmation dialog template prompting committee members to confirm deletion of a problem report before the delete action is submitted.",
+      "tags": ["committee", "problem-report", "confirm-delete", "django-template", "administration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:templates/portal/committee_problem_report_reject_form.html",
+      "type": "file",
+      "name": "committee_problem_report_reject_form.html",
+      "filePath": "templates/portal/committee_problem_report_reject_form.html",
+      "summary": "Form template for committee members to provide a rejection reason when declining a student-submitted problem report.",
+      "tags": ["committee", "problem-report", "reject-form", "django-template", "administration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:templates/portal/committee_problem_reports_list.html",
+      "type": "file",
+      "name": "committee_problem_reports_list.html",
+      "filePath": "templates/portal/committee_problem_reports_list.html",
+      "summary": "List view template displaying all student-submitted problem reports with status indicators and inline management actions (approve, reject, delete) available to committee members.",
+      "tags": ["committee", "problem-report", "list-view", "django-template", "administration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/committee_study_note_confirm_delete.html",
+      "type": "file",
+      "name": "committee_study_note_confirm_delete.html",
+      "filePath": "templates/portal/committee_study_note_confirm_delete.html",
+      "summary": "Confirmation dialog template prompting committee members to confirm deletion of a student-submitted study note before the delete action is submitted.",
+      "tags": ["committee", "study-notes", "confirm-delete", "django-template", "administration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:templates/portal/committee_study_notes_list.html",
+      "type": "file",
+      "name": "committee_study_notes_list.html",
+      "filePath": "templates/portal/committee_study_notes_list.html",
+      "summary": "List view template displaying all student-submitted study notes with approval status and management actions (approve, delete) available to committee members.",
+      "tags": ["committee", "study-notes", "list-view", "django-template", "administration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/committee_volunteer_confirm_delete.html",
+      "type": "file",
+      "name": "committee_volunteer_confirm_delete.html",
+      "filePath": "templates/portal/committee_volunteer_confirm_delete.html",
+      "summary": "Confirmation dialog template prompting committee members to confirm deletion of a volunteer link entry before the delete action is submitted.",
+      "tags": ["committee", "volunteer", "confirm-delete", "django-template", "administration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:templates/portal/committee_volunteer_form.html",
+      "type": "file",
+      "name": "committee_volunteer_form.html",
+      "filePath": "templates/portal/committee_volunteer_form.html",
+      "summary": "Form template for creating or editing a volunteer link entry, including fields for title, URL, description, and publication status used by committee members.",
+      "tags": ["committee", "volunteer", "form", "django-template", "administration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:templates/portal/committee_volunteer_list.html",
+      "type": "file",
+      "name": "committee_volunteer_list.html",
+      "filePath": "templates/portal/committee_volunteer_list.html",
+      "summary": "List view template displaying all volunteer link entries with inline management actions (edit, delete, publish toggle) available to committee members.",
+      "tags": ["committee", "volunteer", "list-view", "django-template", "administration"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:templates/portal/committee.html",
+      "target": "file:templates/portal/committee_news_list.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee.html",
+      "target": "file:templates/portal/committee_competition_list.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee.html",
+      "target": "file:templates/portal/committee_volunteer_list.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee.html",
+      "target": "file:templates/portal/committee_study_notes_list.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee.html",
+      "target": "file:templates/portal/committee_problem_reports_list.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee.html",
+      "target": "file:templates/portal/committee_points.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_news_list.html",
+      "target": "file:templates/portal/committee_news_form.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_news_list.html",
+      "target": "file:templates/portal/committee_news_confirm_delete.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_news_form.html",
+      "target": "file:templates/portal/committee_news_confirm_delete.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_competition_list.html",
+      "target": "file:templates/portal/committee_competition_form.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_competition_list.html",
+      "target": "file:templates/portal/committee_competition_confirm_delete.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_competition_form.html",
+      "target": "file:templates/portal/committee_competition_confirm_delete.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_volunteer_list.html",
+      "target": "file:templates/portal/committee_volunteer_form.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_volunteer_list.html",
+      "target": "file:templates/portal/committee_volunteer_confirm_delete.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_volunteer_form.html",
+      "target": "file:templates/portal/committee_volunteer_confirm_delete.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_study_notes_list.html",
+      "target": "file:templates/portal/committee_study_note_confirm_delete.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_problem_reports_list.html",
+      "target": "file:templates/portal/committee_problem_report_confirm_delete.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_problem_reports_list.html",
+      "target": "file:templates/portal/committee_problem_report_reject_form.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_problem_report_confirm_delete.html",
+      "target": "file:templates/portal/committee_problem_report_reject_form.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_points.html",
+      "target": "file:templates/portal/committee_point_activity_form.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_points.html",
+      "target": "file:templates/portal/committee_point_activity_confirm_delete.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_points.html",
+      "target": "file:templates/portal/committee_point_submission_confirm_delete.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:templates/portal/committee_points.html",
+      "target": "file:templates/portal/committee_point_submission_reject_form.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

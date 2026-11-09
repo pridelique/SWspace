@@ -1,0 +1,17 @@
+{
+  "projectRoot": "D:/00_SourceCode/00_AI_App/SW Website",
+  "batchFiles": [
+    {"path": "portal/admin.py", "language": "python", "sizeLines": 117, "fileCategory": "code"},
+    {"path": "portal/management/commands/archive_old_media.py", "language": "python", "sizeLines": 112, "fileCategory": "code"},
+    {"path": "portal/management/commands/clear_mock_data.py", "language": "python", "sizeLines": 67, "fileCategory": "code"},
+    {"path": "portal/management/commands/seed_mock_data.py", "language": "python", "sizeLines": 200, "fileCategory": "code"},
+    {"path": "portal/models.py", "language": "python", "sizeLines": 253, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "portal/admin.py": ["portal/models.py"],
+    "portal/management/commands/archive_old_media.py": ["portal/models.py"],
+    "portal/management/commands/clear_mock_data.py": ["portal/models.py"],
+    "portal/management/commands/seed_mock_data.py": ["portal/models.py"],
+    "portal/models.py": []
+  }
+}
